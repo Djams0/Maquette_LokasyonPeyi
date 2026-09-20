@@ -2,7 +2,7 @@ import {api} from './http.js';
 import {shell} from './shell.js';
 import {escape,link,notice,empty,shellLoading} from '/ui/components.js';
 import {home,search,vehicle} from './pages/catalog.js';
-import {login,profile,documents,notifications,messages} from './pages/account.js';
+import {login,profile,documents,notifications,messages,myReviews} from './pages/account.js';
 import {requestPage,rentals,rental,payment} from './pages/rentals.js';
 import {inspection} from './pages/inspection.js';
 import {ownerStart,ownerPage} from './pages/owner.js';
@@ -24,6 +24,7 @@ try{const me=await api('/me');shell(me);document.getElementById('main').innerHTM
  else if(path==='/login'||path==='/register')await login(path==='/register');
  else if(path==='/profile')await profile(me);
  else if(path==='/profile/documents')await documents();
+ else if(path==='/profile/reviews')await myReviews();
  else if(path==='/notifications')await notifications();
  else if(path==='/messages')await messages(me);
  else if(path==='/rentals')await rentals(me);

@@ -1,19 +1,19 @@
 # Matrice des 22 pages → maquette
 
-Routes client sur :8080 ; routes admin sur :8081. Chaque route privée sans session propose la connexion et conserve la destination. Toute page distante passe par chargement, succès, vide ou erreur avec reprise ; le labo `/demo` permet d'observer ces états. Les modifications métier sont justifiées dans FIGMA_VS_BUSINESS.md. IDs de frames dans FIGMA_INVENTORY.json.
+Routes client sur :8080 ; routes admin sur :8081. Chaque route privée sans session propose la connexion ; le client conserve la destination. Toute page distante passe par chargement, succès, vide ou erreur avec reprise ; le labo `/demo` permet d'observer ces états. Les modifications métier sont justifiées dans FIGMA_VS_BUSINESS.md. IDs de frames dans FIGMA_INVENTORY.json.
 
 | PDF / Figma | Route | Écran et actions → destination / état | Adaptation |
 |---|---|---|---|
 | 1 / 351:222 | admin `/` | Dashboard, priorités → modération/dossiers ; actualiser → mêmes données API | KPI réels du jeu fictif et périmètre autorisé |
-| 2 / 352:896 | admin `/moderation`, `/moderation/:id`, `/documents/:id` | Onglets annonces/documents/avis ; ouvrir → détail ; checklist → décision ; refus/modifications motivés | GPS reporté ; aucune validation automatique |
+| 2 / 352:896 | admin `/moderation`, `/moderation/listings/:id`, `/moderation/documents/:id` | Onglets annonces/documents/avis ; ouvrir → détail ; checklist → décision ; refus/modifications motivés | GPS reporté ; aucune validation automatique |
 | 3 / 352:1570 | admin `/users`, `/users/:id` | Recherche/statut ; détail → suspension/rétablissement confirmé | Données assignées ; motif et audit |
 | 4 / 352:2244 | admin `/cases`, `/cases/:id` | Liste → dossier ; départ/retour ; observations publiques/notes internes ; étapes → suivi | Pas de SLA, responsabilité ou retenue automatique |
 | 5 / 352:2918 | admin `/payments` | Proposition → attente secondaire ; autre agent → approbation ; action fictive | Auteur distinct, version, permissions financières |
 | 6 / 353:3592 | admin `/administration` | Personnel → ajout/suspension ; demande permission critique → attente secondaire | Super-admin sans droit documents/finance par défaut |
-| 7 / 269:960 | `/owner/start`, `/owner/protection`, `/owner/onboarding` | Incitation → simulateur brut → protection → compte propriétaire → véhicule | Pas de RIB réel, assurance ni revenu net garanti |
-| 8 / 269:1408 | `/owner/vehicles/new?step=1…9` | Plaque ; pièces ; catégorie ; photos ; remise ; prix ; règles ; disponibilité ; récapitulatif → validation admin | Brouillon API ; erreur/reprise ; GPS/inter-îles/caution désactivés |
+| 7 / 269:960 | `/owner/start` (incitation, protection, activation regroupées) | Incitation → simulateur brut → protection → compte propriétaire → véhicule | Pas de RIB réel, assurance ni revenu net garanti |
+| 8 / 269:1408 | `/owner/vehicles/new?step=1…9` | Identification ; pièces ; caractéristiques ; équipements ; photos ; sécurité ; prix/règles ; disponibilité ; récapitulatif → validation admin | Brouillon API ; erreur/reprise ; GPS/inter-îles/caution désactivés |
 | 9 / 269:2411 | `/owner`, `/owner/requests`, `/owner/vehicles`, `/owner/vehicles/:id` | Dashboard/vide ; demande → accepter/refuser (modale) ; véhicule → édition/calendrier/pause/retrait | Profil minimal, pas de 2 h ni net fixé |
-| 10 / 269:3208 | `/rental/:id`, `/inspection/:id/:phase`, `/owner/reputation`, `/owner/revenue`, `/cases/new` | Remise → active ; récupération → returned → completed ; avis/réponse ; dommage ; export CSV | Retour et caution séparés ; export revenu brut fictif |
+| 10 / 269:3208 | `/rental/:id`, `/inspection/:id/:phase`, `/owner/reputation`, `/owner/revenue`, `/cases/new` | Remise → active ; récupération → returned → completed ; avis/réponse ; dommage ; tableau des revenus | Retour et caution séparés ; revenu brut fictif |
 | 11 / 139:2 | `/design-system`, `/demo` + toutes routes | Tokens, boutons, badges, champs, modale, toast et états ; carte des parcours | Contrastes corrigés ; flow reconstruit |
 | 12 / 306:293 | `/`, `/profile/documents` | Connecté : recommandations/recherches récentes ; documents manquants → soumission ; attente/refus → remplacer | Pièces synthétiques seulement, pas de délai ni vrai KYC |
 | 13 / 139:2261 | `/search`, `/vehicle/:id`, `/messages` | Filtres/tri/liste/carte → fiche ; galerie ; disponibilité → demande ; contact → conversation | Carte schématique ; statut d'éligibilité simulé |

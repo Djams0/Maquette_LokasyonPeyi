@@ -9,7 +9,8 @@ export const link=(href,label,style='')=>`<a class="button ${style}" href="${esc
 export const notice=(msg,type='')=>`<div class="notice ${type}">${icon(type==='error'?'alert':'shield')}<div>${msg}</div></div>`;
 export const empty=(title,description,action='')=>`<div class="empty card">${icon('search')}<h2>${escape(title)}</h2><p class="muted">${escape(description)}</p>${action}</div>`;
 export const field=(label,name,value='',type='text',extra='')=>`<label class="field"><span>${label}</span><input name="${name}" type="${type}" value="${escape(value)}" ${extra}></label>`;
-export const select=(label,name,options,value='')=>`<label class="field"><span>${label}</span><select name="${name}">${options.map(o=>{let [v,l]=Array.isArray(o)?o:[o,o];return `<option value="${escape(v)}" ${String(v)===String(value)?'selected':''}>${escape(l)}</option>`;}).join('')}</select></label>`;
+let controlSequence=0;
+export const select=(label,name,options,value='')=>{const id='select-'+(++controlSequence);return `<div class="field"><label for="${id}">${label}</label><select id="${id}" name="${name}">${options.map(o=>{let [v,l]=Array.isArray(o)?o:[o,o];return `<option value="${escape(v)}" ${String(v)===String(value)?'selected':''}>${escape(l)}</option>`;}).join('')}</select></div>`;};
 export const textarea=(label,name,value='',extra='')=>`<label class="field"><span>${label}</span><textarea name="${name}" ${extra}>${escape(value)}</textarea></label>`;
 export const errorSlot='<div class="form-error" role="alert"></div>';
 export const formValues=form=>Object.fromEntries(new FormData(form));

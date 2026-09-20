@@ -23,6 +23,7 @@ export function seed() {
   ];
   const vehicles = specs.map(([id,name,category,price,city,gearbox,fuel,seats,rating,color],i) => ({ id,name,category,price,city,gearbox,fuel,seats,rating,color, ownerId: i===4?'other':'owner', year:2022+i%3, status:i===5?'pending':'published', description:'Une voiture agréable pour découvrir le Péyi à votre rythme. Exemple entièrement fictif, sans annonce commerciale.', equipment:['Climatisation','Bluetooth',...(i%2?['Caméra recul']:['Siège enfant'])], photos:5, rules:{smoking:false,pets:false}, availability:{start:'2026-01-01T00:00:00Z',end:'2030-01-01T00:00:00Z',blocked:[]}, plate:`DEMO-${i+1}`, version:1, assignedTo:['employee','admin'], checksPassed:i!==5 }));
   const documents = [
+    ...['renter','owner'].flatMap(userId=>['Permis','Identité'].map((kind,i)=>({id:`doc-${userId}-${i}`,userId,kind,status:'verified',version:1,reason:'État initial pré-vérifié du jeu de démonstration.',assignedTo:['employee','admin']}))),
     {id:'doc1',userId:'newcomer',kind:'Permis',status:'pending',version:1,assignedTo:['employee','admin']},
     {id:'doc2',userId:'newcomer',kind:'Identité',status:'pending',version:1,assignedTo:['employee','admin']},
     {id:'doc3',userId:'other',kind:'Permis',status:'pending',version:1,assignedTo:['admin']},
