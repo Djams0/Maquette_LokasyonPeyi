@@ -1,0 +1,47 @@
+name: Maquette - parcours et responsive
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  maquette:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Syntaxe et indépendance
+        run: npm run check
+      - name: Parcours API et permissions
+        run: npm test
+      - name: Valider Compose
+        run: docker compose config
+      - name: Construire et démarrer les trois services
+        run: docker compose up --build -d --wait
+      - name: Vérifier les services et assets
+        run: npm run smoke
+      - name: Installer le navigateur de test
+        run: |
+          npm install --no-save --package-lock=false @playwright/test@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Parcours UI et sept largeurs
+        run: npx playwright test
+      - name: Journal des conteneurs
+        if: always()
+        run: docker compose logs --no-color
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: preuves-maquette
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 14
+      - name: Arrêter les services de test
+        if: always()
+        run: docker compose down -v

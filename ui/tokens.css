@@ -1,0 +1,4 @@
+@font-face{font-family:Lora;src:url('/assets/fonts/Lora.ttf') format('truetype');font-weight:400 700;font-display:swap}
+@font-face{font-family:Nunito;src:url('/assets/fonts/Nunito.ttf') format('truetype');font-weight:200 900;font-display:swap}
+@font-face{font-family:Lobster;src:url('/assets/fonts/Lobster.ttf') format('truetype');font-weight:400;font-display:swap}
+:root{--primary:#1c6259;--primary-hover:#144c45;--tropical:#08a04f;--lagoon:#04959c;--lagoon-text:#00656c;--soft:#84bcba;--sun:#fea90e;--ink:#162728;--bg:#f7f7f7;--sand:#ded6c7;--muted:#526668;--line:#d7e0df;--surface:#fff;--danger:#ad382b;--success:#126c3e;--radius:14px;--shadow:0 5px 22px #16272808}

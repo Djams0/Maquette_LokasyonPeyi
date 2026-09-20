@@ -1,0 +1,10 @@
+import {api} from './http.js';
+import {shell,can} from './shell.js';
+import {escape,link,notice,empty,shellLoading} from '/ui/components.js';
+import {login,dashboard} from './pages/dashboard.js';
+import {moderation,documentReview,listing} from './pages/moderation.js';
+import {users,cases} from './pages/operations.js';
+import {payments,administration} from './pages/governance.js';
+const path=location.pathname.replace(/\/$/,'')||'/';shell(null);document.getElementById('main').innerHTML=shellLoading;
+try{const me=await api('/me');if(path==='/login'){shell(null);await login();}else if(!me){location.replace('/login');}else{shell(me);document.getElementById('main').innerHTML=shellLoading;const [a,b,c]=path.split('/').filter(Boolean);const permission={moderation:'listings.review',users:'users.read',cases:'cases.read',payments:'finance.read',administration:'staff.manage'}[a];if(permission&&!can(me,permission))throw Object.assign(new Error('Ce profil ne possède pas la permission nécessaire. Les autres espaces restent accessibles depuis le menu.'),{status:403});if(path==='/')await dashboard(me);else if(a==='moderation'&&b==='documents'&&c)await documentReview(c);else if(a==='moderation'&&b==='listings'&&c)await listing(c);else if(path==='/moderation')await moderation();else if(a==='users')await users(me,b);else if(a==='cases')await cases(me,b);else if(path==='/payments')await payments(me);else if(path==='/administration')await administration(me);else document.getElementById('main').innerHTML=empty('404 · Écran introuvable','Revenez au tableau de bord.',link('/','Dashboard'));document.title=(a||'Dashboard')+' · Administration Lokasyon Péyi';}}
+catch(e){document.getElementById('main').innerHTML=`<div class="no-access"><h1>${e.status===403?'Accès limité à votre périmètre':'Impossible de charger cet écran'}</h1>${notice(escape(e.message),'error')}<div class="form-actions"><button id="retry">Réessayer</button>${link('/','Dashboard','secondary')}${link('/login','Changer de profil','secondary')}</div></div>`;document.getElementById('retry').onclick=()=>location.reload();}
