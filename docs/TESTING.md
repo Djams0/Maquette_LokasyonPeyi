@@ -22,7 +22,7 @@ Le parcours navigateur couvre demande, acceptation propriétaire, paiement, caut
 
 Les captures finales ont été récupérées et examinées : accueil client desktop/mobile, récapitulatif propriétaire, administration et opération financière. Les captures de la première passe ont permis de corriger la hauteur des illustrations des cartes. Les associations des libellés de listes déroulantes ont été rendues explicites. Les tests attendent désormais les changements d’écran avant de poursuivre, ce qui évite les courses entre navigations.
 
-Les 28 captures de l’exécution finale sont disponibles dans l’artefact `preuves-maquette` du workflow, conservé 14 jours. Les sources, matrices et commandes restent dans le dépôt indépendamment de cet artefact. La livraison principale est le code Git, pas l’archive de captures.
+Les 27 captures de l’exécution finale sont disponibles dans l’artefact `preuves-maquette` du workflow, conservé 14 jours. Les sources, matrices et commandes restent dans le dépôt indépendamment de cet artefact. La livraison principale est le code Git, pas l’archive de captures.
 
 La [première exécution](https://github.com/Djams0/Maquette_LokasyonPeyi/actions/runs/35532448336) avait validé Docker, l’API et les sept largeurs, mais trois tests UI s’arrêtaient sur des synchronisations ou un ciblage de formulaire. Ils sont tous réussis dans l’exécution finale ci-dessus.
 
