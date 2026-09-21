@@ -1,5 +1,36 @@
 # Journal de vérification
 
+## Résultat final vérifié
+
+**Réussite complète** de [l’exécution GitHub Actions 35533008036](https://github.com/Djams0/Maquette_LokasyonPeyi/actions/runs/35533008036), sur le commit `7ce893ed056db9a00dbc074955ecf6e8fc3d58d8`, le 20 septembre 2026 à 19:40 UTC.
+
+| Vérification exécutée | Résultat |
+|---|---|
+| Syntaxe et indépendance des 38 modules JS/MJS | Réussie |
+| Neuf scénarios HTTP / API / permissions | 9 réussis |
+| `docker compose config` | Réussie dans GitHub Actions |
+| `docker compose up --build -d --wait` | Trois conteneurs construits et sains |
+| Santé des ports 8080 / 8081 / 3001, routes et assets | Réussie |
+| Scénarios Chromium | **13 réussis en 35,4 secondes** |
+| Largeurs 320, 375, 390, 430, 768, 1024, 1440 px | Aucun débordement horizontal sur les routes contrôlées |
+| Exceptions JavaScript non gérées dans les scénarios | Aucune |
+| États vide, API indisponible simulée, reprise et 404 | Réussis |
+| Messagerie entre locataire et propriétaire | Réussie |
+| Proposition financière puis approbation par une autre personne | Réussie, opération entièrement fictive |
+
+Le parcours navigateur couvre demande, acceptation propriétaire, paiement, caution distincte, huit vues du constat de départ, remise, huit vues du retour, déclaration de retour, récupération, clôture, avis et reçu. Le tunnel propriétaire de neuf étapes et le contrôle documentaire admin sont également parcourus.
+
+Les captures finales ont été récupérées et examinées : accueil client desktop/mobile, récapitulatif propriétaire, administration et opération financière. Les captures de la première passe ont permis de corriger la hauteur des illustrations des cartes. Les associations des libellés de listes déroulantes ont été rendues explicites. Les tests attendent désormais les changements d’écran avant de poursuivre, ce qui évite les courses entre navigations.
+
+Les 28 captures de l’exécution finale sont disponibles dans l’artefact `preuves-maquette` du workflow, conservé 14 jours. Les sources, matrices et commandes restent dans le dépôt indépendamment de cet artefact. La livraison principale est le code Git, pas l’archive de captures.
+
+La [première exécution](https://github.com/Djams0/Maquette_LokasyonPeyi/actions/runs/35532448336) avait validé Docker, l’API et les sept largeurs, mais trois tests UI s’arrêtaient sur des synchronisations ou un ciblage de formulaire. Ils sont tous réussis dans l’exécution finale ci-dessus.
+
+## Limites de la vérification
+
+Tests navigateur réalisés sous Chromium, avec dimensions simulées : pas de certification sur appareils physiques, Safari ou Firefox. Les contrôles d’accessibilité intégrés (libellés, focus, tailles tactiles, contrastes adaptés) ne remplacent pas un audit WCAG exhaustif. Les données, contrôles documentaires, captures et opérations financières restent fictifs.
+
+
 ## Exécuté dans l’environnement de réalisation
 
 - Analyse syntaxique de tous les modules JS/MJS : réussie.
@@ -7,7 +38,7 @@
 - Démarrage des trois processus Node et vérification des ports 8080, 8081, 3001 : réussi.
 - Vérification de la santé, routes, assets locaux et égalité du catalogue via les deux proxies : réussie.
 - `docker compose config` et `docker compose up --build -d` : **tentés, non exécutables ici**, binaire Docker absent.
-- Navigation avec le navigateur distant : **tentée, accès à localhost bloqué** (`ERR_BLOCKED_BY_CLIENT`). Aucun résultat visuel local n’est présenté comme validé à ce stade.
+- Navigation avec le navigateur distant : **tentée, accès à localhost bloqué** (`ERR_BLOCKED_BY_CLIENT`). Cette limite a été compensée par les tests Chromium dans GitHub Actions et l’examen des captures produites.
 
 ## Vérification reproductible sur GitHub Actions
 
