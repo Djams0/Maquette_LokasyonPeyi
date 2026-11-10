@@ -9,9 +9,10 @@ import {ownerStart,ownerPage} from './pages/owner.js';
 import {wizard} from './pages/wizard.js';
 import {cases,review,receipt,faq} from './pages/support.js';
 import {demo,designSystem} from './pages/demo.js';
+import {auditWorkshop} from './pages/audit.js';
 const path=location.pathname.replace(/\/$/,'')||'/';
 // Recovery must work even while the intentionally simulated network is down.
-if(path==='/demo')sessionStorage.removeItem('network-demo');
+if(path==='/demo'||path==='/demo/audit')sessionStorage.removeItem('network-demo');
 shell(null);document.getElementById('main').innerHTML=shellLoading;
 try{const me=await api('/me');shell(me);document.getElementById('main').innerHTML=shellLoading;
  const publicPath=['/','/search','/login','/register','/faq','/owner/start','/demo','/design-system'].includes(path)||path.startsWith('/vehicle/');
@@ -42,6 +43,7 @@ try{const me=await api('/me');shell(me);document.getElementById('main').innerHTM
  else if(a==='receipt'&&b)await receipt(b);
  else if(path==='/faq')faq();
  else if(path==='/demo')await demo(me);
+ else if(path==='/demo/audit')await auditWorkshop();
  else if(path==='/design-system')designSystem();
  else document.getElementById('main').innerHTML=empty('404 · Ce chemin n’existe pas','Revenez à l’accueil ou explorez le catalogue.',link('/','Accueil')+' '+link('/search','Catalogue','secondary'));
  }

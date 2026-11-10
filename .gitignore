@@ -4,3 +4,7 @@ test-results/
 playwright-report/
 .env
 *.log
+/.audit-reference/
+/.audit-upstream/
+/audit-results/
+__pycache__/
