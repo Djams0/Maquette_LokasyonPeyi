@@ -17,7 +17,7 @@
 | `playwright.config.js` | Ajout JSON et vidéo sur échec ; tests et largeurs historiques intacts |
 | `playwright.audit.config.js` | Configuration de campagne audit réutilisant Playwright, un worker et moteurs optionnels explicites |
 | `scripts/audit-evidence.mjs`, `scripts/sanitize-evidence.py` | Manifeste commit/résultats et expurgation avant partage des preuves natives |
-| `.github/workflows/ci.yml` | Quatre profils essentiels par PR, campagne complète à la demande, projet Compose unique par job, upload seulement après expurgation |
+| `.github/workflows/ci.yml` | Runner Ubuntu 24.04 compatible avec Playwright épinglé (26.04 a échoué), quatre profils essentiels par PR, campagne complète à la demande, projet Compose unique par job, upload seulement après expurgation |
 | `package.json` | Commandes de campagne, navigateur et génération documentaire ; contrôle des docs dans check |
 | `docs/audit/scenarios.mjs`, `scripts/audit-docs.mjs` | Catalogue structuré de 108 scénarios et génération vérifiable des personas/matrice/guide de scénarios |
 | `docs/audit/*.md`, `README.md` | Guides Work, couverture, limites et comparaison avant/après ; suppression des conseils de reset destructif local |

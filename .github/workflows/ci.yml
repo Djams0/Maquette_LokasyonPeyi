@@ -13,7 +13,8 @@ permissions:
   contents: read
 jobs:
   maquette:
-    runs-on: ubuntu-latest
+    # Keep the existing Playwright 1.56.1 on a supported, explicit runner image.
+    runs-on: ubuntu-24.04
     env:
       COMPOSE_PROJECT_NAME: lp-ci-${{ github.run_id }}-${{ github.run_attempt }}
     timeout-minutes: 20
