@@ -7,7 +7,11 @@
   "scripts": {
     "start": "node scripts/dev.mjs",
     "test": "node --test tests/*.test.mjs",
-    "check": "node scripts/check.mjs",
-    "smoke": "node scripts/smoke.mjs"
+    "check": "node scripts/check.mjs && node scripts/audit-docs.mjs --check",
+    "smoke": "node scripts/smoke.mjs",
+    "audit:start": "node scripts/audit-run.mjs",
+    "test:browser": "playwright test",
+    "test:audit": "playwright test --config=playwright.audit.config.js",
+    "audit:docs": "node scripts/audit-docs.mjs"
   }
 }

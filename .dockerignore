@@ -4,3 +4,7 @@ data
 test-results
 .env
 *.log
+.audit-reference
+.audit-upstream
+audit-results
+__pycache__

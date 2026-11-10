@@ -3,8 +3,8 @@ import { dirname } from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { seed } from './seed.mjs';
 export const id = prefix => `${prefix}-${randomUUID().slice(0,8)}`;
-export function createStore(file) {
-  let db = file && existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : seed();
+export function createStore(file, initialize = seed) {
+  let db = file && existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : initialize();
   return {
     get db() { return db; },
     transact(fn) {

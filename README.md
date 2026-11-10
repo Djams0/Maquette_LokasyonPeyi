@@ -29,7 +29,7 @@ docker compose logs -f                # journaux
 docker compose down                   # arrêter, conserver les données
 ```
 
-Pour **réinitialiser les données fictives uniquement**, arrêter puis exécuter `docker compose down -v` avant de relancer. Cette commande supprime le volume de cette maquette.
+Pour une campagne réinitialisable sans risque, arrêter les services puis utiliser `npm run audit:start`. Chaque lancement crée une cible temporaire sans supprimer de fichier ou volume existant. Voir [le guide audit](docs/audit/AUDIT_README.md).
 
 ### Sans Docker
 
@@ -39,7 +39,7 @@ Node.js 24 est suffisant. Aucune installation npm n’est nécessaire pour exéc
 npm start
 ```
 
-Les mêmes trois ports sont utilisés. Le JSON local est créé dans `data/mock.json` (ignoré par Git). Pour réinitialiser, arrêter les services puis supprimer ce fichier.
+Les mêmes trois ports sont utilisés. Le JSON local est créé dans `data/mock.json` (ignoré par Git). Pour l’audit, conserver ce fichier et utiliser une campagne jetable avec `npm run audit:start`.
 
 ## Visiter la maquette
 
@@ -160,3 +160,7 @@ Le workflow GitHub Actions exécute les tests, `docker compose config`, `docker 
 Maquette de démonstration : pas d’authentification réelle, KYC réel, caméra réelle, paiement, contrat, police d’assurance, cartographie réelle, géolocalisation ou notification externe. Les captures sont des métadonnées fictives, remplaçables avant finalisation. Aucun hash ou timestamp n’est présenté comme preuve infalsifiable. Le reçu est sans valeur comptable. L’estimation est brute ; la fiscalité, les frais, la caution et les conditions commerciales restent ouverts.
 
 Les décisions utilisateur sont visibles entre interfaces après actualisation, sans WebSocket. L’accessibilité vise WCAG 2.2 AA, sans revendiquer un audit de conformité exhaustif. Voir le journal de vérification pour distinguer tests exécutés et limites de l’environnement.
+
+## Préparer un audit avec Work
+
+[Guide audit](docs/audit/AUDIT_README.md) · [30 personas](docs/audit/PERSONAS.md) · [108 scénarios](docs/audit/SCENARIOS.md) · [couverture](docs/audit/TEST_MATRIX.md) · [résultats réels](docs/audit/REGRESSION_REPORT.md). Le seed historique reste celui de `npm start` et Docker ; les comptes d’audit sont chargés explicitement par `npm run audit:start`.

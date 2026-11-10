@@ -1,0 +1,21 @@
+import {test,expect} from '@playwright/test';
+import {spawn} from 'node:child_process';
+import {createApi} from '../../api/server.mjs';
+import {auditFixture} from '../../api/audit-fixture.mjs';
+// Each test receives its own API in memory and two proxies, never the user's :3001.
+test.beforeEach(async({},info)=>{info.annotations.push({type:'fixture',description:'audit-v1, fresh API and independent browser context'});});
+test.describe('profils audit isolés',()=>{
+  let server,client,admin,children=[];
+  test.beforeEach(async()=>{
+    const allowedOrigins=new Set();({server}=createApi({initialize:auditFixture,allowedOrigins}));await new Promise(r=>server.listen(0,'127.0.0.1',r));const api=`http://127.0.0.1:${server.address().port}`;
+    async function web(app){const c=spawn(process.execPath,['scripts/web.mjs',app],{env:{...process.env,PORT:'0',API_URL:api},stdio:['ignore','pipe','pipe']});children.push(c);return new Promise((resolve,reject)=>{c.on('error',reject);c.on('exit',code=>reject(Error(`Proxy ${app} arrêté : ${code}`)));c.stdout.on('data',chunk=>{const match=String(chunk).match(/sur (\d+)/);if(match)resolve(`http://127.0.0.1:${match[1]}`);});});}
+    client=await web('client');admin=await web('admin');allowedOrigins.add(client);allowedOrigins.add(admin);
+  });
+  test.afterEach(async()=>{for(const c of children)c.kill();children=[];if(server)await new Promise(r=>server.close(r));});
+  async function login(page,id,internal=false){await page.goto((internal?admin:client)+'/login');await page.getByLabel(internal?'Profil et périmètre':'Compte de démonstration').selectOption(id);await page.getByRole('button',{name:internal?'Ouvrir cet espace':'Entrer dans la démo',exact:true}).click();await page.waitForURL(u=>u.pathname==='/');}
+  test('UI-AUD-01 locataire : filtrer puis choisir un compte réel',async({page})=>{await page.goto(client+'/demo/audit');await page.getByLabel('Catégorie',{exact:true}).selectOption('renter');await page.getByRole('button',{name:'Filtrer',exact:true}).click();await expect(page.getByRole('button',{name:/Choisir audit-r/})).toHaveCount(10);await expect(page.getByRole('button',{name:/Choisir audit-o/})).toHaveCount(0);await page.getByRole('button',{name:'Choisir audit-r02',exact:true}).click();await page.waitForURL(client+'/');expect((await (await page.request.get(client+'/api/v1/me')).json()).id).toBe('audit-r02');await page.goto(client+'/rentals');await expect(page.locator('h1')).toBeVisible();});
+  test('UI-AUD-02 propriétaire : parc propre et refus de modification croisée',async({page})=>{await login(page,'audit-o07');await page.goto(client+'/owner/vehicles');await expect(page.locator('#main')).toContainText('Véhicule fictif 7.1');await expect(page.locator('#main')).not.toContainText('Véhicule fictif 2.1');const r=await page.request.post(client+'/api/v1/owner/vehicles/audit-v02-1/edit',{data:{name:'Accès interdit',price:20,description:'Tentative synthétique croisée.'}});expect(r.status()).toBe(403);});
+  test('UI-AUD-03 agent limité : dossier affecté, finance et documents interdits',async({page})=>{await login(page,'audit-a04',true);await page.goto(admin+'/cases');await page.getByRole('link',{name:'Examiner',exact:true}).click();await expect(page.locator('#main')).toContainText('Demande fictive de reprise');for(const path of ['/payments','/moderation']){await page.goto(admin+path);await expect(page.getByRole('heading',{name:'Accès limité à votre périmètre'})).toBeVisible();}});
+  test('UI-AUD-04 admin habilité et cookies Client/Admin distincts',async({page})=>{await login(page,'audit-r02');await login(page,'audit-a05',true);await page.goto(admin+'/moderation');await expect(page.locator('#main')).toContainText('Modération');expect((await (await page.request.get(client+'/api/v1/me')).json()).id).toBe('audit-r02');expect((await (await page.request.get(admin+'/api/v1/me')).json()).id).toBe('audit-a05');});
+  for(const width of [320,375,390,430,768,1024,1440])test(`UI-AUD-05 atelier ${width}px`,async({page})=>{await page.setViewportSize({width,height:950});await page.goto(client+'/demo/audit');await expect(page.getByRole('heading',{name:'Atelier d’audit',exact:true})).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth)).toBeLessThanOrEqual(1);});
+});
