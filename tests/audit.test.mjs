@@ -44,7 +44,7 @@ test('AUD-04 rental conflict, payment separation and idempotency with new accoun
   assert.equal((await call('audit-r03','/rentals/'+r.id+'/pay',{outcome:'success'})).deposit,'not_started');await call('audit-o03','/rentals/'+r.id+'/handover',{controls:true},422);
 }));
 test('AUD-05 financial permissions, other person, invalidated version, revoked approver, idempotency',()=>instance(async({call,store})=>{
-  await call('audit-a08','/admin/payments',undefined,403);await call('audit-a04','/admin/payments',undefined,403);
+  await call('audit-a08','/admin/payments',undefined,403);await call('audit-a08','/admin/documents/doc1',undefined,403);await call('audit-a04','/admin/payments',undefined,403);
   const f=store.db.financeActions[0];await call('audit-a06','/admin/payments/approve',{id:f.id,version:1},403);
   // An explicit second account for the same person cannot satisfy the separation rule.
   store.transact(db=>db.users.find(u=>u.id==='audit-a07').personId=f.authorPerson);await call('audit-a07','/admin/payments/approve',{id:f.id,version:1},403);

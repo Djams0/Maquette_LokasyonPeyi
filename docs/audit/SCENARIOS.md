@@ -93,7 +93,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## A-009 — Sélection filtrée
 
 - Catégorie : Découverte et onboarding ; priorité : P1.
-- Profil : audit-r01.
+- Profil : audit-r02.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Dans /demo/audit filtrer locataires puis choisir audit-r02.
@@ -104,7 +104,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## A-010 — Changer de personne
 
 - Catégorie : Découverte et onboarding ; priorité : P1.
-- Profil : audit-r01.
+- Profil : audit-r03 / audit-r04.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Sélectionner audit-r03 puis audit-r04 via /demo.
@@ -137,7 +137,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## A-013 — Document refusé
 
 - Catégorie : Découverte et onboarding ; priorité : P1.
-- Profil : audit-r01.
+- Profil : audit-o09.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Avec audit-o09 ouvrir les documents puis remplacer une pièce.
@@ -148,7 +148,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## A-014 — Activation propriétaire
 
 - Catégorie : Découverte et onboarding ; priorité : P1.
-- Profil : audit-r01.
+- Profil : audit-o01.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Avec audit-o01 confirmer /owner/start.
@@ -159,7 +159,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## A-015 — Brouillon neuf étapes
 
 - Catégorie : Découverte et onboarding ; priorité : P1.
-- Profil : audit-r01.
+- Profil : audit-o01.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Avec audit-o01 ouvrir /owner/vehicles/new et reprendre les champs.
@@ -170,7 +170,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## A-016 — Publication complète
 
 - Catégorie : Découverte et onboarding ; priorité : P1.
-- Profil : audit-r01.
+- Profil : audit-o01.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Remplir les neuf étapes avec audit-o01 puis soumettre.
@@ -181,7 +181,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## A-017 — Documents véhicule
 
 - Catégorie : Découverte et onboarding ; priorité : P1.
-- Profil : audit-r01.
+- Profil : audit-a03.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Agent audit-a03 inspecte les trois pièces d’une annonce pending.
@@ -192,7 +192,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## A-018 — Relecture avant publication
 
 - Catégorie : Découverte et onboarding ; priorité : P1.
-- Profil : audit-r01.
+- Profil : audit-a05.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Agent audit-a05 tente de publier audit-v09-1 sans contrôle.
@@ -203,7 +203,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## B-001 — Demande sans paiement
 
 - Catégorie : Location ; priorité : P0.
-- Profil : audit-r02 / audit-o02.
+- Profil : audit-r03.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Demander audit-v03-1 en juillet avec audit-r03.
@@ -214,7 +214,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## B-002 — Compte non vérifié
 
 - Catégorie : Location ; priorité : P0.
-- Profil : audit-r02 / audit-o02.
+- Profil : audit-r01.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-r01 demande audit-v03-1.
@@ -225,7 +225,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## B-003 — Acceptation propriétaire
 
 - Catégorie : Location ; priorité : P0.
-- Profil : audit-r02 / audit-o02.
+- Profil : audit-o02.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-o02 accepte sa demande requested.
@@ -236,7 +236,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## B-004 — Refus propriétaire
 
 - Catégorie : Location ; priorité : P0.
-- Profil : audit-r02 / audit-o02.
+- Profil : audit-o02.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Refuser une demande requested pour maintenance.
@@ -258,7 +258,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## B-006 — Demandes concurrentes
 
 - Catégorie : Location ; priorité : P0.
-- Profil : audit-r02 / audit-o02.
+- Profil : audit-r03 / audit-r04 / audit-o03.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Deux locataires demandent les mêmes dates puis le propriétaire accepte une demande.
@@ -390,7 +390,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## B-018 — Profil mixte
 
 - Catégorie : Location ; priorité : P0.
-- Profil : audit-r02 / audit-o02.
+- Profil : audit-o07.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-o07 consulte sa demande de location sur audit-v03-1.
@@ -401,7 +401,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## C-001 — Agent limité
 
 - Catégorie : Administration ; priorité : P0.
-- Profil : audit-a01 à audit-a10 selon action.
+- Profil : audit-a04.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-a04 ouvre /cases puis /payments et /moderation.
@@ -412,7 +412,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## C-002 — Admin opérationnel
 
 - Catégorie : Administration ; priorité : P0.
-- Profil : audit-a01 à audit-a10 selon action.
+- Profil : audit-a05 / audit-r02.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-a05 ouvre /moderation et conserve une session client ouverte.
@@ -423,7 +423,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## C-003 — Périmètre utilisateurs
 
 - Catégorie : Administration ; priorité : P0.
-- Profil : audit-a01 à audit-a10 selon action.
+- Profil : audit-a01.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-a01 lit /admin/users puis demande audit-r02.
@@ -434,7 +434,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## C-004 — Document non affecté
 
 - Catégorie : Administration ; priorité : P0.
-- Profil : audit-a01 à audit-a10 selon action.
+- Profil : audit-a01.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-a01 demande doc3 par API.
@@ -445,7 +445,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## C-005 — Document affecté
 
 - Catégorie : Administration ; priorité : P0.
-- Profil : audit-a01 à audit-a10 selon action.
+- Profil : audit-a03.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-a03 ouvre doc-audit-r02-0.
@@ -456,7 +456,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## C-006 — Revue versionnée
 
 - Catégorie : Administration ; priorité : P0.
-- Profil : audit-a01 à audit-a10 selon action.
+- Profil : audit-r06 / audit-a03.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Remplacer une pièce puis soumettre une décision sur son ancienne version.
@@ -467,7 +467,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## C-007 — Critères manquants
 
 - Catégorie : Administration ; priorité : P0.
-- Profil : audit-a01 à audit-a10 selon action.
+- Profil : audit-a03.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Valider un document pending sans les cinq critères.
@@ -478,7 +478,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## C-008 — Annonce rejetée
 
 - Catégorie : Administration ; priorité : P0.
-- Profil : audit-a01 à audit-a10 selon action.
+- Profil : audit-o09.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Consulter audit-v09-rejected comme propriétaire audit-o09.
@@ -489,7 +489,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## C-009 — Dossier sensible
 
 - Catégorie : Administration ; priorité : P0.
-- Profil : audit-a01 à audit-a10 selon action.
+- Profil : audit-a02 / audit-a05.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-a02 puis audit-a05 ouvrent le dossier sensible.
@@ -500,7 +500,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## C-010 — Note interne
 
 - Catégorie : Administration ; priorité : P0.
-- Profil : audit-a01 à audit-a10 selon action.
+- Profil : audit-a04 / audit-r02.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-a04 ajoute une note à son dossier puis audit-r02 le consulte.
@@ -511,7 +511,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## C-011 — Étapes du dossier
 
 - Catégorie : Administration ; priorité : P0.
-- Profil : audit-a01 à audit-a10 selon action.
+- Profil : audit-a04.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Tenter received vers closed puis avancer une étape.
@@ -522,7 +522,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## C-012 — Proposition financière
 
 - Catégorie : Administration ; priorité : P0.
-- Profil : audit-a01 à audit-a10 selon action.
+- Profil : audit-a06.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-a06 ouvre /payments et propose une opération synthétique.
@@ -533,7 +533,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## C-013 — Même personne finance
 
 - Catégorie : Administration ; priorité : P0.
-- Profil : audit-a01 à audit-a10 selon action.
+- Profil : audit-a06 / audit-a07 (personId identique dans une fixture de test dédiée).
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Deux comptes de même personId tentent une approbation.
@@ -544,7 +544,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## C-014 — Modification financière
 
 - Catégorie : Administration ; priorité : P0.
-- Profil : audit-a01 à audit-a10 selon action.
+- Profil : audit-a06 / audit-a07.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Approuver puis modifier le montant synthétique.
@@ -555,7 +555,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## C-015 — Permission du super-admin
 
 - Catégorie : Administration ; priorité : P0.
-- Profil : audit-a01 à audit-a10 selon action.
+- Profil : audit-a08.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-a08 ouvre documents et finance par URL directe.
@@ -566,7 +566,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## C-016 — Double habilitation
 
 - Catégorie : Administration ; priorité : P0.
-- Profil : audit-a01 à audit-a10 selon action.
+- Profil : audit-a08 / audit-a09 / audit-a04.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-a08 propose finance.read à audit-a04 puis audit-a09 approuve.
@@ -577,7 +577,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## C-017 — Suspension en session
 
 - Catégorie : Administration ; priorité : P0.
-- Profil : audit-a01 à audit-a10 selon action.
+- Profil : audit-a08 / audit-a04.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Suspendre audit-a04 après sa connexion puis réutiliser sa session.
@@ -588,7 +588,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## C-018 — Agent déjà suspendu
 
 - Catégorie : Administration ; priorité : P0.
-- Profil : audit-a01 à audit-a10 selon action.
+- Profil : audit-a10.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Tenter de connecter audit-a10 aux deux applications.
@@ -610,7 +610,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## D-002 — Double exécution sensible
 
 - Catégorie : Erreurs et résilience ; priorité : P1.
-- Profil : audit-r03 sauf indication.
+- Profil : audit-a06 / audit-a07.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Répéter execute avec la même clé après approbation.
@@ -643,7 +643,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## D-005 — Fermer le brouillon
 
 - Catégorie : Erreurs et résilience ; priorité : P1.
-- Profil : audit-r03 sauf indication.
+- Profil : audit-o01.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Sauvegarder étape propriétaire, fermer et rouvrir un contexte reconnecté.
@@ -742,7 +742,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## D-014 — Conflit de version
 
 - Catégorie : Erreurs et résilience ; priorité : P1.
-- Profil : audit-r03 sauf indication.
+- Profil : audit-a03 / audit-a05.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Deux agents chargent une pièce puis décident sur la même version.
@@ -775,7 +775,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## D-017 — Campagne neuve
 
 - Catégorie : Erreurs et résilience ; priorité : P1.
-- Profil : audit-r03 sauf indication.
+- Profil : opérateur local, aucune session nécessaire.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Modifier la fixture jetable puis créer une nouvelle campagne.
@@ -786,7 +786,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## D-018 — Cible non autorisée
 
 - Catégorie : Erreurs et résilience ; priorité : P1.
-- Profil : audit-r03 sauf indication.
+- Profil : opérateur local, aucune session nécessaire.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Charger un fichier hors lp-audit-* ou une mauvaise preuve de cible.
@@ -797,10 +797,10 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## E-001 — Téléphone en clair
 
 - Catégorie : Fraude et abus fictifs ; priorité : P0.
-- Profil : audit-r09 / audit-o08, audit-r10.
+- Profil : audit-r09 / audit-o08.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
-- Actions : Lire puis envoyer abuseSamples.phone dans la conversation audit.
+- Actions : Lire puis envoyer le texte phone du tableau abuseSamples dans la conversation audit.
 - Résultat attendu : Texte observable, aucune règle antifraude inventée.
 - Contrôle : manuel ; test associé : aucun — préparé seulement.
 - Limites : Échantillons réservés et synthétiques ; observation seulement, aucun filtre antifraude ajouté.
@@ -808,10 +808,10 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## E-002 — Téléphone espacé
 
 - Catégorie : Fraude et abus fictifs ; priorité : P0.
-- Profil : audit-r09 / audit-o08, audit-r10.
+- Profil : audit-r09 / audit-o08.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
-- Actions : Envoyer abuseSamples.spaced.
+- Actions : Envoyer le texte spaced du tableau abuseSamples.
 - Résultat attendu : Texte conservé pour observation manuelle.
 - Contrôle : manuel ; test associé : aucun — préparé seulement.
 - Limites : Échantillons réservés et synthétiques ; observation seulement, aucun filtre antifraude ajouté.
@@ -819,10 +819,10 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## E-003 — Téléphone en lettres
 
 - Catégorie : Fraude et abus fictifs ; priorité : P0.
-- Profil : audit-r09 / audit-o08, audit-r10.
+- Profil : audit-r09 / audit-o08.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
-- Actions : Envoyer abuseSamples.words.
+- Actions : Envoyer le texte words du tableau abuseSamples.
 - Résultat attendu : Texte observable sans vraie coordonnée.
 - Contrôle : manuel ; test associé : aucun — préparé seulement.
 - Limites : Échantillons réservés et synthétiques ; observation seulement, aucun filtre antifraude ajouté.
@@ -830,7 +830,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## E-004 — E-mail réservé
 
 - Catégorie : Fraude et abus fictifs ; priorité : P0.
-- Profil : audit-r09 / audit-o08, audit-r10.
+- Profil : audit-r09 / audit-o08.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Envoyer contact-audit@example.test.
@@ -841,7 +841,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## E-005 — Identifiant social fictif
 
 - Catégorie : Fraude et abus fictifs ; priorité : P0.
-- Profil : audit-r09 / audit-o08, audit-r10.
+- Profil : audit-r09 / audit-o08.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Envoyer @audit_exemple_inexistant.
@@ -852,10 +852,10 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## E-006 — Paiement direct
 
 - Catégorie : Fraude et abus fictifs ; priorité : P0.
-- Profil : audit-r09 / audit-o08, audit-r10.
+- Profil : audit-r09 / audit-o08.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
-- Actions : Envoyer abuseSamples.direct.
+- Actions : Envoyer le texte direct du tableau abuseSamples.
 - Résultat attendu : Aucun paiement réel déclenché.
 - Contrôle : manuel ; test associé : aucun — préparé seulement.
 - Limites : Échantillons réservés et synthétiques ; observation seulement, aucun filtre antifraude ajouté.
@@ -863,7 +863,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## E-007 — Lien réservé
 
 - Catégorie : Fraude et abus fictifs ; priorité : P0.
-- Profil : audit-r09 / audit-o08, audit-r10.
+- Profil : audit-r09 / audit-o08.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Envoyer https://audit.invalid/contact.
@@ -874,10 +874,10 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## E-008 — Description suspecte
 
 - Catégorie : Fraude et abus fictifs ; priorité : P0.
-- Profil : audit-r09 / audit-o08, audit-r10.
+- Profil : audit-o08.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
-- Actions : audit-o08 insère abuseSamples.description dans sa propre annonce.
+- Actions : audit-o08 insère le texte description du tableau abuseSamples dans sa propre annonce.
 - Résultat attendu : Texte observable, aucune décision automatique de fraude.
 - Contrôle : manuel ; test associé : aucun — préparé seulement.
 - Limites : Échantillons réservés et synthétiques ; observation seulement, aucun filtre antifraude ajouté.
@@ -885,10 +885,10 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## E-009 — Message opportuniste
 
 - Catégorie : Fraude et abus fictifs ; priorité : P0.
-- Profil : audit-r09 / audit-o08, audit-r10.
+- Profil : audit-r09 / audit-o08.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
-- Actions : Envoyer abuseSamples.opportunistic.
+- Actions : Envoyer le texte opportunistic du tableau abuseSamples.
 - Résultat attendu : Conversation reste isolée entre participants.
 - Contrôle : manuel ; test associé : aucun — préparé seulement.
 - Limites : Échantillons réservés et synthétiques ; observation seulement, aucun filtre antifraude ajouté.
@@ -896,10 +896,10 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## E-010 — Message abusif
 
 - Catégorie : Fraude et abus fictifs ; priorité : P0.
-- Profil : audit-r09 / audit-o08, audit-r10.
+- Profil : audit-r10 / audit-o08.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
-- Actions : audit-r10 envoie abuseSamples.abuse dans sa propre conversation.
+- Actions : audit-r10 envoie le texte abuse du tableau abuseSamples dans sa propre conversation.
 - Résultat attendu : Observer le support existant sans accusation automatique.
 - Contrôle : manuel ; test associé : aucun — préparé seulement.
 - Limites : Échantillons réservés et synthétiques ; observation seulement, aucun filtre antifraude ajouté.
@@ -907,7 +907,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## E-011 — Location d’un tiers
 
 - Catégorie : Fraude et abus fictifs ; priorité : P0.
-- Profil : audit-r09 / audit-o08, audit-r10.
+- Profil : audit-r03.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-r03 demande une location de audit-r02 par ID.
@@ -918,7 +918,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## E-012 — Document d’un tiers
 
 - Catégorie : Fraude et abus fictifs ; priorité : P0.
-- Profil : audit-r09 / audit-o08, audit-r10.
+- Profil : audit-a04.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-a04 demande doc-audit-r02-0.
@@ -929,7 +929,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## E-013 — Modification du parc tiers
 
 - Catégorie : Fraude et abus fictifs ; priorité : P0.
-- Profil : audit-r09 / audit-o08, audit-r10.
+- Profil : audit-o03.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-o03 tente edit sur audit-v02-1.
@@ -940,7 +940,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## E-014 — Action interne publique
 
 - Catégorie : Fraude et abus fictifs ; priorité : P0.
-- Profil : audit-r09 / audit-o08, audit-r10.
+- Profil : audit-r02.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-r02 tente /admin/users.
@@ -951,7 +951,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## E-015 — Auto-attribution
 
 - Catégorie : Fraude et abus fictifs ; priorité : P0.
-- Profil : audit-r09 / audit-o08, audit-r10.
+- Profil : audit-a08.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-a08 propose une permission pour lui-même.
@@ -962,7 +962,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## E-016 — Approbation propre
 
 - Catégorie : Fraude et abus fictifs ; priorité : P0.
-- Profil : audit-r09 / audit-o08, audit-r10.
+- Profil : audit-a06.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-a06 tente approuver sa proposition.
@@ -973,7 +973,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## E-017 — Message hors conversation
 
 - Catégorie : Fraude et abus fictifs ; priorité : P0.
-- Profil : audit-r09 / audit-o08, audit-r10.
+- Profil : audit-r03.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-r03 poste dans la conversation audit-r09 / audit-o08.
@@ -984,7 +984,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## E-018 — Origine étrangère
 
 - Catégorie : Fraude et abus fictifs ; priorité : P0.
-- Profil : audit-r09 / audit-o08, audit-r10.
+- Profil : audit-o08.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : POST owner/draft avec Origin https://audit.invalid.
@@ -1039,7 +1039,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## F-005 — Modale sensible
 
 - Catégorie : Accessibilité et responsive ; priorité : P1.
-- Profil : audit-r08 / audit-a04 / audit-a05.
+- Profil : audit-a05.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : Ouvrir confirmation financière et annuler au clavier.
@@ -1149,7 +1149,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## F-015 — Table utilisateurs
 
 - Catégorie : Accessibilité et responsive ; priorité : P1.
-- Profil : audit-r08 / audit-a04 / audit-a05.
+- Profil : audit-a05.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-a05 parcourt /users à 320px au clavier.
@@ -1160,7 +1160,7 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 ## F-016 — Table modération
 
 - Catégorie : Accessibilité et responsive ; priorité : P1.
-- Profil : audit-r08 / audit-a04 / audit-a05.
+- Profil : audit-a05.
 - Préconditions : Nouvelle campagne isolée ; sélectionner le profil indiqué dans l’action (sinon celui du groupe). Dates de location : 2027, hors créneaux déjà occupés.
 - Fixture : audit-v1.
 - Actions : audit-a05 parcourt /moderation à 375px.
