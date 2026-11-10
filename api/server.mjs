@@ -48,6 +48,6 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
     loadAuditEnvironment(process.env.DATA_FILE,process.env.AUDIT_INSTANCE_NONCE);
   }
   const {server}=createApi({file:process.env.DATA_FILE||'data/mock.json',delay:Number(process.env.MOCK_DELAY||0)});
-  server.listen(Number(process.env.PORT||3001),process.env.AUDIT_FIXTURE==='1'?'127.0.0.1':'0.0.0.0',()=>console.log('API mock prête'));
+  server.listen(Number(process.env.PORT||3001),process.env.AUDIT_FIXTURE==='1'||process.env.DEMO_LOOPBACK==='1'?'127.0.0.1':'0.0.0.0',()=>console.log('API mock prête'));
   for(const s of ['SIGTERM','SIGINT'])process.on(s,()=>server.close(()=>process.exit(0)));
 }

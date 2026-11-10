@@ -22,4 +22,4 @@ const server=http.createServer(async(req,res)=>{
   if(![resolve(root,app)+sep,resolve(root,'assets')+sep,resolve(root,'ui')+sep].some(base=>file.startsWith(base))){res.writeHead(403);res.end('Accès interdit');return;}
   try {const content=await readFile(file);res.setHeader('Content-Type',mime[extname(file)]||'application/octet-stream');res.setHeader('Cache-Control','no-cache');res.end(req.method==='HEAD'?undefined:content);}catch{res.writeHead(404);res.end('Fichier introuvable');}
 });
-server.listen(port,'0.0.0.0',()=>console.log(`${app} prêt sur ${server.address().port}`));for(const s of ['SIGTERM','SIGINT'])process.on(s,()=>server.close(()=>process.exit(0)));
+server.listen(port,process.env.DEMO_LOOPBACK==='1'?'127.0.0.1':'0.0.0.0',()=>console.log(`${app} prêt sur ${server.address().port}`));for(const s of ['SIGTERM','SIGINT'])process.on(s,()=>server.close(()=>process.exit(0)));

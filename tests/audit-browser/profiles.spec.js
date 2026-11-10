@@ -8,7 +8,7 @@ test.describe('profils audit isolés',()=>{
   let server,client,admin,children=[];
   test.beforeEach(async()=>{
     const allowedOrigins=new Set();({server}=createApi({initialize:auditFixture,allowedOrigins}));await new Promise(r=>server.listen(0,'127.0.0.1',r));const api=`http://127.0.0.1:${server.address().port}`;
-    async function web(app){const c=spawn(process.execPath,['scripts/web.mjs',app],{env:{...process.env,PORT:'0',API_URL:api},stdio:['ignore','pipe','pipe']});children.push(c);return new Promise((resolve,reject)=>{c.on('error',reject);c.on('exit',code=>reject(Error(`Proxy ${app} arrêté : ${code}`)));c.stdout.on('data',chunk=>{const match=String(chunk).match(/sur (\d+)/);if(match)resolve(`http://127.0.0.1:${match[1]}`);});});}
+    async function web(app){const c=spawn(process.execPath,['scripts/web.mjs',app],{env:{...process.env,PORT:'0',API_URL:api,DEMO_LOOPBACK:'1'},stdio:['ignore','pipe','pipe']});children.push(c);return new Promise((resolve,reject)=>{c.on('error',reject);c.on('exit',code=>reject(Error(`Proxy ${app} arrêté : ${code}`)));c.stdout.on('data',chunk=>{const match=String(chunk).match(/sur (\d+)/);if(match)resolve(`http://127.0.0.1:${match[1]}`);});});}
     client=await web('client');admin=await web('admin');allowedOrigins.add(client);allowedOrigins.add(admin);
   });
   test.afterEach(async()=>{for(const c of children)c.kill();children=[];if(server)await new Promise(r=>server.close(r));});

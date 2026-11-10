@@ -28,6 +28,8 @@ Les neuf tests Node ajoutés couvrent les 39 comptes, le déterminisme, les réf
 
 Le catalogue comprend 108 scénarios : 31 reliés à une assertion automatisée, 77 préparés manuellement. Une correspondance avec un test ne prouve pas tout un parcours métier. Les résultats JSON inventorient les tests effectivement exécutés ; les scénarios manuels ne sont jamais comptés comme réussis.
 
+Les lanceurs jetables et les proxys navigateur ont ensuite été limités à la boucle locale. Vérification réelle des sockets Windows : les ports 8080, 8081 et 3001 écoutent chacun sur `127.0.0.1`, puis smoke et onze tests audit réussis. Les images Docker conservent leur écoute interne et leurs ports hôtes loopback.
+
 ## Échecs rencontrés et corrections
 
 - Un nouveau test de suspension essayait de se connecter après suspension au lieu de réutiliser une session déjà ouverte. Test corrigé pour exercer la révocation en session, sans changer la règle métier.

@@ -22,7 +22,7 @@ Population : 39 utilisateurs, 18 véhicules dont cinq historiques publiés, neuf
 
 `scripts/audit-environment.mjs` crée un dossier temporaire unique et un marqueur exclusif. Le lanceur n’accepte pas de cible utilisateur. Le chargement vérifie parent temporaire réel, préfixe, nom exact, absence de lien symbolique, marqueur et nonce en mémoire. Une variable d’environnement seule `AUDIT_FIXTURE=1` ne suffit pas. Le mode refuse `NODE_ENV=production` et écoute l’API sur loopback. Le nonce n’est ni affiché ni versé aux preuves ; c’est une preuve de ciblage local, pas une authentification réelle.
 
-La remise à zéro consiste à créer une nouvelle instance. Aucun DELETE/reset HTTP, suppression automatique de JSON, de dossier ou de volume. Les anciennes cibles restent pour inspection locale ; leur nettoyage éventuel sort de ces scripts. Les sessions mémoire de l’ancien processus ne sont jamais restaurées. Le runtime Docker historique est inchangé.
+La remise à zéro consiste à créer une nouvelle instance. Aucun DELETE/reset HTTP, suppression automatique de JSON, de dossier ou de volume. Les anciennes cibles restent pour inspection locale ; leur nettoyage éventuel sort de ces scripts. Les sessions mémoire de l’ancien processus ne sont jamais restaurées. Les lanceurs jetables imposent `DEMO_LOOPBACK=1` : API et deux fronts, y compris leurs proxys, écoutent seulement sur 127.0.0.1. Le runtime Docker historique est inchangé.
 
 La CI utilise `COMPOSE_PROJECT_NAME=lp-ci-<run>-<attempt>` ; son `down -v` cible exclusivement les ressources créées par ce job sur runner éphémère. Les campagnes locales ne doivent pas utiliser cette commande.
 
