@@ -1189,4 +1189,3 @@ Généré par `npm run audit:docs` depuis [scenarios.mjs](scenarios.mjs). 108 sc
 - Résultat attendu : Noms et regroupements compréhensibles, contrôle manuel requis.
 - Contrôle : manuel ; test associé : aucun — préparé seulement.
 - Limites : Dimensions simulées ; clavier, zoom et lecteur d’écran nécessitent une vérification humaine.
-
