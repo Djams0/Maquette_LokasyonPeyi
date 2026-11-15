@@ -81,8 +81,10 @@ test('formulaire : erreurs liées, saisie conservée et attente stable', async (
   await expect(name).toHaveValue('erreur'); await expect(name).toHaveAttribute('aria-describedby',errorId);
   await expect(name).not.toHaveAttribute('aria-invalid','true');
   await expect(submit).toBeEnabled(); await expect(form.getByRole('alert')).toBeFocused();
-  const focus = await form.getByRole('alert').evaluate(e => ({bottom:e.getBoundingClientRect().bottom,barTop:document.querySelector('.bottom-nav').getBoundingClientRect().top}));
+  const focus = await form.getByRole('alert').evaluate(e => ({top:e.getBoundingClientRect().top,bottom:e.getBoundingClientRect().bottom,barTop:document.querySelector('.bottom-nav')?.getBoundingClientRect().top ?? innerHeight}));
+  expect(focus.top).toBeGreaterThanOrEqual(0);
   expect(focus.bottom).toBeLessThanOrEqual(focus.barTop);
+  await expect(page.getByRole('navigation',{name:'Navigation mobile',exact:true})).toHaveCount(0);
   await name.fill('Maya'); await expect(name).not.toHaveAttribute('aria-describedby',errorId);
   await submit.click(); await expect(page.getByRole('status').filter({hasText:'Formulaire fictif vérifié'})).toBeVisible();
 });

@@ -97,3 +97,12 @@ body{background:var(--lp-color-ivory)}
 .criteria label { min-height: var(--lp-layout-touch-min); }
 .tab-count { font-size: var(--lp-text-meta); border-radius: var(--lp-radius-pill); }
 @media (max-width:359px) { .admin-main { padding-inline: var(--lp-layout-edge-narrow); } }
+
+/* Lot 02: independent Admin navigation with an explicit mobile close path. */
+.sidebar-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--lp-space-12); }
+.sidebar-close { display: none; }
+.sidebar nav a[aria-current="page"] { background: var(--lp-color-action-hover); }
+@media (max-width:767px) {
+  .sidebar.open { max-height: calc(100dvh - 16px); overflow: auto; overscroll-behavior: contain; }
+  .sidebar-close { display: inline-flex; flex-shrink: 0; }
+}
