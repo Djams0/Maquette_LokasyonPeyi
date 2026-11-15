@@ -17,8 +17,127 @@ export const formValues=form=>Object.fromEntries(new FormData(form));
 export function toast(message){document.querySelector('.toast')?.remove();const t=document.createElement('div');t.className='toast';t.role='status';t.textContent=message;document.body.append(t);setTimeout(()=>t.remove(),5000);}
 export function flash(message){sessionStorage.setItem('flash',message);}
 export function showFlash(){const m=sessionStorage.getItem('flash');if(m){sessionStorage.removeItem('flash');toast(m);}}
-export function modal(title,content,onSubmit){const trigger=document.activeElement;const d=document.createElement('dialog');d.innerHTML=`<form><div class="row between"><h2>${escape(title)}</h2><button type="button" class="link-button" data-close aria-label="Fermer">${icon('close')}</button></div>${content}${errorSlot}<div class="form-actions"><button type="button" class="secondary" data-close>Annuler</button>${onSubmit?'<button type="submit">Confirmer</button>':''}</div></form>`;document.body.append(d);d.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>d.close());d.addEventListener('close',()=>{d.remove();trigger?.focus();});if(onSubmit)d.querySelector('form').onsubmit=async e=>{e.preventDefault();const f=e.currentTarget,btn=f.querySelector('[type=submit]');btn.disabled=true;try{await onSubmit(formValues(f),f);d.close();}catch(err){f.querySelector('.form-error').textContent=err.message;}finally{btn.disabled=false;}};d.showModal();return d;}
-export function bindForm(id,fn){const f=document.getElementById(id);if(!f)return;f.addEventListener('submit',async e=>{e.preventDefault();if(!f.reportValidity())return;const buttons=f.querySelectorAll('button[type=submit]');buttons.forEach(b=>b.disabled=true);f.querySelector('.form-error')?.replaceChildren();try{await fn(formValues(f),f);}catch(err){const slot=f.querySelector('.form-error');if(slot){slot.textContent=err.message;slot.tabIndex=-1;slot.focus();}else toast(err.message);}finally{buttons.forEach(b=>b.disabled=false);}});}
-export function bindActions(selector,fn){document.querySelectorAll(selector).forEach(el=>el.addEventListener('click',async()=>{el.disabled=true;try{await fn(el);}catch(e){modal('Action non réalisée',`<p>${escape(e.message)}</p>`);}finally{el.disabled=false;}}));}
+const preparedForms = new WeakSet();
+const formControls = form => [...form.elements].filter(el => el.matches('input:not([type=hidden]),select,textarea') && !el.disabled);
+function errorSlotFor(form) {
+  const slot = form.querySelector('.form-error');
+  if (slot && !slot.id) slot.id = 'form-error-' + (++controlSequence);
+  return slot;
+}
+function clearFormError(form) {
+  const slot = errorSlotFor(form);
+  if (!slot) return;
+  slot.replaceChildren();
+  for (const control of formControls(form)) {
+    const descriptions = (control.getAttribute('aria-describedby') || '').split(/\s+/).filter(id => id && id !== slot.id);
+    if (descriptions.length) control.setAttribute('aria-describedby', descriptions.join(' '));
+    else control.removeAttribute('aria-describedby');
+    if (control.dataset.lpInvalid === 'true') {
+      control.removeAttribute('aria-invalid');
+      delete control.dataset.lpInvalid;
+    }
+  }
+}
+function showFormError(form, message, controls = formControls(form), invalid = false) {
+  const slot = errorSlotFor(form);
+  if (!slot) { toast(message); return; }
+  slot.textContent = message;
+  slot.tabIndex = -1;
+  for (const control of controls) {
+    const descriptions = new Set((control.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean));
+    descriptions.add(slot.id);
+    control.setAttribute('aria-describedby', [...descriptions].join(' '));
+    // A failed network request does not make the user's field value invalid.
+    if (invalid && !control.hasAttribute('aria-invalid')) {
+      control.setAttribute('aria-invalid', 'true');
+      control.dataset.lpInvalid = 'true';
+    }
+  }
+}
+function prepareForm(form) {
+  if (preparedForms.has(form)) return;
+  preparedForms.add(form);
+  errorSlotFor(form);
+  form.addEventListener('input', () => clearFormError(form));
+  form.addEventListener('change', () => clearFormError(form));
+  form.addEventListener('invalid', () => {
+    const invalid = formControls(form).filter(el => el.willValidate && !el.validity.valid);
+    const message = invalid.map(el => {
+      const label = el.labels?.[0]?.textContent.trim() || el.name;
+      return label + ' : ' + el.validationMessage;
+    }).join('\n');
+    showFormError(form, message, invalid, true);
+  }, true);
+}
+export function modal(title, content, onSubmit) {
+  const trigger = document.activeElement;
+  const d = document.createElement('dialog');
+  const titleId = 'dialog-title-' + (++controlSequence);
+  d.setAttribute('aria-labelledby', titleId);
+  d.innerHTML = `<form><div class="row between"><h2 id="${titleId}">${escape(title)}</h2><button type="button" class="link-button" data-close aria-label="Fermer">${icon('close')}</button></div>${content}${errorSlot}<div class="form-actions"><button type="button" class="secondary" data-close>Annuler</button>${onSubmit ? '<button type="submit">Confirmer</button>' : ''}</div></form>`;
+  document.body.append(d);
+  d.querySelectorAll('[data-close]').forEach(b => b.onclick = () => d.close());
+  d.addEventListener('close', () => {
+    d.remove();
+    if (trigger?.isConnected) trigger.focus({preventScroll: true});
+  }, {once: true});
+  const form = d.querySelector('form');
+  if (onSubmit) bindForm(form, async (values, f) => {
+    await onSubmit(values, f);
+    if (d.open) d.close();
+  });
+  else {
+    prepareForm(form);
+    form.addEventListener('submit', e => e.preventDefault());
+  }
+  d.showModal();
+  return d;
+}
+export function bindForm(id, fn) {
+  const f = typeof id === 'string' ? document.getElementById(id) : id;
+  if (!f) return;
+  prepareForm(f);
+  let pending = false;
+  f.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (pending || !f.reportValidity()) return;
+    clearFormError(f);
+    const buttons = [...f.querySelectorAll('button[type=submit],button:not([type]),input[type=submit]')];
+    const disabled = buttons.map(button => button.disabled);
+    pending = true;
+    f.setAttribute('aria-busy', 'true');
+    buttons.forEach(button => { button.disabled = true; button.setAttribute('aria-busy', 'true'); });
+    try { await fn(formValues(f), f); }
+    catch (err) {
+      showFormError(f, err.message);
+      const slot = errorSlotFor(f);
+      if (slot) {
+        slot.focus({preventScroll: true});
+        slot.scrollIntoView({block: 'center', behavior: 'instant'});
+      }
+    } finally {
+      pending = false;
+      f.removeAttribute('aria-busy');
+      buttons.forEach((button, i) => { button.disabled = disabled[i]; button.removeAttribute('aria-busy'); });
+    }
+  });
+}
+export function bindActions(selector, fn) {
+  document.querySelectorAll(selector).forEach(el => el.addEventListener('click', async () => {
+    const disabled = el.disabled;
+    try {
+      // A synchronous modal must capture the still-focused trigger before it is disabled.
+      const result = fn(el);
+      if (result && typeof result.then === 'function') {
+        el.disabled = true;
+        await result;
+      }
+    } catch (e) {
+      el.disabled = disabled;
+      if (el.isConnected) el.focus({preventScroll: true});
+      modal('Action non réalisée', `<p>${escape(e.message)}</p>`);
+    } finally { el.disabled = disabled; }
+  }));
+}
 export const kv=(label,value)=>`<div class="key-value"><dt>${escape(label)}</dt><dd>${value}</dd></div>`;
-export const shellLoading=`<div class="loading" role="status" aria-label="Chargement"><div class="skeleton line"></div><div class="grid"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div><span class="sr-only">Chargement en cours</span></div>`;
+export const shellLoading=`<div class="loading" role="status" aria-label="Chargement" aria-busy="true"><div class="skeleton line"></div><div class="grid"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div><span class="sr-only">Chargement en cours</span></div>`;
