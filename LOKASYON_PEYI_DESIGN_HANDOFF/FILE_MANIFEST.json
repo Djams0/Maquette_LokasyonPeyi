@@ -1,0 +1,700 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "path": "00_DECISIONS/DESIGN_DIRECTION.md",
+      "bytes": 1848,
+      "sha256": "6c1f6e7c5a291cbf2cce4341f0099e626a1f76d8b4ffd94b3de09db8c804c694"
+    },
+    {
+      "path": "00_DECISIONS/OPEN_DECISIONS.md",
+      "bytes": 1800,
+      "sha256": "dfcc6db5461e14d7eeb9f7301a6256d6fd14564ea8086078cc037d862359d59b"
+    },
+    {
+      "path": "00_DECISIONS/PRODUCT_CONSTRAINTS.md",
+      "bytes": 2970,
+      "sha256": "ad274d22ccad272528a54088f21055275a8c40872f49bb2fdf552b3bef1e1600"
+    },
+    {
+      "path": "01_REFERENCES/Comparatif_Apercu.png",
+      "bytes": 280500,
+      "sha256": "707def070b96c0229e0ac60d530aa796d9884789772601f090a61c4ee1d7f63e"
+    },
+    {
+      "path": "01_REFERENCES/README.md",
+      "bytes": 1235,
+      "sha256": "893f5685126c1123021db3629a7614a32fe0f9e16a79b385b3095ea8cf7834a6"
+    },
+    {
+      "path": "01_REFERENCES/benchmark/PRINCIPES.md",
+      "bytes": 1296,
+      "sha256": "97f0dc78bc71a9fd7ee0b81cc61b7f52fed797fd7535bf81c3b82fc388300eaa"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/04_AUDIT_UX_UI_DETAILLE.md",
+      "bytes": 11986,
+      "sha256": "45d4dadb9de75ef78d4640015c46a11e8072948159c86cda74f50cb89c1d3e34"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/06_ECARTS_MAQUETTE_PROJET.md",
+      "bytes": 6570,
+      "sha256": "3163d398f36c71d043ed75a12b4d3ffab7261dd5b43516f6c8463b3ed15c325a"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L01-accueil.png",
+      "bytes": 49595,
+      "sha256": "05e03f5659a1a6e2401c2fe8ded658079c67c7a83efaccce247763241f444788"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L02-resultats.png",
+      "bytes": 44820,
+      "sha256": "2e2790f8b90a03b7fb2d6510897f2af8105458b6516012174a95b2778d94fdcf"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L03-filtres.png",
+      "bytes": 35622,
+      "sha256": "e17fa5bf49c85b1dfec4dfecd627eb2d236edf610bf5c85554c94c9b42235598"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L04-fiche.png",
+      "bytes": 50985,
+      "sha256": "33a1bbe2f1ada999e41460cca48c106beb328e6b7c76fb5df50b3bec4ec86550"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L05-fiche-reserver.png",
+      "bytes": 37416,
+      "sha256": "45dd43e99a14d131e5ba51f2bbe76b4e1913727362d39b925a908d5cdf7a1cdb"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L06-demande.png",
+      "bytes": 44078,
+      "sha256": "3344b1c6addfb1faff77107e52e6a5e150f5fbbd0d17d5cb6765d1e555407c99"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L07-locations.png",
+      "bytes": 47893,
+      "sha256": "2306f0da96ae0e3e6e9a0b8cc93fcf4ba103c5849cf6bdf8ab4396da9d403298"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L08-acceptee.png",
+      "bytes": 47380,
+      "sha256": "e90eb120f36221e0d098a9bd47619cc7d17e114c62f737ee0db922e480052bf1"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L09-paiement.png",
+      "bytes": 43716,
+      "sha256": "5d1efbb10dba6bff301da7e3e5f7b459d599a795e5c618149c1f43b499d93eb5"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L10-confirmee.png",
+      "bytes": 51506,
+      "sha256": "ae448b81f1e956caca102c6c9450d2b486c9fcc2e67bf4117ecf9467a0f1e8e4"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L11-constat.png",
+      "bytes": 42879,
+      "sha256": "d3900e6e80b69944a465d84aa4009a0133ced95c0d1c5c65d5abbfd23c4fd488"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L12-profil.png",
+      "bytes": 36983,
+      "sha256": "19ea697eec4d99eb485a517d01d625a87f8e30da9c509b48d00fd45bac27a889"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L13-notifications.png",
+      "bytes": 52538,
+      "sha256": "eda24f248fcfd56475706e14d892117638e8b69e3ba57ee7479444d3be614d94"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L14-messages.png",
+      "bytes": 50691,
+      "sha256": "4134332682efedcd2977ad8b46449dcfb4af76d71f778a1f964cab45ca045f79"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L15-composition.png",
+      "bytes": 35003,
+      "sha256": "1e677909ab097a4b41b6ad26ef860e25b86b2a8452972df12bb0696321831826"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L16-brouillon.png",
+      "bytes": 44736,
+      "sha256": "6bebad71a111d982413bf760c6eb252a54b04cb93f6bd89538b166a14421f88a"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L17-proprietaire.png",
+      "bytes": 39667,
+      "sha256": "b62da8cb3b795f302bc3ee45e7f7dfa73ed846bd6a0306b6ae9a8267c5a27e25"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L18-calendrier.png",
+      "bytes": 40520,
+      "sha256": "f059a639fc9bea0ded620bc593d989601b788a5974d87a9f2a25eb81a32c33bb"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L19-admin.png",
+      "bytes": 60238,
+      "sha256": "ad9a4188e9a3067f21b517b33b7676fdc226aebb80e9f0434ec6b92afe9f68f7"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L20-admin-litiges.png",
+      "bytes": 40008,
+      "sha256": "c10a5bdc5096fdf6b24961b81ced23ef59d7cbc0641256f512eddbc858563f0d"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L21-admin-moderation.png",
+      "bytes": 40925,
+      "sha256": "5c3229b2d898ad0b5aa66757f0db30084d414078f56aeed49e4521265cc49629"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L22-admin-finance.png",
+      "bytes": 50996,
+      "sha256": "a07dae7f8c3d40aa88538d31654ac1cc2b604422b02b3d6a642fbecef0e2995f"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L23-accueil-ordinateur.png",
+      "bytes": 105047,
+      "sha256": "6faac46b295690a3bf9bb2c2df334ee57a92e97344400e3ca104eb6a1f162069"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L24-admin-320.png",
+      "bytes": 34220,
+      "sha256": "fa054273611e99da768b3a81b13d8dd6b656ec45e797da95add3117184637746"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L24-admin-768.png",
+      "bytes": 71019,
+      "sha256": "3642421f1c230e7ba08e2f1d7fde792c9e57f73097c88e1613df677bcce22600"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L25-demande-envoyee.png",
+      "bytes": 45205,
+      "sha256": "99999a72bdd2eee17ac829454b688c4aaae5a1bc835f065bf1f0b1bf14ad02dd"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L26-paiement-refuse.png",
+      "bytes": 47607,
+      "sha256": "ce960ebbf6d45cd40ea3611ea6fe16b39ee49f0cbd6e767ed4a204f6bbad067d"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L27-confirmation.png",
+      "bytes": 51307,
+      "sha256": "c7412af0f02c58d69730b98c1c1d612fd5d148d57ec6f72625ca8998a0b02434"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L28-message-recu.png",
+      "bytes": 46832,
+      "sha256": "f03d5ffa52da35e0d7f74f1f10c69a20479c889ee858f8dad5ddf0689014364b"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/AX-01.json",
+      "bytes": 567,
+      "sha256": "384a6e1e0c9a182d68fb6bbfe56c4415c3c1bf36eef6c3e56bdcac121b03d6e1"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/admin-320.png",
+      "bytes": 120752,
+      "sha256": "8dc5252a23961ee7ae4396bd7865179f00af4d4d26f6067f4ea16d2798e288cf"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/admin-document.png",
+      "bytes": 113949,
+      "sha256": "1ce85b8a3f0fc6d8ce3f5dd8e71d7b3b1b084c032beae85947a1de2015958ace"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/admin-finance.png",
+      "bytes": 151849,
+      "sha256": "680ad53b254ed60efee4a6bfdaaef594f213fb343aa860e81eff66bd72537f12"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/admin-utilisateurs-320.png",
+      "bytes": 157657,
+      "sha256": "06e02304ef3276cee887861e86d19acc6f1439c06243c205d6de44b415b57361"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/client-390.png",
+      "bytes": 141340,
+      "sha256": "15d395613a1ddacdd5ac46d0aadd0c0f1d395892c138107ce5e4acad936226ba"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/client-reseau.png",
+      "bytes": 46336,
+      "sha256": "bc167eca45fdcf65b64200ab49d162d57c73d0cbfe5d6357f9ebae94e620c64f"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/fiche-dates.png",
+      "bytes": 153092,
+      "sha256": "ace8b1fa38d5b71d0dfeafc1aa4e61efe22c4361959a90669b88ae158d370d95"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/galerie-dialogue.png",
+      "bytes": 197806,
+      "sha256": "9a719ce4f0108384b40f3b4c62cb6571c28bff4385189d4d0feecc730aa7dd97"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/inspection-depart.png",
+      "bytes": 141362,
+      "sha256": "f657dd2f1a43a9d183dc9ff37a609d8e87aeec4d130189e8341e829a48599a2e"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/proprietaire-recapitulatif.png",
+      "bytes": 136423,
+      "sha256": "655084249611ace0c63772d8865183bfb15f08b85d92370673c162e072e75707"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/recherche-aeroport.png",
+      "bytes": 94819,
+      "sha256": "84bd70c4a4558b79a2386958990df8c164cdc5ce5a6657956c15b48481ffad87"
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/recherche-retour.png",
+      "bytes": 167596,
+      "sha256": "ae91a98ff52bb1c0cd17c363328a1e30dd73ceaae3533b3aeb13030569a3ca12"
+    },
+    {
+      "path": "01_REFERENCES/finition/00_LIRE_EN_PREMIER.md",
+      "bytes": 5114,
+      "sha256": "cda7153be652c9c1bdab109549a20b335a01af47cdf59f5b0c7c894284f368ab"
+    },
+    {
+      "path": "01_REFERENCES/finition/01_SPECIFICATION_CODEX.md",
+      "bytes": 14834,
+      "sha256": "4ca4adc35f44a1f6a1fa269bd53347bb7404387899cc52944a6dfe323b0194af"
+    },
+    {
+      "path": "01_REFERENCES/finition/02_PLAN_DE_RECETTE_ET_ARBITRAGES.md",
+      "bytes": 8134,
+      "sha256": "3dc08a955a7c811c93ee9b8a9fb24730ab31dd39bc9979777c4b570f125c4636"
+    },
+    {
+      "path": "01_REFERENCES/finition/Brouillon_conflit_390.png",
+      "bytes": 48483,
+      "sha256": "4f654c100305d12dec38c036d11f0b3c2d6fd3410741d5a20e70033f953f379d"
+    },
+    {
+      "path": "01_REFERENCES/finition/Message_echec_390.png",
+      "bytes": 62227,
+      "sha256": "3d4e009b2c64f9e66deb7d5f945412f2dff0c3854b484c7b8c2cd2074ab1e32c"
+    },
+    {
+      "path": "01_REFERENCES/finition/Prototype_Peyi_Contemporain.html",
+      "bytes": 1052588,
+      "sha256": "d33b43dd6f2d40fd892d2e9f43b7f35b4d55bb7ef832b873c6094c0a3305a8da"
+    },
+    {
+      "path": "01_REFERENCES/finition/accessibilite.json",
+      "bytes": 3117,
+      "sha256": "b9adb11caa5f1af1874b4dd7d2aef35f0d3b21d2e17925dc0dd8e73b7ef59c5d"
+    },
+    {
+      "path": "01_REFERENCES/finition/resultats.json",
+      "bytes": 36180,
+      "sha256": "a7cd160a82368c66c032a9a1f4c287600a04b7c93563607e979895767b28845f"
+    },
+    {
+      "path": "01_REFERENCES/source_pdf/Refonte_Haute_Fidelite_Lokasyon_Peyi.pdf",
+      "bytes": 9291269,
+      "sha256": "21d9a0f3dadbd9175fdb875faf39033e28484ff3b2647a98e20c05dbfa2529e3"
+    },
+    {
+      "path": "01_REFERENCES/source_pdf/Refonte_Mobile_First_Lokasyon_Peyi.pdf",
+      "bytes": 5401239,
+      "sha256": "2e681b83662d25c342b1995f1600aa748c344bab8bd00967e4e83dce4ede4cf2"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/01_Explorer.png",
+      "bytes": 546028,
+      "sha256": "5a1d3abd1be54bc74fb7eab66cd9c54443e95ab2421d3eacec3e7923891f3461"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/02_Resultats.png",
+      "bytes": 719179,
+      "sha256": "8e87c301688f94b1db367729109791199d6740f8d0671bfa60deb04720ef0635"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/03_Fiche_vehicule.png",
+      "bytes": 661598,
+      "sha256": "c448b8309dbb682b51842bc3f225455e606d41052ea19d31da4dec62d4b64d48"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/04_Defaut_detail.png",
+      "bytes": 461270,
+      "sha256": "7760fca609766570364c0bd565454407fbde210926def5fe27e9b94e9b6d23f5"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/05_Recapitulatif.png",
+      "bytes": 133340,
+      "sha256": "198f74f674386c96620670066829e3b553a1a9d1c0a7ae4fb8220a9f5ced73e2"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/06_Suivi_location.png",
+      "bytes": 119419,
+      "sha256": "897031b8ebcdfe4e55b892589474b6264dfc4d858882d89a8a285d2287f96680"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/07_Boite_messages.png",
+      "bytes": 79590,
+      "sha256": "c06eaad52780c2f64a804f360e12d92e545df92cd301ea525ef4518c4c4a4f45"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/08_Conversation_location.png",
+      "bytes": 98861,
+      "sha256": "12d51b0bfbfc4a7aeb0deb40e77741de8fb57473b1578807c090a691a224ec2d"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/09_Conversation_avant_demande.png",
+      "bytes": 92208,
+      "sha256": "9c781eecd316e2064e821c95f101cef15c2040ce10076506a81276cdbc9f1b7a"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/10_Dashboard_proprietaire.png",
+      "bytes": 114928,
+      "sha256": "090dceb691e29d7faaea6cf14bb95e9dd9b75cb4f48137b89e9e97a6502f7677"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/11_Declaration_proprietaire.png",
+      "bytes": 111703,
+      "sha256": "e3dc08a64dcdf45f27c5bf6b1b09c4dfaf6f60ce19c175e0dd237b5fa024ac2e"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/12_File_admin.png",
+      "bytes": 72190,
+      "sha256": "b1cf2ecac03388125066e61e084cc5fd0110bc99c40d60e18fa003f583d208b9"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/13_Illustration_modele.png",
+      "bytes": 332803,
+      "sha256": "cee2cd2112ee59d19241650b81ad20f665155e785dcd24cabb0e3275c23a5880"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/14_Direction_Mobilite_locale.png",
+      "bytes": 341521,
+      "sha256": "cfd9e44faf17b3b42abcd41805842cc0b14b955e29c9fff02147f8c1e2aaaf5c"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/15_Filtres.png",
+      "bytes": 57298,
+      "sha256": "7b3e109e8f690d8ff2b58115fec66843051e81b628cad43a011d0ddc641933b2"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/16_Parc_proprietaire.png",
+      "bytes": 154532,
+      "sha256": "ff8517fb1536abec616a787a7a100efbee1c1449a56b7d3b07deb936c9c19b9f"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/17_Gestion_annonce.png",
+      "bytes": 544716,
+      "sha256": "0161f8b2a8d2617161ae10e64025dd1dfdf999722d0c7697888826f6d14c2753"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/18_Calendrier.png",
+      "bytes": 69485,
+      "sha256": "d63365caffbee0a47a2b43afd47977b379fedbf34a1a8cc32186197d3137818f"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/19_Demande_proprietaire.png",
+      "bytes": 108009,
+      "sha256": "1c469da79150e5de7810cc2fa0450413de43242586f2dba517ae084f3b02b10f"
+    },
+    {
+      "path": "01_REFERENCES/target_ui/20_Decision_admin.png",
+      "bytes": 77560,
+      "sha256": "e080ab789e7a1f4b14eee1dd0553e11366ecfb48710a6f2df71a307a58c16f0f"
+    },
+    {
+      "path": "02_DESIGN_SYSTEM/COMPONENT_SPECS.md",
+      "bytes": 3986,
+      "sha256": "b4e8feb6122c6dc471d5ded3d421b516e32ef7efd221f069f9a63323b3cc5a4d"
+    },
+    {
+      "path": "02_DESIGN_SYSTEM/DESIGN_SYSTEM.md",
+      "bytes": 4387,
+      "sha256": "22d3b80cfddd54b556a4713bc2db5f2a93b495f74bb49023bac36f838fc0f2a2"
+    },
+    {
+      "path": "02_DESIGN_SYSTEM/GEOMETRIE_V2.md",
+      "bytes": 2625,
+      "sha256": "7b8e1791024d56efeb07f7c6644c41a82493c7a45f3c2794c1783ba8d0b62f86"
+    },
+    {
+      "path": "02_DESIGN_SYSTEM/design-tokens.json",
+      "bytes": 2751,
+      "sha256": "6c151ba1aaa09145176ff3c4d4ad6dac045315336e8dd71dfdf04ee916480e7c"
+    },
+    {
+      "path": "02_DESIGN_SYSTEM/tokens.css",
+      "bytes": 2826,
+      "sha256": "46eda420543d21d832feae8134e6355accb4ecd305e2b222a98e759ba4e22689"
+    },
+    {
+      "path": "03_ASSETS/ASSET_MANIFEST.md",
+      "bytes": 5058,
+      "sha256": "eac91247f96238316b5a703cad3eec8f265fa1c461b64d4bbc0c14de45accaff"
+    },
+    {
+      "path": "03_ASSETS/asset-manifest.json",
+      "bytes": 66717,
+      "sha256": "49bd5a10cc98882812d4f5dc9531935f116025593eeed2e47bb38f1f70b21cd9"
+    },
+    {
+      "path": "03_ASSETS/fonts/Lobster-OFL.txt",
+      "bytes": 4431,
+      "sha256": "1516520b19a82250e69c745b3644e38cc28664f5b548a16eff959eadc90e41da"
+    },
+    {
+      "path": "03_ASSETS/fonts/Lobster.ttf",
+      "bytes": 406076,
+      "sha256": "d6568e697fd50cedc0be04d8aae4127fe95add607e7bff954ca88604be80c205"
+    },
+    {
+      "path": "03_ASSETS/fonts/Lora-OFL.txt",
+      "bytes": 4424,
+      "sha256": "5ce6bb66c4179aba67a89810949df543a81bcb408123dbb90aa3970f11e84f59"
+    },
+    {
+      "path": "03_ASSETS/fonts/Lora.ttf",
+      "bytes": 212196,
+      "sha256": "822a6621ccbe8d97d20ac88c1c41f5615c9c2c202eaa75f272cd452aac6475a7"
+    },
+    {
+      "path": "03_ASSETS/fonts/Nunito-OFL.txt",
+      "bytes": 4386,
+      "sha256": "f3db92cc37279043d77b710b570f0bb575d1d42279dd1a182e1530bb7563a25d"
+    },
+    {
+      "path": "03_ASSETS/fonts/Nunito.ttf",
+      "bytes": 276932,
+      "sha256": "bb55a5ca5c2042335b3991af27c4d0705d0ef41cac6164ac737fd8f2a1e85207"
+    },
+    {
+      "path": "03_ASSETS/icons/README.md",
+      "bytes": 809,
+      "sha256": "114d76e77c836bdb6a839e55f5a260f130577f6168aaa8414e4088da8ded8221"
+    },
+    {
+      "path": "03_ASSETS/icons/pictogrammes-maquette.svg",
+      "bytes": 3129,
+      "sha256": "5e227a59f4f4e687b21fb3a6ebdf770103ab89f10e9e69df918ad68fc50da1fb"
+    },
+    {
+      "path": "03_ASSETS/illustrations/catalogue-vide.svg",
+      "bytes": 564,
+      "sha256": "82cdbcc99eef5afcf3cff1ed0d90dfa4ac56cac6b7e48050bf66cd59a1f71d2b"
+    },
+    {
+      "path": "03_ASSETS/optional_renders/citadine-verte-illustration-836.webp",
+      "bytes": 24490,
+      "sha256": "10e38b9c1defb5ce4df2e31292b218268deed47dd81163fe9150f5e77e29c3e6"
+    },
+    {
+      "path": "03_ASSETS/vehicle_defects/citadine-verte-rayure-836.webp",
+      "bytes": 40812,
+      "sha256": "9ed40fbfa434e022c666da2bae64107ea84353ff3e2399a2bf2e777a6ad457bb"
+    },
+    {
+      "path": "03_ASSETS/vehicles/citadine-argent-avant-420.webp",
+      "bytes": 30080,
+      "sha256": "e70de0ef7de2d8de3e7c6ed135266d14c68bcd565b122531306498c4b50236ac"
+    },
+    {
+      "path": "03_ASSETS/vehicles/citadine-argent-avant-836.webp",
+      "bytes": 92298,
+      "sha256": "e92d80a25d9ce547b634b12ec9eb66f3db4165bc9197875458054f2b887a3ba9"
+    },
+    {
+      "path": "03_ASSETS/vehicles/citadine-verte-arriere-768.webp",
+      "bytes": 117640,
+      "sha256": "7228a7b1bb7a3feb70e0b031ef51786da188c051b312097589fd928b46aa0dae"
+    },
+    {
+      "path": "03_ASSETS/vehicles/citadine-verte-avant-420.webp",
+      "bytes": 32450,
+      "sha256": "2c69d058d9d99defdab74472881af6f6ad58e50c14aba028977aa4bb2198fd5c"
+    },
+    {
+      "path": "03_ASSETS/vehicles/citadine-verte-avant-836.webp",
+      "bytes": 108516,
+      "sha256": "6e0357dc652eae983ac03630946097cc3773df1805891956c47ee901d0bceffd"
+    },
+    {
+      "path": "03_ASSETS/vehicles/citadine-verte-banquette-768.webp",
+      "bytes": 49394,
+      "sha256": "463679037e602e665ee611e5f4a47247d3016ffd65fb5d6a96d3a68abffac4cc"
+    },
+    {
+      "path": "03_ASSETS/vehicles/citadine-verte-habitacle-768.webp",
+      "bytes": 72746,
+      "sha256": "d20fe009912df01e031086d55dd07cc90edb56f7b18fcfd23e3b754d0b4c3948"
+    },
+    {
+      "path": "03_ASSETS/vehicles/citadine-verte-profil-768.webp",
+      "bytes": 115586,
+      "sha256": "a9130077856acaf77b05f413a19eda69b2c8cd43193e4acf830484b25a17f8e5"
+    },
+    {
+      "path": "04_SCREEN_SPECS/README.md",
+      "bytes": 2624,
+      "sha256": "0345648c0dbf26542455b2f972a6d7727b4267940763ad59f1227dfd3322bcec"
+    },
+    {
+      "path": "04_SCREEN_SPECS/administration.md",
+      "bytes": 1756,
+      "sha256": "80c0f11f82520c21fe67b3d0cf811e9af695110ea05d6d45882a004859cb1191"
+    },
+    {
+      "path": "04_SCREEN_SPECS/booking.md",
+      "bytes": 1510,
+      "sha256": "20ebb2f20301ae9ec1f5afee998cf6db3fa957e18bb5e0cd1a37835df1b8c0cb"
+    },
+    {
+      "path": "04_SCREEN_SPECS/conversation.md",
+      "bytes": 2221,
+      "sha256": "94d13546e7889796d3b316facf5571c3fa1405fdcda936f0ac2d252f36f0d05f"
+    },
+    {
+      "path": "04_SCREEN_SPECS/explorer.md",
+      "bytes": 1362,
+      "sha256": "fabe0dd807ee5e563e3102de19b2f48e99d08828ba8dfe6d32ce480a7ff55f04"
+    },
+    {
+      "path": "04_SCREEN_SPECS/inbox.md",
+      "bytes": 1309,
+      "sha256": "c4e335a28608338c687a99ac9bf7e18d07d4abc06ad90b0b6fa6a21ca55ee0bf"
+    },
+    {
+      "path": "04_SCREEN_SPECS/navigation_profile.md",
+      "bytes": 1671,
+      "sha256": "055432bf4ecd2207cd4f1f269303736055ead0b706bac418787f5421cdc69b7d"
+    },
+    {
+      "path": "04_SCREEN_SPECS/owner_dashboard.md",
+      "bytes": 1788,
+      "sha256": "b0e2cb0c8ae1cf961fe5c9785bb5022691dc71bec4c81e64aa0a195ee4ffc8ec"
+    },
+    {
+      "path": "04_SCREEN_SPECS/owner_publication.md",
+      "bytes": 1873,
+      "sha256": "3357d1b96cdaad6271ea5645c890858f6d0f5fc79afb45596b2d8f375722d361"
+    },
+    {
+      "path": "04_SCREEN_SPECS/rental_tracking.md",
+      "bytes": 1600,
+      "sha256": "0d670cc7eb36a604ecd0818137482379e88aaccf7372101adef924a698079958"
+    },
+    {
+      "path": "04_SCREEN_SPECS/screen-index.json",
+      "bytes": 6980,
+      "sha256": "cf9db589ce3cb707188c10e033c8d4a663e4b79435c15ed3ee829dc0ff58e975"
+    },
+    {
+      "path": "04_SCREEN_SPECS/search_results.md",
+      "bytes": 1767,
+      "sha256": "e1643de0771a8f12614c30e77e6a779c5cad3cc48ba6faf7775e8816862d053f"
+    },
+    {
+      "path": "04_SCREEN_SPECS/vehicle_condition.md",
+      "bytes": 1842,
+      "sha256": "2cae486049c1abbb06aab177434020d6b30f61c02613c518ca16440f04a2b2b7"
+    },
+    {
+      "path": "04_SCREEN_SPECS/vehicle_detail.md",
+      "bytes": 1784,
+      "sha256": "236d76a7cb0bde734df655d9181e576f37fbbfe9fb8d3ae51b9bcade6dfaa500"
+    },
+    {
+      "path": "05_CODEX_PROMPTS/00_README.md",
+      "bytes": 1903,
+      "sha256": "cdae1e7b020ab72968c6bf30758751f16ae8adb398b829d5904e369c576d0bd6"
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+      "bytes": 8156,
+      "sha256": "12650a49b468daef7e174491c17207a5541e2d1e68dc9844f0e083e9524a18ff"
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+      "bytes": 5752,
+      "sha256": "d92b6c628a137014ff8e62ba03350892828a4d7c3fafe0f623865a400c4dd99c"
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+      "bytes": 5713,
+      "sha256": "01059dcdcc67a8d100da40e66c98557ae3bea90277eb8d11aa50758310ac42bd"
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+      "bytes": 4712,
+      "sha256": "21666f79b2b42e3becc319049da87efe67976ce3f41cd86af904f20d93eae316"
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+      "bytes": 5372,
+      "sha256": "a7916fe66b1d57099a50a78b5d5842803c2d47d438cdf6e5486ecf08ce39eb06"
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+      "bytes": 5510,
+      "sha256": "6fcc65fc7eaa536e5b33b9e5c8df4b680caed39f30c7cd21caf6c1d589f2e6da"
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+      "bytes": 5027,
+      "sha256": "158a5040626fcb9d2207e9350027fcd9c041b63179898fe19c64a515bf5b691f"
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+      "bytes": 5659,
+      "sha256": "a27f4ba444fa3a7d0772dcf83b3baa7b63e56ddefb1967cfebaa0e9d2cf59726"
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+      "bytes": 6854,
+      "sha256": "407cd5d81acc822ecd4cb97833a4600188632080bf3b855f8d99a92b3856c1af"
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+      "bytes": 8553,
+      "sha256": "64d4902db3ed1f4994e4d47f0ff4024dc615376ddfb4ab7698af376ffc7a2771"
+    },
+    {
+      "path": "06_VALIDATION/ACCEPTANCE_CRITERIA.md",
+      "bytes": 1374,
+      "sha256": "b4aa54c754e7fe122c354af8a3fd6007a4224190ee673b862509c4c5adff8fd3"
+    },
+    {
+      "path": "06_VALIDATION/BASELINE_OBSERVEE.md",
+      "bytes": 2446,
+      "sha256": "9fa7e3e00da670fa1656949c25a23f1ffe668fbf0b4d13cba93769c27a25c59f"
+    },
+    {
+      "path": "06_VALIDATION/IMPLEMENTATION_ORDER.md",
+      "bytes": 1391,
+      "sha256": "0276912af1b7fbd7b836ac91f4efc466c12ba7b715ad9332688f2717f943c1d2"
+    },
+    {
+      "path": "06_VALIDATION/REGRESSION_STRATEGY.md",
+      "bytes": 2278,
+      "sha256": "0f4d9d3b86d66e60c4db63a9533ef757581ede3d410da69181c541ddc7b30123"
+    },
+    {
+      "path": "06_VALIDATION/VISUAL_TEST_MATRIX.md",
+      "bytes": 1987,
+      "sha256": "d2f5d7fc2246178b9bc9560bb21fa68027d1a02fa07c5cd76ea6e71f6ad909ce"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2897,
+      "sha256": "1529bb84b760f412c897e578568b7fe6dbf2d0f8617fc9e2c347b08933cdc572"
+    },
+    {
+      "path": "tools/verify_handoff.py",
+      "bytes": 7141,
+      "sha256": "212ba20f69ccca679efef9c8251f7f11f960d9f39d27398329dc62eddf17a6f5"
+    },
+    {
+      "path": "tools/verify_mock_message.mjs",
+      "bytes": 1991,
+      "sha256": "e68a4e0fc10da5dc9160fe7c83d6c21c19a45003560de24f989f78da0742dda1"
+    }
+  ]
+}

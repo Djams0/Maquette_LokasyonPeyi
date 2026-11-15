@@ -1,0 +1,308 @@
+[
+  {
+    "file": "04_SCREEN_SPECS/explorer.md",
+    "title": "Explorer",
+    "version": "V2 + finition",
+    "viewportCSS": [
+      390,
+      844
+    ],
+    "exportPixels": [
+      780,
+      1688
+    ],
+    "routes": [
+      "/"
+    ],
+    "target": [
+      "01_REFERENCES/target_ui/01_Explorer.png"
+    ],
+    "current": [
+      "01_REFERENCES/current_ui/L01-accueil.png",
+      "01_REFERENCES/current_ui/L23-accueil-ordinateur.png"
+    ]
+  },
+  {
+    "file": "04_SCREEN_SPECS/search_results.md",
+    "title": "Recherche, résultats, carte et filtres",
+    "version": "V2 + finition",
+    "viewportCSS": [
+      390,
+      844
+    ],
+    "exportPixels": [
+      780,
+      1688
+    ],
+    "routes": [
+      "/search"
+    ],
+    "target": [
+      "01_REFERENCES/target_ui/02_Resultats.png",
+      "01_REFERENCES/target_ui/15_Filtres.png"
+    ],
+    "current": [
+      "01_REFERENCES/current_ui/L02-resultats.png",
+      "01_REFERENCES/current_ui/L03-filtres.png"
+    ]
+  },
+  {
+    "file": "04_SCREEN_SPECS/vehicle_detail.md",
+    "title": "Fiche véhicule et galerie",
+    "version": "V2 + finition",
+    "viewportCSS": [
+      390,
+      844
+    ],
+    "exportPixels": [
+      780,
+      1688
+    ],
+    "routes": [
+      "/vehicle/:id"
+    ],
+    "target": [
+      "01_REFERENCES/target_ui/03_Fiche_vehicule.png",
+      "01_REFERENCES/target_ui/13_Illustration_modele.png"
+    ],
+    "current": [
+      "01_REFERENCES/current_ui/L04-fiche.png",
+      "01_REFERENCES/current_ui/L05-fiche-reserver.png"
+    ]
+  },
+  {
+    "file": "04_SCREEN_SPECS/vehicle_condition.md",
+    "title": "État du véhicule et transparence",
+    "version": "V2 + finition",
+    "viewportCSS": [
+      390,
+      844
+    ],
+    "exportPixels": [
+      780,
+      1688
+    ],
+    "routes": [
+      "/vehicle/:id",
+      "/owner/vehicles/new"
+    ],
+    "target": [
+      "01_REFERENCES/target_ui/04_Defaut_detail.png",
+      "01_REFERENCES/target_ui/11_Declaration_proprietaire.png"
+    ],
+    "current": [
+      "01_REFERENCES/current_ui/L04-fiche.png",
+      "01_REFERENCES/current_ui/L16-brouillon.png"
+    ]
+  },
+  {
+    "file": "04_SCREEN_SPECS/booking.md",
+    "title": "Demande et récapitulatif",
+    "version": "V2 + finition",
+    "viewportCSS": [
+      390,
+      844
+    ],
+    "exportPixels": [
+      780,
+      1688
+    ],
+    "routes": [
+      "/request/:id",
+      "/payment/:id"
+    ],
+    "target": [
+      "01_REFERENCES/target_ui/05_Recapitulatif.png"
+    ],
+    "current": [
+      "01_REFERENCES/current_ui/L06-demande.png",
+      "01_REFERENCES/current_ui/L09-paiement.png"
+    ]
+  },
+  {
+    "file": "04_SCREEN_SPECS/rental_tracking.md",
+    "title": "Locations, suivi, remise et retour",
+    "version": "V2 + finition",
+    "viewportCSS": [
+      390,
+      844
+    ],
+    "exportPixels": [
+      780,
+      1688
+    ],
+    "routes": [
+      "/rentals",
+      "/rental/:id",
+      "/inspection/:id/:phase"
+    ],
+    "target": [
+      "01_REFERENCES/target_ui/06_Suivi_location.png"
+    ],
+    "current": [
+      "01_REFERENCES/current_ui/L07-locations.png",
+      "01_REFERENCES/current_ui/L08-acceptee.png",
+      "01_REFERENCES/current_ui/L11-constat.png",
+      "01_REFERENCES/current_ui/L26-paiement-refuse.png"
+    ]
+  },
+  {
+    "file": "04_SCREEN_SPECS/inbox.md",
+    "title": "Boîte de réception",
+    "version": "V2 + finition",
+    "viewportCSS": [
+      390,
+      844
+    ],
+    "exportPixels": [
+      780,
+      1688
+    ],
+    "routes": [
+      "/messages"
+    ],
+    "target": [
+      "01_REFERENCES/target_ui/07_Boite_messages.png"
+    ],
+    "current": [
+      "01_REFERENCES/current_ui/L14-messages.png"
+    ]
+  },
+  {
+    "file": "04_SCREEN_SPECS/conversation.md",
+    "title": "Conversation, contexte et reprise",
+    "version": "V2 + finition",
+    "viewportCSS": [
+      390,
+      844
+    ],
+    "exportPixels": [
+      780,
+      1688
+    ],
+    "routes": [
+      "/messages?conversation=:id",
+      "/assistance"
+    ],
+    "target": [
+      "01_REFERENCES/target_ui/08_Conversation_location.png",
+      "01_REFERENCES/target_ui/09_Conversation_avant_demande.png"
+    ],
+    "current": [
+      "01_REFERENCES/current_ui/L15-composition.png",
+      "01_REFERENCES/current_ui/L28-message-recu.png"
+    ]
+  },
+  {
+    "file": "04_SCREEN_SPECS/owner_dashboard.md",
+    "title": "Aujourd’hui, parc, annonce, calendrier et demandes",
+    "version": "V2 + finition",
+    "viewportCSS": [
+      390,
+      844
+    ],
+    "exportPixels": [
+      780,
+      1688
+    ],
+    "routes": [
+      "/owner",
+      "/owner/vehicles",
+      "/owner/vehicles/:id",
+      "/owner/requests"
+    ],
+    "target": [
+      "01_REFERENCES/target_ui/10_Dashboard_proprietaire.png",
+      "01_REFERENCES/target_ui/16_Parc_proprietaire.png",
+      "01_REFERENCES/target_ui/17_Gestion_annonce.png",
+      "01_REFERENCES/target_ui/18_Calendrier.png",
+      "01_REFERENCES/target_ui/19_Demande_proprietaire.png"
+    ],
+    "current": [
+      "01_REFERENCES/current_ui/L17-proprietaire.png",
+      "01_REFERENCES/current_ui/L18-calendrier.png"
+    ]
+  },
+  {
+    "file": "04_SCREEN_SPECS/owner_publication.md",
+    "title": "Création, déclaration et reprise propriétaire",
+    "version": "V2 + finition",
+    "viewportCSS": [
+      390,
+      844
+    ],
+    "exportPixels": [
+      780,
+      1688
+    ],
+    "routes": [
+      "/owner/start",
+      "/owner/vehicles/new"
+    ],
+    "target": [
+      "01_REFERENCES/target_ui/11_Declaration_proprietaire.png",
+      "01_REFERENCES/target_ui/16_Parc_proprietaire.png"
+    ],
+    "current": [
+      "01_REFERENCES/current_ui/L16-brouillon.png"
+    ]
+  },
+  {
+    "file": "04_SCREEN_SPECS/administration.md",
+    "title": "File et décision Admin",
+    "version": "V2 + finition",
+    "viewportCSS": [
+      390,
+      844
+    ],
+    "exportPixels": [
+      780,
+      1688
+    ],
+    "routes": [
+      "Admin /",
+      "Admin /moderation",
+      "Admin /moderation/documents/:id",
+      "Admin /cases",
+      "Admin /payments"
+    ],
+    "target": [
+      "01_REFERENCES/target_ui/12_File_admin.png",
+      "01_REFERENCES/target_ui/20_Decision_admin.png"
+    ],
+    "current": [
+      "01_REFERENCES/current_ui/L19-admin.png",
+      "01_REFERENCES/current_ui/L21-admin-moderation.png",
+      "01_REFERENCES/current_ui/L24-admin-320.png"
+    ]
+  },
+  {
+    "file": "04_SCREEN_SPECS/navigation_profile.md",
+    "title": "Navigation, profil et accès démo",
+    "version": "V2 + finition",
+    "viewportCSS": [
+      390,
+      844
+    ],
+    "exportPixels": [
+      780,
+      1688
+    ],
+    "routes": [
+      "/profile",
+      "/notifications",
+      "/demo",
+      "/demo/audit",
+      "/login"
+    ],
+    "target": [
+      "01_REFERENCES/target_ui/01_Explorer.png",
+      "01_REFERENCES/target_ui/07_Boite_messages.png",
+      "01_REFERENCES/target_ui/10_Dashboard_proprietaire.png"
+    ],
+    "current": [
+      "01_REFERENCES/current_ui/L12-profil.png",
+      "01_REFERENCES/current_ui/L13-notifications.png"
+    ]
+  }
+]
