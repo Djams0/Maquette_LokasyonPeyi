@@ -1,16 +1,5 @@
-const categories = new Set(['', 'Citadine', 'SUV', 'Utilitaire']);
-const dateIsValid = value => /^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(Date.parse(value + 'T00:00:00Z')) && new Date(value + 'T00:00:00Z').toISOString().slice(0, 10) === value;
-
-export function searchError(params) {
-  const from = params.get('from') || '', until = params.get('until') || '';
-  if ((params.get('q') || '').length > 120) return 'Précisez une destination de 120 caractères maximum.';
-  if (!categories.has(params.get('category') || '')) return 'Choisissez une catégorie du catalogue.';
-  if (Boolean(from) !== Boolean(until)) return 'Indiquez le départ et le retour, ou laissez les deux dates vides.';
-  if (from && (!dateIsValid(from) || !dateIsValid(until))) return 'Vérifiez les deux dates de votre recherche.';
-  if (from && until <= from) return 'La date de retour doit suivre le départ.';
-  return '';
-}
-
+import {searchError} from './search-state.js';
+export {searchError} from './search-state.js';
 // Keep the existing string storage format and every valid filter/view parameter.
 // Only the search route may be resumed; malformed storage never becomes a link.
 export function recentSearch(value) {

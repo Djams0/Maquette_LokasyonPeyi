@@ -36,11 +36,11 @@ test('Explorer: clavier, dates conservées et reprise du format historique',asyn
   await page.goto(client);await settled(page);const form=page.getByRole('form',{name:'Rechercher un véhicule'}),q=form.getByLabel('Votre destination'),from=form.getByLabel('Départ'),until=form.getByLabel('Retour');
   await q.fill('Gosier');await from.fill('2027-06-10');await q.press('Enter');await expect(form.getByRole('alert')).toContainText('Indiquez le départ et le retour');await expect(q).toHaveValue('Gosier');await expect(from).toHaveValue('2027-06-10');await expect(from).toHaveAttribute('aria-describedby',await form.getByRole('alert').getAttribute('id'));
   await until.fill('2027-06-09');await q.press('Enter');await expect(form.getByRole('alert')).toContainText('doit suivre le départ');
-  await until.fill('2027-06-14');await q.press('Enter');await page.waitForURL(/\/search\?/);await expect(page.getByRole('heading',{name:'Trouvez votre prochaine voiture',exact:true})).toBeVisible();
+  await until.fill('2027-06-14');await q.press('Enter');await page.waitForURL(/\/search\?/);await expect(page.getByRole('heading',{name:'Résultats',exact:true})).toBeVisible();
   const params=new URL(page.url()).searchParams;expect(params.get('from')).toBe('2027-06-10');expect(params.get('until')).toBe('2027-06-14');expect(params.get('q')).toBe('Gosier');
   const stored=await page.evaluate(()=>localStorage.getItem('recent-search'));expect(stored).toContain('from=2027-06-10');
   await page.goto(client);await settled(page);const resume=page.getByRole('link',{name:'Reprendre ma dernière recherche',exact:true});await expect(resume).toHaveAttribute('href',stored);await resume.click();await page.waitForURL(/\/search\?/);expect(new URL(page.url()).searchParams.get('until')).toBe('2027-06-14');
-  await page.getByRole('link',{name:/Peugeot 208/}).click();await expect(page.getByRole('heading',{name:/Peugeot 208/})).toBeVisible();await page.goBack();await expect(page.getByRole('heading',{name:'Trouvez votre prochaine voiture',exact:true})).toBeVisible();expect(new URL(page.url()).searchParams.get('from')).toBe('2027-06-10');
+  await page.getByRole('link',{name:/Peugeot 208/}).click();await expect(page.getByRole('heading',{name:/Peugeot 208/})).toBeVisible();await page.goBack();await expect(page.getByRole('heading',{name:'Résultats',exact:true})).toBeVisible();expect(new URL(page.url()).searchParams.get('from')).toBe('2027-06-10');
 });
 
 test('Explorer: session et catalogue lents ne remplacent ni saisie ni menu',async({page})=>{
@@ -60,7 +60,7 @@ test('Explorer: session et catalogue lents ne remplacent ni saisie ni menu',asyn
 
 test('Explorer: recherche utilisable avant la fin du chargement du catalogue',async({page})=>{
   let release;const gate=new Promise(r=>release=r);await page.route('**/api/v1/vehicles',async route=>{await gate;await route.continue().catch(()=>{});});
-  try{await page.goto(client,{waitUntil:'commit'});const q=page.getByLabel('Votre destination');await q.fill('Gosier');await q.press('Enter');await page.waitForURL(/\/search\?/);await expect(page.getByRole('heading',{name:'Trouvez votre prochaine voiture',exact:true})).toBeVisible();expect(new URL(page.url()).searchParams.get('q')).toBe('Gosier');}
+  try{await page.goto(client,{waitUntil:'commit'});const q=page.getByLabel('Votre destination');await q.fill('Gosier');await q.press('Enter');await page.waitForURL(/\/search\?/);await expect(page.getByRole('heading',{name:'Résultats',exact:true})).toBeVisible();expect(new URL(page.url()).searchParams.get('q')).toBe('Gosier');}
   finally{release();}
 });
 
@@ -75,5 +75,5 @@ test('Explorer: stockage refusé et photo en erreur utilisent un repli local',as
   await page.addInitScript(()=>Object.defineProperty(window,'localStorage',{configurable:true,get(){throw new DOMException('Storage unavailable','SecurityError');}}));
   await page.route('**/assets/vehicles/*.webp',route=>route.abort());await page.goto(client);await settled(page);
   const image=page.locator('#explorer-cards img');await expect(image).toHaveAttribute('src','/assets/car-sage.svg');await expect(image).not.toHaveAttribute('srcset',/.+/);await expect.poll(()=>image.evaluate(i=>i.complete && i.naturalWidth>0)).toBe(true);await expect(image).toHaveJSProperty('currentSrc',client+'/assets/car-sage.svg');await expect(page.getByText('Photo indisponible · illustration fictive',{exact:true})).toBeVisible();await expect(page.getByRole('link',{name:'Reprendre ma dernière recherche',exact:true})).toHaveCount(0);
-  await page.getByLabel('Votre destination').fill('Gosier');await page.getByLabel('Votre destination').press('Enter');await page.waitForURL(/\/search\?/);await expect(page.getByRole('heading',{name:'Trouvez votre prochaine voiture',exact:true})).toBeVisible();await expect(page.locator('.catalogue-card[data-vehicle-id="v3"] img')).toHaveAttribute('src','/assets/car-blue.svg');
+  await page.getByLabel('Votre destination').fill('Gosier');await page.getByLabel('Votre destination').press('Enter');await page.waitForURL(/\/search\?/);await expect(page.getByRole('heading',{name:'Résultats',exact:true})).toBeVisible();await expect(page.locator('.catalogue-card[data-vehicle-id="v3"] img')).toHaveAttribute('src','/assets/car-blue.svg');
 });
