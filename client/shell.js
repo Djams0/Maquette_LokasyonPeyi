@@ -13,9 +13,9 @@ export function shell(me) {
   dispose();
   const state = navigationState(location.pathname, location.search);
   const host = document.getElementById('shell');
-  host.className = 'client-shell' + (state.root ? ' has-bottom-nav' : '');
+  host.className = 'client-shell' + (state.root ? ' has-bottom-nav' : '') + (location.pathname === '/' ? ' is-explorer' : '');
   host.innerHTML = `
-    <div class="demo-banner">Maquette interactive · données fictives · aucun paiement réel <a href="/demo">Démo & comptes</a></div>
+    <div class="demo-banner">${location.pathname === '/' ? 'Données fictives · aucun paiement réel' : 'Maquette interactive · données fictives · aucun paiement réel'} <a href="/demo">Démo & comptes</a></div>
     <header class="header">
       <a class="logo" href="/">Lokasyon <span>Péyi</span></a>
       <nav aria-label="Navigation principale" id="header-nav">${primaryLinks(state.active)}</nav>
@@ -26,7 +26,7 @@ export function shell(me) {
     </header>
     <dialog id="navigation-panel" class="navigation-panel" aria-labelledby="navigation-title">
       <div class="navigation-panel-heading"><h2 id="navigation-title">Menu</h2><button type="button" class="link-button" id="menu-close" aria-label="Fermer le menu">${icon('close')}</button></div>
-      <p class="muted">${me ? escape(me.name) + ' · compte de démonstration' : 'Explorez librement, connectez-vous pour poursuivre une location.'}</p>
+      <p class="muted" id="menu-identity">${me ? escape(me.name) + ' · compte de démonstration' : 'Explorez librement, connectez-vous pour poursuivre une location.'}</p>
       <nav aria-label="Accès complémentaires" class="menu-groups">
         <section aria-labelledby="menu-destinations"><h3 id="menu-destinations">Se déplacer</h3>${destinations.map(([h,i,t]) => menuLink(h,i,t)).join('')}${menuLink('/search','car','Catalogue des véhicules')}</section>
         <section aria-labelledby="menu-account"><h3 id="menu-account">Mon compte</h3>${me ? '' : menuLink('/login','user','Connexion')}${menuLink('/profile/documents','shield','Documents & vérification')}${menuLink('/notifications','bell','Notifications')}${menuLink('/profile/reviews','star','Mes avis')}${menuLink(me?.owner ? '/owner' : '/owner/start','car',me?.owner ? 'Espace propriétaire' : 'Devenir propriétaire')}</section>
@@ -64,4 +64,22 @@ export function ownerNav() {
     const active = href === '/owner' ? path === href : path === href || path.startsWith(href + '/');
     return `<a class="${active ? 'active' : ''}" href="${href}" ${active ? 'aria-current="page"' : ''}>${label}</a>`;
   }).join('')}</nav>`;
+}
+
+export function updateShellIdentity(me) {
+  const tools = document.querySelector('.header .tools'), trigger = document.getElementById('menu-toggle');
+  if (!tools || !trigger) return;
+  const active = document.activeElement;
+  const headerFocus = tools.contains(active) && active !== trigger;
+  [...tools.children].filter(el => el !== trigger).forEach(el => el.remove());
+  trigger.insertAdjacentHTML('beforebegin', me ? `<a class="link-button button" href="/notifications" aria-label="Notifications">${icon('bell')}</a><a class="avatar" href="/profile" aria-label="Mon profil">${escape(me.name[0])}</a>` : '<a class="button secondary" href="/login">Connexion</a>');
+  document.getElementById('menu-identity').textContent = me ? me.name + ' · compte de démonstration' : 'Explorez librement, connectez-vous pour poursuivre une location.';
+  const account = document.getElementById('menu-account').parentElement, login = account.querySelector('a[href="/login"]');
+  const loginFocus = login === active;
+  if (me) login?.remove();
+  const owner = account.querySelector('a[href="/owner"],a[href="/owner/start"]');
+  owner.href = me?.owner ? '/owner' : '/owner/start';
+  owner.querySelector('span').textContent = me?.owner ? 'Espace propriétaire' : 'Devenir propriétaire';
+  if (headerFocus) [...tools.querySelectorAll('a')].find(el => el.getClientRects().length)?.focus({preventScroll:true});
+  else if (loginFocus) account.querySelector('a')?.focus({preventScroll:true});
 }

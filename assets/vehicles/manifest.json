@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "fichier": "citadine-verte-avant-420.webp",
+      "chemin": "assets/vehicles/citadine-verte-avant-420.webp",
+      "format": "WEBP",
+      "octets": 32450,
+      "sha256": "2c69d058d9d99defdab74472881af6f6ad58e50c14aba028977aa4bb2198fd5c",
+      "dimensions": [
+        420,
+        236
+      ],
+      "fonction": "Image principale",
+      "ecrans": "Explorer, résultats, fiche, fil et suivi",
+      "origine": "Image de synthèse générée pour Lokasyon Péyi, V2",
+      "auteur": "Image générée pour Lokasyon Péyi",
+      "licence_ou_usage": "Ressource créée pour Lokasyon Péyi, usage de démonstration. Aucune licence tierce revendiquée.",
+      "attribution": "Mention « photo de démonstration » à l’écran selon contexte.",
+      "statut": "maquette",
+      "alt": "Citadine verte, vue avant de trois quarts au bord de mer.",
+      "chemin_source_kit": "03_ASSETS/vehicles/citadine-verte-avant-420.webp",
+      "fixtureId": "v1"
+    },
+    {
+      "fichier": "citadine-verte-avant-836.webp",
+      "chemin": "assets/vehicles/citadine-verte-avant-836.webp",
+      "format": "WEBP",
+      "octets": 108516,
+      "sha256": "6e0357dc652eae983ac03630946097cc3773df1805891956c47ee901d0bceffd",
+      "dimensions": [
+        836,
+        470
+      ],
+      "fonction": "Image principale",
+      "ecrans": "Explorer, résultats, fiche, fil et suivi",
+      "origine": "Image de synthèse générée pour Lokasyon Péyi, V2",
+      "auteur": "Image générée pour Lokasyon Péyi",
+      "licence_ou_usage": "Ressource créée pour Lokasyon Péyi, usage de démonstration. Aucune licence tierce revendiquée.",
+      "attribution": "Mention « photo de démonstration » à l’écran selon contexte.",
+      "statut": "maquette",
+      "alt": "Citadine verte, vue avant de trois quarts au bord de mer.",
+      "chemin_source_kit": "03_ASSETS/vehicles/citadine-verte-avant-836.webp",
+      "fixtureId": "v1"
+    }
+  ]
+}
