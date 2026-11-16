@@ -538,6 +538,51 @@
   .vehicle-main { padding-bottom: var(--lp-space-32); }
 }
 
+/* Lot 07 — inbox and explicit thread; composer stays in document flow. */
+.messaging-heading { display: flex; align-items: center; justify-content: space-between; gap: var(--lp-space-16); flex-wrap: wrap; }
+.messaging-heading h1 { font-family: var(--lp-font-editorial); font-weight: 500; }
+.messaging-layout { display: grid; gap: var(--lp-space-24); align-items: start; }
+.messaging-layout>* { min-width: 0; }
+.messaging-main .message-meta, .message-bubble small, .message-composer small { font-size: var(--lp-text-meta); line-height: var(--lp-leading-meta); }
+.messaging-main #message-sync { min-height: 48px; margin-block: var(--lp-space-12); }
+.message-inbox h2 { margin-bottom: var(--lp-space-16); }
+.message-search-row { display: flex; gap: var(--lp-space-8); margin-block: var(--lp-space-8) var(--lp-space-16); }
+.message-search-row input { min-width: 0; width: 100%; }
+.message-search-row button { flex-shrink: 0; }
+.message-row { display: flex; align-items: flex-start; gap: var(--lp-space-12); padding-block: var(--lp-space-16); border-top: 1px solid var(--line); text-decoration: none; color: var(--ink); }
+.message-row[aria-current] { background: var(--lp-color-info-bg); border-radius: var(--lp-radius-control); }
+.message-row>.icon { flex-shrink: 0; margin-top: var(--lp-space-16); }
+.message-row-copy { display: grid; gap: var(--lp-space-4); min-width: 0; }
+.message-preview { color: var(--muted); font-size: var(--lp-text-body); line-height: var(--lp-leading-body); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.message-thumbnail.catalogue-media { display: block; position: relative; width: 64px; height: 64px; flex: 0 0 64px; aspect-ratio: 1; border-radius: var(--lp-radius-control); overflow: hidden; background: var(--lp-color-info-bg); }
+.message-thumbnail img { display: block; width: 64px; height: 64px; object-fit: cover; }
+.message-thumbnail img.is-illustration { object-fit: contain; }
+.message-context { display: flex; align-items: flex-start; gap: var(--lp-space-12); }
+.message-context>div { min-width: 0; }
+.message-context h2 { font-size: var(--lp-text-card); }
+.message-context p { margin-block: var(--lp-space-4); }
+.message-disclaimer { font-size: var(--lp-text-meta); line-height: var(--lp-leading-meta); color: var(--muted); margin-block: var(--lp-space-16); }
+.message-stream { height: clamp(120px,36dvh,380px); overflow: auto; overscroll-behavior: contain; scroll-padding: var(--lp-space-12); padding: var(--lp-space-12); background: var(--lp-color-ivory); border-radius: var(--lp-radius-card); }
+.message-bubble { width: fit-content; max-width: 92%; border-radius: var(--lp-radius-card); padding: var(--lp-space-12) var(--lp-space-16); background: var(--lp-color-info-bg); margin-bottom: var(--lp-space-12); overflow-wrap: anywhere; }
+.message-bubble.mine { margin-left: auto; background: var(--lp-color-deep); color: var(--lp-color-surface); }
+.message-bubble p, .message-attempt-text { white-space: pre-wrap; font-size: var(--lp-text-body); line-height: var(--lp-leading-body); margin: 0 0 var(--lp-space-8); overflow-wrap: anywhere; }
+.message-bubble small { display: block; }
+.message-bubble.mine small { color: inherit; }
+.message-composer { margin-top: var(--lp-space-16); padding-bottom: env(safe-area-inset-bottom); }
+.message-composer textarea { min-height: 96px; width: 100%; resize: vertical; display: block; margin-block: var(--lp-space-8); font-size: var(--lp-text-body); line-height: var(--lp-leading-body); }
+.message-composer-actions { display: flex; gap: var(--lp-space-12); align-items: center; justify-content: space-between; }
+.message-composer-actions small { max-width: 58%; }
+.message-composer-actions button { flex-shrink: 0; }
+.message-send-state:not(:empty) { margin-top: var(--lp-space-12); border-left: 4px solid var(--lp-color-deep); padding: var(--lp-space-12); background: var(--lp-color-info-bg); border-radius: var(--lp-radius-control); }
+.message-send-state.uncertain, .message-send-state.failed, .message-send-state.refused { background: var(--lp-color-warning-bg); border-color: var(--lp-color-warning-text); }
+.message-send-state p { margin-block: 0 var(--lp-space-8); }
+.message-recovery { display: flex; gap: var(--lp-space-8); flex-wrap: wrap; }
+.message-send-state button { max-width: 100%; white-space: normal; }
+.messaging-layout [hidden] { display: none; }
+@media (max-width:1023px) { .messaging-layout.has-thread .message-inbox { display: none; } }
+@media (min-width:1024px) { .messaging-layout.has-thread { grid-template-columns: minmax(280px,0.8fr) minmax(0,1.5fr); } }
+@media (max-width:359px) { .message-inbox.card, .message-thread.card { padding: var(--lp-space-16); } .message-row>.icon { display: none; } .message-composer-actions { flex-wrap: wrap; } .message-composer-actions small { max-width: none; } .message-composer-actions button { width: 100%; } }
+
 /* Lot 06 — recap and tracking reflect server state and one next action. */
 .booking-page { min-width: 0; }
 .booking-back { display: inline-flex; align-items: center; gap: var(--lp-space-8); min-height: var(--lp-layout-touch-min); margin-bottom: var(--lp-space-16); }
