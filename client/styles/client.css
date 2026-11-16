@@ -412,3 +412,58 @@
   .explorer-dates { grid-template-columns: minmax(0,1fr); }
   .explorer-catalogue .section-heading { align-items: flex-start; }
 }
+
+/* Lot 04: one applied URL state, one filter form, public results on every width. */
+.results-heading h1 { font-family: var(--lp-font-editorial); }
+.search-summary { display: flex; align-items: center; justify-content: space-between; gap: var(--lp-space-16); margin-block: var(--lp-space-16); }
+.search-summary p { margin: 4px 0 0; font-size: var(--lp-text-meta); overflow-wrap: anywhere; }
+.search-summary button { flex-shrink: 0; }
+.results-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--lp-space-12); margin-block: var(--lp-space-20); }
+.results-toolbar .tabs { margin: 0; }
+.results-toolbar #sort-form { margin-left: auto; }
+.results-toolbar .field { margin: 0; min-width: 180px; }
+.results-layout { display: grid; grid-template-columns: minmax(0,1fr); gap: var(--lp-space-24); align-items: start; }
+.results-sidebar { display: none; }
+.results-page .search-results { min-width: 0; }
+.results-page .search-results>h2 { margin-bottom: var(--lp-space-16); }
+.results-page .results-cards { grid-template-columns: minmax(0,1fr); }
+.results-cards .catalogue-card>a { display: flex; flex-direction: column; height: 100%; }
+.results-cards .vehicle-info { display: flex; flex-direction: column; flex: 1; padding: var(--lp-space-16); min-width: 0; }
+.results-cards .vehicle-info .row { flex-wrap: wrap; align-items: flex-start; gap: var(--lp-space-8); }
+.results-cards .vehicle-info p { font-size: var(--lp-text-meta); margin-block: var(--lp-space-8) var(--lp-space-16); }
+.results-cards .price { margin-top: auto; text-align: right; }
+.search-map { margin-bottom: var(--lp-space-24); }
+.search-map .map-pins { flex-wrap: wrap; gap: var(--lp-space-12); }
+.search-map .map-pins a { min-height: var(--lp-layout-touch-min); display: inline-flex; align-items: center; padding: var(--lp-space-8) var(--lp-space-12); }
+.search-map p { font-size: var(--lp-text-meta); }
+.search-filter-dialog { width: min(520px,calc(100% - 24px)); max-height: calc(100dvh - 24px); overscroll-behavior: contain; }
+.search-filter-dialog>.row { gap: var(--lp-space-12); margin-bottom: var(--lp-space-16); }
+.search-filter-dialog h2 { margin: 0; }
+.filter-actions { display: grid; gap: var(--lp-space-8); }
+.filter-note { font-size: var(--lp-text-meta); margin-top: var(--lp-space-12); }
+.filter-cancel { display: none; }
+.search-filter-dialog .filter-cancel { display: block; }
+.search-empty img { display: block; width: min(100%,280px); height: auto; margin: 0 auto var(--lp-space-16); }
+.search-empty>button, .search-empty>a { margin: var(--lp-space-8) 0 0; }
+#search-validation:empty { display: none; }
+#search-validation ul { margin: var(--lp-space-8) 0 0; padding-left: var(--lp-space-20); }
+@media (min-width:768px) { .results-page .results-cards { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (min-width:1024px) {
+  .results-layout { grid-template-columns: 260px minmax(0,1fr); }
+  .results-sidebar { display: block; }
+  .results-sidebar h2 { font-size: var(--lp-text-section); }
+}
+@media (max-width:767px) {
+  .search-summary { flex-direction: column; align-items: stretch; padding: var(--lp-space-16); }
+  .results-toolbar { display: grid; grid-template-columns: minmax(0,1fr); }
+  .results-toolbar>button { justify-self: start; }
+  .results-toolbar #sort-form { width: 100%; margin: 0; }
+  .results-toolbar .tabs { width: 100%; }
+  .results-toolbar .tabs a { flex: 1; text-align: center; }
+}
+@media (min-width:360px) and (max-width:767px) {
+  .results-toolbar { grid-template-columns: auto minmax(0,1fr); }
+  .results-toolbar .tabs { display: flex; gap: 0; }
+  .results-toolbar .tabs a { padding-inline: var(--lp-space-8); font-size: var(--lp-text-meta); }
+  .results-toolbar #sort-form { grid-column: 1 / -1; }
+}

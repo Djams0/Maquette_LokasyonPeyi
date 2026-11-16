@@ -1,0 +1,7 @@
+import {escape,money} from '/ui/components.js';
+import {vehicleMedia} from './vehicle-media.js';
+import {vehicleURL} from './search-state.js';
+export const card = (v, {discovery = false, priority = false, context = null} = {}) => {
+  const media = vehicleMedia(v);
+  return `<article class="vehicle-card catalogue-card" data-vehicle-id="${escape(v.id)}"><a href="${vehicleURL(v.id,context)}"><div class="catalogue-media"><img class="vehicle-image ${media.photo ? '' : 'is-illustration'}" data-vehicle-image data-photo="${media.photo}" data-vehicle-name="${escape(v.name)}" data-fallback="${media.fallback}" src="${media.src}" ${media.srcset ? `srcset="${media.srcset}" sizes="(min-width:1024px) 600px, (min-width:768px) 50vw, 100vw"` : ''} alt="${escape(media.alt)}" width="${media.width}" height="${media.height}" loading="${priority ? 'eager' : 'lazy'}" fetchpriority="${priority ? 'high' : 'auto'}" decoding="async"><span class="media-label">${media.photo ? 'Photos de démonstration' : 'Illustration fictive'}</span></div><div class="vehicle-info"><div class="row between"><h3>${escape(v.name)}</h3>${discovery ? '' : `<span class="badge">${escape(v.category)}</span>`}</div><p>${discovery ? `${escape(v.city)} · ${escape(v.gearbox)} · ${escape(v.seats)} places` : `★ ${v.rating || 'Nouveau'} · ${escape(v.city)}`}</p><div class="price">${money(v.price)} <small>/ jour fictif</small></div></div></a></article>`;
+};
