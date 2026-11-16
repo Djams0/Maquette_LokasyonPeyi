@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "fichier": "citadine-verte-arriere-768.webp",
+      "chemin": "assets/vehicles/citadine-verte-arriere-768.webp",
+      "format": "WEBP",
+      "octets": 117640,
+      "sha256": "7228a7b1bb7a3feb70e0b031ef51786da188c051b312097589fd928b46aa0dae",
+      "dimensions": [
+        768,
+        512
+      ],
+      "fonction": "Vue arrière",
+      "ecrans": "Galerie fictive",
+      "origine": "Image de synthèse générée le 13 novembre 2026, planche dérivée de la citadine verte V2",
+      "auteur": "Image générée pour Lokasyon Péyi",
+      "licence_ou_usage": "Ressource créée pour Lokasyon Péyi, usage de démonstration. Aucune licence tierce revendiquée.",
+      "attribution": "Mention « photo de démonstration » à l’écran selon contexte.",
+      "statut": "maquette",
+      "alt": "Vue arrière de trois quarts de la citadine verte.",
+      "source": "03_ASSETS/vehicles/citadine-verte-arriere-768.webp",
+      "fixtureId": "v1"
+    },
+    {
+      "fichier": "citadine-verte-profil-768.webp",
+      "chemin": "assets/vehicles/citadine-verte-profil-768.webp",
+      "format": "WEBP",
+      "octets": 115586,
+      "sha256": "a9130077856acaf77b05f413a19eda69b2c8cd43193e4acf830484b25a17f8e5",
+      "dimensions": [
+        768,
+        512
+      ],
+      "fonction": "Vue de profil",
+      "ecrans": "Galerie fictive",
+      "origine": "Image de synthèse générée le 13 novembre 2026, planche dérivée de la citadine verte V2",
+      "auteur": "Image générée pour Lokasyon Péyi",
+      "licence_ou_usage": "Ressource créée pour Lokasyon Péyi, usage de démonstration. Aucune licence tierce revendiquée.",
+      "attribution": "Mention « photo de démonstration » à l’écran selon contexte.",
+      "statut": "maquette",
+      "alt": "Citadine verte vue de profil au bord de mer.",
+      "source": "03_ASSETS/vehicles/citadine-verte-profil-768.webp",
+      "fixtureId": "v1"
+    },
+    {
+      "fichier": "citadine-verte-habitacle-768.webp",
+      "chemin": "assets/vehicles/citadine-verte-habitacle-768.webp",
+      "format": "WEBP",
+      "octets": 72746,
+      "sha256": "d20fe009912df01e031086d55dd07cc90edb56f7b18fcfd23e3b754d0b4c3948",
+      "dimensions": [
+        768,
+        512
+      ],
+      "fonction": "Vue du poste de conduite",
+      "ecrans": "Galerie fictive",
+      "origine": "Image de synthèse générée le 13 novembre 2026, planche dérivée de la citadine verte V2",
+      "auteur": "Image générée pour Lokasyon Péyi",
+      "licence_ou_usage": "Ressource créée pour Lokasyon Péyi, usage de démonstration. Aucune licence tierce revendiquée.",
+      "attribution": "Mention « photo de démonstration » à l’écran selon contexte.",
+      "statut": "maquette",
+      "alt": "Volant, tableau de bord et sièges avant en tissu noir de la citadine verte.",
+      "source": "03_ASSETS/vehicles/citadine-verte-habitacle-768.webp",
+      "fixtureId": "v1"
+    },
+    {
+      "fichier": "citadine-verte-banquette-768.webp",
+      "chemin": "assets/vehicles/citadine-verte-banquette-768.webp",
+      "format": "WEBP",
+      "octets": 49394,
+      "sha256": "463679037e602e665ee611e5f4a47247d3016ffd65fb5d6a96d3a68abffac4cc",
+      "dimensions": [
+        768,
+        512
+      ],
+      "fonction": "Détail de la banquette",
+      "ecrans": "Galerie fictive",
+      "origine": "Image de synthèse générée le 13 novembre 2026, planche dérivée de la citadine verte V2",
+      "auteur": "Image générée pour Lokasyon Péyi",
+      "licence_ou_usage": "Ressource créée pour Lokasyon Péyi, usage de démonstration. Aucune licence tierce revendiquée.",
+      "attribution": "Mention « photo de démonstration » à l’écran selon contexte.",
+      "statut": "maquette",
+      "alt": "Banquette arrière et ceintures de la citadine verte.",
+      "source": "03_ASSETS/vehicles/citadine-verte-banquette-768.webp",
+      "fixtureId": "v1"
+    },
+    {
+      "fichier": "citadine-verte-rayure-836.webp",
+      "chemin": "assets/vehicles/citadine-verte-rayure-836.webp",
+      "format": "WEBP",
+      "octets": 40812,
+      "sha256": "9ed40fbfa434e022c666da2bae64107ea84353ff3e2399a2bf2e777a6ad457bb",
+      "dimensions": [
+        836,
+        471
+      ],
+      "fonction": "Défaut cosmétique fictif",
+      "ecrans": "Détail du défaut",
+      "origine": "Image de synthèse générée pour Lokasyon Péyi, V2",
+      "auteur": "Image générée pour Lokasyon Péyi",
+      "licence_ou_usage": "Ressource créée pour Lokasyon Péyi, usage de démonstration. Aucune licence tierce revendiquée.",
+      "attribution": "Mention « photo de démonstration » à l’écran selon contexte.",
+      "statut": "maquette",
+      "alt": "Fine rayure claire près du réflecteur du pare-chocs arrière de la citadine verte.",
+      "source": "03_ASSETS/vehicle_defects/citadine-verte-rayure-836.webp",
+      "fixtureId": "v1"
+    },
+    {
+      "fichier": "citadine-verte-illustration-836.webp",
+      "chemin": "assets/vehicles/citadine-verte-illustration-836.webp",
+      "format": "WEBP",
+      "octets": 24490,
+      "sha256": "10e38b9c1defb5ce4df2e31292b218268deed47dd81163fe9150f5e77e29c3e6",
+      "dimensions": [
+        836,
+        470
+      ],
+      "fonction": "Rendu fixe générique",
+      "ecrans": "Illustration optionnelle de la fiche",
+      "origine": "Image de synthèse générée pour Lokasyon Péyi, V2",
+      "auteur": "Image générée pour Lokasyon Péyi",
+      "licence_ou_usage": "Ressource créée pour Lokasyon Péyi, usage de démonstration. Aucune licence tierce revendiquée.",
+      "attribution": "Mention « Représentation illustrative » à l’écran.",
+      "statut": "maquette",
+      "alt": "Représentation illustrative d’une citadine verte sur fond clair.",
+      "source": "03_ASSETS/optional_renders/citadine-verte-illustration-836.webp",
+      "fixtureId": "v1"
+    }
+  ]
+}

@@ -106,8 +106,8 @@ test('dialogue : nom, erreur récupérable, Échap et retour du focus', async ({
   await dialog.getByRole('button',{name:'Confirmer',exact:true}).click();
   await expect(dialog).toHaveCount(0); await expect(open).toBeFocused();
   await page.goto(client + '/vehicle/v1'); await ready(page);
-  const photo = page.getByRole('button',{name:'Ouvrir l’illustration 1 de Peugeot 208'});
-  await photo.click(); await expect(page.getByRole('dialog',{name:'Galerie · illustration fictive'})).toBeVisible();
+  const photo = page.getByRole('button',{name:'Ouvrir la photo 1 de Peugeot 208'});
+  await photo.click(); await expect(page.getByRole('dialog',{name:'Galerie · Peugeot 208'})).toBeVisible();
   await fits(page); await page.keyboard.press('Escape'); await expect(photo).toBeFocused();
   await page.goto(client + '/login');
   await page.getByLabel('Compte de démonstration').selectOption('owner');
