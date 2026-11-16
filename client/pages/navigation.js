@@ -25,7 +25,10 @@ export function navigationState(path, search = '') {
   const root = ['/', '/search', '/rentals', '/messages', '/profile', '/owner'].includes(path) && !thread;
   let back = null;
   // Other detail pages already render a named, domain-specific return link.
-  if (thread) back = ['/messages', 'Retour aux messages'];
+  if (thread) {
+    const query = (new URLSearchParams(search).get('q') || '').slice(0, 100);
+    back = ['/messages' + (query ? '?' + new URLSearchParams({q: query}) : ''), 'Retour aux messages'];
+  }
   else if (path === '/notifications' || path === '/cases') back = ['/profile', 'Retour au profil'];
   else if (['/owner/vehicles', '/owner/requests', '/owner/revenue', '/owner/reputation'].includes(path)) back = ['/owner', 'Espace propriétaire'];
   else if (path === '/demo/audit') back = ['/demo', 'Retour à Démo & comptes'];
