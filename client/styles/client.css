@@ -414,7 +414,6 @@
 }
 
 /* Lot 04: one applied URL state, one filter form, public results on every width. */
-.results-heading h1 { font-family: var(--lp-font-editorial); }
 .search-summary { display: flex; align-items: center; justify-content: space-between; gap: var(--lp-space-16); margin-block: var(--lp-space-16); }
 .search-summary p { margin: 4px 0 0; font-size: var(--lp-text-meta); overflow-wrap: anywhere; }
 .search-summary button { flex-shrink: 0; }
@@ -540,7 +539,6 @@
 
 /* Lot 07 — inbox and explicit thread; composer stays in document flow. */
 .messaging-heading { display: flex; align-items: center; justify-content: space-between; gap: var(--lp-space-16); flex-wrap: wrap; }
-.messaging-heading h1 { font-family: var(--lp-font-editorial); font-weight: 500; }
 .messaging-layout { display: grid; gap: var(--lp-space-24); align-items: start; }
 .messaging-layout>* { min-width: 0; }
 .messaging-main .message-meta, .message-bubble small, .message-composer small { font-size: var(--lp-text-meta); line-height: var(--lp-leading-meta); }
@@ -587,7 +585,7 @@
 .booking-page { min-width: 0; }
 .booking-back { display: inline-flex; align-items: center; gap: var(--lp-space-8); min-height: var(--lp-layout-touch-min); margin-bottom: var(--lp-space-16); }
 .booking-heading { margin-bottom: var(--lp-space-24); }
-.booking-heading h1 { font-family: var(--lp-font-editorial); font-weight: 500; }
+.results-heading h1, .messaging-heading h1, .booking-heading h1 { font-family: var(--lp-font-ui); font-weight: var(--lp-weight-strong); }
 .booking-layout { display: grid; grid-template-columns: minmax(0,1fr); gap: var(--lp-space-24); align-items: start; }
 .booking-content { display: grid; gap: var(--lp-space-20); min-width: 0; }
 .booking-aside { min-width: 0; }

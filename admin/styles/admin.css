@@ -166,3 +166,8 @@ body{background:var(--lp-color-ivory)}
   .admin-main .admin-queue td { grid-template-columns: minmax(80px,1fr) minmax(0,1.6fr); }
   .admin-main .document-preview { padding: var(--lp-space-16); min-height: 220px; }
 }
+
+/* Keep every moderation tab fully visible when keyboard focus moves at 320px. */
+@media (max-width:359px) {
+  .admin-main .tabs { flex-wrap: wrap; overflow: visible; }
+}
