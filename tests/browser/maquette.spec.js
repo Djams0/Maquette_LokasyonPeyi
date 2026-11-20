@@ -1,5 +1,6 @@
 import {test,expect} from '@playwright/test';
-const client='http://127.0.0.1:8080',admin='http://127.0.0.1:8081';
+const client=process.env.LP_TEST_CLIENT_ORIGIN || 'http://127.0.0.1:8080';
+const admin=process.env.LP_TEST_ADMIN_ORIGIN || 'http://127.0.0.1:8081';
 async function persona(page,id,internal=false){await page.goto((internal?admin:client)+'/login');await page.getByLabel(internal?'Profil et périmètre':'Compte de démonstration').selectOption(id);await page.getByRole('button',{name:internal?'Ouvrir cet espace':'Entrer dans la démo',exact:true}).click();await page.waitForURL(u=>u.pathname!='/login');}
 async function snapshot(page,name){if(new URL(page.url()).origin===client && new URL(page.url()).pathname==='/')await expect(page.locator('#explorer-catalogue')).toHaveAttribute('aria-busy','false');await page.screenshot({path:'test-results/'+name+'.png',fullPage:true});}
 const consoleErrors=[];test.beforeEach(async({page})=>{page.on('pageerror',e=>consoleErrors.push(e.message));});test.afterEach(()=>{expect(consoleErrors.splice(0)).toEqual([]);});
