@@ -19,3 +19,28 @@ test('Recette visuelle: Nunito pour les titres opérationnels, Lora pour la déc
   expect((await page.request.post(client+'/api/v1/session',{data:{persona:'renter'}})).ok()).toBe(true);await check('/messages','Nunito');await page.evaluate(()=>sessionStorage.setItem('rental-draft',JSON.stringify({vehicleId:'v1',start:'2027-06-10T13:00:00.000Z',end:'2027-06-14T13:00:00.000Z'})));await check('/request/v1','Nunito');
   expect((await page.request.post(client+'/api/v1/session',{data:{persona:'audit-r02'}})).ok()).toBe(true);const rental=target.store.db.rentals.find(r=>r.renterId==='audit-r02'&&r.status==='confirmed');await check('/rental/'+rental.id,'Nunito');
 });
+
+test('Recette V3.2 à 1280 px: recherche et fiche utilisables au clavier', async ({page}) => {
+  await page.setViewportSize({width:1280,height:760});
+  await page.goto(client + '/');
+  const submit = page.getByRole('button',{name:'Trouver une voiture',exact:true});
+  await expect(submit).toBeVisible();
+  const credit = page.getByRole('link',{name:/Photo · artificiality/});
+  await expect(credit).toHaveAttribute('href','/assets/v32/credits.html#photo-49');
+  await page.getByRole('searchbox',{name:'Lieu de remise'}).press('Enter');
+  await expect(page).toHaveURL(/\/search(?:\?|$)/);
+  await expect(page.locator('#search-items')).toHaveAttribute('aria-busy','false');
+  await expect(page.locator('#filter-home #search-filters')).toBeVisible();
+  const catalogueUrl = page.url();
+  const vehicle = page.locator('#search-items a[href^="/vehicle/v3"]').first();
+  await expect(vehicle).toBeVisible();
+  await vehicle.press('Enter');
+  await expect(page).toHaveURL(/\/vehicle\/v3(?:\?|$)/);
+  await expect(page.getByRole('link',{name:'Retour aux résultats'})).toHaveAttribute(
+    'href',new URL(catalogueUrl).pathname + new URL(catalogueUrl).search,
+  );
+  const request = page.getByRole('button',{name:'Demander la location',exact:true});
+  await expect(request).toBeVisible();
+  expect((await request.boundingBox()).height).toBeGreaterThanOrEqual(44);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
+});
