@@ -302,6 +302,161 @@
 .swatch-warning-bg { background: var(--lp-color-warning-bg); }
 .swatch-error-bg { background: var(--lp-color-error-bg); }
 
+/* V3.2 search surfaces. The opaque material works without backdrop filtering. */
+.v32-glass {
+  background: var(--v32-glass-solid);
+  border: 1px solid var(--v32-glass-line);
+  border-radius: var(--v32-search-radius);
+  box-shadow: var(--v32-glass-shadow);
+}
+.v32-glass--light { --v32-glass-tint: var(--v32-glass-light); }
+.v32-glass--dark { --v32-glass-tint: var(--v32-glass-dark); }
+
+@supports (backdrop-filter: blur(1px)) {
+  .v32-glass {
+    background: var(--v32-glass-reflection), var(--v32-glass-tint);
+    backdrop-filter: blur(var(--v32-glass-blur));
+  }
+}
+.v32[data-v32-opaque] .v32-glass {
+  background: var(--v32-glass-solid);
+  backdrop-filter: none;
+}
+@media (prefers-reduced-transparency: reduce) {
+  .v32 .v32-glass {
+    background: var(--v32-glass-solid);
+    backdrop-filter: none;
+  }
+}
+
+.v32-glass-demo {
+  max-width: var(--v32-wrap);
+  margin-inline: auto;
+  color: var(--v32-ink);
+  font: 1rem/1.55 var(--v32-font-ui);
+}
+.v32-glass-demo h2 {
+  font-family: var(--v32-font-title);
+  font-size: clamp(1.625rem, 3.2vw, 3rem);
+  font-weight: 500;
+}
+.v32-glass-scenes { display: grid; gap: 16px; }
+.v32-glass-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-block: 16px;
+}
+.v32-glass-options button {
+  background: var(--v32-white);
+  border-color: var(--v32-control);
+  border-radius: var(--lp-radius-pill);
+  color: var(--v32-action);
+}
+.v32-glass-options button:hover { background: var(--v32-mint); }
+.v32-glass-options button[aria-pressed="true"] {
+  background: var(--v32-action);
+  color: var(--v32-white);
+}
+.v32-glass-scene {
+  display: grid;
+  align-content: space-between;
+  gap: 24px;
+  min-width: 0;
+  min-height: 320px;
+  padding: 18px;
+  background: var(--v32-scene-background) center / cover;
+  border-radius: var(--v32-card-radius);
+}
+.v32-glass-scene--light {
+  --v32-scene-background:
+    radial-gradient(ellipse at 8% 38%, #c4eee7 0%, transparent 60%),
+    linear-gradient(152deg, #94cfd4 36%, #e0eee4 56%, #e6c99d 85%);
+}
+.v32-glass-scene--dark {
+  --v32-scene-background:
+    radial-gradient(ellipse at 75% 35%, #285548 0%, transparent 70%),
+    linear-gradient(152deg, #103731 40%, #274742 60%, #162728 85%);
+}
+.v32-glass-scene h3 {
+  justify-self: start;
+  margin: 0;
+  padding: 6px 12px;
+  color: var(--v32-ink);
+  background: var(--v32-white);
+  border-radius: var(--lp-radius-pill);
+  font: 800 1rem/1.25 var(--v32-font-ui);
+}
+.v32-glass-search { display: grid; gap: 8px; padding: 10px; }
+.v32-glass-field {
+  display: grid;
+  min-width: 0;
+  padding: 8px 11px 2px;
+  background: var(--v32-white);
+  border: 1px solid var(--v32-control);
+  border-radius: 15px;
+}
+.v32-glass-field span { font-size: .75rem; font-weight: 800; }
+.v32-glass-field .icon { width: 14px; height: 14px; color: var(--v32-action); }
+.v32-glass-field input {
+  min-height: var(--v32-target);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: var(--v32-ink);
+}
+.v32-glass-field input::placeholder { color: var(--v32-muted); opacity: 1; }
+.v32-glass-field input:focus-visible { outline: none; }
+.v32-glass-field:has(input[aria-invalid="true"]) { border-color: var(--v32-error); }
+.v32-glass-field:has(input:disabled) { background: var(--lp-color-disabled-bg); }
+.v32-glass-search button {
+  min-height: 64px;
+  background: var(--v32-action);
+  color: var(--v32-white);
+  border-color: var(--v32-white);
+  border-radius: 15px;
+}
+.v32-glass-search button:hover, .v32-glass-search button:active { background: var(--v32-hover); }
+.v32-glass-search button:disabled {
+  background: var(--lp-color-disabled-bg);
+  color: var(--lp-color-disabled-text);
+  border-color: var(--v32-control);
+}
+.v32-glass-search :is(.form-error, .v32-glass-result) {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 8px 12px;
+  background: var(--v32-white);
+  border-radius: var(--lp-radius-control);
+  font-size: .875rem;
+}
+.v32-glass-search .form-error { color: var(--v32-error); }
+.v32-glass-result:empty { display: none; }
+.v32-glass-demo :is(button, .form-error):focus-visible,
+.v32-glass-field:has(input:focus-visible) {
+  outline: 3px solid var(--v32-white);
+  outline-offset: 0;
+  box-shadow: 0 0 0 6px var(--v32-hover);
+}
+@media (min-width: 700px) {
+  .v32-glass-scenes, .v32-glass-search { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (forced-colors: active) {
+  .v32 .v32-glass, .v32[data-v32-opaque] .v32-glass {
+    background: Canvas;
+    backdrop-filter: none;
+    border-color: CanvasText;
+    box-shadow: none;
+  }
+  .v32-glass-scene, .v32-glass-scene h3 { background: Canvas; }
+  .v32-glass-scene, .v32-glass-field, .v32-glass-demo button { border: 1px solid ButtonText; }
+  .v32-glass-field:has(input[aria-invalid="true"]) { border-style: dashed; }
+  .v32-glass-demo button[aria-pressed="true"] { border-width: 2px; }
+  .v32-glass-search button:disabled { color: GrayText; border-color: GrayText; }
+  .v32-glass-demo :is(button, .form-error):focus-visible,
+  .v32-glass-field:has(input:focus-visible) { outline-color: Highlight; }
+}
+
 @media (max-width:767px) { .bottom-nav { padding-inline: 0; } .bottom-nav a { white-space: nowrap; overflow-wrap: normal; } }
 
 .header nav>a:not(.button) { min-height: var(--lp-layout-touch-min); }

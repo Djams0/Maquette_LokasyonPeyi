@@ -1,6 +1,64 @@
 import {api} from '../http.js';
 import {escape,link,notice,select,errorSlot,bindForm,flash,badge,icon,field,textarea,modal,toast,empty,shellLoading,statuses} from '/ui/components.js';
 export async function demo(me){const personas=await api('/personas?app=client');document.getElementById('main').innerHTML=`<div class="narrow"><p class="eyebrow">Atelier de démonstration</p><h1>Explorez chaque point de vue.</h1>${notice('Toutes les personnes, demandes et opérations sont fictives. Le client et l’administration échangent uniquement avec une API commune.')}<article class="card section"><h2>Changer de profil client</h2>${link('/demo/audit','Atelier des profils audit','secondary')}<form id="persona-form">${select('Profil de démonstration','persona',personas.map(p=>[p.id,p.name+(p.status==='suspended'?' · suspendu':'')]),me?.id||'renter')}${errorSlot}<button type="submit">Ouvrir ce profil</button><button id="visitor" type="button" class="secondary">Passer en visiteur</button></form></article><article class="card section"><h2>Scénario complet</h2><ol><li>Camille : rechercher, puis envoyer une demande.</li><li>Noa : ouvrir « Demandes », puis accepter.</li><li>Camille : simuler le paiement, puis le contrôle de caution.</li><li>Remplir les huit vues du constat de départ.</li><li>Noa : confirmer la remise des clés.</li><li>Camille : constat de retour, puis retour déclaré.</li><li>Noa : confirmer la récupération et clôturer.</li><li>Camille : laisser un avis et imprimer le reçu fictif.</li></ol><div class="form-actions">${link('/search','Rechercher un véhicule')}${link('/owner/requests','Demandes propriétaire','secondary')}</div></article><article class="card section"><h2>Ouvrir le back-office indépendant</h2><p>Sur le port 8081 : Élie contrôle les documents affectés ; Ana gère les dossiers ; Sam participe à la double validation financière ; Jade et Malo administrent les habilitations.</p><a class="button secondary" href="http://localhost:8081/" target="_blank" rel="noopener">Administration · localhost:8081</a></article><article class="card section"><h2>Tester les états de l’interface</h2><form id="network-form">${select('État réseau simulé','network',[['','Normal'],['slow','Chargement lent'],['error','API indisponible']],sessionStorage.getItem('network-demo')||'')}${errorSlot}<button type="submit">Appliquer et ouvrir le catalogue</button></form><div class="form-actions">${link('/search?state=empty','Résultat vide','secondary')}${link('/route-inconnue','Écran 404','secondary')}${link('/design-system','Composants visuels','secondary')}</div></article></div>`;bindForm('persona-form',async b=>{sessionStorage.removeItem('network-demo');await api('/session',b);flash('Profil de démonstration modifié.');location.href=b.persona==='owner'?'/owner':'/';});document.getElementById('visitor').onclick=async()=>{await api('/session',undefined,'DELETE');location.href='/';};bindForm('network-form',b=>{sessionStorage.setItem('network-demo',b.network);location.href='/search';});}
+function glassExample(tone, title) {
+  return `
+    <article class="v32-glass-scene v32-glass-scene--${tone}" aria-labelledby="glass-${tone}">
+      <h3 id="glass-${tone}">${title}</h3>
+      <form class="v32-glass v32-glass--${tone} v32-glass-search" aria-labelledby="glass-${tone}">
+        <label class="v32-glass-field">
+          <span>${icon('pin')} Lieu de remise</span>
+          <input name="destination" type="text" placeholder="Commune ou aéroport" autocomplete="off" required>
+        </label>
+        <button type="submit">Trouver une voiture</button>
+        ${errorSlot}
+        <p class="v32-glass-result" role="status"></p>
+      </form>
+    </article>`;
+}
+
+function bindGlassDemo() {
+  const demo = document.getElementById('glass-demo');
+  const forms = [...demo.querySelectorAll('form')];
+  const opaque = document.getElementById('glass-opaque');
+  const unavailable = document.getElementById('glass-unavailable');
+
+  opaque.onclick = () => {
+    const active = opaque.getAttribute('aria-pressed') !== 'true';
+    opaque.setAttribute('aria-pressed', String(active));
+    demo.toggleAttribute('data-v32-opaque', active);
+  };
+  unavailable.onclick = () => {
+    const active = unavailable.getAttribute('aria-pressed') !== 'true';
+    unavailable.setAttribute('aria-pressed', String(active));
+    for (const form of forms) {
+      const input = form.elements.destination;
+      // Clear any validation feedback before switching the controls off.
+      input.dispatchEvent(new Event('input', {bubbles: true}));
+      input.disabled = active;
+      form.querySelector('button').disabled = active;
+    }
+  };
+  for (const form of forms) {
+    const input = form.elements.destination;
+    const result = form.querySelector('[role="status"]');
+    const updateValidation = () => {
+      input.setCustomValidity(input.value.trim() ? '' : 'Indiquez une commune ou un aéroport.');
+    };
+    updateValidation();
+    form.addEventListener('input', () => {
+      updateValidation();
+      result.textContent = '';
+    });
+    bindForm(form, () => { result.textContent = 'Recherche fictive prête.'; });
+    input.addEventListener('invalid', event => {
+      // The shared error slot supplies the feedback in French.
+      event.preventDefault();
+      input.focus();
+    });
+  }
+}
+
 export function designSystem() {
   const palette = [['Action','action'],['Ivoire','ivory'],['Encre','ink'],['Ocre','ochre'],['Information','info-bg'],['Succès','success-bg'],['Attention','warning-bg'],['Erreur','error-bg']];
   document.getElementById('main').innerHTML = `
@@ -8,6 +66,18 @@ export function designSystem() {
     <h1>Les fondations de Péyi contemporain.</h1>
     <p>Nunito accompagne les actions et les informations. Lora donne le ton des pages de découverte. Lobster reste réservé à la marque.</p>
     <p>Ces exemples locaux ne créent aucune donnée et n’envoient aucun message.</p>
+    <section class="v32 v32-glass-demo section" id="glass-demo" aria-labelledby="glass-demo-title">
+      <h2 id="glass-demo-title">La recherche sur fond clair ou sombre</h2>
+      <p>Laissez le lieu vide pour essayer la validation du formulaire.</p>
+      <div class="v32-glass-options">
+        <button id="glass-opaque" type="button" aria-pressed="false">Fond opaque</button>
+        <button id="glass-unavailable" type="button" aria-pressed="false">Simuler l’indisponibilité</button>
+      </div>
+      <div class="v32-glass-scenes">
+        ${glassExample('light', 'Fond clair')}
+        ${glassExample('dark', 'Fond sombre')}
+      </div>
+    </section>
     <div class="palette section" role="group" aria-label="Palette Péyi contemporain">${palette.map(([label,color]) => `<div class="swatch"><span class="swatch-color swatch-${color}" aria-hidden="true"></span><strong>${label}</strong></div>`).join('')}</div>
     <div class="grid section component-samples">
       <article class="card"><h2>Actions</h2><div class="stack">
@@ -30,6 +100,7 @@ export function designSystem() {
       <article class="card"><h2>Chargement</h2><p>Une place réservée garde la page stable pendant le chargement.</p>${shellLoading}</article>
     </div>
     <section class="card section"><h2>Une typographie lisible</h2><p class="editorial-type">Une voiture, à votre rythme.</p><p>Le corps reste à 16 px, avec un interligne de 24 px. Les informations secondaires utilisent au moins 14 px.</p><small>Une information secondaire reste lisible et conserve son contexte.</small></section>`;
+  bindGlassDemo();
   document.getElementById('sample-toast').onclick = () => toast('Notification de démonstration.');
   const open = () => modal('Un dialogue clair', `<p>Les exemples sont fictifs. Fermer ou Échap vous ramène au bouton d’origine.</p>${field('Votre prénom fictif','firstName','','text','required minlength="2"')}<p>Saisissez « erreur » pour tester la reprise.</p>`, async b => {
     await new Promise(resolve => setTimeout(resolve, 400));
