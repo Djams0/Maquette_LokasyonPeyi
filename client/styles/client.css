@@ -41,6 +41,19 @@
 .owner-banner h2{margin:0}
 .footer{border-top:1px solid var(--line);max-width:1192px;margin:auto;padding:28px 0;display:flex;justify-content:space-between;gap:18px;font-size:var(--lp-text-meta)}
 .footer .row{gap:24px}
+.photo-credits-page {
+  max-width: 760px;
+  margin-inline: auto;
+  padding: 24px clamp(12px, 4vw, 32px) 48px;
+}
+.photo-credits-page h1 { margin-top: 24px; }
+.photo-credits-page .card { overflow-wrap: anywhere; }
+.photo-credit-link, .photo-credits-page article a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  min-width: 44px;
+}
 .bottom-nav{display:none}
 .search-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:28px}
 .filter-panel{padding:22px;box-shadow:none}
@@ -365,16 +378,22 @@
   min-width: 0;
   min-height: 320px;
   padding: 18px;
-  background: var(--v32-scene-background) center / cover;
+  background-image: var(--v32-scene-background);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   border-radius: var(--v32-card-radius);
 }
 .v32-glass-scene--light {
   --v32-scene-background:
+    url('/assets/v32/editorial/sainte-anne-caravelle-720.webp'),
     radial-gradient(ellipse at 8% 38%, #c4eee7 0%, transparent 60%),
     linear-gradient(152deg, #94cfd4 36%, #e0eee4 56%, #e6c99d 85%);
 }
 .v32-glass-scene--dark {
   --v32-scene-background:
+    linear-gradient(#16272867, #162728a8),
+    url('/assets/v32/editorial/route-de-la-traversee-720.webp'),
     radial-gradient(ellipse at 75% 35%, #285548 0%, transparent 70%),
     linear-gradient(152deg, #103731 40%, #274742 60%, #162728 85%);
 }

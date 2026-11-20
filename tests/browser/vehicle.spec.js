@@ -31,13 +31,65 @@ test('Fiche: défaut entier et provenance, rendu optionnel hors galerie chargé 
  await page.keyboard.press('Escape');await expect(trigger).toBeFocused();const model=page.getByRole('button',{name:'Voir l’illustration du modèle',exact:true});await model.click();const render=page.getByRole('dialog',{name:'Illustration du modèle',exact:true});await expect(render.getByText('Représentation illustrative',{exact:true})).toBeVisible();expect(images.some(u=>u.includes('illustration-836'))).toBe(true);await render.getByRole('button',{name:'Revenir aux photos de l’annonce',exact:true}).click();await expect(page.locator('#open-vehicle-gallery')).toBeFocused();
 });
 test('Fiche: galerie à une illustration et état non renseigné ne deviennent pas une déclaration v1',async({page})=>{
- await open(page,'v2');await expect(page.getByText('État non renseigné',{exact:true})).toBeVisible();await expect(page.getByRole('button',{name:'Voir l’illustration du modèle',exact:true})).toHaveCount(0);await expect(page.getByRole('button',{name:/Rayure superficielle/})).toHaveCount(0);
- await page.getByRole('button',{name:'Ouvrir l’illustration 1 de Dacia Duster',exact:true}).click();const d=page.getByRole('dialog',{name:'Galerie · Dacia Duster',exact:true});await expect(d.locator('#gallery-count')).toHaveText('1 / 1');await expect(d.getByRole('button',{name:'Précédente',exact:true})).toBeDisabled();await expect(d.getByRole('button',{name:'Suivante',exact:true})).toBeDisabled();await expect(d).toContainText('Illustration fictive');
+ await open(page,'v4');await expect(page.getByText('État non renseigné',{exact:true})).toBeVisible();await expect(page.getByRole('button',{name:'Voir l’illustration du modèle',exact:true})).toHaveCount(0);await expect(page.getByRole('button',{name:/Rayure superficielle/})).toHaveCount(0);
+ await page.getByRole('button',{name:'Ouvrir l’illustration 1 de Citroën C3',exact:true}).click();const d=page.getByRole('dialog',{name:'Galerie · Citroën C3',exact:true});await expect(d.locator('#gallery-count')).toHaveText('1 / 1');await expect(d.getByRole('button',{name:'Précédente',exact:true})).toBeDisabled();await expect(d.getByRole('button',{name:'Suivante',exact:true})).toBeDisabled();await expect(d).toContainText('Illustration fictive');
 });
 test('Fiche: absence de photo, SVG et photo de défaut se dégradent sans preuve substituée',async({page})=>{
  await page.route('**/assets/vehicles/*.webp',r=>r.abort());await open(page);await expect(page.locator('#open-vehicle-gallery .detail-media-status')).toHaveText('Photo indisponible · illustration fictive de remplacement');await expect(page.locator('#open-vehicle-gallery img')).toHaveAttribute('src','/assets/car-sage.svg');await expect(page.locator('#open-vehicle-gallery img')).not.toHaveAttribute('srcset',/.+/);
  await page.getByRole('button',{name:/Rayure superficielle/}).click();const d=page.getByRole('dialog',{name:'État du véhicule · déclaration fictive',exact:true});await expect(d.locator('img')).toBeHidden();await expect(d).toContainText('Image indisponible · la description reste consultable');await expect(d.locator('img')).toHaveAttribute('src',/rayure/);await page.keyboard.press('Escape');
+ await page.route('**/assets/v32/demo/duster-avant-*.webp',r=>r.fulfill({status:404}));
  await page.route('**/assets/car-*.svg',r=>r.abort());await open(page,'v2');await expect(page.locator('#open-vehicle-gallery img')).toBeHidden();await expect(page.locator('#open-vehicle-gallery')).toContainText('Visuel indisponible');
+});
+
+test('V3.2: galeries Clio et Duster séparées, formats à la demande et retour clavier', async ({page}, info) => {
+ await page.setViewportSize({width:1440,height:900});
+ const images = [];
+ page.on('request', request => {
+  if (request.resourceType() === 'image') images.push(new URL(request.url()).pathname);
+ });
+ await open(page,'v3');
+ const cover = page.getByRole('button',{name:'Ouvrir les photos du modèle Renault Clio'});
+ const coverImage = cover.locator('img');
+ await expect(coverImage).toHaveJSProperty('currentSrc',client+'/assets/v32/demo/clio-avant-1050.webp');
+ await expect(coverImage).toHaveAttribute('width','1050');
+ await expect(coverImage).toHaveAttribute('height','787');
+ await expect(page.getByText('État non renseigné',{exact:true})).toBeVisible();
+ await expect(page.getByRole('button',{name:/Rayure superficielle/})).toHaveCount(0);
+ expect(images.filter(url => url.includes('/v32/demo/'))).toEqual(['/assets/v32/demo/clio-avant-1050.webp']);
+ await cover.focus();
+ await page.keyboard.press('Enter');
+ const gallery = page.getByRole('dialog',{name:'Galerie · Renault Clio'});
+ await expect(gallery).toContainText('Elles ne montrent ni le véhicule proposé, ni ses équipements, ni son état.');
+ await expect(gallery.locator('#gallery-count')).toHaveText('1 / 3');
+ await page.keyboard.press('ArrowRight');
+ await expect(gallery.locator('#gallery-view img')).toHaveJSProperty('currentSrc',client+'/assets/v32/demo/clio-arriere-900.webp');
+ await expect(gallery.locator('#gallery-count')).toHaveText('2 / 3');
+ await page.keyboard.press('ArrowRight');
+ await expect(gallery.locator('#gallery-view img')).toHaveJSProperty('currentSrc',client+'/assets/v32/demo/clio-face-900.webp');
+ await expect(gallery.locator('#gallery-count')).toHaveText('3 / 3');
+ await info.attach('Clio · vue de modèle et provenance', {body:await gallery.screenshot(),contentType:'image/png'});
+ await page.keyboard.press('Escape');
+ await expect(cover).toBeFocused();
+ await expect(page.locator('#return-search')).toHaveAttribute('href','/search'+dated);
+
+ await page.setViewportSize({width:320,height:844});
+ await open(page,'v2');
+ const duster = page.getByRole('button',{name:'Ouvrir les photos du modèle Dacia Duster'});
+ await expect(duster.locator('img')).toHaveJSProperty('currentSrc',client+'/assets/v32/demo/duster-avant-480.webp');
+ await expect(page.getByText('État non renseigné',{exact:true})).toBeVisible();
+ await expect(page.getByRole('button',{name:/Rayure superficielle/})).toHaveCount(0);
+ await duster.click();
+ const otherGallery = page.getByRole('dialog',{name:'Galerie · Dacia Duster'});
+ await expect(otherGallery.locator('#gallery-count')).toHaveText('1 / 2');
+ const next = otherGallery.getByRole('button',{name:'Suivante'});
+ await next.click();
+ await expect(otherGallery.locator('#gallery-view img')).toHaveJSProperty('currentSrc',client+'/assets/v32/demo/duster-arriere-420.webp');
+ await expect(next).toBeFocused();
+ const box = await next.boundingBox();
+ expect(Math.min(box.width,box.height)).toBeGreaterThanOrEqual(44);
+ expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
+ await page.keyboard.press('Escape');
+ await expect(duster).toBeFocused();
 });
 test('Fiche: prix non calculable, période invalide et dates proposées sont explicites',async({page})=>{
  await page.route('**/api/v1/vehicles/v1',async r=>{const res=await r.fetch(),v=await res.json();await r.fulfill({json:{...v,price:null}});});await open(page);await expect(page.locator('#vehicle-estimate')).toContainText('Prix non calculable');await expect(page.locator('#vehicle-estimate')).not.toContainText('NaN');await page.unroute('**/api/v1/vehicles/v1');
