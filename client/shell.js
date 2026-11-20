@@ -36,7 +36,7 @@ export function shell(me) {
     </dialog>
     ${state.back ? `<nav class="context-nav" aria-label="Retour"><a href="${state.back[0]}">${icon('back')}${state.back[1]}</a></nav>` : ''}
     <main class="client-main" id="main" tabindex="-1"></main>
-    <footer class="footer"><div><a class="logo" href="/">Lokasyon <span>Péyi</span></a><p>Un autre chemin pour découvrir le Péyi.</p><small>Prototype indépendant · Guadeloupe</small></div><nav aria-label="Aide et démonstration" class="row"><a href="/faq">FAQ</a><a href="/assistance">Nous contacter</a><a href="/design-system">Design system</a><a href="/demo">Guide de démonstration</a><a href="/demo/audit">Atelier d’audit</a></nav></footer>
+    <footer class="footer"><div><a class="logo" href="/">Lokasyon <span>Péyi</span></a><p>Un autre chemin pour découvrir le Péyi.</p><small>Prototype indépendant · Guadeloupe</small></div><nav aria-label="Aide et démonstration" class="row"><a href="/faq">FAQ</a><a href="/assistance">Nous contacter</a><a href="/design-system">Design system</a><a href="/demo">Guide de démonstration</a><a href="/demo/audit">Atelier d’audit</a><a class="photo-credit-link" href="/assets/v32/credits.html">Crédits des photos</a></nav></footer>
     ${state.root ? `<nav class="bottom-nav" aria-label="Navigation mobile">${primaryLinks(state.active,true)}</nav>` : ''}`;
   const trigger = document.getElementById('menu-toggle'), panel = document.getElementById('navigation-panel');
   trigger.onclick = () => { panel.showModal(); trigger.setAttribute('aria-expanded','true'); };

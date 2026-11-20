@@ -1,8 +1,33 @@
+import manifest from '../../assets/v32/manifest.json' with {type: 'json'};
+
 const colors = new Set(['sage', 'sand', 'blue', 'coral']);
+const photos = new Map(manifest.photos.map(photo => [photo.id, photo]));
+const fallbackFor = vehicle => '/assets/car-' + (colors.has(vehicle.color) ? vehicle.color : 'sage') + '.svg';
+
+export function modelPhotoSeries(vehicle) {
+  const mapping = Object.hasOwn(manifest.vehicles, vehicle.id) && manifest.vehicles[vehicle.id];
+  if (mapping?.usage !== 'model' || mapping.name !== vehicle.name) return [];
+  return mapping.series.map(id => {
+    const photo = photos.get(id);
+    const variants = [...photo.variants].sort((a, b) => a.size[0] - b.size[0]);
+    const {size: [width, height]} = variants.at(-1);
+    return {
+      photo: true,
+      modelPhoto: true,
+      creditId: id,
+      src: '/' + variants[0].target,
+      srcset: variants.map(({target, size: [w]}) => `/${target} ${w}w`).join(', '),
+      alt: photo.alt,
+      width,
+      height,
+      fallback: fallbackFor(vehicle),
+    };
+  });
+}
 
 // Explicit fixture identity from the handoff manifest; never infer a model from color.
 export function vehicleMedia(vehicle) {
-  const fallback = '/assets/car-' + (colors.has(vehicle.color) ? vehicle.color : 'sage') + '.svg';
+  const fallback = fallbackFor(vehicle);
   if (vehicle.id === 'v1') return {
     photo: true,
     src: '/assets/vehicles/citadine-verte-avant-420.webp',

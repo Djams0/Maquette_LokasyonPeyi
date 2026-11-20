@@ -1,0 +1,427 @@
+{
+  "version": "3.2",
+  "editorial": {
+    "hero": 49,
+    "panorama": 46,
+    "foret": 47,
+    "littoral": 48,
+    "bourg": 53,
+    "verreClair": 48,
+    "verreSombre": 47
+  },
+  "vehicles": {
+    "v1": {
+      "name": "Peugeot 208",
+      "usage": "review",
+      "series": [
+        1,
+        2
+      ]
+    },
+    "v2": {
+      "name": "Dacia Duster",
+      "usage": "model",
+      "series": [
+        11,
+        12
+      ]
+    },
+    "v3": {
+      "name": "Renault Clio",
+      "usage": "model",
+      "series": [
+        4,
+        6,
+        5
+      ]
+    }
+  },
+  "photos": [
+    {
+      "id": 1,
+      "title": "2019 Peugeot 208 GT Line PureTech Automatic 1.2 Front.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:2019_Peugeot_208_GT_Line_PureTech_Automatic_1.2_Front.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS 16:10.",
+      "alt": "Peugeot 208 grise, vue avant de trois quarts en concession",
+      "fixtureId": "v1",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/208-avant-1000.webp",
+          "target": "assets/v32/demo/208-avant-1000.webp",
+          "size": [
+            1000,
+            689
+          ],
+          "bytes": 62274,
+          "sha256": "5d2fc63b86bae67ac9456b663803771fa684e4535345c5a05477992b1d425b11"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/208-avant-480.webp",
+          "target": "assets/v32/demo/208-avant-480.webp",
+          "size": [
+            480,
+            331
+          ],
+          "bytes": 22660,
+          "sha256": "7cb54739376cbf82819e0e988311da5adf069b744f9cf3fb0ef2fa5d437113ce"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "2019 Peugeot 208 GT Line PureTech Automatic 1.2 Rear.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:2019_Peugeot_208_GT_Line_PureTech_Automatic_1.2_Rear.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS, ouverture pleine photo.",
+      "alt": "Peugeot 208 grise de trois quarts arrière",
+      "fixtureId": "v1",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/208-arriere-420.webp",
+          "target": "assets/v32/demo/208-arriere-420.webp",
+          "size": [
+            420,
+            308
+          ],
+          "bytes": 17918,
+          "sha256": "057721b3ee6480a98d69501e2514a980f3ccefaa69ced3186e0ad51ae09294f1"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/208-arriere-900.webp",
+          "target": "assets/v32/demo/208-arriere-900.webp",
+          "size": [
+            900,
+            661
+          ],
+          "bytes": 53570,
+          "sha256": "4ef1f9b57f08f23315cc41e1155bba535286b3621d8fa8b9cfea9d65eab28186"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Renault Clio BF Valencia Orange (1).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Renault_Clio_BF_Valencia_Orange_(1).jpg",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS 16:10, galerie recadrée.",
+      "alt": "Renault Clio orange de trois quarts avant",
+      "fixtureId": "v3",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/clio-avant-1050.webp",
+          "target": "assets/v32/demo/clio-avant-1050.webp",
+          "size": [
+            1050,
+            787
+          ],
+          "bytes": 195636,
+          "sha256": "f5c4eab91b770850ce089aed6b36e755a77fd1b2bdca67991f3799a3c2ea26c4"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/clio-avant-480.webp",
+          "target": "assets/v32/demo/clio-avant-480.webp",
+          "size": [
+            480,
+            360
+          ],
+          "bytes": 48400,
+          "sha256": "322a585df6b31da16c0af36f012505eb6f9f53f47e2d988169638f6be69d8583"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Renault Clio BF Valencia Orange (2).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Renault_Clio_BF_Valencia_Orange_(2).jpg",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS, ouverture pleine photo.",
+      "alt": "Renault Clio orange vue de face",
+      "fixtureId": "v3",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/clio-face-420.webp",
+          "target": "assets/v32/demo/clio-face-420.webp",
+          "size": [
+            420,
+            315
+          ],
+          "bytes": 25650,
+          "sha256": "8891e0decc3e3e4cf11a6c9cafcaeb5465c49a6cd0aff2014dd867e7966a7fe9"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/clio-face-900.webp",
+          "target": "assets/v32/demo/clio-face-900.webp",
+          "size": [
+            900,
+            675
+          ],
+          "bytes": 98736,
+          "sha256": "fbc477562e3da6efc97f406f7fcd02079bebf54806376108305eb462264db79e"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Renault Clio BF Valencia Orange (3).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Renault_Clio_BF_Valencia_Orange_(3).jpg",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS, ouverture pleine photo.",
+      "alt": "Renault Clio orange de trois quarts arrière",
+      "fixtureId": "v3",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/clio-arriere-420.webp",
+          "target": "assets/v32/demo/clio-arriere-420.webp",
+          "size": [
+            420,
+            315
+          ],
+          "bytes": 31528,
+          "sha256": "ec7a779bf0d235e2f731f7196fcd5839fc64e3eceb92471b583e6a2bbec335ab"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/clio-arriere-900.webp",
+          "target": "assets/v32/demo/clio-arriere-900.webp",
+          "size": [
+            900,
+            675
+          ],
+          "bytes": 131302,
+          "sha256": "a638c1657f668f53c93613d14f8af4570e7f6e6d24430c3e02b4c0308a427592"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Dacia Duster HM FL Glacier White (2).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Dacia_Duster_HM_FL_Glacier_White_(2).jpg",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS 16:10.",
+      "alt": "Dacia Duster blanc, vue de trois quarts avant en ville",
+      "fixtureId": "v2",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/duster-avant-1000.webp",
+          "target": "assets/v32/demo/duster-avant-1000.webp",
+          "size": [
+            1000,
+            750
+          ],
+          "bytes": 57054,
+          "sha256": "d33b3623b9e4a05aeb6309aa0051db0ecf6bd30c88fa43b19b0be9a248ead07d"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/duster-avant-480.webp",
+          "target": "assets/v32/demo/duster-avant-480.webp",
+          "size": [
+            480,
+            360
+          ],
+          "bytes": 22000,
+          "sha256": "81206c4c204768d462fbf647f2b1bcba8a3350da79d558d8c99bf49c9a155c2c"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Dacia Duster HM FL Glacier White (3).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Dacia_Duster_HM_FL_Glacier_White_(3).jpg",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS, ouverture pleine photo.",
+      "alt": "Dacia Duster blanc au passage piéton, vue arrière",
+      "fixtureId": "v2",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/duster-arriere-420.webp",
+          "target": "assets/v32/demo/duster-arriere-420.webp",
+          "size": [
+            420,
+            315
+          ],
+          "bytes": 33118,
+          "sha256": "5631598c5211fb4604cef3fff74ee4148197a5709cc432a7f9d2c39820460186"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/duster-arriere-900.webp",
+          "target": "assets/v32/demo/duster-arriere-900.webp",
+          "size": [
+            900,
+            675
+          ],
+          "bytes": 89370,
+          "sha256": "b45f70879aa427d274559d933fd488e71026133d29edcaa091a5e8d1d6703bbd"
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "title": "Grande Anse in Deshaies (2).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Grande_Anse_in_Deshaies_(2).jpg",
+      "author": "Tournasol7",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS large.",
+      "alt": "Grande Anse à Deshaies, vue depuis le rivage",
+      "fixtureId": null,
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/editorial/deshaies-grande-anse-1440.webp",
+          "target": "assets/v32/editorial/deshaies-grande-anse-1440.webp",
+          "size": [
+            1440,
+            553
+          ],
+          "bytes": 155544,
+          "sha256": "aa8e25813f1ba7f86b02775d677ea236921991eda164a82a99b4a85ff7a36dc0"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/editorial/deshaies-grande-anse-720.webp",
+          "target": "assets/v32/editorial/deshaies-grande-anse-720.webp",
+          "size": [
+            720,
+            277
+          ],
+          "bytes": 40550,
+          "sha256": "110a045c7de964ae900cf84a764e9f7f9315f248ab04ab83b6c52c22a3dab951"
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "title": "Route de la Traversée (Guadeloupe).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Route_de_la_Travers%C3%A9e_(Guadeloupe).jpg",
+      "author": "Enrevseluj",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS horizontal, dégradé sur exemple verre.",
+      "alt": "Route bordée de forêt en Basse-Terre",
+      "fixtureId": null,
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/editorial/route-de-la-traversee-720.webp",
+          "target": "assets/v32/editorial/route-de-la-traversee-720.webp",
+          "size": [
+            720,
+            960
+          ],
+          "bytes": 112734,
+          "sha256": "1dc32735c4323516c19ad6f235e70818418667d83bee173deffbea5a8d3f66fe"
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "title": "Plage de la Caravelle St-Anne (6).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Plage_de_la_Caravelle_St-Anne_(6).jpg",
+      "author": "Tournasol7",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS horizontal.",
+      "alt": "Plage de la Caravelle et palmiers à Sainte-Anne",
+      "fixtureId": null,
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/editorial/sainte-anne-caravelle-1440.webp",
+          "target": "assets/v32/editorial/sainte-anne-caravelle-1440.webp",
+          "size": [
+            1440,
+            945
+          ],
+          "bytes": 210664,
+          "sha256": "962f7f296b496f9d088f7d9ccfd80bd443cfa67632fdedb89f4a530239c07863"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/editorial/sainte-anne-caravelle-720.webp",
+          "target": "assets/v32/editorial/sainte-anne-caravelle-720.webp",
+          "size": [
+            720,
+            473
+          ],
+          "bytes": 55426,
+          "sha256": "9f024689f1bae71657d21ab8687f83822348c584e3b69bac237f2267374def47"
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "title": "Sunset on Guadeloupe.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Sunset_on_Guadeloupe.jpg",
+      "author": "artificiality",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS desktop 60% 78% et mobile 64% centre, sous dégradé.",
+      "alt": "Voiture sur une route de Guadeloupe au coucher du soleil",
+      "fixtureId": null,
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/editorial/route-guadeloupe-1440.webp",
+          "target": "assets/v32/editorial/route-guadeloupe-1440.webp",
+          "size": [
+            1440,
+            960
+          ],
+          "bytes": 108158,
+          "sha256": "210fc94f3a8ae279b471129e660e8d033091646c51622394c08f609d2eb75b26"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/editorial/route-guadeloupe-1920.webp",
+          "target": "assets/v32/editorial/route-guadeloupe-1920.webp",
+          "size": [
+            1920,
+            1280
+          ],
+          "bytes": 163148,
+          "sha256": "d0cf28ad6515d83c9b782cb897fa388aa4ea6f286b51055a502b5f948d1751c3"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/editorial/route-guadeloupe-720.webp",
+          "target": "assets/v32/editorial/route-guadeloupe-720.webp",
+          "size": [
+            720,
+            480
+          ],
+          "bytes": 35988,
+          "sha256": "3f762c19587107026e2c65eb5bcecebd6496d33b52d0283e9332d21a6beca920"
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "title": "Town centre of Deshaies (1).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Town_centre_of_Deshaies_(1).jpg",
+      "author": "Tournasol7",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS horizontal.",
+      "alt": "Rue et voitures au pied des collines à Deshaies",
+      "fixtureId": null,
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/editorial/bourg-deshaies-720.webp",
+          "target": "assets/v32/editorial/bourg-deshaies-720.webp",
+          "size": [
+            720,
+            453
+          ],
+          "bytes": 81576,
+          "sha256": "6fb1d0693029e9338dd62dd98e5cc4c831d23d40f9640f5ac0c86da0f06bc190"
+        }
+      ]
+    }
+  ]
+}

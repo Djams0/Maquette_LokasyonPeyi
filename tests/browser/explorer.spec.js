@@ -75,5 +75,72 @@ test('Explorer: stockage refusé et photo en erreur utilisent un repli local',as
   await page.addInitScript(()=>Object.defineProperty(window,'localStorage',{configurable:true,get(){throw new DOMException('Storage unavailable','SecurityError');}}));
   await page.route('**/assets/vehicles/*.webp',route=>route.abort());await page.goto(client);await settled(page);
   const image=page.locator('#explorer-cards img');await expect(image).toHaveAttribute('src','/assets/car-sage.svg');await expect(image).not.toHaveAttribute('srcset',/.+/);await expect.poll(()=>image.evaluate(i=>i.complete && i.naturalWidth>0)).toBe(true);await expect(image).toHaveJSProperty('currentSrc',client+'/assets/car-sage.svg');await expect(page.getByText('Photo indisponible · illustration fictive',{exact:true})).toBeVisible();await expect(page.getByRole('link',{name:'Reprendre ma dernière recherche',exact:true})).toHaveCount(0);
+  await page.route('**/assets/v32/demo/clio-avant-*.webp',route=>route.fulfill({status:404}));
   await page.getByLabel('Votre destination').fill('Gosier');await page.getByLabel('Votre destination').press('Enter');await page.waitForURL(/\/search\?/);await expect(page.getByRole('heading',{name:'Résultats',exact:true})).toBeVisible();await expect(page.locator('.catalogue-card[data-vehicle-id="v3"] img')).toHaveAttribute('src','/assets/car-blue.svg');
+  await expect(page.locator('.catalogue-card[data-vehicle-id="v3"]').getByRole('status')).toHaveText('Photo indisponible · illustration fictive');
+});
+
+test('V3.2: catalogue responsive avec médias locaux et crédits accessibles', async ({page,browser}, info) => {
+ await page.setViewportSize({width:320,height:844});
+ await page.goto(client+'/search');
+ const modelCard = page.locator('.catalogue-card[data-vehicle-id="v3"]');
+ const image = modelCard.locator('img');
+ await modelCard.scrollIntoViewIfNeeded();
+ await expect(image).toHaveJSProperty('currentSrc',client+'/assets/v32/demo/clio-avant-480.webp');
+ await expect(image).toHaveCSS('object-fit','cover');
+ const bounds = await image.boundingBox();
+ expect(bounds.width / bounds.height).toBeCloseTo(16/9,2);
+ await expect(image).toHaveAttribute('loading','lazy');
+ await expect(modelCard.getByRole('status')).toHaveText('Photo illustrative du modèle');
+ await expect(page.locator('.catalogue-card[data-vehicle-id="v1"] img')).toHaveAttribute('src', /citadine-verte/);
+ await expect(page.locator('.catalogue-card[data-vehicle-id="v4"] img')).toHaveAttribute('src','/assets/car-coral.svg');
+ const credit = page.getByRole('link',{name:'Crédits des photos',exact:true});
+ await credit.focus();
+ await expect(credit).toBeFocused();
+ expect((await credit.boundingBox()).height).toBeGreaterThanOrEqual(44);
+ await credit.press('Enter');
+ await expect(page.getByRole('heading',{name:'Crédits des photos',exact:true})).toBeVisible();
+ const hero = page.locator('#photo-49');
+ await expect(hero).toContainText('artificiality');
+ await expect(hero.getByRole('link',{name:/Licence CC BY-SA 2.0/})).toHaveAttribute('href','https://creativecommons.org/licenses/by-sa/2.0/');
+ await expect(hero.getByRole('link',{name:/Publication originale/})).toHaveAttribute('href','https://www.flickr.com/photos/artificiality/23995408895/');
+ expect(await page.evaluate(() => document.documentElement.scrollWidth-innerWidth)).toBeLessThanOrEqual(1);
+ await page.getByRole('link',{name:'Retour à l’accueil'}).click();
+ await settled(page);
+ await page.setViewportSize({width:1440,height:900});
+ await page.goto(client+'/search');
+ await modelCard.scrollIntoViewIfNeeded();
+ await expect(image).toHaveJSProperty('currentSrc',client+'/assets/v32/demo/clio-avant-480.webp');
+ await info.attach('Catalogue · photos de modèles et série historique', {body:await page.screenshot(),contentType:'image/png'});
+
+ const retina = await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:2});
+ try {
+  await retina.goto(client+'/search');
+  for (const [id,file] of [['v2','duster-avant-1000.webp'],['v3','clio-avant-1050.webp']]) {
+   const cover = retina.locator(`.catalogue-card[data-vehicle-id="${id}"] img`);
+   await cover.scrollIntoViewIfNeeded();
+   await expect(cover).toHaveJSProperty('currentSrc',client+'/assets/v32/demo/'+file);
+  }
+ } finally {
+  await retina.close();
+ }
+});
+
+test('V3.2: les trois tailles du hero sont servies localement dans un montage isolé', async ({page}) => {
+ const paths = [720,1440,1920].map(width => '/assets/v32/editorial/route-guadeloupe-'+width+'.webp');
+ const fixture = '/assets/v32/hero-recette.html';
+ await page.route(client+fixture, route => route.fulfill({contentType:'text/html;charset=utf-8', body:`
+  <!doctype html><html lang="fr"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <picture>
+    <source media="(max-width:599px)" srcset="${paths[0]}" width="720" height="480">
+    <img src="${paths[1]}" srcset="${paths[1]} 1440w, ${paths[2]} 1920w" sizes="100vw"
+      width="1440" height="960" fetchpriority="high" decoding="async" alt="Route en Guadeloupe au coucher du soleil">
+  </picture>`}));
+ for (const [index,width] of [390,1280,1920].entries()) {
+  await page.setViewportSize({width,height:900});
+  await page.goto(client+fixture);
+  const hero = page.getByRole('img',{name:/au coucher du soleil/});
+  await expect(hero).toHaveJSProperty('currentSrc',client+paths[index]);
+  expect(await hero.evaluate(async img => { await img.decode(); return img.naturalWidth/img.naturalHeight; })).toBeCloseTo(1.5,2);
+ }
 });

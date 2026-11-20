@@ -1,4 +1,4 @@
-import {vehicleMedia} from './vehicle-media.js';
+import {modelPhotoSeries,vehicleMedia} from './vehicle-media.js';
 import {localDate} from './search-state.js';
 
 // Presentation fixture only: neither an API declaration nor evidence of physical condition.
@@ -10,7 +10,10 @@ const views = [
 ];
 export function vehiclePresentation(vehicle) {
   const cover=vehicleMedia(vehicle);
-  if(vehicle.id!=='v1')return {gallery:[cover],condition:null,illustration:null};
+  if (vehicle.id !== 'v1') {
+    const series = modelPhotoSeries(vehicle);
+    return {gallery:series.length ? series : [cover],condition:null,illustration:null};
+  }
   return {
     gallery:[cover,...views.map(([view,alt,width,height])=>({photo:true,src:'/assets/vehicles/citadine-verte-'+view+'-768.webp',alt:alt+' Photo de démonstration.',width,height,fallback:cover.fallback}))],
     condition:{fixtureId:'v1',version:'déclaration visuelle fictive 1',date:'6 juin 2027 · date fictive',zone:'Pare-chocs arrière droit',title:'Rayure superficielle',description:'Exemple déclaratif : petite marque sur la peinture. Cet exemple ne certifie pas l’état physique ou la sécurité du véhicule.',src:'/assets/vehicles/citadine-verte-rayure-836.webp',width:836,height:471},
