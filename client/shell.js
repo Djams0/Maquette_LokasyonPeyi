@@ -2,7 +2,7 @@ import {icon,escape,showFlash} from '/ui/components.js';
 import {destinations,navigationState} from './pages/navigation.js';
 let dispose = () => {};
 const primaryLinks = (active, mobile = false) => destinations.map(([href, symbol, label]) => `<a href="${href}" class="${active === href ? 'active' : ''}" ${active === href ? 'aria-current="page"' : ''}>${mobile ? icon(symbol) : ''}<span>${label}</span></a>`).join('');
-const discoveryLinks = catalogue => `<a href="/search"${catalogue ? ' aria-current="page"' : ''}>Explorer les voitures</a><a href="${catalogue ? '/' : ''}#fonctionnement">Comment ça marche</a><a href="/faq">Aide</a>`;
+const discoveryLinks = current => `<a href="/search"${current ? ` aria-current="${current}"` : ''}>Explorer les voitures</a><a href="${current ? '/' : ''}#fonctionnement">Comment ça marche</a><a href="/faq">Aide</a>`;
 const homeHelpIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></svg>';
 const homeMobileLinks = [['/search',icon('search'),'Explorer'],['/faq',homeHelpIcon,'Aide'],['/profile',icon('user'),'Compte']]
   .map(([href,glyph,label]) => `<a href="${href}">${glyph}<span>${label}</span></a>`).join('');
@@ -42,14 +42,16 @@ export function shell(me) {
   const state = navigationState(location.pathname, location.search);
   const explorer = location.pathname === '/';
   const catalogue = location.pathname.replace(/\/$/,'') === '/search';
-  const discovery = explorer || catalogue;
+  const vehicle = /^\/vehicle\/[^/]+\/?$/.test(location.pathname);
+  const discovery = explorer || catalogue || vehicle;
   const host = document.getElementById('shell');
-  host.className = 'client-shell' + (state.root ? ' has-bottom-nav' : '') + (explorer ? ' is-explorer' : '') + (catalogue ? ' is-catalogue' : '');
+  const discoveryClass = explorer ? ' is-explorer' : catalogue ? ' is-catalogue' : vehicle ? ' is-vehicle-detail' : '';
+  host.className = 'client-shell' + (state.root ? ' has-bottom-nav' : '') + discoveryClass;
   host.innerHTML = `
     ${discovery ? '' : '<div class="demo-banner">Maquette interactive · données fictives · aucun paiement réel <a href="/demo">Démo & comptes</a></div>'}
     <header class="header${discovery ? ' v32' : ''}">
       <a class="logo" href="/">${discovery ? '<img src="/assets/v32/marque/logo-horizontal-charte.webp" width="683" height="122" alt="Lokasyon Péyi">' : 'Lokasyon <span>Péyi</span>'}</a>
-      <nav aria-label="Navigation principale" id="header-nav">${discovery ? discoveryLinks(catalogue) : primaryLinks(state.active)}</nav>
+      <nav aria-label="Navigation principale" id="header-nav">${discovery ? discoveryLinks(catalogue ? 'page' : vehicle ? 'location' : '') : primaryLinks(state.active)}</nav>
       <div class="tools">
         ${me ? `<a class="link-button button" href="/notifications" aria-label="Notifications">${icon('bell')}</a><a class="avatar" href="/profile" aria-label="Mon profil">${escape(me.name[0])}</a>` : '<a class="button secondary" href="/login">Connexion</a>'}
         <button type="button" class="secondary navigation-toggle" id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-haspopup="dialog" aria-controls="navigation-panel">${icon('menu')}<span class="menu-label">Menu</span></button>
@@ -67,7 +69,7 @@ export function shell(me) {
     </dialog>
     ${state.back ? `<nav class="context-nav" aria-label="Retour"><a href="${state.back[0]}">${icon('back')}${state.back[1]}</a></nav>` : ''}
     <main class="client-main" id="main" tabindex="-1"></main>
-    ${discovery ? discoveryFooter(catalogue,me) : `<footer class="footer"><div><a class="logo" href="/">Lokasyon <span>Péyi</span></a><p>Un autre chemin pour découvrir le Péyi.</p><small>Prototype indépendant · Guadeloupe</small></div><nav aria-label="Aide et démonstration" class="row"><a href="/faq">FAQ</a><a href="/assistance">Nous contacter</a><a href="/design-system">Design system</a><a href="/demo">Guide de démonstration</a><a href="/demo/audit">Atelier d’audit</a><a class="photo-credit-link" href="/assets/v32/credits.html">Crédits des photos</a></nav></footer>`}
+    ${discovery ? discoveryFooter(!explorer,me) : `<footer class="footer"><div><a class="logo" href="/">Lokasyon <span>Péyi</span></a><p>Un autre chemin pour découvrir le Péyi.</p><small>Prototype indépendant · Guadeloupe</small></div><nav aria-label="Aide et démonstration" class="row"><a href="/faq">FAQ</a><a href="/assistance">Nous contacter</a><a href="/design-system">Design system</a><a href="/demo">Guide de démonstration</a><a href="/demo/audit">Atelier d’audit</a><a class="photo-credit-link" href="/assets/v32/credits.html">Crédits des photos</a></nav></footer>`}
     ${state.root ? `<nav class="bottom-nav" aria-label="Navigation mobile">${explorer ? homeMobileLinks : primaryLinks(state.active,true)}</nav>` : ''}`;
   const trigger = document.getElementById('menu-toggle'), panel = document.getElementById('navigation-panel');
   trigger.onclick = () => { panel.showModal(); trigger.setAttribute('aria-expanded','true'); };
