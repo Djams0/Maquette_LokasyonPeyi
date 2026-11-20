@@ -2,12 +2,12 @@ import {icon,escape,showFlash} from '/ui/components.js';
 import {destinations,navigationState} from './pages/navigation.js';
 let dispose = () => {};
 const primaryLinks = (active, mobile = false) => destinations.map(([href, symbol, label]) => `<a href="${href}" class="${active === href ? 'active' : ''}" ${active === href ? 'aria-current="page"' : ''}>${mobile ? icon(symbol) : ''}<span>${label}</span></a>`).join('');
-const homeLinks = '<a href="/search">Explorer les voitures</a><a href="#fonctionnement">Comment ça marche</a><a href="/faq">Aide</a>';
+const discoveryLinks = catalogue => `<a href="/search"${catalogue ? ' aria-current="page"' : ''}>Explorer les voitures</a><a href="${catalogue ? '/' : ''}#fonctionnement">Comment ça marche</a><a href="/faq">Aide</a>`;
 const homeHelpIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></svg>';
 const homeMobileLinks = [['/search',icon('search'),'Explorer'],['/faq',homeHelpIcon,'Aide'],['/profile',icon('user'),'Compte']]
   .map(([href,glyph,label]) => `<a href="${href}">${glyph}<span>${label}</span></a>`).join('');
 
-const homeFooter = `<footer class="explorer-footer v32">
+const discoveryFooter = (catalogue,me) => `<footer class="explorer-footer v32">
   <div class="explorer-wrap">
     <div class="explorer-footer-grid">
       <div class="explorer-footer-brand">
@@ -17,14 +17,14 @@ const homeFooter = `<footer class="explorer-footer v32">
       <nav aria-label="Le service">
         <h2>Le service</h2>
         <a href="/search">Explorer les voitures</a>
-        <a href="#fonctionnement">Fonctionnement</a>
-        <a href="#aide">Questions fréquentes</a>
+        <a href="${catalogue ? '/' : ''}#fonctionnement">Fonctionnement</a>
+        <a href="${catalogue ? '/faq' : '#aide'}">Questions fréquentes</a>
       </nav>
       <nav aria-label="Assistance et crédits">
         <h2>Assistance</h2>
         <a href="/assistance">Aide et contact</a>
         <a href="/assets/v32/credits.html">Crédits des photos</a>
-        <a href="/login" class="button warm" id="explorer-footer-account">Connexion</a>
+        <a href="${me ? '/profile' : '/login'}" class="button warm" id="explorer-footer-account">${me ? 'Mon compte' : 'Connexion'}</a>
       </nav>
     </div>
     <div class="explorer-footer-note"><p>Maquette de validation V3.2 · tarifs et annonces fictifs.</p><a href="/demo">Démo & comptes</a></div>
@@ -41,13 +41,15 @@ export function shell(me) {
   dispose();
   const state = navigationState(location.pathname, location.search);
   const explorer = location.pathname === '/';
+  const catalogue = location.pathname.replace(/\/$/,'') === '/search';
+  const discovery = explorer || catalogue;
   const host = document.getElementById('shell');
-  host.className = 'client-shell' + (state.root ? ' has-bottom-nav' : '') + (explorer ? ' is-explorer' : '');
+  host.className = 'client-shell' + (state.root ? ' has-bottom-nav' : '') + (explorer ? ' is-explorer' : '') + (catalogue ? ' is-catalogue' : '');
   host.innerHTML = `
-    ${explorer ? '' : '<div class="demo-banner">Maquette interactive · données fictives · aucun paiement réel <a href="/demo">Démo & comptes</a></div>'}
-    <header class="header${explorer ? ' v32' : ''}">
-      <a class="logo" href="/">${explorer ? '<img src="/assets/v32/marque/logo-horizontal-charte.webp" width="683" height="122" alt="Lokasyon Péyi">' : 'Lokasyon <span>Péyi</span>'}</a>
-      <nav aria-label="Navigation principale" id="header-nav">${explorer ? homeLinks : primaryLinks(state.active)}</nav>
+    ${discovery ? '' : '<div class="demo-banner">Maquette interactive · données fictives · aucun paiement réel <a href="/demo">Démo & comptes</a></div>'}
+    <header class="header${discovery ? ' v32' : ''}">
+      <a class="logo" href="/">${discovery ? '<img src="/assets/v32/marque/logo-horizontal-charte.webp" width="683" height="122" alt="Lokasyon Péyi">' : 'Lokasyon <span>Péyi</span>'}</a>
+      <nav aria-label="Navigation principale" id="header-nav">${discovery ? discoveryLinks(catalogue) : primaryLinks(state.active)}</nav>
       <div class="tools">
         ${me ? `<a class="link-button button" href="/notifications" aria-label="Notifications">${icon('bell')}</a><a class="avatar" href="/profile" aria-label="Mon profil">${escape(me.name[0])}</a>` : '<a class="button secondary" href="/login">Connexion</a>'}
         <button type="button" class="secondary navigation-toggle" id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-haspopup="dialog" aria-controls="navigation-panel">${icon('menu')}<span class="menu-label">Menu</span></button>
@@ -65,7 +67,7 @@ export function shell(me) {
     </dialog>
     ${state.back ? `<nav class="context-nav" aria-label="Retour"><a href="${state.back[0]}">${icon('back')}${state.back[1]}</a></nav>` : ''}
     <main class="client-main" id="main" tabindex="-1"></main>
-    ${explorer ? homeFooter : `<footer class="footer"><div><a class="logo" href="/">Lokasyon <span>Péyi</span></a><p>Un autre chemin pour découvrir le Péyi.</p><small>Prototype indépendant · Guadeloupe</small></div><nav aria-label="Aide et démonstration" class="row"><a href="/faq">FAQ</a><a href="/assistance">Nous contacter</a><a href="/design-system">Design system</a><a href="/demo">Guide de démonstration</a><a href="/demo/audit">Atelier d’audit</a><a class="photo-credit-link" href="/assets/v32/credits.html">Crédits des photos</a></nav></footer>`}
+    ${discovery ? discoveryFooter(catalogue,me) : `<footer class="footer"><div><a class="logo" href="/">Lokasyon <span>Péyi</span></a><p>Un autre chemin pour découvrir le Péyi.</p><small>Prototype indépendant · Guadeloupe</small></div><nav aria-label="Aide et démonstration" class="row"><a href="/faq">FAQ</a><a href="/assistance">Nous contacter</a><a href="/design-system">Design system</a><a href="/demo">Guide de démonstration</a><a href="/demo/audit">Atelier d’audit</a><a class="photo-credit-link" href="/assets/v32/credits.html">Crédits des photos</a></nav></footer>`}
     ${state.root ? `<nav class="bottom-nav" aria-label="Navigation mobile">${explorer ? homeMobileLinks : primaryLinks(state.active,true)}</nav>` : ''}`;
   const trigger = document.getElementById('menu-toggle'), panel = document.getElementById('navigation-panel');
   trigger.onclick = () => { panel.showModal(); trigger.setAttribute('aria-expanded','true'); };
@@ -81,7 +83,7 @@ export function shell(me) {
     if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
-  const desktop = matchMedia(explorer ? '(min-width:880px)' : '(min-width:1024px)');
+  const desktop = matchMedia(discovery ? '(min-width:880px)' : '(min-width:1024px)');
   const resized = () => { if (panel.open) panel.close(); };
   desktop.addEventListener('change',resized);
   dispose = () => desktop.removeEventListener('change',resized);

@@ -15,7 +15,7 @@ test('Recette visuelle: onglet Avis entièrement visible au clavier à 320px',as
 
 test('Recette visuelle: Nunito pour les titres opérationnels, Lora pour la découverte',async({page})=>{
   const check=async(path,family)=>{await page.goto(client+path);await expect(page.locator('#main h1')).toBeVisible();await page.evaluate(()=>document.fonts.ready);const style=await page.locator('#main h1').evaluate(el=>({family:getComputedStyle(el).fontFamily,weight:getComputedStyle(el).fontWeight}));expect(style.family).toContain(family);if(family==='Nunito')expect(style.weight).toBe('800');};
-  await check('/','Lora');await check('/vehicle/v1?from=2027-06-10&until=2027-06-14','Lora');await check('/search?q=Gosier','Nunito');
+  await check('/','Lora');await check('/vehicle/v1?from=2027-06-10&until=2027-06-14','Lora');await check('/search?q=Gosier','Lora');
   expect((await page.request.post(client+'/api/v1/session',{data:{persona:'renter'}})).ok()).toBe(true);await check('/messages','Nunito');await page.evaluate(()=>sessionStorage.setItem('rental-draft',JSON.stringify({vehicleId:'v1',start:'2027-06-10T13:00:00.000Z',end:'2027-06-14T13:00:00.000Z'})));await check('/request/v1','Nunito');
   expect((await page.request.post(client+'/api/v1/session',{data:{persona:'audit-r02'}})).ok()).toBe(true);const rental=target.store.db.rentals.find(r=>r.renterId==='audit-r02'&&r.status==='confirmed');await check('/rental/'+rental.id,'Nunito');
 });

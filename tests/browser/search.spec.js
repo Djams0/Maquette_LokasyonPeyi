@@ -12,17 +12,73 @@ test.afterEach(async()=>{children.forEach(c=>c.kill());children=[];if(target)awa
 const query='q=Gosier&from=2027-06-10&until=2027-06-14&max=80&sort=price&view=map';
 async function settled(page){await expect(page.locator('#search-items')).toHaveAttribute('aria-busy','false');}
 async function open(page,q=query){await page.goto(client+'/search?'+q);await settled(page);}
-for(const width of [320,375,390,430,768,1024,1440])test(`Recherche: résultats et panneau sans débordement à ${width}px`,async({page})=>{
+for(const width of [320,375,390,430,599,600,768,879,880,1024,1119,1120,1440])test(`Recherche: résultats et filtres sans débordement à ${width}px`,async({page})=>{
   await page.setViewportSize({width,height:width===1440?950:844});await open(page);
   await expect(page.getByRole('heading',{name:'3 véhicules',exact:true})).toBeVisible();
   await expect(page.getByText('Carte schématique fictive · positions indicatives, sans géolocalisation',{exact:true})).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBeLessThanOrEqual(1);
-  const image=page.locator('.results-cards img').first();const box=await image.boundingBox();expect(box.width/box.height).toBeCloseTo(16/9,2);
-  if(width<768)expect(await page.locator('.results-cards').evaluate(e=>getComputedStyle(e).gridTemplateColumns.split(' ').length)).toBe(1);
-  const trigger=page.getByRole('button',{name:/^Filtres/});await trigger.click();const d=page.getByRole('dialog',{name:'Filtres',exact:true});await expect(d).toBeVisible();
-  await expect(d.getByLabel('Prix maximum / jour fictif')).toHaveValue('80');await d.getByLabel('Prix maximum / jour fictif').fill('40');
-  expect(await d.evaluate(e=>e.scrollWidth-e.clientWidth)).toBeLessThanOrEqual(1);await page.keyboard.press('Escape');await expect(trigger).toBeFocused();
-  await trigger.click();await expect(d.getByLabel('Prix maximum / jour fictif')).toHaveValue('80');await d.getByRole('button',{name:'Annuler',exact:true}).click();await expect(trigger).toBeFocused();
+  const image=page.locator('.results-cards img').first();const box=await image.boundingBox();expect(box.width/box.height).toBeCloseTo(16/10,2);
+  expect(await page.locator('.results-cards').evaluate(e=>getComputedStyle(e).gridTemplateColumns.split(' ').length)).toBe(width<600?1:width<1120?2:3);
+  const trigger=page.getByRole('button',{name:/^Filtres/}), sidebar=page.locator('#filter-home');
+  const d=page.getByRole('dialog',{name:'Filtres',exact:true});
+  const budget=page.getByRole('spinbutton',{name:'Budget maximum / jour fictif',exact:true});
+  await expect(page.locator('#search-filters')).toHaveCount(1);
+  if (width>=880) {
+    await expect(trigger).toBeHidden();
+    await expect(sidebar).toBeVisible();
+    expect((await sidebar.boundingBox()).width).toBe(242);
+    await expect(budget).toHaveValue('80');
+    await budget.fill('40');
+    expect(new URL(page.url()).searchParams.get('max')).toBe('80');
+  } else {
+    await expect(sidebar).toBeHidden();
+    await trigger.click();
+    await expect(d).toBeVisible();
+    await expect(budget).toHaveValue('80');await budget.fill('40');
+    expect(await d.evaluate(e=>e.scrollWidth-e.clientWidth)).toBeLessThanOrEqual(1);await page.keyboard.press('Escape');await expect(trigger).toBeFocused();
+    await trigger.click();await expect(budget).toHaveValue('80');await d.getByRole('button',{name:'Annuler',exact:true}).click();await expect(trigger).toBeFocused();
+  }
+});
+test('Catalogue V3.2: tiroir unique, boucle de focus et brouillon au changement de largeur',async({page},info)=>{
+  await page.setViewportSize({width:390,height:844});
+  await open(page,query+'&filters=open');
+  const trigger=page.getByRole('button',{name:/^Filtres/});
+  const dialog=page.getByRole('dialog',{name:'Filtres',exact:true});
+  const close=dialog.getByRole('button',{name:'Fermer les filtres'});
+  await expect(close).toBeFocused();
+  expect(new URL(page.url()).searchParams.has('filters')).toBe(false);
+  await page.keyboard.press('Shift+Tab');
+  await expect(dialog.getByRole('button',{name:'Annuler',exact:true})).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(close).toBeFocused();
+  await info.attach('Catalogue · tiroir mobile', {body:await page.screenshot({animations:'disabled'}),contentType:'image/png'});
+  const budget=page.getByRole('spinbutton',{name:'Budget maximum / jour fictif',exact:true});
+  await budget.fill('40');
+  await page.setViewportSize({width:880,height:844});
+  await expect(dialog).toBeHidden();
+  await expect(page.locator('#filter-home #search-filters')).toHaveCount(1);
+  await expect(budget).toHaveValue('40');
+  await expect(budget).toBeFocused();
+  await page.setViewportSize({width:390,height:844});
+  await expect(dialog.locator('#search-filters')).toHaveCount(1);
+  await expect(budget).toBeFocused();
+  await expect(budget).toHaveValue('40');
+  await close.click();
+  await expect(trigger).toBeFocused();
+  await trigger.click();
+  await expect(budget).toHaveValue('80');
+});
+test('Catalogue V3.2: retirer un badge garde exactement les autres critères',async({page})=>{
+  const criteria=query.replace('max=80','category=Citadine&max=80&seats=4');
+  await open(page,criteria);
+  const chip=page.getByRole('link',{name:'Retirer le filtre Budget maximum / jour fictif : 80',exact:true});
+  const expected=new URL(page.url());
+  expected.searchParams.delete('max');
+  await chip.click();await settled(page);
+  expect(page.url()).toBe(expected.href);
+  await expect(page.getByRole('navigation',{name:'Filtres appliqués'}).getByRole('link')).toHaveCount(2);
+  await page.goBack();await settled(page);
+  await expect(chip).toBeVisible();
 });
 test('Recherche: A → retour local → B, historique navigateur, reload et dates sur fiche',async({page})=>{
   const errors=[];page.on('pageerror',e=>errors.push(e.message));await open(page);
@@ -41,7 +97,7 @@ test('Recherche: A → retour local → B, historique navigateur, reload et date
 test('Recherche: filtre appliqué, annulation, reset, tri et carte préservent la période et les clés API',async({page})=>{
   const requests=[];page.on('request',r=>{if(new URL(r.url()).pathname==='/api/v1/vehicles')requests.push(new URL(r.url()));});
   await page.setViewportSize({width:390,height:844});await open(page);
-  await page.getByRole('button',{name:/^Filtres/}).click();let d=page.getByRole('dialog',{name:'Filtres',exact:true});await d.getByLabel('Prix maximum / jour fictif').fill('40');await d.getByRole('button',{name:'Appliquer les filtres'}).click();await settled(page);
+  await page.getByRole('button',{name:/^Filtres/}).click();let d=page.getByRole('dialog',{name:'Filtres',exact:true});await d.getByRole('spinbutton',{name:'Budget maximum / jour fictif',exact:true}).fill('40');await d.getByRole('button',{name:'Appliquer les filtres'}).click();await settled(page);
   expect(new URL(page.url()).searchParams.get('max')).toBe('40');expect(new URL(page.url()).searchParams.get('view')).toBe('map');expect(new URL(page.url()).searchParams.get('from')).toBe('2027-06-10');
   await page.getByLabel('Trier par').selectOption('rating');await settled(page);expect(new URL(page.url()).searchParams.get('sort')).toBe('rating');
   await page.getByRole('link',{name:'Liste',exact:true}).click();await settled(page);expect(new URL(page.url()).searchParams.has('view')).toBe(false);
@@ -64,12 +120,14 @@ test('Recherche: résumé éditable, dates corrigées explicitement et dates eff
   expect(new URL(page.url()).searchParams.get('view')).toBe('map');await page.locator('.results-cards article').first().getByRole('link').click();await expect(page.getByLabel('Départ · heure Guadeloupe')).toHaveValue('2027-06-10T11:00');
   await page.getByLabel('Départ · heure Guadeloupe').fill('');await page.getByLabel('Retour · heure Guadeloupe').fill('');await page.getByLabel('Départ · heure Guadeloupe').focus();await page.reload();await expect(page.getByLabel('Départ · heure Guadeloupe')).toHaveValue('');await expect(page.getByLabel('Retour · heure Guadeloupe')).toHaveValue('');
 });
-test('Recherche: chargement lent, erreur API et état vide gardent les critères et les accès de reprise',async({page})=>{
+test('Recherche: chargement lent, erreur API et état vide gardent les critères et les accès de reprise',async({page},info)=>{
+  await page.setViewportSize({width:390,height:844});
   let release;const gate=new Promise(r=>release=r);await page.route('**/api/v1/vehicles?**',async r=>{await gate;await r.fulfill({status:503,contentType:'application/json',body:JSON.stringify({error:'Catalogue indisponible'})});});
-  try{await page.goto(client+'/search?'+query,{waitUntil:'commit'});await expect(page.locator('#search-items')).toHaveAttribute('aria-busy','true');await expect(page.getByRole('button',{name:'Modifier la recherche',exact:true})).toBeEnabled();await page.getByRole('button',{name:/^Filtres/}).click();await expect(page.getByRole('dialog',{name:'Filtres',exact:true})).toBeVisible();await page.keyboard.press('Escape');release();await settled(page);await expect(page.getByRole('button',{name:'Réessayer la recherche'})).toBeVisible();}
+  try{await page.goto(client+'/search?'+query,{waitUntil:'commit'});await expect(page.locator('#search-items')).toHaveAttribute('aria-busy','true');await expect(page.locator('.search-skeleton')).toHaveCount(3);await expect(page.getByRole('status')).toHaveText('Recherche en cours…');await expect(page.getByRole('button',{name:'Modifier la recherche',exact:true})).toBeEnabled();await page.getByRole('button',{name:/^Filtres/}).click();await expect(page.getByRole('dialog',{name:'Filtres',exact:true})).toBeVisible();await page.keyboard.press('Escape');await info.attach('Catalogue · chargement',{body:await page.screenshot(),contentType:'image/png'});release();await settled(page);await expect(page.getByRole('button',{name:'Réessayer la recherche'})).toBeVisible();await expect(page.getByRole('alert')).toContainText('Catalogue indisponible');await info.attach('Catalogue · indisponible',{body:await page.screenshot(),contentType:'image/png'});}
   finally{release();}
   await page.unroute('**/api/v1/vehicles?**');await page.getByRole('button',{name:'Réessayer la recherche'}).click();await settled(page);await expect(page.getByRole('heading',{name:'3 véhicules',exact:true})).toBeFocused();
-  await open(page,query+'&state=empty');await expect(page.getByRole('heading',{name:'Aucun véhicule ici',exact:true})).toBeVisible();await expect(page.getByRole('img')).toHaveCount(0); // the empty illustration is decorative
+  await open(page,query+'&state=empty');await expect(page.getByRole('heading',{name:'Aucun véhicule ici',exact:true})).toBeVisible();await expect(page.locator('#search-items').getByRole('img')).toHaveCount(0);
+  await info.attach('Catalogue · sans résultat',{body:await page.screenshot(),contentType:'image/png'});
   const reset=page.getByRole('link',{name:'Élargir la recherche'});const p=new URL(await reset.getAttribute('href'),client).searchParams;expect(p.get('q')).toBe('Gosier');expect(p.get('from')).toBe('2027-06-10');expect(p.get('view')).toBe('map');expect(p.has('state')).toBe(false);await reset.click();await settled(page);await expect(page.getByRole('heading',{name:'3 véhicules',exact:true})).toBeVisible();
 });
 test('Recherche: compte fictif, tous les filtres et dates transmis à la demande existante',async({page})=>{
