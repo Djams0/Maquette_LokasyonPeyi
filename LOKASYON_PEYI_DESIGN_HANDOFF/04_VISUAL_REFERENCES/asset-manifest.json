@@ -1,0 +1,693 @@
+{
+  "version": "3.2",
+  "photos": [
+    {
+      "id": 1,
+      "title": "2019 Peugeot 208 GT Line PureTech Automatic 1.2 Front.jpg",
+      "model": "Peugeot 208",
+      "view": "Avant",
+      "source": "https://commons.wikimedia.org/wiki/File:2019_Peugeot_208_GT_Line_PureTech_Automatic_1.2_Front.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/24/2019_Peugeot_208_GT_Line_PureTech_Automatic_1.2_Front.jpg",
+      "original_publisher": "Own work",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "verification_date": "2026-11-19",
+      "verification": "Fiche Commons chargée HTTP 200, auteur et URL de licence concordants",
+      "credit": "Vauxford · 2019 Peugeot 208 GT Line PureTech Automatic 1.2 Front.jpg · CC BY-SA 4.0",
+      "redistribution": "Attribution, lien de licence, indiquer les changements. Adaptations redistribuées sous la même licence ou une licence compatible lorsque la licence retenue comporte SA.",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS 16:10.",
+      "alt": "Peugeot 208 grise, vue avant de trois quarts en concession",
+      "coherence": "01–02 Même exemplaire visible. 03 Habitacle cohérent, identité non démontrée depuis l’intérieur. Volant à droite, éviter d’en déduire une finition locale.",
+      "fixtureId": "v1",
+      "use": "Couverture de modèle seule. Garder la galerie synthétique actuelle entière si elle doit documenter la fiche fictive. Ne jamais présenter les deux séries comme une même voiture.",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/208-avant-1000.webp",
+          "target": "assets/v32/demo/208-avant-1000.webp",
+          "size": [
+            1000,
+            689
+          ],
+          "bytes": 62274,
+          "sha256": "5d2fc63b86bae67ac9456b663803771fa684e4535345c5a05477992b1d425b11"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/208-avant-480.webp",
+          "target": "assets/v32/demo/208-avant-480.webp",
+          "size": [
+            480,
+            331
+          ],
+          "bytes": 22660,
+          "sha256": "7cb54739376cbf82819e0e988311da5adf069b744f9cf3fb0ef2fa5d437113ce"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "2019 Peugeot 208 GT Line PureTech Automatic 1.2 Rear.jpg",
+      "model": "Peugeot 208",
+      "view": "Arrière",
+      "source": "https://commons.wikimedia.org/wiki/File:2019_Peugeot_208_GT_Line_PureTech_Automatic_1.2_Rear.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/20/2019_Peugeot_208_GT_Line_PureTech_Automatic_1.2_Rear.jpg",
+      "original_publisher": "Own work",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "verification_date": "2026-11-19",
+      "verification": "Fiche Commons chargée HTTP 200, auteur et URL de licence concordants",
+      "credit": "Vauxford · 2019 Peugeot 208 GT Line PureTech Automatic 1.2 Rear.jpg · CC BY-SA 4.0",
+      "redistribution": "Attribution, lien de licence, indiquer les changements. Adaptations redistribuées sous la même licence ou une licence compatible lorsque la licence retenue comporte SA.",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS, ouverture pleine photo.",
+      "alt": "Peugeot 208 grise de trois quarts arrière",
+      "coherence": "01–02 Même exemplaire visible. 03 Habitacle cohérent, identité non démontrée depuis l’intérieur. Volant à droite, éviter d’en déduire une finition locale.",
+      "fixtureId": "v1",
+      "use": "Série modèle 01–02 distincte. Préserver le défaut fictif et les images actuelles à part.",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/208-arriere-420.webp",
+          "target": "assets/v32/demo/208-arriere-420.webp",
+          "size": [
+            420,
+            308
+          ],
+          "bytes": 17918,
+          "sha256": "057721b3ee6480a98d69501e2514a980f3ccefaa69ced3186e0ad51ae09294f1"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/208-arriere-900.webp",
+          "target": "assets/v32/demo/208-arriere-900.webp",
+          "size": [
+            900,
+            661
+          ],
+          "bytes": 53570,
+          "sha256": "4ef1f9b57f08f23315cc41e1155bba535286b3621d8fa8b9cfea9d65eab28186"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "2019 Peugeot 208 GT Line PureTech Automatic 1.2 Interior.jpg",
+      "model": "Peugeot 208",
+      "view": "Habitacle",
+      "source": "https://commons.wikimedia.org/wiki/File:2019_Peugeot_208_GT_Line_PureTech_Automatic_1.2_Interior.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/1/1e/2019_Peugeot_208_GT_Line_PureTech_Automatic_1.2_Interior.jpg",
+      "original_publisher": "Own work",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "verification_date": "2026-11-19",
+      "verification": "Fiche Commons chargée HTTP 200, auteur et URL de licence concordants",
+      "credit": "Vauxford · 2019 Peugeot 208 GT Line PureTech Automatic 1.2 Interior.jpg · CC BY-SA 4.0",
+      "redistribution": "Attribution, lien de licence, indiquer les changements. Adaptations redistribuées sous la même licence ou une licence compatible lorsque la licence retenue comporte SA.",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS, ouverture pleine photo.",
+      "alt": "Habitacle de la Peugeot 208, volant à droite",
+      "coherence": "01–02 Même exemplaire visible. 03 Habitacle cohérent, identité non démontrée depuis l’intérieur. Volant à droite, éviter d’en déduire une finition locale.",
+      "fixtureId": "v1",
+      "use": "Même modèle, exemplaire non établi. Hors galerie par défaut. Afficher seulement en revue de modèle nommée.",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/208-habitacle-420.webp",
+          "target": null,
+          "size": [
+            420,
+            315
+          ],
+          "bytes": 19970,
+          "sha256": "15f5ed89ca094573318b19a68ffb0192feb98e04222e1d542fe4eb6f6ff10777"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/208-habitacle-900.webp",
+          "target": null,
+          "size": [
+            900,
+            675
+          ],
+          "bytes": 66840,
+          "sha256": "51b1b5885ceb1425f97c3da753af40ed0b20177327234c8132c22219a31a58a8"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Renault Clio BF Valencia Orange (1).jpg",
+      "model": "Renault Clio V",
+      "view": "Vue 1",
+      "source": "https://commons.wikimedia.org/wiki/File:Renault_Clio_BF_Valencia_Orange_(1).jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Renault_Clio_BF_Valencia_Orange_%281%29.jpg",
+      "original_publisher": "Own work",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "verification_date": "2026-11-19",
+      "verification": "Fiche Commons chargée HTTP 200, auteur et URL de licence concordants",
+      "credit": "Damian B Oh · Renault Clio BF Valencia Orange (1).jpg · CC BY-SA 4.0",
+      "redistribution": "Attribution, lien de licence, indiquer les changements. Adaptations redistribuées sous la même licence ou une licence compatible lorsque la licence retenue comporte SA.",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS 16:10, galerie recadrée.",
+      "alt": "Renault Clio orange de trois quarts avant",
+      "coherence": "04–06 Même Clio orange, éléments et plaque concordants.",
+      "fixtureId": "v3",
+      "use": "Clio V orange, couverture et vignette du cadran.",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/clio-avant-1050.webp",
+          "target": "assets/v32/demo/clio-avant-1050.webp",
+          "size": [
+            1050,
+            787
+          ],
+          "bytes": 195636,
+          "sha256": "f5c4eab91b770850ce089aed6b36e755a77fd1b2bdca67991f3799a3c2ea26c4"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/clio-avant-480.webp",
+          "target": "assets/v32/demo/clio-avant-480.webp",
+          "size": [
+            480,
+            360
+          ],
+          "bytes": 48400,
+          "sha256": "322a585df6b31da16c0af36f012505eb6f9f53f47e2d988169638f6be69d8583"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Renault Clio BF Valencia Orange (2).jpg",
+      "model": "Renault Clio V",
+      "view": "Vue 2",
+      "source": "https://commons.wikimedia.org/wiki/File:Renault_Clio_BF_Valencia_Orange_(2).jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Renault_Clio_BF_Valencia_Orange_%282%29.jpg",
+      "original_publisher": "Own work",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "verification_date": "2026-11-19",
+      "verification": "Fiche Commons chargée HTTP 200, auteur et URL de licence concordants",
+      "credit": "Damian B Oh · Renault Clio BF Valencia Orange (2).jpg · CC BY-SA 4.0",
+      "redistribution": "Attribution, lien de licence, indiquer les changements. Adaptations redistribuées sous la même licence ou une licence compatible lorsque la licence retenue comporte SA.",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS, ouverture pleine photo.",
+      "alt": "Renault Clio orange vue de face",
+      "coherence": "04–06 Même Clio orange, éléments et plaque concordants.",
+      "fixtureId": "v3",
+      "use": "Série Clio de même modèle et finition. Présentation comme vues illustratives.",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/clio-face-420.webp",
+          "target": "assets/v32/demo/clio-face-420.webp",
+          "size": [
+            420,
+            315
+          ],
+          "bytes": 25650,
+          "sha256": "8891e0decc3e3e4cf11a6c9cafcaeb5465c49a6cd0aff2014dd867e7966a7fe9"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/clio-face-900.webp",
+          "target": "assets/v32/demo/clio-face-900.webp",
+          "size": [
+            900,
+            675
+          ],
+          "bytes": 98736,
+          "sha256": "fbc477562e3da6efc97f406f7fcd02079bebf54806376108305eb462264db79e"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Renault Clio BF Valencia Orange (3).jpg",
+      "model": "Renault Clio V",
+      "view": "Vue 3",
+      "source": "https://commons.wikimedia.org/wiki/File:Renault_Clio_BF_Valencia_Orange_(3).jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Renault_Clio_BF_Valencia_Orange_%283%29.jpg",
+      "original_publisher": "Own work",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "verification_date": "2026-11-19",
+      "verification": "Fiche Commons chargée HTTP 200, auteur et URL de licence concordants",
+      "credit": "Damian B Oh · Renault Clio BF Valencia Orange (3).jpg · CC BY-SA 4.0",
+      "redistribution": "Attribution, lien de licence, indiquer les changements. Adaptations redistribuées sous la même licence ou une licence compatible lorsque la licence retenue comporte SA.",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS, ouverture pleine photo.",
+      "alt": "Renault Clio orange de trois quarts arrière",
+      "coherence": "04–06 Même Clio orange, éléments et plaque concordants.",
+      "fixtureId": "v3",
+      "use": "Série Clio de même modèle et finition. Présentation comme vues illustratives.",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/clio-arriere-420.webp",
+          "target": "assets/v32/demo/clio-arriere-420.webp",
+          "size": [
+            420,
+            315
+          ],
+          "bytes": 31528,
+          "sha256": "ec7a779bf0d235e2f731f7196fcd5839fc64e3eceb92471b583e6a2bbec335ab"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/clio-arriere-900.webp",
+          "target": "assets/v32/demo/clio-arriere-900.webp",
+          "size": [
+            900,
+            675
+          ],
+          "bytes": 131302,
+          "sha256": "a638c1657f668f53c93613d14f8af4570e7f6e6d24430c3e02b4c0308a427592"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Dacia Duster HM FL Glacier White (2).jpg",
+      "model": "Dacia Duster",
+      "view": "Vue 2",
+      "source": "https://commons.wikimedia.org/wiki/File:Dacia_Duster_HM_FL_Glacier_White_(2).jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/9/92/Dacia_Duster_HM_FL_Glacier_White_%282%29.jpg",
+      "original_publisher": "Own work",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "verification_date": "2026-11-19",
+      "verification": "Fiche Commons chargée HTTP 200, auteur et URL de licence concordants",
+      "credit": "Damian B Oh · Dacia Duster HM FL Glacier White (2).jpg · CC BY-SA 4.0",
+      "redistribution": "Attribution, lien de licence, indiquer les changements. Adaptations redistribuées sous la même licence ou une licence compatible lorsque la licence retenue comporte SA.",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS 16:10.",
+      "alt": "Dacia Duster blanc, vue de trois quarts avant en ville",
+      "coherence": "10–12 Duster blanc cohérent, même environnement et passages proches. Exactitude de l’exemplaire probable.",
+      "fixtureId": "v2",
+      "use": "Couverture Duster de modèle.",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/duster-avant-1000.webp",
+          "target": "assets/v32/demo/duster-avant-1000.webp",
+          "size": [
+            1000,
+            750
+          ],
+          "bytes": 57054,
+          "sha256": "d33b3623b9e4a05aeb6309aa0051db0ecf6bd30c88fa43b19b0be9a248ead07d"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/duster-avant-480.webp",
+          "target": "assets/v32/demo/duster-avant-480.webp",
+          "size": [
+            480,
+            360
+          ],
+          "bytes": 22000,
+          "sha256": "81206c4c204768d462fbf647f2b1bcba8a3350da79d558d8c99bf49c9a155c2c"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Dacia Duster HM FL Glacier White (3).jpg",
+      "model": "Dacia Duster",
+      "view": "Vue 3",
+      "source": "https://commons.wikimedia.org/wiki/File:Dacia_Duster_HM_FL_Glacier_White_(3).jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Dacia_Duster_HM_FL_Glacier_White_%283%29.jpg",
+      "original_publisher": "Own work",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "verification_date": "2026-11-19",
+      "verification": "Fiche Commons chargée HTTP 200, auteur et URL de licence concordants",
+      "credit": "Damian B Oh · Dacia Duster HM FL Glacier White (3).jpg · CC BY-SA 4.0",
+      "redistribution": "Attribution, lien de licence, indiquer les changements. Adaptations redistribuées sous la même licence ou une licence compatible lorsque la licence retenue comporte SA.",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS, ouverture pleine photo.",
+      "alt": "Dacia Duster blanc au passage piéton, vue arrière",
+      "coherence": "10–12 Duster blanc cohérent, même environnement et passages proches. Exactitude de l’exemplaire probable.",
+      "fixtureId": "v2",
+      "use": "Série Duster blanche illustrative.",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/duster-arriere-420.webp",
+          "target": "assets/v32/demo/duster-arriere-420.webp",
+          "size": [
+            420,
+            315
+          ],
+          "bytes": 33118,
+          "sha256": "5631598c5211fb4604cef3fff74ee4148197a5709cc432a7f9d2c39820460186"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/duster-arriere-900.webp",
+          "target": "assets/v32/demo/duster-arriere-900.webp",
+          "size": [
+            900,
+            675
+          ],
+          "bytes": 89370,
+          "sha256": "b45f70879aa427d274559d933fd488e71026133d29edcaa091a5e8d1d6703bbd"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "title": "2018 Volkswagen Polo SE 1.0 Front.jpg",
+      "model": "Volkswagen Polo",
+      "view": "Avant",
+      "source": "https://commons.wikimedia.org/wiki/File:2018_Volkswagen_Polo_SE_1.0_Front.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/2018_Volkswagen_Polo_SE_1.0_Front.jpg",
+      "original_publisher": "Own work",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "verification_date": "2026-11-19",
+      "verification": "Fiche Commons chargée HTTP 200, auteur et URL de licence concordants",
+      "credit": "Vauxford · 2018 Volkswagen Polo SE 1.0 Front.jpg · CC BY-SA 4.0",
+      "redistribution": "Attribution, lien de licence, indiquer les changements. Adaptations redistribuées sous la même licence ou une licence compatible lorsque la licence retenue comporte SA.",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS 16:10.",
+      "alt": "Volkswagen Polo rouge, vue avant diagonale",
+      "coherence": "16–17 Polo rouge cohérente. 18 Polo noire distincte. Le nom Dirty alloy indique une roue sale, pas un dommage déclaré.",
+      "fixtureId": null,
+      "use": "Volkswagen Polo, aucune fixture du seed. Revue seulement.",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/polo-avant-1000.webp",
+          "target": null,
+          "size": [
+            1000,
+            528
+          ],
+          "bytes": 73588,
+          "sha256": "f63a5baa7051315e05c9d0374c3c86316a7babf85e0d8aed1a11e21adb5fef07"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/polo-avant-480.webp",
+          "target": null,
+          "size": [
+            480,
+            253
+          ],
+          "bytes": 21344,
+          "sha256": "a362023afdcb3f2b4bde871f3c01a71e5c81869e60693c19dd2b37095df7c383"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "title": "2019 Peugeot 2008 Front.jpg",
+      "model": "Peugeot 2008",
+      "view": "Avant",
+      "source": "https://commons.wikimedia.org/wiki/File:2019_Peugeot_2008_Front.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/2019_Peugeot_2008_Front.jpg",
+      "original_publisher": "Own work",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "verification_date": "2026-11-19",
+      "verification": "Fiche Commons chargée HTTP 200, auteur et URL de licence concordants",
+      "credit": "Vauxford · 2019 Peugeot 2008 Front.jpg · CC BY-SA 4.0",
+      "redistribution": "Attribution, lien de licence, indiquer les changements. Adaptations redistribuées sous la même licence ou une licence compatible lorsque la licence retenue comporte SA.",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS 16:10.",
+      "alt": "Peugeot 2008 rouge en concession",
+      "coherence": "25–26 Même 2008 rouge, plaque et couleurs concordantes. 27 Habitacle de la même série en concession, non démontré comme le même exemplaire.",
+      "fixtureId": null,
+      "use": "Peugeot 2008, aucune fixture du seed. Revue seulement.",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/2008-avant-1000.webp",
+          "target": null,
+          "size": [
+            1000,
+            670
+          ],
+          "bytes": 77066,
+          "sha256": "a381097ba926af0a33f9f0b9001b3dd74bb9854c4f0e9cbc7618b384f0b19522"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/2008-avant-480.webp",
+          "target": null,
+          "size": [
+            480,
+            322
+          ],
+          "bytes": 27204,
+          "sha256": "e75a4dc29b5a317779ed3d49374f3d70de84440cd899e2b9dabecea1226e07e7"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "title": "2019 Citroen Berlingo Feel Puretech 1.2 Front.jpg",
+      "model": "Citroën Berlingo",
+      "view": "Avant",
+      "source": "https://commons.wikimedia.org/wiki/File:2019_Citroen_Berlingo_Feel_Puretech_1.2_Front.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/a/ae/2019_Citroen_Berlingo_Feel_Puretech_1.2_Front.jpg",
+      "original_publisher": "Own work",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "verification_date": "2026-11-19",
+      "verification": "Fiche Commons chargée HTTP 200, auteur et URL de licence concordants",
+      "credit": "Vauxford · 2019 Citroen Berlingo Feel Puretech 1.2 Front.jpg · CC BY-SA 4.0",
+      "redistribution": "Attribution, lien de licence, indiquer les changements. Adaptations redistribuées sous la même licence ou une licence compatible lorsque la licence retenue comporte SA.",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS 16:10.",
+      "alt": "Citroën Berlingo rouge, vue avant diagonale",
+      "coherence": "31–32 Berlingo rouge 2019 cohérent. 33 Exemplaire 2024 gris et face avant différente.",
+      "fixtureId": null,
+      "use": "Citroën Berlingo, aucune fixture du seed. Revue seulement.",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/berlingo-avant-1000.webp",
+          "target": null,
+          "size": [
+            1000,
+            636
+          ],
+          "bytes": 110270,
+          "sha256": "e96f2f7b1ca37ac2c342c9331b753021bbe2abef90d962ef08b84db650585d3f"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/demo/berlingo-avant-480.webp",
+          "target": null,
+          "size": [
+            480,
+            305
+          ],
+          "bytes": 30644,
+          "sha256": "7a7af29aed2b916916924a0fb3cdabe6edd322760ba36c040f6d0fb80ee75d11"
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "title": "Grande Anse in Deshaies (2).jpg",
+      "model": "Grande Anse, Deshaies",
+      "view": "Paysage",
+      "source": "https://commons.wikimedia.org/wiki/File:Grande_Anse_in_Deshaies_(2).jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/60/Grande_Anse_in_Deshaies_%282%29.jpg",
+      "original_publisher": "Own work",
+      "author": "Tournasol7",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "verification_date": "2026-11-19",
+      "verification": "Fiche Commons chargée HTTP 200, auteur et URL de licence concordants",
+      "credit": "Tournasol7 · Grande Anse in Deshaies (2).jpg · CC BY 4.0",
+      "redistribution": "Attribution, lien de licence, indiquer les changements. Adaptations redistribuées sous la même licence ou une licence compatible lorsque la licence retenue comporte SA.",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS large.",
+      "alt": "Grande Anse à Deshaies, vue depuis le rivage",
+      "coherence": "Panorama large et relief reconnaissable. Sans voiture ni rue visible, préféré pour la section éditoriale.",
+      "fixtureId": null,
+      "use": "Panorama Deshaies.",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/editorial/deshaies-grande-anse-1440.webp",
+          "target": "assets/v32/editorial/deshaies-grande-anse-1440.webp",
+          "size": [
+            1440,
+            553
+          ],
+          "bytes": 155544,
+          "sha256": "aa8e25813f1ba7f86b02775d677ea236921991eda164a82a99b4a85ff7a36dc0"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/editorial/deshaies-grande-anse-720.webp",
+          "target": "assets/v32/editorial/deshaies-grande-anse-720.webp",
+          "size": [
+            720,
+            277
+          ],
+          "bytes": 40550,
+          "sha256": "110a045c7de964ae900cf84a764e9f7f9315f248ab04ab83b6c52c22a3dab951"
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "title": "Route de la Traversée (Guadeloupe).jpg",
+      "model": "Route de la Traversée",
+      "view": "Paysage",
+      "source": "https://commons.wikimedia.org/wiki/File:Route_de_la_Travers%C3%A9e_(Guadeloupe).jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/1/11/Route_de_la_Travers%C3%A9e_%28Guadeloupe%29.jpg",
+      "original_publisher": "Own work",
+      "author": "Enrevseluj",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "verification_date": "2026-11-19",
+      "verification": "Fiche Commons chargée HTTP 200, auteur et URL de licence concordants",
+      "credit": "Enrevseluj · Route de la Traversée (Guadeloupe).jpg · CC BY-SA 4.0",
+      "redistribution": "Attribution, lien de licence, indiquer les changements. Adaptations redistribuées sous la même licence ou une licence compatible lorsque la licence retenue comporte SA.",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS horizontal, dégradé sur exemple verre.",
+      "alt": "Route bordée de forêt en Basse-Terre",
+      "coherence": "Route bien identifiée et forêt. Cadrage portrait, sans voiture visible. Recadrage horizontal adapté à une vignette.",
+      "fixtureId": null,
+      "use": "Forêt, carte éditoriale et verre sombre.",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/editorial/route-de-la-traversee-720.webp",
+          "target": "assets/v32/editorial/route-de-la-traversee-720.webp",
+          "size": [
+            720,
+            960
+          ],
+          "bytes": 112734,
+          "sha256": "1dc32735c4323516c19ad6f235e70818418667d83bee173deffbea5a8d3f66fe"
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "title": "Plage de la Caravelle St-Anne (6).jpg",
+      "model": "Plage de la Caravelle, Sainte-Anne",
+      "view": "Paysage",
+      "source": "https://commons.wikimedia.org/wiki/File:Plage_de_la_Caravelle_St-Anne_(6).jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Plage_de_la_Caravelle_St-Anne_%286%29.jpg",
+      "original_publisher": "Own work",
+      "author": "Tournasol7",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "verification_date": "2026-11-19",
+      "verification": "Fiche Commons chargée HTTP 200, auteur et URL de licence concordants",
+      "credit": "Tournasol7 · Plage de la Caravelle St-Anne (6).jpg · CC BY 4.0",
+      "redistribution": "Attribution, lien de licence, indiquer les changements. Adaptations redistribuées sous la même licence ou une licence compatible lorsque la licence retenue comporte SA.",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS horizontal.",
+      "alt": "Plage de la Caravelle et palmiers à Sainte-Anne",
+      "coherence": "Littoral clair et lisible. Sans route ni véhicule. Éditorial et test de verre sur photo claire.",
+      "fixtureId": null,
+      "use": "Littoral, carte éditoriale et verre clair.",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/editorial/sainte-anne-caravelle-1440.webp",
+          "target": "assets/v32/editorial/sainte-anne-caravelle-1440.webp",
+          "size": [
+            1440,
+            945
+          ],
+          "bytes": 210664,
+          "sha256": "962f7f296b496f9d088f7d9ccfd80bd443cfa67632fdedb89f4a530239c07863"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/editorial/sainte-anne-caravelle-720.webp",
+          "target": "assets/v32/editorial/sainte-anne-caravelle-720.webp",
+          "size": [
+            720,
+            473
+          ],
+          "bytes": 55426,
+          "sha256": "9f024689f1bae71657d21ab8687f83822348c584e3b69bac237f2267374def47"
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "title": "Sunset on Guadeloupe.jpg",
+      "model": "Coucher de soleil sur une route de Guadeloupe",
+      "view": "Voiture en décor local",
+      "source": "https://commons.wikimedia.org/wiki/File:Sunset_on_Guadeloupe.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Sunset_on_Guadeloupe.jpg",
+      "original_publisher": "https://www.flickr.com/photos/artificiality/23995408895/",
+      "author": "artificiality",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "verification_date": "2026-11-19",
+      "verification": "Fiche Commons chargée HTTP 200, auteur et URL de licence concordants",
+      "credit": "artificiality · Sunset on Guadeloupe.jpg · CC BY-SA 2.0",
+      "redistribution": "Attribution, lien de licence, indiquer les changements. Adaptations redistribuées sous la même licence ou une licence compatible lorsque la licence retenue comporte SA.",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS desktop 60% 78% et mobile 64% centre, sous dégradé.",
+      "alt": "Voiture sur une route de Guadeloupe au coucher du soleil",
+      "coherence": "Voiture dans le tiers droit inférieur, route et profondeur, cadrage horizontal. Clair au centre haut, nécessite un dégradé. Commune et modèle non documentés.",
+      "fixtureId": null,
+      "use": "Hero exact, versions 720 / 1440 / 1920, photo prioritaire.",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/editorial/route-guadeloupe-1440.webp",
+          "target": "assets/v32/editorial/route-guadeloupe-1440.webp",
+          "size": [
+            1440,
+            960
+          ],
+          "bytes": 108158,
+          "sha256": "210fc94f3a8ae279b471129e660e8d033091646c51622394c08f609d2eb75b26"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/editorial/route-guadeloupe-1920.webp",
+          "target": "assets/v32/editorial/route-guadeloupe-1920.webp",
+          "size": [
+            1920,
+            1280
+          ],
+          "bytes": 163148,
+          "sha256": "d0cf28ad6515d83c9b782cb897fa388aa4ea6f286b51055a502b5f948d1751c3"
+        },
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/editorial/route-guadeloupe-720.webp",
+          "target": "assets/v32/editorial/route-guadeloupe-720.webp",
+          "size": [
+            720,
+            480
+          ],
+          "bytes": 35988,
+          "sha256": "3f762c19587107026e2c65eb5bcecebd6496d33b52d0283e9332d21a6beca920"
+        }
+      ],
+      "original_local": {
+        "kit": "04_VISUAL_REFERENCES/ressources/editorial/source/Sunset_on_Guadeloupe.jpg",
+        "size": [
+          2858,
+          1905
+        ],
+        "bytes": 3031370,
+        "sha256": "60b2bba7cabdb17568a09c6b9ab2951059a6f60166cb90fdfc133f2a5dfeef84",
+        "transform": "Aucune. JPEG source Commons non modifié."
+      }
+    },
+    {
+      "id": 53,
+      "title": "Town centre of Deshaies (1).jpg",
+      "model": "Town centre of Deshaies (1)",
+      "view": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Town_centre_of_Deshaies_(1).jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/7/77/Town_centre_of_Deshaies_%281%29.jpg",
+      "original_publisher": "Own work",
+      "author": "Tournasol7",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "verification_date": "2026-11-19",
+      "verification": "Fiche Commons chargée HTTP 200, auteur et URL de licence concordants",
+      "credit": "Tournasol7 · Town centre of Deshaies (1).jpg · CC BY 4.0",
+      "redistribution": "Attribution, lien de licence, indiquer les changements. Adaptations redistribuées sous la même licence ou une licence compatible lorsque la licence retenue comporte SA.",
+      "transform": "Redimensionnement et conversion WebP sans retouche de scène. Recadrage CSS horizontal.",
+      "alt": "Rue et voitures au pied des collines à Deshaies",
+      "coherence": "Voitures visibles, environnement de bourg et relief. Scène quotidienne adaptée à la découverte locale, alternative de fond écartée car le sujet est diffus au centre.",
+      "fixtureId": null,
+      "use": "Carte de bourg de Deshaies.",
+      "variants": [
+        {
+          "kit": "04_VISUAL_REFERENCES/ressources/editorial/bourg-deshaies-720.webp",
+          "target": "assets/v32/editorial/bourg-deshaies-720.webp",
+          "size": [
+            720,
+            453
+          ],
+          "bytes": 81576,
+          "sha256": "6fb1d0693029e9338dd62dd98e5cc4c831d23d40f9640f5ac0c86da0f06bc190"
+        }
+      ]
+    }
+  ]
+}

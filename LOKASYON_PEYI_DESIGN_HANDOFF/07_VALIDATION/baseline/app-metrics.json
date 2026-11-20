@@ -1,0 +1,204 @@
+[
+  {
+    "key": "app-accueil-1440",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "metrics": {
+      "title": "Une voiture, à votre rythme.",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "34px",
+      "titleBox": [
+        112,
+        171,
+        543.390625,
+        40.109375
+      ],
+      "scrollWidth": 1440,
+      "images": [
+        {
+          "src": "/assets/vehicles/citadine-verte-avant-420.webp",
+          "width": 600,
+          "height": 337
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "app-catalogue-1440",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "metrics": {
+      "title": "Résultats",
+      "fontFamily": "Nunito, system-ui, sans-serif",
+      "fontSize": "28px",
+      "titleBox": [
+        112,
+        191.015625,
+        1216,
+        33.875
+      ],
+      "scrollWidth": 1440,
+      "images": [
+        {
+          "src": "/assets/vehicles/citadine-verte-avant-420.webp",
+          "width": 600,
+          "height": 337
+        },
+        {
+          "src": "/assets/car-sand.svg",
+          "width": 240,
+          "height": 150
+        },
+        {
+          "src": "/assets/car-blue.svg",
+          "width": 240,
+          "height": 150
+        },
+        {
+          "src": "/assets/car-coral.svg",
+          "width": 240,
+          "height": 150
+        },
+        {
+          "src": "/assets/car-sand.svg",
+          "width": 240,
+          "height": 150
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "app-fiche-1440",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "metrics": {
+      "title": "Renault Clio (2024)",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "28px",
+      "titleBox": [
+        112,
+        748.75,
+        728.609375,
+        33.875
+      ],
+      "scrollWidth": 1440,
+      "images": [
+        {
+          "src": "/assets/car-blue.svg",
+          "width": 240,
+          "height": 150
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "app-accueil-390",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "metrics": {
+      "title": "Une voiture, à votre rythme.",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "28px",
+      "titleBox": [
+        16,
+        137,
+        358,
+        67.75
+      ],
+      "scrollWidth": 390,
+      "images": [
+        {
+          "src": "/assets/vehicles/citadine-verte-avant-420.webp",
+          "width": 390,
+          "height": 219
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "app-catalogue-390",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "metrics": {
+      "title": "Résultats",
+      "fontFamily": "Nunito, system-ui, sans-serif",
+      "fontSize": "28px",
+      "titleBox": [
+        16,
+        187.015625,
+        358,
+        33.875
+      ],
+      "scrollWidth": 390,
+      "images": [
+        {
+          "src": "/assets/vehicles/citadine-verte-avant-420.webp",
+          "width": 390,
+          "height": 219
+        },
+        {
+          "src": "/assets/car-sand.svg",
+          "width": 240,
+          "height": 150
+        },
+        {
+          "src": "/assets/car-blue.svg",
+          "width": 240,
+          "height": 150
+        },
+        {
+          "src": "/assets/car-coral.svg",
+          "width": 240,
+          "height": 150
+        },
+        {
+          "src": "/assets/car-sand.svg",
+          "width": 240,
+          "height": 150
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "app-fiche-390",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "metrics": {
+      "title": "Renault Clio (2024)",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "28px",
+      "titleBox": [
+        16,
+        536.703125,
+        358,
+        33.875
+      ],
+      "scrollWidth": 390,
+      "images": [
+        {
+          "src": "/assets/car-blue.svg",
+          "width": 240,
+          "height": 150
+        }
+      ]
+    },
+    "errors": []
+  }
+]

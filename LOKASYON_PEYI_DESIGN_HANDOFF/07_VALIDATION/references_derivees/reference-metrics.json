@@ -1,0 +1,1118 @@
+[
+  {
+    "key": "reference-accueil-1280",
+    "viewport": {
+      "width": 1280,
+      "height": 760
+    },
+    "metrics": {
+      "title": "Roulez au rythme du Péyi.",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "64px",
+      "titleBox": [
+        286.28125,
+        180.59375,
+        707.40625,
+        70.390625
+      ],
+      "scrollWidth": 1280,
+      "images": [
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        },
+        {
+          "src": "../ressources/editorial/route-guadeloupe-1440.webp",
+          "width": 1280,
+          "height": 853
+        },
+        {
+          "src": "../ressources/demo/clio-avant-480.webp",
+          "width": 480,
+          "height": 360
+        },
+        {
+          "src": "../ressources/demo/clio-avant-480.webp",
+          "width": 370,
+          "height": 277
+        },
+        {
+          "src": "../ressources/demo/duster-avant-480.webp",
+          "width": 370,
+          "height": 277
+        },
+        {
+          "src": "../ressources/demo/208-avant-480.webp",
+          "width": 370,
+          "height": 255
+        },
+        {
+          "src": "../ressources/editorial/deshaies-grande-anse-1440.webp",
+          "width": 793,
+          "height": 304
+        },
+        {
+          "src": "../ressources/editorial/route-de-la-traversee-720.webp",
+          "width": 720,
+          "height": 960
+        },
+        {
+          "src": "../ressources/editorial/sainte-anne-caravelle-720.webp",
+          "width": 720,
+          "height": 473
+        },
+        {
+          "src": "../ressources/editorial/bourg-deshaies-720.webp",
+          "width": 720,
+          "height": 453
+        },
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "reference-catalogue-1280",
+    "viewport": {
+      "width": 1280,
+      "height": 760
+    },
+    "metrics": {
+      "title": "Trouvez votre prochaine voiture.",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "64px",
+      "titleBox": [
+        61.4375,
+        147.59375,
+        1157.109375,
+        70.390625
+      ],
+      "scrollWidth": 1280,
+      "images": [
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        },
+        {
+          "src": "../ressources/demo/clio-avant-480.webp",
+          "width": 370,
+          "height": 277
+        },
+        {
+          "src": "../ressources/demo/duster-avant-480.webp",
+          "width": 370,
+          "height": 277
+        },
+        {
+          "src": "../ressources/demo/208-avant-480.webp",
+          "width": 370,
+          "height": 255
+        },
+        {
+          "src": "../ressources/demo/polo-avant-480.webp",
+          "width": 370,
+          "height": 195
+        },
+        {
+          "src": "../ressources/demo/2008-avant-480.webp",
+          "width": 370,
+          "height": 248
+        },
+        {
+          "src": "../ressources/demo/berlingo-avant-480.webp",
+          "width": 370,
+          "height": 235
+        },
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "reference-fiche-1280",
+    "viewport": {
+      "width": 1280,
+      "height": 760
+    },
+    "metrics": {
+      "title": "Renault Clio V",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "64px",
+      "titleBox": [
+        61.4375,
+        197.59375,
+        1157.109375,
+        70.390625
+      ],
+      "scrollWidth": 1280,
+      "images": [
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        },
+        {
+          "src": "../ressources/demo/clio-avant-1050.webp",
+          "width": 1050,
+          "height": 787
+        },
+        {
+          "src": "../ressources/demo/clio-arriere-900.webp",
+          "width": 900,
+          "height": 675
+        },
+        {
+          "src": "../ressources/demo/clio-face-900.webp",
+          "width": 900,
+          "height": 675
+        },
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "reference-accueil-1024",
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "metrics": {
+      "title": "Roulez au rythme du Péyi.",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "51.2px",
+      "titleBox": [
+        217,
+        180.59375,
+        590,
+        56.3125
+      ],
+      "scrollWidth": 1024,
+      "images": [
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        },
+        {
+          "src": "../ressources/editorial/route-guadeloupe-1440.webp",
+          "width": 1024,
+          "height": 682
+        },
+        {
+          "src": "../ressources/demo/clio-avant-480.webp",
+          "width": 480,
+          "height": 360
+        },
+        {
+          "src": "../ressources/demo/clio-avant-480.webp",
+          "width": 370,
+          "height": 277
+        },
+        {
+          "src": "../ressources/demo/duster-avant-480.webp",
+          "width": 370,
+          "height": 277
+        },
+        {
+          "src": "../ressources/demo/208-avant-480.webp",
+          "width": 370,
+          "height": 255
+        },
+        {
+          "src": "../ressources/editorial/deshaies-grande-anse-1440.webp",
+          "width": 634,
+          "height": 244
+        },
+        {
+          "src": "../ressources/editorial/route-de-la-traversee-720.webp",
+          "width": 720,
+          "height": 960
+        },
+        {
+          "src": "../ressources/editorial/sainte-anne-caravelle-720.webp",
+          "width": 720,
+          "height": 473
+        },
+        {
+          "src": "../ressources/editorial/bourg-deshaies-720.webp",
+          "width": 720,
+          "height": 453
+        },
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "reference-catalogue-1024",
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "metrics": {
+      "title": "Trouvez votre prochaine voiture.",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "51.2px",
+      "titleBox": [
+        49.15625,
+        147.59375,
+        925.6875,
+        56.3125
+      ],
+      "scrollWidth": 1024,
+      "images": [
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        },
+        {
+          "src": "../ressources/demo/clio-avant-480.webp",
+          "width": 370,
+          "height": 277
+        },
+        {
+          "src": "../ressources/demo/duster-avant-480.webp",
+          "width": 370,
+          "height": 277
+        },
+        {
+          "src": "../ressources/demo/208-avant-480.webp",
+          "width": 370,
+          "height": 255
+        },
+        {
+          "src": "../ressources/demo/polo-avant-480.webp",
+          "width": 370,
+          "height": 195
+        },
+        {
+          "src": "../ressources/demo/2008-avant-480.webp",
+          "width": 370,
+          "height": 248
+        },
+        {
+          "src": "../ressources/demo/berlingo-avant-480.webp",
+          "width": 370,
+          "height": 235
+        },
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "reference-fiche-1024",
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "metrics": {
+      "title": "Renault Clio V",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "51.2px",
+      "titleBox": [
+        49.15625,
+        197.59375,
+        925.6875,
+        56.3125
+      ],
+      "scrollWidth": 1024,
+      "images": [
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        },
+        {
+          "src": "../ressources/demo/clio-avant-1050.webp",
+          "width": 1050,
+          "height": 787
+        },
+        {
+          "src": "../ressources/demo/clio-arriere-900.webp",
+          "width": 900,
+          "height": 675
+        },
+        {
+          "src": "../ressources/demo/clio-face-900.webp",
+          "width": 900,
+          "height": 675
+        },
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "reference-accueil-768",
+    "viewport": {
+      "width": 768,
+      "height": 950
+    },
+    "metrics": {
+      "title": "Roulez au rythme du Péyi.",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "53.76px",
+      "titleBox": [
+        87.890625,
+        150.59375,
+        592.1875,
+        59.140625
+      ],
+      "scrollWidth": 768,
+      "images": [
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        },
+        {
+          "src": "../ressources/editorial/route-guadeloupe-1440.webp",
+          "width": 768,
+          "height": 512
+        },
+        {
+          "src": "../ressources/demo/clio-avant-480.webp",
+          "width": 480,
+          "height": 360
+        },
+        {
+          "src": "../ressources/demo/clio-avant-480.webp",
+          "width": 370,
+          "height": 277
+        },
+        {
+          "src": "../ressources/demo/duster-avant-480.webp",
+          "width": 370,
+          "height": 277
+        },
+        {
+          "src": "../ressources/demo/208-avant-480.webp",
+          "width": 370,
+          "height": 255
+        },
+        {
+          "src": "../ressources/editorial/deshaies-grande-anse-1440.webp",
+          "width": 476,
+          "height": 183
+        },
+        {
+          "src": "../ressources/editorial/route-de-la-traversee-720.webp",
+          "width": 720,
+          "height": 960
+        },
+        {
+          "src": "../ressources/editorial/sainte-anne-caravelle-720.webp",
+          "width": 720,
+          "height": 473
+        },
+        {
+          "src": "../ressources/editorial/bourg-deshaies-720.webp",
+          "width": 720,
+          "height": 453
+        },
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "reference-catalogue-768",
+    "viewport": {
+      "width": 768,
+      "height": 950
+    },
+    "metrics": {
+      "title": "Trouvez votre prochaine voiture.",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "38.4px",
+      "titleBox": [
+        36.859375,
+        147.59375,
+        694.265625,
+        42.234375
+      ],
+      "scrollWidth": 768,
+      "images": [
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        },
+        {
+          "src": "../ressources/demo/clio-avant-480.webp",
+          "width": 370,
+          "height": 277
+        },
+        {
+          "src": "../ressources/demo/duster-avant-480.webp",
+          "width": 370,
+          "height": 277
+        },
+        {
+          "src": "../ressources/demo/208-avant-480.webp",
+          "width": 370,
+          "height": 255
+        },
+        {
+          "src": "../ressources/demo/polo-avant-480.webp",
+          "width": 370,
+          "height": 195
+        },
+        {
+          "src": "../ressources/demo/2008-avant-480.webp",
+          "width": 370,
+          "height": 248
+        },
+        {
+          "src": "../ressources/demo/berlingo-avant-480.webp",
+          "width": 370,
+          "height": 235
+        },
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "reference-fiche-768",
+    "viewport": {
+      "width": 768,
+      "height": 950
+    },
+    "metrics": {
+      "title": "Renault Clio V",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "38.4px",
+      "titleBox": [
+        36.859375,
+        197.59375,
+        694.265625,
+        42.234375
+      ],
+      "scrollWidth": 768,
+      "images": [
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        },
+        {
+          "src": "../ressources/demo/clio-avant-1050.webp",
+          "width": 1050,
+          "height": 787
+        },
+        {
+          "src": "../ressources/demo/clio-arriere-900.webp",
+          "width": 900,
+          "height": 675
+        },
+        {
+          "src": "../ressources/demo/clio-face-900.webp",
+          "width": 900,
+          "height": 675
+        },
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "reference-accueil-430",
+    "viewport": {
+      "width": 430,
+      "height": 932
+    },
+    "metrics": {
+      "title": "Roulez au rythme du Péyi.",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "43px",
+      "titleBox": [
+        20.640625,
+        134.5,
+        388.71875,
+        94.59375
+      ],
+      "scrollWidth": 430,
+      "images": [
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        },
+        {
+          "src": "../ressources/editorial/route-guadeloupe-1440.webp",
+          "width": 720,
+          "height": 480
+        },
+        {
+          "src": "../ressources/demo/clio-avant-480.webp",
+          "width": 480,
+          "height": 360
+        },
+        {
+          "src": "../ressources/demo/clio-avant-480.webp",
+          "width": 387,
+          "height": 290
+        },
+        {
+          "src": "../ressources/demo/duster-avant-480.webp",
+          "width": 387,
+          "height": 290
+        },
+        {
+          "src": "../ressources/demo/208-avant-480.webp",
+          "width": 387,
+          "height": 266
+        },
+        {
+          "src": "../ressources/editorial/deshaies-grande-anse-1440.webp",
+          "width": 386,
+          "height": 148
+        },
+        {
+          "src": "../ressources/editorial/route-de-la-traversee-720.webp",
+          "width": 720,
+          "height": 960
+        },
+        {
+          "src": "../ressources/editorial/sainte-anne-caravelle-720.webp",
+          "width": 720,
+          "height": 473
+        },
+        {
+          "src": "../ressources/editorial/bourg-deshaies-720.webp",
+          "width": 720,
+          "height": 453
+        },
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "reference-catalogue-430",
+    "viewport": {
+      "width": 430,
+      "height": 932
+    },
+    "metrics": {
+      "title": "Trouvez votre prochaine voiture.",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "43px",
+      "titleBox": [
+        20.640625,
+        118.59375,
+        388.71875,
+        94.59375
+      ],
+      "scrollWidth": 430,
+      "images": [
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        },
+        {
+          "src": "../ressources/demo/clio-avant-480.webp",
+          "width": 387,
+          "height": 290
+        },
+        {
+          "src": "../ressources/demo/duster-avant-480.webp",
+          "width": 387,
+          "height": 290
+        },
+        {
+          "src": "../ressources/demo/208-avant-480.webp",
+          "width": 387,
+          "height": 266
+        },
+        {
+          "src": "../ressources/demo/polo-avant-480.webp",
+          "width": 387,
+          "height": 203
+        },
+        {
+          "src": "../ressources/demo/2008-avant-480.webp",
+          "width": 387,
+          "height": 259
+        },
+        {
+          "src": "../ressources/demo/berlingo-avant-480.webp",
+          "width": 387,
+          "height": 245
+        },
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "reference-fiche-430",
+    "viewport": {
+      "width": 430,
+      "height": 932
+    },
+    "metrics": {
+      "title": "Renault Clio V",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "43px",
+      "titleBox": [
+        20.640625,
+        169.59375,
+        388.71875,
+        47.296875
+      ],
+      "scrollWidth": 430,
+      "images": [
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        },
+        {
+          "src": "../ressources/demo/clio-avant-1050.webp",
+          "width": 1050,
+          "height": 787
+        },
+        {
+          "src": "../ressources/demo/clio-arriere-900.webp",
+          "width": 900,
+          "height": 675
+        },
+        {
+          "src": "../ressources/demo/clio-face-900.webp",
+          "width": 900,
+          "height": 675
+        },
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "reference-accueil-375",
+    "viewport": {
+      "width": 375,
+      "height": 812
+    },
+    "metrics": {
+      "title": "Roulez au rythme du Péyi.",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "37.5px",
+      "titleBox": [
+        18,
+        134.5,
+        339,
+        82.5
+      ],
+      "scrollWidth": 375,
+      "images": [
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        },
+        {
+          "src": "../ressources/editorial/route-guadeloupe-1440.webp",
+          "width": 720,
+          "height": 480
+        },
+        {
+          "src": "../ressources/demo/clio-avant-480.webp",
+          "width": 480,
+          "height": 360
+        },
+        {
+          "src": "../ressources/demo/clio-avant-480.webp",
+          "width": 337,
+          "height": 253
+        },
+        {
+          "src": "../ressources/demo/duster-avant-480.webp",
+          "width": 337,
+          "height": 253
+        },
+        {
+          "src": "../ressources/demo/208-avant-480.webp",
+          "width": 337,
+          "height": 232
+        },
+        {
+          "src": "../ressources/editorial/deshaies-grande-anse-1440.webp",
+          "width": 337,
+          "height": 129
+        },
+        {
+          "src": "../ressources/editorial/route-de-la-traversee-720.webp",
+          "width": 720,
+          "height": 960
+        },
+        {
+          "src": "../ressources/editorial/sainte-anne-caravelle-720.webp",
+          "width": 720,
+          "height": 473
+        },
+        {
+          "src": "../ressources/editorial/bourg-deshaies-720.webp",
+          "width": 720,
+          "height": 453
+        },
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "reference-catalogue-375",
+    "viewport": {
+      "width": 375,
+      "height": 812
+    },
+    "metrics": {
+      "title": "Trouvez votre prochaine voiture.",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "37.5px",
+      "titleBox": [
+        18,
+        118.59375,
+        339,
+        82.5
+      ],
+      "scrollWidth": 375,
+      "images": [
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        },
+        {
+          "src": "../ressources/demo/clio-avant-480.webp",
+          "width": 337,
+          "height": 253
+        },
+        {
+          "src": "../ressources/demo/duster-avant-480.webp",
+          "width": 337,
+          "height": 253
+        },
+        {
+          "src": "../ressources/demo/208-avant-480.webp",
+          "width": 337,
+          "height": 232
+        },
+        {
+          "src": "../ressources/demo/polo-avant-480.webp",
+          "width": 337,
+          "height": 177
+        },
+        {
+          "src": "../ressources/demo/2008-avant-480.webp",
+          "width": 337,
+          "height": 226
+        },
+        {
+          "src": "../ressources/demo/berlingo-avant-480.webp",
+          "width": 337,
+          "height": 214
+        },
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "reference-fiche-375",
+    "viewport": {
+      "width": 375,
+      "height": 812
+    },
+    "metrics": {
+      "title": "Renault Clio V",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "37.5px",
+      "titleBox": [
+        18,
+        169.59375,
+        339,
+        41.25
+      ],
+      "scrollWidth": 375,
+      "images": [
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        },
+        {
+          "src": "../ressources/demo/clio-avant-1050.webp",
+          "width": 1050,
+          "height": 787
+        },
+        {
+          "src": "../ressources/demo/clio-arriere-900.webp",
+          "width": 900,
+          "height": 675
+        },
+        {
+          "src": "../ressources/demo/clio-face-900.webp",
+          "width": 900,
+          "height": 675
+        },
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "reference-accueil-320",
+    "viewport": {
+      "width": 320,
+      "height": 844
+    },
+    "metrics": {
+      "title": "Roulez au rythme du Péyi.",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "37px",
+      "titleBox": [
+        16,
+        150,
+        288,
+        81.375
+      ],
+      "scrollWidth": 320,
+      "images": [
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        },
+        {
+          "src": "../ressources/editorial/route-guadeloupe-1440.webp",
+          "width": 720,
+          "height": 480
+        },
+        {
+          "src": "../ressources/demo/clio-avant-480.webp",
+          "width": 480,
+          "height": 360
+        },
+        {
+          "src": "../ressources/demo/clio-avant-480.webp",
+          "width": 288,
+          "height": 216
+        },
+        {
+          "src": "../ressources/demo/duster-avant-480.webp",
+          "width": 288,
+          "height": 216
+        },
+        {
+          "src": "../ressources/demo/208-avant-480.webp",
+          "width": 288,
+          "height": 198
+        },
+        {
+          "src": "../ressources/editorial/deshaies-grande-anse-1440.webp",
+          "width": 288,
+          "height": 110
+        },
+        {
+          "src": "../ressources/editorial/route-de-la-traversee-720.webp",
+          "width": 720,
+          "height": 960
+        },
+        {
+          "src": "../ressources/editorial/sainte-anne-caravelle-720.webp",
+          "width": 720,
+          "height": 473
+        },
+        {
+          "src": "../ressources/editorial/bourg-deshaies-720.webp",
+          "width": 720,
+          "height": 453
+        },
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "reference-catalogue-320",
+    "viewport": {
+      "width": 320,
+      "height": 844
+    },
+    "metrics": {
+      "title": "Trouvez votre prochaine voiture.",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "35px",
+      "titleBox": [
+        16,
+        118.59375,
+        288,
+        77
+      ],
+      "scrollWidth": 320,
+      "images": [
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        },
+        {
+          "src": "../ressources/demo/clio-avant-480.webp",
+          "width": 288,
+          "height": 216
+        },
+        {
+          "src": "../ressources/demo/duster-avant-480.webp",
+          "width": 288,
+          "height": 216
+        },
+        {
+          "src": "../ressources/demo/208-avant-480.webp",
+          "width": 288,
+          "height": 198
+        },
+        {
+          "src": "../ressources/demo/polo-avant-480.webp",
+          "width": 288,
+          "height": 151
+        },
+        {
+          "src": "../ressources/demo/2008-avant-480.webp",
+          "width": 288,
+          "height": 193
+        },
+        {
+          "src": "../ressources/demo/berlingo-avant-480.webp",
+          "width": 288,
+          "height": 183
+        },
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "key": "reference-fiche-320",
+    "viewport": {
+      "width": 320,
+      "height": 844
+    },
+    "metrics": {
+      "title": "Renault Clio V",
+      "fontFamily": "Lora, Georgia, serif",
+      "fontSize": "35px",
+      "titleBox": [
+        16,
+        169.59375,
+        288,
+        38.5
+      ],
+      "scrollWidth": 320,
+      "images": [
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        },
+        {
+          "src": "../ressources/demo/clio-avant-1050.webp",
+          "width": 1050,
+          "height": 787
+        },
+        {
+          "src": "../ressources/demo/clio-arriere-900.webp",
+          "width": 900,
+          "height": 675
+        },
+        {
+          "src": "../ressources/demo/clio-face-900.webp",
+          "width": 900,
+          "height": 675
+        },
+        {
+          "src": "../ressources/marque/logo-horizontal-charte.png",
+          "width": 683,
+          "height": 122
+        }
+      ]
+    },
+    "errors": []
+  }
+]

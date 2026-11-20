@@ -1,0 +1,11 @@
+﻿Ecran;Route;Viewport;Origine;Reference;Etat;Assertions;Lot;Resultat;Preuve;Priorite
+Accueil;/;1440×900,390×844;natif;Accueil_Desktop_Premier_Ecran.png / Accueil_Mobile_Premier_Ecran.png;Visiteur, q vide, dates vides;Hero/photo/crédit, cadran, vue et formulaire;03;À exécuter au lot;;
+Accueil complet;/;1440×900,390×844;natif pleine page;Accueil_Desktop.png / Accueil_Mobile.png;Visiteur et CTA par rôle;Ordre des sections, destinations, photos;04/07;À exécuter au lot;;
+Catalogue;/search;1440×900,390×844;natif pleine page;Catalogue_Desktop.png / Catalogue_Mobile.png;Liste, q vide, 3 ou 6 selon jeu;Carte, colonnes, tri, résumé;05;À exécuter au lot;;
+Tiroir;/search;390×844;natif;Catalogue_Mobile_Tiroir_Filtres.png;Ouvrir, appliquer, Annuler, Échap;Focus, un formulaire, filtres et contexte;05;À exécuter au lot;;
+Catalogue états;/search;1280×760;natif;Catalogue_Chargement.png / Catalogue_Sans_Resultat.png / Catalogue_Indisponible.png;Requête suspendue, q=introuvable, requête véhiculée en erreur;Attente/vide/erreur distincts, retry;05;À exécuter au lot;;
+Fiche;/vehicle/v3;1440×900,390×844;natif pleine page;Fiche_Desktop.png / Fiche_Mobile.png;Clio, période vide, visiteur;Ordre, 1+2, état avant demande, prix;06;À exécuter au lot;;
+Fiche états;/vehicle/v1;390×844,320×844;règles adaptatives;Fiche_Mobile.png;"Ouvrir galerie/défaut; image 404; dates et demande";Fallback et distinct entre galerie/défaut;06;À exécuter au lot;;
+Verre;/design-system;1440×750,390×844;natif / dérivé;Verre_Clair_Sombre.png / Verre_Fond_Opaque.png;Clair, sombre, opaque et motion réduite;Contraste, focus, lisibilité;01;À exécuter au lot;;
+Parcours responsive;/, /search, /vehicle/v3;1280×760,1024×900,768×950,430×932,375×812,320×844;revue HTML dérivée;maquettes/index.html;Nominal, zoom, portrait/paysage;No overflow, titres, cibles, focus, reflow;03–09;À exécuter au lot;;
+Rôles;/, /search, /vehicle/v3;1440×900,390×844;revue HTML pour intentions;maquettes/index.html?profil=owner;Visiteur, locataire, propriétaire, session lente, admin indépendant;Destinations sûres et privées;07/09;À exécuter au lot;;

@@ -1,0 +1,2600 @@
+{
+  "base": "e42cc6ffa69bba6c1cc5c36333adede531d6d11f",
+  "files": [
+    {
+      "path": "00_DECISIONS/DESIGN_DIRECTION.md",
+      "status": "Archiver dans Git",
+      "reason": "Direction et arbitrages V2 historiques. Règles applicables reprises depuis le code et la documentation métier.",
+      "replacement": "00_SOURCE_OF_TRUTH/DECISIONS_ET_SOURCES.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json",
+        "README.md"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "6c1f6e7c5a291cbf2cce4341f0099e626a1f76d8b4ffd94b3de09db8c804c694",
+      "bytes": 1848
+    },
+    {
+      "path": "00_DECISIONS/OPEN_DECISIONS.md",
+      "status": "Archiver dans Git",
+      "reason": "Direction et arbitrages V2 historiques. Règles applicables reprises depuis le code et la documentation métier.",
+      "replacement": "00_SOURCE_OF_TRUTH/DECISIONS_ET_SOURCES.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json",
+        "README.md"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "dfcc6db5461e14d7eeb9f7301a6256d6fd14564ea8086078cc037d862359d59b",
+      "bytes": 1800
+    },
+    {
+      "path": "00_DECISIONS/PRODUCT_CONSTRAINTS.md",
+      "status": "Archiver dans Git",
+      "reason": "Direction et arbitrages V2 historiques. Règles applicables reprises depuis le code et la documentation métier.",
+      "replacement": "00_SOURCE_OF_TRUTH/DECISIONS_ET_SOURCES.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json",
+        "README.md"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "ad274d22ccad272528a54088f21055275a8c40872f49bb2fdf552b3bef1e1600",
+      "bytes": 2970
+    },
+    {
+      "path": "01_REFERENCES/Comparatif_Apercu.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "FILE_MANIFEST.json",
+        "README.md"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "707def070b96c0229e0ac60d530aa796d9884789772601f090a61c4ee1d7f63e",
+      "bytes": 280500
+    },
+    {
+      "path": "01_REFERENCES/README.md",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "893f5685126c1123021db3629a7614a32fe0f9e16a79b385b3095ea8cf7834a6",
+      "bytes": 1235
+    },
+    {
+      "path": "01_REFERENCES/benchmark/PRINCIPES.md",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/README.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "97f0dc78bc71a9fd7ee0b81cc61b7f52fed797fd7535bf81c3b82fc388300eaa",
+      "bytes": 1296
+    },
+    {
+      "path": "01_REFERENCES/current_ui/04_AUDIT_UX_UI_DETAILLE.md",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/README.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "45d4dadb9de75ef78d4640015c46a11e8072948159c86cda74f50cb89c1d3e34",
+      "bytes": 11986
+    },
+    {
+      "path": "01_REFERENCES/current_ui/06_ECARTS_MAQUETTE_PROJET.md",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/README.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "3163d398f36c71d043ed75a12b4d3ffab7261dd5b43516f6c8463b3ed15c325a",
+      "bytes": 6570
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L01-accueil.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/explorer.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "05e03f5659a1a6e2401c2fe8ded658079c67c7a83efaccce247763241f444788",
+      "bytes": 49595
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L02-resultats.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/screen-index.json",
+        "04_SCREEN_SPECS/search_results.md",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "2e2790f8b90a03b7fb2d6510897f2af8105458b6516012174a95b2778d94fdcf",
+      "bytes": 44820
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L03-filtres.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/screen-index.json",
+        "04_SCREEN_SPECS/search_results.md",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "e17fa5bf49c85b1dfec4dfecd627eb2d236edf610bf5c85554c94c9b42235598",
+      "bytes": 35622
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L04-fiche.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/screen-index.json",
+        "04_SCREEN_SPECS/vehicle_condition.md",
+        "04_SCREEN_SPECS/vehicle_detail.md",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "33a1bbe2f1ada999e41460cca48c106beb328e6b7c76fb5df50b3bec4ec86550",
+      "bytes": 50985
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L05-fiche-reserver.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/screen-index.json",
+        "04_SCREEN_SPECS/vehicle_detail.md",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "45dd43e99a14d131e5ba51f2bbe76b4e1913727362d39b925a908d5cdf7a1cdb",
+      "bytes": 37416
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L06-demande.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/booking.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "3344b1c6addfb1faff77107e52e6a5e150f5fbbd0d17d5cb6765d1e555407c99",
+      "bytes": 44078
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L07-locations.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/rental_tracking.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "2306f0da96ae0e3e6e9a0b8cc93fcf4ba103c5849cf6bdf8ab4396da9d403298",
+      "bytes": 47893
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L08-acceptee.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/rental_tracking.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "e90eb120f36221e0d098a9bd47619cc7d17e114c62f737ee0db922e480052bf1",
+      "bytes": 47380
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L09-paiement.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/booking.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "5d1efbb10dba6bff301da7e3e5f7b459d599a795e5c618149c1f43b499d93eb5",
+      "bytes": 43716
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L10-confirmee.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "ae448b81f1e956caca102c6c9450d2b486c9fcc2e67bf4117ecf9467a0f1e8e4",
+      "bytes": 51506
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L11-constat.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/rental_tracking.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "d3900e6e80b69944a465d84aa4009a0133ced95c0d1c5c65d5abbfd23c4fd488",
+      "bytes": 42879
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L12-profil.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/navigation_profile.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "19ea697eec4d99eb485a517d01d625a87f8e30da9c509b48d00fd45bac27a889",
+      "bytes": 36983
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L13-notifications.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/navigation_profile.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "eda24f248fcfd56475706e14d892117638e8b69e3ba57ee7479444d3be614d94",
+      "bytes": 52538
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L14-messages.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/inbox.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "4134332682efedcd2977ad8b46449dcfb4af76d71f778a1f964cab45ca045f79",
+      "bytes": 50691
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L15-composition.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/conversation.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "1e677909ab097a4b41b6ad26ef860e25b86b2a8452972df12bb0696321831826",
+      "bytes": 35003
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L16-brouillon.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/owner_publication.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "04_SCREEN_SPECS/vehicle_condition.md",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "6bebad71a111d982413bf760c6eb252a54b04cb93f6bd89538b166a14421f88a",
+      "bytes": 44736
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L17-proprietaire.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/owner_dashboard.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "b62da8cb3b795f302bc3ee45e7f7dfa73ed846bd6a0306b6ae9a8267c5a27e25",
+      "bytes": 39667
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L18-calendrier.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/owner_dashboard.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "f059a639fc9bea0ded620bc593d989601b788a5974d87a9f2a25eb81a32c33bb",
+      "bytes": 40520
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L19-admin.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/administration.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "ad9a4188e9a3067f21b517b33b7676fdc226aebb80e9f0434ec6b92afe9f68f7",
+      "bytes": 60238
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L20-admin-litiges.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "c10a5bdc5096fdf6b24961b81ced23ef59d7cbc0641256f512eddbc858563f0d",
+      "bytes": 40008
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L21-admin-moderation.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/administration.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "5c3229b2d898ad0b5aa66757f0db30084d414078f56aeed49e4521265cc49629",
+      "bytes": 40925
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L22-admin-finance.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "a07dae7f8c3d40aa88538d31654ac1cc2b604422b02b3d6a642fbecef0e2995f",
+      "bytes": 50996
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L23-accueil-ordinateur.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/explorer.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "6faac46b295690a3bf9bb2c2df334ee57a92e97344400e3ca104eb6a1f162069",
+      "bytes": 105047
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L24-admin-320.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/administration.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "fa054273611e99da768b3a81b13d8dd6b656ec45e797da95add3117184637746",
+      "bytes": 34220
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L24-admin-768.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "3642421f1c230e7ba08e2f1d7fde792c9e57f73097c88e1613df677bcce22600",
+      "bytes": 71019
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L25-demande-envoyee.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "99999a72bdd2eee17ac829454b688c4aaae5a1bc835f065bf1f0b1bf14ad02dd",
+      "bytes": 45205
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L26-paiement-refuse.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/rental_tracking.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "ce960ebbf6d45cd40ea3611ea6fe16b39ee49f0cbd6e767ed4a204f6bbad067d",
+      "bytes": 47607
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L27-confirmation.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "c7412af0f02c58d69730b98c1c1d612fd5d148d57ec6f72625ca8998a0b02434",
+      "bytes": 51307
+    },
+    {
+      "path": "01_REFERENCES/current_ui/L28-message-recu.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/conversation.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "f03d5ffa52da35e0d7f74f1f10c69a20479c889ee858f8dad5ddf0689014364b",
+      "bytes": 46832
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/AX-01.json",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/README.md",
+        "01_REFERENCES/current_ui/04_AUDIT_UX_UI_DETAILLE.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "384a6e1e0c9a182d68fb6bbfe56c4415c3c1bf36eef6c3e56bdcac121b03d6e1",
+      "bytes": 567
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/admin-320.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "8dc5252a23961ee7ae4396bd7865179f00af4d4d26f6067f4ea16d2798e288cf",
+      "bytes": 120752
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/admin-document.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/current_ui/04_AUDIT_UX_UI_DETAILLE.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "1ce85b8a3f0fc6d8ce3f5dd8e71d7b3b1b084c032beae85947a1de2015958ace",
+      "bytes": 113949
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/admin-finance.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/current_ui/04_AUDIT_UX_UI_DETAILLE.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "680ad53b254ed60efee4a6bfdaaef594f213fb343aa860e81eff66bd72537f12",
+      "bytes": 151849
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/admin-utilisateurs-320.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/current_ui/04_AUDIT_UX_UI_DETAILLE.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "06e02304ef3276cee887861e86d19acc6f1439c06243c205d6de44b415b57361",
+      "bytes": 157657
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/client-390.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/current_ui/04_AUDIT_UX_UI_DETAILLE.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "15d395613a1ddacdd5ac46d0aadd0c0f1d395892c138107ce5e4acad936226ba",
+      "bytes": 141340
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/client-reseau.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/current_ui/04_AUDIT_UX_UI_DETAILLE.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "bc167eca45fdcf65b64200ab49d162d57c73d0cbfe5d6357f9ebae94e620c64f",
+      "bytes": 46336
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/fiche-dates.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/current_ui/04_AUDIT_UX_UI_DETAILLE.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "ace8b1fa38d5b71d0dfeafc1aa4e61efe22c4361959a90669b88ae158d370d95",
+      "bytes": 153092
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/galerie-dialogue.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/current_ui/04_AUDIT_UX_UI_DETAILLE.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "9a719ce4f0108384b40f3b4c62cb6571c28bff4385189d4d0feecc730aa7dd97",
+      "bytes": 197806
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/inspection-depart.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/current_ui/04_AUDIT_UX_UI_DETAILLE.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "f657dd2f1a43a9d183dc9ff37a609d8e87aeec4d130189e8341e829a48599a2e",
+      "bytes": 141362
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/proprietaire-recapitulatif.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/current_ui/04_AUDIT_UX_UI_DETAILLE.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "655084249611ace0c63772d8865183bfb15f08b85d92370673c162e072e75707",
+      "bytes": 136423
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/recherche-aeroport.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/current_ui/04_AUDIT_UX_UI_DETAILLE.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "84bd70c4a4558b79a2386958990df8c164cdc5ce5a6657956c15b48481ffad87",
+      "bytes": 94819
+    },
+    {
+      "path": "01_REFERENCES/current_ui/preuves/recherche-retour.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/current_ui/04_AUDIT_UX_UI_DETAILLE.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "ae91a98ff52bb1c0cd17c363328a1e30dd73ceaae3533b3aeb13030569a3ca12",
+      "bytes": 167596
+    },
+    {
+      "path": "01_REFERENCES/finition/00_LIRE_EN_PREMIER.md",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "cda7153be652c9c1bdab109549a20b335a01af47cdf59f5b0c7c894284f368ab",
+      "bytes": 5114
+    },
+    {
+      "path": "01_REFERENCES/finition/01_SPECIFICATION_CODEX.md",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/README.md",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "FILE_MANIFEST.json",
+        "README.md"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "4ca4adc35f44a1f6a1fa269bd53347bb7404387899cc52944a6dfe323b0194af",
+      "bytes": 14834
+    },
+    {
+      "path": "01_REFERENCES/finition/02_PLAN_DE_RECETTE_ET_ARBITRAGES.md",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "3dc08a955a7c811c93ee9b8a9fb24730ab31dd39bc9979777c4b570f125c4636",
+      "bytes": 8134
+    },
+    {
+      "path": "01_REFERENCES/finition/Brouillon_conflit_390.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "4f654c100305d12dec38c036d11f0b3c2d6fd3410741d5a20e70033f953f379d",
+      "bytes": 48483
+    },
+    {
+      "path": "01_REFERENCES/finition/Message_echec_390.png",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "3d4e009b2c64f9e66deb7d5f945412f2dff0c3854b484c7b8c2cd2074ab1e32c",
+      "bytes": 62227
+    },
+    {
+      "path": "01_REFERENCES/finition/Prototype_Peyi_Contemporain.html",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/README.md",
+        "03_ASSETS/asset-manifest.json",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "FILE_MANIFEST.json",
+        "README.md"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "d33b43dd6f2d40fd892d2e9f43b7f35b4d55bb7ef832b873c6094c0a3305a8da",
+      "bytes": 1052588
+    },
+    {
+      "path": "01_REFERENCES/finition/accessibilite.json",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "b9adb11caa5f1af1874b4dd7d2aef35f0d3b21d2e17925dc0dd8e73b7ef59c5d",
+      "bytes": 3117
+    },
+    {
+      "path": "01_REFERENCES/finition/resultats.json",
+      "status": "Archiver dans Git",
+      "reason": "Preuve, comparatif, analyse ou benchmark lié à la recette V2.",
+      "replacement": "07_VALIDATION/baseline/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "a7cd160a82368c66c032a9a1f4c287600a04b7c93563607e979895767b28845f",
+      "bytes": 36180
+    },
+    {
+      "path": "01_REFERENCES/source_pdf/Refonte_Haute_Fidelite_Lokasyon_Peyi.pdf",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/README.md",
+        "03_ASSETS/asset-manifest.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "21d9a0f3dadbd9175fdb875faf39033e28484ff3b2647a98e20c05dbfa2529e3",
+      "bytes": 9291269
+    },
+    {
+      "path": "01_REFERENCES/source_pdf/Refonte_Mobile_First_Lokasyon_Peyi.pdf",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/README.md",
+        "03_ASSETS/asset-manifest.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "2e681b83662d25c342b1995f1600aa748c344bab8bd00967e4e83dce4ede4cf2",
+      "bytes": 5401239
+    },
+    {
+      "path": "01_REFERENCES/target_ui/01_Explorer.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/explorer.md",
+        "04_SCREEN_SPECS/navigation_profile.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "5a1d3abd1be54bc74fb7eab66cd9c54443e95ab2421d3eacec3e7923891f3461",
+      "bytes": 546028
+    },
+    {
+      "path": "01_REFERENCES/target_ui/02_Resultats.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "04_SCREEN_SPECS/search_results.md",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "8e87c301688f94b1db367729109791199d6740f8d0671bfa60deb04720ef0635",
+      "bytes": 719179
+    },
+    {
+      "path": "01_REFERENCES/target_ui/03_Fiche_vehicule.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "04_SCREEN_SPECS/vehicle_detail.md",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "c448b8309dbb682b51842bc3f225455e606d41052ea19d31da4dec62d4b64d48",
+      "bytes": 661598
+    },
+    {
+      "path": "01_REFERENCES/target_ui/04_Defaut_detail.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "04_SCREEN_SPECS/vehicle_condition.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "7760fca609766570364c0bd565454407fbde210926def5fe27e9b94e9b6d23f5",
+      "bytes": 461270
+    },
+    {
+      "path": "01_REFERENCES/target_ui/05_Recapitulatif.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/booking.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "198f74f674386c96620670066829e3b553a1a9d1c0a7ae4fb8220a9f5ced73e2",
+      "bytes": 133340
+    },
+    {
+      "path": "01_REFERENCES/target_ui/06_Suivi_location.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/rental_tracking.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "897031b8ebcdfe4e55b892589474b6264dfc4d858882d89a8a285d2287f96680",
+      "bytes": 119419
+    },
+    {
+      "path": "01_REFERENCES/target_ui/07_Boite_messages.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/inbox.md",
+        "04_SCREEN_SPECS/navigation_profile.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "c06eaad52780c2f64a804f360e12d92e545df92cd301ea525ef4518c4c4a4f45",
+      "bytes": 79590
+    },
+    {
+      "path": "01_REFERENCES/target_ui/08_Conversation_location.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/conversation.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "12d51b0bfbfc4a7aeb0deb40e77741de8fb57473b1578807c090a691a224ec2d",
+      "bytes": 98861
+    },
+    {
+      "path": "01_REFERENCES/target_ui/09_Conversation_avant_demande.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/conversation.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "9c781eecd316e2064e821c95f101cef15c2040ce10076506a81276cdbc9f1b7a",
+      "bytes": 92208
+    },
+    {
+      "path": "01_REFERENCES/target_ui/10_Dashboard_proprietaire.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/navigation_profile.md",
+        "04_SCREEN_SPECS/owner_dashboard.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "090dceb691e29d7faaea6cf14bb95e9dd9b75cb4f48137b89e9e97a6502f7677",
+      "bytes": 114928
+    },
+    {
+      "path": "01_REFERENCES/target_ui/11_Declaration_proprietaire.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/owner_publication.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "04_SCREEN_SPECS/vehicle_condition.md",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "e3dc08a64dcdf45f27c5bf6b1b09c4dfaf6f60ce19c175e0dd237b5fa024ac2e",
+      "bytes": 111703
+    },
+    {
+      "path": "01_REFERENCES/target_ui/12_File_admin.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/administration.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "b1cf2ecac03388125066e61e084cc5fd0110bc99c40d60e18fa003f583d208b9",
+      "bytes": 72190
+    },
+    {
+      "path": "01_REFERENCES/target_ui/13_Illustration_modele.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "04_SCREEN_SPECS/vehicle_detail.md",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "cee2cd2112ee59d19241650b81ad20f665155e785dcd24cabb0e3275c23a5880",
+      "bytes": 332803
+    },
+    {
+      "path": "01_REFERENCES/target_ui/14_Direction_Mobilite_locale.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "cfd9e44faf17b3b42abcd41805842cc0b14b955e29c9fff02147f8c1e2aaaf5c",
+      "bytes": 341521
+    },
+    {
+      "path": "01_REFERENCES/target_ui/15_Filtres.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "04_SCREEN_SPECS/search_results.md",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "7b3e109e8f690d8ff2b58115fec66843051e81b628cad43a011d0ddc641933b2",
+      "bytes": 57298
+    },
+    {
+      "path": "01_REFERENCES/target_ui/16_Parc_proprietaire.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/owner_dashboard.md",
+        "04_SCREEN_SPECS/owner_publication.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "ff8517fb1536abec616a787a7a100efbee1c1449a56b7d3b07deb936c9c19b9f",
+      "bytes": 154532
+    },
+    {
+      "path": "01_REFERENCES/target_ui/17_Gestion_annonce.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/owner_dashboard.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "0161f8b2a8d2617161ae10e64025dd1dfdf999722d0c7697888826f6d14c2753",
+      "bytes": 544716
+    },
+    {
+      "path": "01_REFERENCES/target_ui/18_Calendrier.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/owner_dashboard.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "d63365caffbee0a47a2b43afd47977b379fedbf34a1a8cc32186197d3137818f",
+      "bytes": 69485
+    },
+    {
+      "path": "01_REFERENCES/target_ui/19_Demande_proprietaire.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/owner_dashboard.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "1c469da79150e5de7810cc2fa0450413de43242586f2dba517ae084f3b02b10f",
+      "bytes": 108009
+    },
+    {
+      "path": "01_REFERENCES/target_ui/20_Decision_admin.png",
+      "status": "Archiver dans Git",
+      "reason": "Cible visuelle V2 remplacée par V3.2.",
+      "replacement": "04_VISUAL_REFERENCES/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "04_SCREEN_SPECS/README.md",
+        "04_SCREEN_SPECS/administration.md",
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "e080ab789e7a1f4b14eee1dd0553e11366ecfb48710a6f2df71a307a58c16f0f",
+      "bytes": 77560
+    },
+    {
+      "path": "02_DESIGN_SYSTEM/COMPONENT_SPECS.md",
+      "status": "Archiver dans Git",
+      "reason": "Valeurs de design V2 historiques. Les CSS runtime restent en place.",
+      "replacement": "02_FONDATIONS_V3.2/DESIGN_SYSTEM.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json",
+        "README.md"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "b4e8feb6122c6dc471d5ded3d421b516e32ef7efd221f069f9a63323b3cc5a4d",
+      "bytes": 3986
+    },
+    {
+      "path": "02_DESIGN_SYSTEM/DESIGN_SYSTEM.md",
+      "status": "Archiver dans Git",
+      "reason": "Valeurs de design V2 historiques. Les CSS runtime restent en place.",
+      "replacement": "02_FONDATIONS_V3.2/DESIGN_SYSTEM.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json",
+        "README.md"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "22d3b80cfddd54b556a4713bc2db5f2a93b495f74bb49023bac36f838fc0f2a2",
+      "bytes": 4387
+    },
+    {
+      "path": "02_DESIGN_SYSTEM/GEOMETRIE_V2.md",
+      "status": "Archiver dans Git",
+      "reason": "Valeurs de design V2 historiques. Les CSS runtime restent en place.",
+      "replacement": "02_FONDATIONS_V3.2/DESIGN_SYSTEM.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json",
+        "README.md"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "7b8e1791024d56efeb07f7c6644c41a82493c7a45f3c2794c1783ba8d0b62f86",
+      "bytes": 2625
+    },
+    {
+      "path": "02_DESIGN_SYSTEM/design-tokens.json",
+      "status": "Archiver dans Git",
+      "reason": "Valeurs de design V2 historiques. Les CSS runtime restent en place.",
+      "replacement": "02_FONDATIONS_V3.2/DESIGN_SYSTEM.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "FILE_MANIFEST.json",
+        "README.md",
+        "tools/verify_handoff.py"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "6c151ba1aaa09145176ff3c4d4ad6dac045315336e8dd71dfdf04ee916480e7c",
+      "bytes": 2751
+    },
+    {
+      "path": "02_DESIGN_SYSTEM/tokens.css",
+      "status": "Archiver dans Git",
+      "reason": "Valeurs de design V2 historiques. Les CSS runtime restent en place.",
+      "replacement": "02_FONDATIONS_V3.2/DESIGN_SYSTEM.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "02_DESIGN_SYSTEM/DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json",
+        "README.md",
+        "tools/verify_handoff.py"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "46eda420543d21d832feae8134e6355accb4ecd305e2b222a98e759ba4e22689",
+      "bytes": 2826
+    },
+    {
+      "path": "03_ASSETS/ASSET_MANIFEST.md",
+      "status": "Archiver dans Git",
+      "reason": "Ressource V2 sans dépendance actuelle. Le nouvel inventaire fournit les photos retenues.",
+      "replacement": "04_VISUAL_REFERENCES/ASSET_MAPPING.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "FILE_MANIFEST.json",
+        "README.md"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "eac91247f96238316b5a703cad3eec8f265fa1c461b64d4bbc0c14de45accaff",
+      "bytes": 5058
+    },
+    {
+      "path": "03_ASSETS/asset-manifest.json",
+      "status": "Archiver dans Git",
+      "reason": "Ressource V2 sans dépendance actuelle. Le nouvel inventaire fournit les photos retenues.",
+      "replacement": "04_VISUAL_REFERENCES/ASSET_MAPPING.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "FILE_MANIFEST.json",
+        "README.md",
+        "tools/verify_handoff.py"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "49bd5a10cc98882812d4f5dc9531935f116025593eeed2e47bb38f1f70b21cd9",
+      "bytes": 66717
+    },
+    {
+      "path": "03_ASSETS/fonts/Lobster-OFL.txt",
+      "status": "Archiver dans Git",
+      "reason": "Copie strictement identique à la police ou notice locale runtime.",
+      "replacement": "assets/fonts/Lobster-OFL.txt",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [
+        "assets/fonts/Lobster-OFL.txt"
+      ],
+      "base_sha256": "1516520b19a82250e69c745b3644e38cc28664f5b548a16eff959eadc90e41da",
+      "bytes": 4431
+    },
+    {
+      "path": "03_ASSETS/fonts/Lobster.ttf",
+      "status": "Archiver dans Git",
+      "reason": "Copie strictement identique à la police ou notice locale runtime.",
+      "replacement": "assets/fonts/Lobster.ttf",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/ASSET_MANIFEST.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [
+        "assets/fonts/Lobster.ttf"
+      ],
+      "base_sha256": "d6568e697fd50cedc0be04d8aae4127fe95add607e7bff954ca88604be80c205",
+      "bytes": 406076
+    },
+    {
+      "path": "03_ASSETS/fonts/Lora-OFL.txt",
+      "status": "Archiver dans Git",
+      "reason": "Copie strictement identique à la police ou notice locale runtime.",
+      "replacement": "assets/fonts/Lora-OFL.txt",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [
+        "assets/fonts/Lora-OFL.txt"
+      ],
+      "base_sha256": "5ce6bb66c4179aba67a89810949df543a81bcb408123dbb90aa3970f11e84f59",
+      "bytes": 4424
+    },
+    {
+      "path": "03_ASSETS/fonts/Lora.ttf",
+      "status": "Archiver dans Git",
+      "reason": "Copie strictement identique à la police ou notice locale runtime.",
+      "replacement": "assets/fonts/Lora.ttf",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/ASSET_MANIFEST.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [
+        "assets/fonts/Lora.ttf"
+      ],
+      "base_sha256": "822a6621ccbe8d97d20ac88c1c41f5615c9c2c202eaa75f272cd452aac6475a7",
+      "bytes": 212196
+    },
+    {
+      "path": "03_ASSETS/fonts/Nunito-OFL.txt",
+      "status": "Archiver dans Git",
+      "reason": "Copie strictement identique à la police ou notice locale runtime.",
+      "replacement": "assets/fonts/Nunito-OFL.txt",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/asset-manifest.json",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [
+        "assets/fonts/Nunito-OFL.txt"
+      ],
+      "base_sha256": "f3db92cc37279043d77b710b570f0bb575d1d42279dd1a182e1530bb7563a25d",
+      "bytes": 4386
+    },
+    {
+      "path": "03_ASSETS/fonts/Nunito.ttf",
+      "status": "Archiver dans Git",
+      "reason": "Copie strictement identique à la police ou notice locale runtime.",
+      "replacement": "assets/fonts/Nunito.ttf",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/ASSET_MANIFEST.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [
+        "assets/fonts/Nunito.ttf"
+      ],
+      "base_sha256": "bb55a5ca5c2042335b3991af27c4d0705d0ef41cac6164ac737fd8f2a1e85207",
+      "bytes": 276932
+    },
+    {
+      "path": "03_ASSETS/icons/README.md",
+      "status": "Archiver dans Git",
+      "reason": "Ressource V2 sans dépendance actuelle. Le nouvel inventaire fournit les photos retenues.",
+      "replacement": "04_VISUAL_REFERENCES/ASSET_MAPPING.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "114d76e77c836bdb6a839e55f5a260f130577f6168aaa8414e4088da8ded8221",
+      "bytes": 809
+    },
+    {
+      "path": "03_ASSETS/icons/pictogrammes-maquette.svg",
+      "status": "Archiver dans Git",
+      "reason": "Ressource V2 sans dépendance actuelle. Le nouvel inventaire fournit les photos retenues.",
+      "replacement": "04_VISUAL_REFERENCES/ASSET_MAPPING.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/ASSET_MANIFEST.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "5e227a59f4f4e687b21fb3a6ebdf770103ab89f10e9e69df918ad68fc50da1fb",
+      "bytes": 3129
+    },
+    {
+      "path": "03_ASSETS/illustrations/catalogue-vide.svg",
+      "status": "Conserver",
+      "reason": "Fichier de provenance lié au dépôt actuel.",
+      "replacement": "03_ASSETS/illustrations/catalogue-vide.svg",
+      "risk": "Fort si déplacé. Contrôles de provenance ou lien documentaire.",
+      "refs": [
+        "03_ASSETS/ASSET_MANIFEST.md",
+        "03_ASSETS/asset-manifest.json",
+        "03_ASSETS/icons/README.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [
+        "assets/illustrations/README.md",
+        "assets/illustrations/catalogue-vide.svg"
+      ],
+      "duplicates": [
+        "assets/illustrations/catalogue-vide.svg"
+      ],
+      "base_sha256": "82cdbcc99eef5afcf3cff1ed0d90dfa4ac56cac6b7e48050bf66cd59a1f71d2b",
+      "bytes": 564
+    },
+    {
+      "path": "03_ASSETS/optional_renders/citadine-verte-illustration-836.webp",
+      "status": "Conserver",
+      "reason": "Fichier de provenance lié au dépôt actuel.",
+      "replacement": "03_ASSETS/optional_renders/citadine-verte-illustration-836.webp",
+      "risk": "Fort si déplacé. Contrôles de provenance ou lien documentaire.",
+      "refs": [
+        "03_ASSETS/ASSET_MANIFEST.md",
+        "03_ASSETS/asset-manifest.json",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [
+        "assets/vehicles/detail-manifest.json",
+        "tests/vehicle.test.mjs",
+        "assets/vehicles/citadine-verte-illustration-836.webp"
+      ],
+      "duplicates": [
+        "assets/vehicles/citadine-verte-illustration-836.webp"
+      ],
+      "base_sha256": "10e38b9c1defb5ce4df2e31292b218268deed47dd81163fe9150f5e77e29c3e6",
+      "bytes": 24490
+    },
+    {
+      "path": "03_ASSETS/vehicle_defects/citadine-verte-rayure-836.webp",
+      "status": "Conserver",
+      "reason": "Fichier de provenance lié au dépôt actuel.",
+      "replacement": "03_ASSETS/vehicle_defects/citadine-verte-rayure-836.webp",
+      "risk": "Fort si déplacé. Contrôles de provenance ou lien documentaire.",
+      "refs": [
+        "03_ASSETS/ASSET_MANIFEST.md",
+        "03_ASSETS/asset-manifest.json",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [
+        "assets/vehicles/detail-manifest.json",
+        "tests/vehicle.test.mjs",
+        "assets/vehicles/citadine-verte-rayure-836.webp"
+      ],
+      "duplicates": [
+        "assets/vehicles/citadine-verte-rayure-836.webp"
+      ],
+      "base_sha256": "9ed40fbfa434e022c666da2bae64107ea84353ff3e2399a2bf2e777a6ad457bb",
+      "bytes": 40812
+    },
+    {
+      "path": "03_ASSETS/vehicles/citadine-argent-avant-420.webp",
+      "status": "Archiver dans Git",
+      "reason": "Ressource V2 sans dépendance actuelle. Le nouvel inventaire fournit les photos retenues.",
+      "replacement": "04_VISUAL_REFERENCES/ASSET_MAPPING.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/ASSET_MANIFEST.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "e70de0ef7de2d8de3e7c6ed135266d14c68bcd565b122531306498c4b50236ac",
+      "bytes": 30080
+    },
+    {
+      "path": "03_ASSETS/vehicles/citadine-argent-avant-836.webp",
+      "status": "Archiver dans Git",
+      "reason": "Ressource V2 sans dépendance actuelle. Le nouvel inventaire fournit les photos retenues.",
+      "replacement": "04_VISUAL_REFERENCES/ASSET_MAPPING.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/ASSET_MANIFEST.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "e92d80a25d9ce547b634b12ec9eb66f3db4165bc9197875458054f2b887a3ba9",
+      "bytes": 92298
+    },
+    {
+      "path": "03_ASSETS/vehicles/citadine-verte-arriere-768.webp",
+      "status": "Conserver",
+      "reason": "Fichier de provenance lié au dépôt actuel.",
+      "replacement": "03_ASSETS/vehicles/citadine-verte-arriere-768.webp",
+      "risk": "Fort si déplacé. Contrôles de provenance ou lien documentaire.",
+      "refs": [
+        "03_ASSETS/ASSET_MANIFEST.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [
+        "assets/vehicles/detail-manifest.json",
+        "tests/vehicle.test.mjs",
+        "assets/vehicles/citadine-verte-arriere-768.webp"
+      ],
+      "duplicates": [
+        "assets/vehicles/citadine-verte-arriere-768.webp"
+      ],
+      "base_sha256": "7228a7b1bb7a3feb70e0b031ef51786da188c051b312097589fd928b46aa0dae",
+      "bytes": 117640
+    },
+    {
+      "path": "03_ASSETS/vehicles/citadine-verte-avant-420.webp",
+      "status": "Conserver",
+      "reason": "Fichier de provenance lié au dépôt actuel.",
+      "replacement": "03_ASSETS/vehicles/citadine-verte-avant-420.webp",
+      "risk": "Fort si déplacé. Contrôles de provenance ou lien documentaire.",
+      "refs": [
+        "03_ASSETS/ASSET_MANIFEST.md",
+        "03_ASSETS/asset-manifest.json",
+        "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [
+        "assets/vehicles/manifest.json",
+        "assets/vehicles/citadine-verte-avant-420.webp"
+      ],
+      "duplicates": [
+        "assets/vehicles/citadine-verte-avant-420.webp"
+      ],
+      "base_sha256": "2c69d058d9d99defdab74472881af6f6ad58e50c14aba028977aa4bb2198fd5c",
+      "bytes": 32450
+    },
+    {
+      "path": "03_ASSETS/vehicles/citadine-verte-avant-836.webp",
+      "status": "Conserver",
+      "reason": "Fichier de provenance lié au dépôt actuel.",
+      "replacement": "03_ASSETS/vehicles/citadine-verte-avant-836.webp",
+      "risk": "Fort si déplacé. Contrôles de provenance ou lien documentaire.",
+      "refs": [
+        "03_ASSETS/ASSET_MANIFEST.md",
+        "03_ASSETS/asset-manifest.json",
+        "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [
+        "assets/vehicles/manifest.json",
+        "assets/vehicles/citadine-verte-avant-836.webp"
+      ],
+      "duplicates": [
+        "assets/vehicles/citadine-verte-avant-836.webp"
+      ],
+      "base_sha256": "6e0357dc652eae983ac03630946097cc3773df1805891956c47ee901d0bceffd",
+      "bytes": 108516
+    },
+    {
+      "path": "03_ASSETS/vehicles/citadine-verte-banquette-768.webp",
+      "status": "Conserver",
+      "reason": "Fichier de provenance lié au dépôt actuel.",
+      "replacement": "03_ASSETS/vehicles/citadine-verte-banquette-768.webp",
+      "risk": "Fort si déplacé. Contrôles de provenance ou lien documentaire.",
+      "refs": [
+        "03_ASSETS/ASSET_MANIFEST.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [
+        "assets/vehicles/detail-manifest.json",
+        "tests/vehicle.test.mjs",
+        "assets/vehicles/citadine-verte-banquette-768.webp"
+      ],
+      "duplicates": [
+        "assets/vehicles/citadine-verte-banquette-768.webp"
+      ],
+      "base_sha256": "463679037e602e665ee611e5f4a47247d3016ffd65fb5d6a96d3a68abffac4cc",
+      "bytes": 49394
+    },
+    {
+      "path": "03_ASSETS/vehicles/citadine-verte-habitacle-768.webp",
+      "status": "Conserver",
+      "reason": "Fichier de provenance lié au dépôt actuel.",
+      "replacement": "03_ASSETS/vehicles/citadine-verte-habitacle-768.webp",
+      "risk": "Fort si déplacé. Contrôles de provenance ou lien documentaire.",
+      "refs": [
+        "03_ASSETS/ASSET_MANIFEST.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [
+        "assets/vehicles/detail-manifest.json",
+        "tests/vehicle.test.mjs",
+        "assets/vehicles/citadine-verte-habitacle-768.webp"
+      ],
+      "duplicates": [
+        "assets/vehicles/citadine-verte-habitacle-768.webp"
+      ],
+      "base_sha256": "d20fe009912df01e031086d55dd07cc90edb56f7b18fcfd23e3b754d0b4c3948",
+      "bytes": 72746
+    },
+    {
+      "path": "03_ASSETS/vehicles/citadine-verte-profil-768.webp",
+      "status": "Conserver",
+      "reason": "Fichier de provenance lié au dépôt actuel.",
+      "replacement": "03_ASSETS/vehicles/citadine-verte-profil-768.webp",
+      "risk": "Fort si déplacé. Contrôles de provenance ou lien documentaire.",
+      "refs": [
+        "03_ASSETS/ASSET_MANIFEST.md",
+        "03_ASSETS/asset-manifest.json",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [
+        "assets/vehicles/detail-manifest.json",
+        "tests/vehicle.test.mjs",
+        "assets/vehicles/citadine-verte-profil-768.webp"
+      ],
+      "duplicates": [
+        "assets/vehicles/citadine-verte-profil-768.webp"
+      ],
+      "base_sha256": "a9130077856acaf77b05f413a19eda69b2c8cd43193e4acf830484b25a17f8e5",
+      "bytes": 115586
+    },
+    {
+      "path": "04_SCREEN_SPECS/README.md",
+      "status": "Archiver dans Git",
+      "reason": "Spécification V2. Intention publique actualisée; état métier conservé par code/tests.",
+      "replacement": "05_SCREEN_SPECS_V3.2/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "01_REFERENCES/README.md",
+        "03_ASSETS/ASSET_MANIFEST.md",
+        "FILE_MANIFEST.json",
+        "README.md"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "0345648c0dbf26542455b2f972a6d7727b4267940763ad59f1227dfd3322bcec",
+      "bytes": 2624
+    },
+    {
+      "path": "04_SCREEN_SPECS/administration.md",
+      "status": "Archiver dans Git",
+      "reason": "Spécification V2. Intention publique actualisée; état métier conservé par code/tests.",
+      "replacement": "05_SCREEN_SPECS_V3.2/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "80c0f11f82520c21fe67b3d0cf811e9af695110ea05d6d45882a004859cb1191",
+      "bytes": 1756
+    },
+    {
+      "path": "04_SCREEN_SPECS/booking.md",
+      "status": "Archiver dans Git",
+      "reason": "Spécification V2. Intention publique actualisée; état métier conservé par code/tests.",
+      "replacement": "05_SCREEN_SPECS_V3.2/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "20ebb2f20301ae9ec1f5afee998cf6db3fa957e18bb5e0cd1a37835df1b8c0cb",
+      "bytes": 1510
+    },
+    {
+      "path": "04_SCREEN_SPECS/conversation.md",
+      "status": "Archiver dans Git",
+      "reason": "Spécification V2. Intention publique actualisée; état métier conservé par code/tests.",
+      "replacement": "05_SCREEN_SPECS_V3.2/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "94d13546e7889796d3b316facf5571c3fa1405fdcda936f0ac2d252f36f0d05f",
+      "bytes": 2221
+    },
+    {
+      "path": "04_SCREEN_SPECS/explorer.md",
+      "status": "Archiver dans Git",
+      "reason": "Spécification V2. Intention publique actualisée; état métier conservé par code/tests.",
+      "replacement": "05_SCREEN_SPECS_V3.2/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "fabe0dd807ee5e563e3102de19b2f48e99d08828ba8dfe6d32ce480a7ff55f04",
+      "bytes": 1362
+    },
+    {
+      "path": "04_SCREEN_SPECS/inbox.md",
+      "status": "Archiver dans Git",
+      "reason": "Spécification V2. Intention publique actualisée; état métier conservé par code/tests.",
+      "replacement": "05_SCREEN_SPECS_V3.2/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "c4e335a28608338c687a99ac9bf7e18d07d4abc06ad90b0b6fa6a21ca55ee0bf",
+      "bytes": 1309
+    },
+    {
+      "path": "04_SCREEN_SPECS/navigation_profile.md",
+      "status": "Archiver dans Git",
+      "reason": "Spécification V2. Intention publique actualisée; état métier conservé par code/tests.",
+      "replacement": "05_SCREEN_SPECS_V3.2/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "055432bf4ecd2207cd4f1f269303736055ead0b706bac418787f5421cdc69b7d",
+      "bytes": 1671
+    },
+    {
+      "path": "04_SCREEN_SPECS/owner_dashboard.md",
+      "status": "Archiver dans Git",
+      "reason": "Spécification V2. Intention publique actualisée; état métier conservé par code/tests.",
+      "replacement": "05_SCREEN_SPECS_V3.2/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "b0e2cb0c8ae1cf961fe5c9785bb5022691dc71bec4c81e64aa0a195ee4ffc8ec",
+      "bytes": 1788
+    },
+    {
+      "path": "04_SCREEN_SPECS/owner_publication.md",
+      "status": "Archiver dans Git",
+      "reason": "Spécification V2. Intention publique actualisée; état métier conservé par code/tests.",
+      "replacement": "05_SCREEN_SPECS_V3.2/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "3357d1b96cdaad6271ea5645c890858f6d0f5fc79afb45596b2d8f375722d361",
+      "bytes": 1873
+    },
+    {
+      "path": "04_SCREEN_SPECS/rental_tracking.md",
+      "status": "Archiver dans Git",
+      "reason": "Spécification V2. Intention publique actualisée; état métier conservé par code/tests.",
+      "replacement": "05_SCREEN_SPECS_V3.2/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "0d670cc7eb36a604ecd0818137482379e88aaccf7372101adef924a698079958",
+      "bytes": 1600
+    },
+    {
+      "path": "04_SCREEN_SPECS/screen-index.json",
+      "status": "Archiver dans Git",
+      "reason": "Spécification V2. Intention publique actualisée; état métier conservé par code/tests.",
+      "replacement": "05_SCREEN_SPECS_V3.2/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json",
+        "tools/verify_handoff.py"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "cf9db589ce3cb707188c10e033c8d4a663e4b79435c15ed3ee829dc0ff58e975",
+      "bytes": 6980
+    },
+    {
+      "path": "04_SCREEN_SPECS/search_results.md",
+      "status": "Archiver dans Git",
+      "reason": "Spécification V2. Intention publique actualisée; état métier conservé par code/tests.",
+      "replacement": "05_SCREEN_SPECS_V3.2/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "e1643de0771a8f12614c30e77e6a779c5cad3cc48ba6faf7775e8816862d053f",
+      "bytes": 1767
+    },
+    {
+      "path": "04_SCREEN_SPECS/vehicle_condition.md",
+      "status": "Archiver dans Git",
+      "reason": "Spécification V2. Intention publique actualisée; état métier conservé par code/tests.",
+      "replacement": "05_SCREEN_SPECS_V3.2/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "2cae486049c1abbb06aab177434020d6b30f61c02613c518ca16440f04a2b2b7",
+      "bytes": 1842
+    },
+    {
+      "path": "04_SCREEN_SPECS/vehicle_detail.md",
+      "status": "Archiver dans Git",
+      "reason": "Spécification V2. Intention publique actualisée; état métier conservé par code/tests.",
+      "replacement": "05_SCREEN_SPECS_V3.2/README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "04_SCREEN_SPECS/screen-index.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "236d76a7cb0bde734df655d9181e576f37fbbfe9fb8d3ae51b9bcade6dfaa500",
+      "bytes": 1784
+    },
+    {
+      "path": "05_CODEX_PROMPTS/00_README.md",
+      "status": "Archiver dans Git",
+      "reason": "Prompt V2 exécuté ou remplacé par les lots V3.2.",
+      "replacement": "06_CODEX_PROMPTS/00_README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "FILE_MANIFEST.json",
+        "README.md"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "cdae1e7b020ab72968c6bf30758751f16ae8adb398b829d5904e369c576d0bd6",
+      "bytes": 1903
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+      "status": "Archiver dans Git",
+      "reason": "Prompt V2 exécuté ou remplacé par les lots V3.2.",
+      "replacement": "06_CODEX_PROMPTS/00_README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "FILE_MANIFEST.json",
+        "README.md"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "12650a49b468daef7e174491c17207a5541e2d1e68dc9844f0e083e9524a18ff",
+      "bytes": 8156
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+      "status": "Archiver dans Git",
+      "reason": "Prompt V2 exécuté ou remplacé par les lots V3.2.",
+      "replacement": "06_CODEX_PROMPTS/00_README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "d92b6c628a137014ff8e62ba03350892828a4d7c3fafe0f623865a400c4dd99c",
+      "bytes": 5752
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+      "status": "Archiver dans Git",
+      "reason": "Prompt V2 exécuté ou remplacé par les lots V3.2.",
+      "replacement": "06_CODEX_PROMPTS/00_README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "01059dcdcc67a8d100da40e66c98557ae3bea90277eb8d11aa50758310ac42bd",
+      "bytes": 5713
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+      "status": "Archiver dans Git",
+      "reason": "Prompt V2 exécuté ou remplacé par les lots V3.2.",
+      "replacement": "06_CODEX_PROMPTS/00_README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "21666f79b2b42e3becc319049da87efe67976ce3f41cd86af904f20d93eae316",
+      "bytes": 4712
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+      "status": "Archiver dans Git",
+      "reason": "Prompt V2 exécuté ou remplacé par les lots V3.2.",
+      "replacement": "06_CODEX_PROMPTS/00_README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "a7916fe66b1d57099a50a78b5d5842803c2d47d438cdf6e5486ecf08ce39eb06",
+      "bytes": 5372
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+      "status": "Archiver dans Git",
+      "reason": "Prompt V2 exécuté ou remplacé par les lots V3.2.",
+      "replacement": "06_CODEX_PROMPTS/00_README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "6fcc65fc7eaa536e5b33b9e5c8df4b680caed39f30c7cd21caf6c1d589f2e6da",
+      "bytes": 5510
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+      "status": "Archiver dans Git",
+      "reason": "Prompt V2 exécuté ou remplacé par les lots V3.2.",
+      "replacement": "06_CODEX_PROMPTS/00_README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "158a5040626fcb9d2207e9350027fcd9c041b63179898fe19c64a515bf5b691f",
+      "bytes": 5027
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+      "status": "Archiver dans Git",
+      "reason": "Prompt V2 exécuté ou remplacé par les lots V3.2.",
+      "replacement": "06_CODEX_PROMPTS/00_README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "a27f4ba444fa3a7d0772dcf83b3baa7b63e56ddefb1967cfebaa0e9d2cf59726",
+      "bytes": 5659
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+      "status": "Archiver dans Git",
+      "reason": "Prompt V2 exécuté ou remplacé par les lots V3.2.",
+      "replacement": "06_CODEX_PROMPTS/00_README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "407cd5d81acc822ecd4cb97833a4600188632080bf3b855f8d99a92b3856c1af",
+      "bytes": 6854
+    },
+    {
+      "path": "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+      "status": "Archiver dans Git",
+      "reason": "Prompt V2 exécuté ou remplacé par les lots V3.2.",
+      "replacement": "06_CODEX_PROMPTS/00_README.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "64d4902db3ed1f4994e4d47f0ff4024dc615376ddfb4ab7698af376ffc7a2771",
+      "bytes": 8553
+    },
+    {
+      "path": "06_VALIDATION/ACCEPTANCE_CRITERIA.md",
+      "status": "Archiver dans Git",
+      "reason": "Recette et baseline V2 historiques. Scénarios métier courants dans docs/audit.",
+      "replacement": "07_VALIDATION/RECETTE.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json",
+        "README.md"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "b4aa54c754e7fe122c354af8a3fd6007a4224190ee673b862509c4c5adff8fd3",
+      "bytes": 1374
+    },
+    {
+      "path": "06_VALIDATION/BASELINE_OBSERVEE.md",
+      "status": "Archiver dans Git",
+      "reason": "Recette et baseline V2 historiques. Scénarios métier courants dans docs/audit.",
+      "replacement": "07_VALIDATION/RECETTE.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "FILE_MANIFEST.json",
+        "README.md"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "9fa7e3e00da670fa1656949c25a23f1ffe668fbf0b4d13cba93769c27a25c59f",
+      "bytes": 2446
+    },
+    {
+      "path": "06_VALIDATION/IMPLEMENTATION_ORDER.md",
+      "status": "Archiver dans Git",
+      "reason": "Recette et baseline V2 historiques. Scénarios métier courants dans docs/audit.",
+      "replacement": "07_VALIDATION/RECETTE.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json",
+        "README.md"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "0276912af1b7fbd7b836ac91f4efc466c12ba7b715ad9332688f2717f943c1d2",
+      "bytes": 1391
+    },
+    {
+      "path": "06_VALIDATION/REGRESSION_STRATEGY.md",
+      "status": "Archiver dans Git",
+      "reason": "Recette et baseline V2 historiques. Scénarios métier courants dans docs/audit.",
+      "replacement": "07_VALIDATION/RECETTE.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "05_CODEX_PROMPTS/LOT_02_NAVIGATION.md",
+        "05_CODEX_PROMPTS/LOT_03_EXPLORER.md",
+        "05_CODEX_PROMPTS/LOT_04_SEARCH.md",
+        "05_CODEX_PROMPTS/LOT_05_VEHICLE.md",
+        "05_CODEX_PROMPTS/LOT_06_BOOKING.md",
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "05_CODEX_PROMPTS/LOT_08_OWNER_ADMIN.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "0f4d9d3b86d66e60c4db63a9533ef757581ede3d410da69181c541ddc7b30123",
+      "bytes": 2278
+    },
+    {
+      "path": "06_VALIDATION/VISUAL_TEST_MATRIX.md",
+      "status": "Archiver dans Git",
+      "reason": "Recette et baseline V2 historiques. Scénarios métier courants dans docs/audit.",
+      "replacement": "07_VALIDATION/RECETTE.md",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_09_VISUAL_QA.md",
+        "FILE_MANIFEST.json",
+        "README.md"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "d2f5d7fc2246178b9bc9560bb21fa68027d1a02fa07c5cd76ea6e71f6ad909ce",
+      "bytes": 1987
+    },
+    {
+      "path": "FILE_MANIFEST.json",
+      "status": "Archiver dans Git",
+      "reason": "Inventaire ou vérificateur du kit historique. Les tests courants prennent le relais.",
+      "replacement": "tools/verify_v32.py",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "03_ASSETS/ASSET_MANIFEST.md",
+        "tools/verify_handoff.py"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "bc52a8cdb96ce40c1f351d49d51087f976cf38ce18ade35a13eea632375a0fcd",
+      "bytes": 24653
+    },
+    {
+      "path": "README.md",
+      "status": "Remplacer",
+      "reason": "Point d’entrée unique V3.2.",
+      "replacement": "README.md",
+      "risk": "Faible. Vérifier ancres et lien des lots.",
+      "refs": [
+        "00_DECISIONS/PRODUCT_CONSTRAINTS.md",
+        "01_REFERENCES/README.md",
+        "01_REFERENCES/current_ui/06_ECARTS_MAQUETTE_PROJET.md",
+        "03_ASSETS/ASSET_MANIFEST.md",
+        "03_ASSETS/asset-manifest.json",
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "05_CODEX_PROMPTS/LOT_01_DESIGN_SYSTEM.md",
+        "06_VALIDATION/REGRESSION_STRATEGY.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "1529bb84b760f412c897e578568b7fe6dbf2d0f8617fc9e2c347b08933cdc572",
+      "bytes": 2897
+    },
+    {
+      "path": "tools/verify_handoff.py",
+      "status": "Archiver dans Git",
+      "reason": "Inventaire ou vérificateur du kit historique. Les tests courants prennent le relais.",
+      "replacement": "tools/verify_v32.py",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_00_BASELINE.md",
+        "FILE_MANIFEST.json",
+        "README.md"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "212ba20f69ccca679efef9c8251f7f11f960d9f39d27398329dc62eddf17a6f5",
+      "bytes": 7141
+    },
+    {
+      "path": "tools/verify_mock_message.mjs",
+      "status": "Archiver dans Git",
+      "reason": "Inventaire ou vérificateur du kit historique. Les tests courants prennent le relais.",
+      "replacement": "tests/browser/messaging.spec.js",
+      "risk": "Faible. Contexte historique accessible au SHA.",
+      "refs": [
+        "05_CODEX_PROMPTS/LOT_07_MESSAGING.md",
+        "06_VALIDATION/BASELINE_OBSERVEE.md",
+        "FILE_MANIFEST.json"
+      ],
+      "outside_refs": [],
+      "duplicates": [],
+      "base_sha256": "e68a4e0fc10da5dc9160fe7c83d6c21c19a45003560de24f989f78da0742dda1",
+      "bytes": 1991
+    }
+  ]
+}

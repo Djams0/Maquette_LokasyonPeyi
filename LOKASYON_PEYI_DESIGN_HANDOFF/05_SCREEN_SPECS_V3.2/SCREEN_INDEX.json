@@ -1,0 +1,101 @@
+[
+  {
+    "route": "/",
+    "pdf": [
+      4,
+      5,
+      6
+    ],
+    "css": "client/styles/client.css",
+    "js": [
+      "client/pages/catalog.js",
+      "client/shell.js"
+    ],
+    "targets": [
+      "Accueil_Desktop_Premier_Ecran.png",
+      "Accueil_Mobile_Premier_Ecran.png",
+      "Accueil_Desktop.png",
+      "Accueil_Mobile.png"
+    ],
+    "lots": [
+      3,
+      4,
+      7
+    ]
+  },
+  {
+    "route": "/search",
+    "pdf": [
+      7
+    ],
+    "css": "client/styles/client.css",
+    "js": [
+      "client/pages/search-results.js",
+      "client/pages/search-state.js",
+      "client/pages/vehicle-card.js"
+    ],
+    "targets": [
+      "Catalogue_Desktop.png",
+      "Catalogue_Mobile.png",
+      "Catalogue_Mobile_Tiroir_Filtres.png",
+      "Catalogue_Chargement.png",
+      "Catalogue_Sans_Resultat.png",
+      "Catalogue_Indisponible.png"
+    ],
+    "lots": [
+      5
+    ]
+  },
+  {
+    "route": "/vehicle/:id",
+    "pdf": [
+      8
+    ],
+    "css": "client/styles/client.css",
+    "js": [
+      "client/pages/vehicle-detail.js",
+      "client/pages/vehicle-media.js",
+      "client/pages/vehicle-presentation.js"
+    ],
+    "targets": [
+      "Fiche_Desktop.png",
+      "Fiche_Mobile.png"
+    ],
+    "lots": [
+      6
+    ]
+  },
+  {
+    "route": "/design-system",
+    "pdf": [
+      3,
+      9
+    ],
+    "css": "ui/tokens.css",
+    "js": [
+      "ui/components.js",
+      "client/pages/demo.js"
+    ],
+    "targets": [
+      "Verre_Clair_Sombre.png",
+      "Verre_Fond_Opaque.png"
+    ],
+    "lots": [
+      1
+    ]
+  },
+  {
+    "route": "navigation partagée",
+    "pdf": [
+      10
+    ],
+    "js": [
+      "client/shell.js",
+      "client/pages/navigation.js"
+    ],
+    "lots": [
+      7,
+      8
+    ]
+  }
+]

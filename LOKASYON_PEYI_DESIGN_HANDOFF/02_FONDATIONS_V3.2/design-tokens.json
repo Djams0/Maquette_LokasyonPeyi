@@ -1,0 +1,56 @@
+{
+  "version": "3.2",
+  "sources": {
+    "palette": "PDF p.3 + maquette.css",
+    "geometry": "maquette.css / PDF p.12 pour 44px",
+    "glass": "PDF p.9 + maquette.css",
+    "typography": "PDF p.3 + maquette.css pour les plages"
+  },
+  "tokens": {
+    "palette": {
+      "ink": "#162728",
+      "action": "#1C6259",
+      "tropical": "#08A04F",
+      "lagoon": "#04959C",
+      "blue": "#84BCBA",
+      "orange": "#FEA90E",
+      "cream": "#F6F4ED",
+      "mint": "#E1F1EB",
+      "gold": "#EEC473",
+      "deep": "#103731",
+      "muted": "#526760",
+      "white": "#FFFFFF",
+      "line": "#DCE3DD",
+      "control": "#778B84",
+      "error": "#A23524",
+      "hover": "#154D46"
+    },
+    "geometry": {
+      "wrap": "1200px",
+      "nav-max": "1280px",
+      "nav-h": "66px",
+      "hero-h": "690px",
+      "hero-mobile-h": "610px",
+      "search-max": "1060px",
+      "search-radius": "23px",
+      "card-radius": "20px",
+      "filters-width": "242px",
+      "detail-quote-width": "325px",
+      "target": "44px"
+    },
+    "glass": {
+      "glass-blur": "14px",
+      "glass-light": "rgba(245,250,246,.58)",
+      "glass-dark": "rgba(240,248,243,.36)",
+      "glass-line": "rgba(255,255,255,.72)",
+      "glass-solid": "#E1EAE3"
+    },
+    "typography": {
+      "font-title": "Lora, Georgia, serif",
+      "font-ui": "Nunito, Arial, sans-serif",
+      "font-brand": "Lobster, cursive",
+      "hero-title": "clamp(51px,5.4vw,78px)",
+      "hero-title-mobile": "clamp(37px,10vw,50px)"
+    }
+  }
+}
