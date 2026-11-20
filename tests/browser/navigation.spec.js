@@ -14,9 +14,17 @@ async function login(page,id,internal=false){await page.goto((internal?admin:cli
 async function fits(page){expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBeLessThanOrEqual(1);}
 async function four(nav,current){await expect(nav.getByRole('link')).toHaveCount(4);for(const a of await nav.getByRole('link').all()){const rect=await a.boundingBox();expect(rect.height).toBeGreaterThanOrEqual((await nav.getAttribute('aria-label'))==='Navigation mobile'?56:48);}expect(await nav.getByRole('link').evaluateAll(es=>es.map(e=>e.getAttribute('href')))).toEqual(['/','/rentals','/messages','/profile']);await expect(nav.locator('[aria-current=page]')).toHaveCount(1);await expect(nav.locator('[aria-current=page]')).toHaveAttribute('href',current);}
 
+async function homeNavigation(nav,mobile) {
+  await expect(nav.getByRole('link')).toHaveCount(3);
+  for(const a of await nav.getByRole('link').all())expect((await a.boundingBox()).height).toBeGreaterThanOrEqual(44);
+  expect(await nav.getByRole('link').evaluateAll(links=>links.map(a=>a.getAttribute('href'))))
+    .toEqual(mobile?['/search','/faq','/profile']:['/search','#fonctionnement','/faq']);
+}
+
 test('navigation visiteur : quatre destinations et next conservé après connexion',async({page})=>{
   await page.setViewportSize({width:320,height:844});await page.goto(client);await ready(page);
-  const bar=page.getByRole('navigation',{name:'Navigation mobile',exact:true});await four(bar,'/');
+  const bar=page.getByRole('navigation',{name:'Navigation mobile',exact:true});await homeNavigation(bar,true);
+  await bar.getByRole('link',{name:'Compte',exact:true}).click();await page.waitForURL(/login\?next=/);expect(new URL(page.url()).searchParams.get('next')).toBe('/profile');
   await page.goto(client+'/search?q=Gosier');await ready(page);await four(bar,'/');
   await bar.getByRole('link',{name:'Locations',exact:true}).click();await page.waitForURL(/login\?next=/);expect(new URL(page.url()).searchParams.get('next')).toBe('/rentals');await expect(bar).toHaveCount(0);
   await page.getByLabel('Compte de démonstration').selectOption('audit-r02');await page.getByRole('button',{name:'Entrer dans la démo',exact:true}).click();await page.waitForURL(client+'/rentals');await ready(page);await four(bar,'/rentals');
@@ -28,7 +36,7 @@ test('navigation responsive : panneau nommé, clavier, focus et changements de l
   await login(page,'audit-r02');
   for(const width of [320,768,1024,1440]){
     await page.setViewportSize({width,height:844});await page.goto(client);await ready(page);
-    const primary=page.getByRole('navigation',{name:width<1024?'Navigation mobile':'Navigation principale',exact:true});await four(primary,'/');await fits(page);
+    const primary=page.getByRole('navigation',{name:width<880?'Navigation mobile':'Navigation principale',exact:true});await homeNavigation(primary,width<880);await fits(page);
     const trigger=page.getByRole('button',{name:'Ouvrir le menu',exact:true});await trigger.focus();await page.keyboard.press('Enter');
     const panel=page.getByRole('dialog',{name:'Menu',exact:true});await expect(panel).toBeVisible();await expect(trigger).toHaveAttribute('aria-expanded','true');
     expect((await panel.boundingBox()).width).toBeLessThanOrEqual(width-20);
