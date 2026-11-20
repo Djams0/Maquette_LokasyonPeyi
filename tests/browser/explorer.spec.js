@@ -17,7 +17,8 @@ async function settled(page) {
 for(const width of [320,390,1440])test(`Explorer: visiteur, photo locale et géométrie à ${width}px`,async({page},info)=>{
   const external=[],errors=[];page.on('request',r=>{if(new URL(r.url()).origin!==client)external.push(r.url());});page.on('pageerror',e=>errors.push(e.message));
   await page.setViewportSize({width,height:width===1440?900:844});await page.goto(client);await settled(page);
-  const image=page.locator('#explorer-cards img'),form=page.getByRole('form',{name:'Rechercher un véhicule'});
+  const historicalCard=page.locator('#explorer-cards [data-vehicle-id="v1"]');
+  const image=historicalCard.locator('img'),form=page.getByRole('form',{name:'Rechercher un véhicule'});
   const hero=page.locator('.explorer-hero-photo img');
   await expect(hero).toHaveJSProperty('currentSrc',client+'/assets/v32/editorial/route-guadeloupe-'+(width===1440?'1440':'720')+'.webp');
   await expect(hero).toHaveCSS('object-position',width===1440?'60% 78%':'64% 50%');
@@ -47,14 +48,14 @@ for(const width of [320,390,1440])test(`Explorer: visiteur, photo locale et géo
   await hero.evaluate(img=>img.decode());
   if (width!==320) await info.attach(`Accueil V3.2 · ${width}px`,{body:await page.screenshot({animations:'disabled'}),contentType:'image/png'});
   await image.scrollIntoViewIfNeeded();
-  await expect.poll(()=>image.evaluate(i=>i.complete && i.naturalWidth>0)).toBe(true);await expect(image).toHaveJSProperty('currentSrc',client+'/assets/vehicles/citadine-verte-avant-'+(width===1440?'836':'420')+'.webp');
+  await expect.poll(()=>image.evaluate(i=>i.complete && i.naturalWidth>0)).toBe(true);await expect(image).toHaveJSProperty('currentSrc',client+'/assets/vehicles/citadine-verte-avant-420.webp');
   await expect(image).toHaveAttribute('loading','lazy');await expect(image).toHaveAttribute('fetchpriority','auto');await expect(page.getByText('Photos de démonstration',{exact:true})).toBeVisible();
-  const geometry=await page.evaluate(()=>{const i=document.querySelector('#explorer-cards img').getBoundingClientRect();return{overflow:document.documentElement.scrollWidth-innerWidth,image:i.toJSON(),title:getComputedStyle(document.querySelector('h1')).fontFamily};});
+  const geometry=await image.evaluate(el=>{const i=el.getBoundingClientRect();return{overflow:document.documentElement.scrollWidth-innerWidth,image:i.toJSON(),title:getComputedStyle(document.querySelector('h1')).fontFamily};});
   expect(geometry.overflow).toBeLessThanOrEqual(1);expect(geometry.title).toContain('Lora');
-  expect(geometry.image.width/geometry.image.height).toBeCloseTo(16/9,2);
-  const apiVehicles=await (await page.request.get(client+'/api/v1/vehicles')).json(),v=apiVehicles[0];
-  await expect(page.locator('#explorer-cards')).toContainText(v.name);await expect(page.locator('#explorer-cards')).toContainText(v.city);
-  await expect(page.locator('#explorer-cards .price')).toContainText(new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v.price));
+  expect(geometry.image.width/geometry.image.height).toBeCloseTo(16/10,2);
+  const apiVehicles=await (await page.request.get(client+'/api/v1/vehicles')).json(),v=apiVehicles.find(item=>item.id==='v1');
+  await expect(historicalCard).toContainText(v.name);await expect(historicalCard).toContainText(v.city);
+  await expect(historicalCard.locator('.price')).toContainText(new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v.price));
   const asset=await page.request.get(client+'/assets/vehicles/citadine-verte-avant-420.webp');expect(asset.headers()['content-type']).toContain('image/webp');
   await expect(form.getByRole('button',{name:'Trouver une voiture',exact:true})).toBeEnabled();
   expect(external).toEqual([]);expect(errors).toEqual([]);
@@ -102,7 +103,7 @@ test('Explorer: vide et erreur gardent recherche, liens et reprise sans perte de
 test('Explorer: stockage refusé et photo en erreur utilisent un repli local',async({page})=>{
   await page.addInitScript(()=>Object.defineProperty(window,'localStorage',{configurable:true,get(){throw new DOMException('Storage unavailable','SecurityError');}}));
   await page.route('**/assets/vehicles/*.webp',route=>route.abort());await page.goto(client);await settled(page);
-  const image=page.locator('#explorer-cards img');await image.scrollIntoViewIfNeeded();await expect(image).toHaveAttribute('src','/assets/car-sage.svg');await expect(image).not.toHaveAttribute('srcset',/.+/);await expect.poll(()=>image.evaluate(i=>i.complete && i.naturalWidth>0)).toBe(true);await expect(image).toHaveJSProperty('currentSrc',client+'/assets/car-sage.svg');await expect(page.getByText('Photo indisponible · illustration fictive',{exact:true})).toBeVisible();await expect(page.getByRole('link',{name:'Reprendre ma dernière recherche',exact:true})).toHaveCount(0);
+  const image=page.locator('#explorer-cards [data-vehicle-id="v1"] img');await image.scrollIntoViewIfNeeded();await expect(image).toHaveAttribute('src','/assets/car-sage.svg');await expect(image).not.toHaveAttribute('srcset',/.+/);await expect.poll(()=>image.evaluate(i=>i.complete && i.naturalWidth>0)).toBe(true);await expect(image).toHaveJSProperty('currentSrc',client+'/assets/car-sage.svg');await expect(page.getByText('Photo indisponible · illustration fictive',{exact:true})).toBeVisible();await expect(page.getByRole('link',{name:'Reprendre ma dernière recherche',exact:true})).toHaveCount(0);
   await page.route('**/assets/v32/demo/clio-avant-*.webp',route=>route.fulfill({status:404}));
   await page.getByLabel('Lieu de remise').fill('Gosier');await page.getByLabel('Lieu de remise').press('Enter');await page.waitForURL(/\/search\?/);await expect(page.getByRole('heading',{name:'Résultats',exact:true})).toBeVisible();await expect(page.locator('.catalogue-card[data-vehicle-id="v3"] img')).toHaveAttribute('src','/assets/car-blue.svg');
   await expect(page.locator('.catalogue-card[data-vehicle-id="v3"]').getByRole('status')).toHaveText('Photo indisponible · illustration fictive');
@@ -165,8 +166,103 @@ test('V3.2: photo cassée et Clio absente gardent les destinations publiques', a
   await settled(page);
   await expect(dial).toHaveAttribute('href','/search');
   await expect(dial).toContainText('Explorer les véhicules');
+  expect(await page.locator('#explorer-cards .catalogue-card').evaluateAll(cards=>cards.map(card=>card.dataset.vehicleId))).toEqual(['v2','v1','v4']);
   await dial.click();
   await expect(page.getByRole('heading',{name:'Résultats',exact:true})).toBeVisible();
+});
+
+test('V3.2: les sections gardent leur ordre, les cartes du seed et les destinations réelles', async ({page},info)=>{
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await page.setViewportSize({width:1440,height:900});
+  await page.goto(client);
+  await settled(page);
+  const sections = page.locator('.explorer-home > section').filter({has:page.locator('h2')});
+  expect(await sections.locator('h2').allTextContents()).toEqual([
+    'Votre trajet, votre façon de rouler.','Des voitures à découvrir','Comment se passe une location ?',
+    'La Guadeloupe, à votre rythme.','Consultez les détails avant de choisir.',
+    'Vous avez une voiture à proposer ?','Questions fréquentes',
+  ]);
+  const cards = page.locator('#explorer-cards .catalogue-card');
+  expect(await cards.evaluateAll(items=>items.map(card=>card.dataset.vehicleId))).toEqual(['v3','v2','v1']);
+  expect(await cards.evaluateAll(items=>new Set(items.map(card=>card.getBoundingClientRect().y)).size)).toBe(1);
+  await expect(page.locator('.explorer-steps li')).toHaveCount(5);
+  await expect(page.locator('.explorer-steps li').last()).toContainText('confirme la récupération puis clôture');
+  const editorial = page.getByRole('region',{name:'La Guadeloupe, à votre rythme.'});
+  await expect(editorial.getByRole('img')).toHaveCount(4);
+  expect(await editorial.getByRole('link',{name:/Chercher/}).evaluateAll(items=>items.map(a=>new URL(a.href).searchParams.get('q'))))
+    .toEqual(['Petit-Bourg','Sainte-Anne','Deshaies']);
+  await page.locator('.explorer-home img').evaluateAll(async images => {
+    for(const img of images)img.loading='eager';
+    await Promise.all(images.map(img=>img.decode()));
+  });
+  await info.attach('Accueil complet · 1440 px',{body:await page.screenshot({fullPage:true,animations:'disabled'}),contentType:'image/png'});
+
+  await page.setViewportSize({width:320,height:844});
+  expect(await cards.evaluateAll(items=>new Set(items.map(card=>card.getBoundingClientRect().x)).size)).toBe(1);
+  expect(await page.locator('.explorer-shortcuts-grid a').evaluateAll(items=>new Set(items.map(a=>a.getBoundingClientRect().x)).size)).toBe(2);
+  const footer=page.getByRole('contentinfo');
+  await footer.getByRole('link',{name:'Fonctionnement',exact:true}).click();
+  await expect(page).toHaveURL(/#fonctionnement$/);
+  await expect(page.getByRole('heading',{name:'Comment se passe une location ?'})).toBeInViewport();
+  await footer.getByRole('link',{name:'Questions fréquentes',exact:true}).click();
+  await expect(page).toHaveURL(/#aide$/);
+  const faq=page.getByRole('region',{name:'Questions fréquentes',exact:true});
+  await expect(faq.getByRole('heading')).toBeInViewport();
+  await expect(faq.locator('summary')).toHaveCount(4);
+  const payment=faq.locator('details').filter({hasText:'Quand dois-je payer ?'});
+  const question=payment.locator('summary');
+  await question.focus();
+  expect((await question.boundingBox()).height).toBeGreaterThanOrEqual(44);
+  await question.press('Enter');
+  await expect(question).toBeFocused();
+  await expect(payment.locator('p')).toBeVisible();
+  const answer=await payment.locator('p').textContent();
+  await faq.getByRole('link',{name:/Voir toutes les questions/}).click();
+  await page.locator('summary').filter({hasText:'Quand dois-je payer ?'}).click();
+  await expect(page.locator('.faq-item').filter({hasText:'Quand dois-je payer ?'}).locator('p')).toHaveText(answer);
+});
+
+test('V3.2: aéroport par commune, résultat vide et reprise sur le catalogue réel', async ({page})=>{
+  await page.goto(client);
+  await settled(page);
+  const request=page.waitForRequest(r=>new URL(r.url()).pathname==='/api/v1/vehicles'&&new URL(r.url()).searchParams.has('q'));
+  await page.getByRole('link',{name:/Près de l’aéroport.*Les Abymes/}).click();
+  expect([...new URL((await request).url()).searchParams]).toEqual([['q','Les Abymes']]);
+  await expect(page.getByRole('heading',{name:'Aucun véhicule ici',exact:true})).toBeVisible();
+  await page.goBack();
+  await settled(page);
+  const resume=page.getByRole('link',{name:'Reprendre ma dernière recherche'});
+  await expect(resume).toHaveAttribute('href','/search?q=Les+Abymes');
+  await resume.click();
+  await expect(page.getByRole('heading',{name:'Aucun véhicule ici',exact:true})).toBeVisible();
+  await page.goto(client);
+  const coast=page.getByRole('link',{name:/Chercher à Sainte-Anne/});
+  await page.route('**/assets/v32/editorial/sainte-anne-caravelle-*.webp',r=>r.fulfill({status:404}));
+  await page.reload();
+  await coast.scrollIntoViewIfNeeded();
+  await expect(page.locator('.explorer-story-tile').filter({has:coast}).getByRole('status')).toHaveText('Photo indisponible');
+  await coast.click();
+  await expect(page.getByRole('heading',{name:'Citroën C3',exact:true})).toBeVisible();
+});
+
+test('V3.2: la capacité propriétaire oriente l’action et une session en panne reste neutre', async ({page})=>{
+  const action=page.locator('#explorer-owner a');
+  await page.goto(client);
+  await settled(page);
+  await expect(action).toHaveAttribute('href','/owner/start');
+  await page.request.post(client+'/api/v1/session',{data:{persona:'owner'}});
+  await page.reload();
+  await settled(page);
+  await expect(action).toHaveText('Gérer mes véhicules');
+  await expect(action).toHaveAttribute('href','/owner/vehicles');
+  await action.click();
+  await expect(page).toHaveURL(client+'/owner/vehicles');
+  await page.route('**/api/v1/me',route=>route.abort());
+  await page.goto(client);
+  await settled(page);
+  await expect(action).toHaveAttribute('href','/faq');
+  await expect(page.locator('#explorer-account')).toContainText('Session non vérifiée');
+  await expect(page.locator('#explorer-cards .catalogue-card')).toHaveCount(3);
 });
 
 test('V3.2: catalogue responsive avec médias locaux et crédits accessibles', async ({page,browser}, info) => {

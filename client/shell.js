@@ -6,6 +6,30 @@ const homeLinks = '<a href="/search">Explorer les voitures</a><a href="#fonction
 const homeHelpIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></svg>';
 const homeMobileLinks = [['/search',icon('search'),'Explorer'],['/faq',homeHelpIcon,'Aide'],['/profile',icon('user'),'Compte']]
   .map(([href,glyph,label]) => `<a href="${href}">${glyph}<span>${label}</span></a>`).join('');
+
+const homeFooter = `<footer class="explorer-footer v32">
+  <div class="explorer-wrap">
+    <div class="explorer-footer-grid">
+      <div class="explorer-footer-brand">
+        <a href="/" class="explorer-footer-logo"><img src="/assets/v32/marque/logo-horizontal-charte.webp" width="683" height="122" alt="Lokasyon Péyi"></a>
+        <p>Location de voitures entre particuliers en Guadeloupe.</p>
+      </div>
+      <nav aria-label="Le service">
+        <h2>Le service</h2>
+        <a href="/search">Explorer les voitures</a>
+        <a href="#fonctionnement">Fonctionnement</a>
+        <a href="#aide">Questions fréquentes</a>
+      </nav>
+      <nav aria-label="Assistance et crédits">
+        <h2>Assistance</h2>
+        <a href="/assistance">Aide et contact</a>
+        <a href="/assets/v32/credits.html">Crédits des photos</a>
+        <a href="/login" class="button warm" id="explorer-footer-account">Connexion</a>
+      </nav>
+    </div>
+    <div class="explorer-footer-note"><p>Maquette de validation V3.2 · tarifs et annonces fictifs.</p><a href="/demo">Démo & comptes</a></div>
+  </div>
+</footer>`;
 const menuLink = (href, symbol, label) => {
   const path = location.pathname.replace(/\/$/,'') || '/';
   const current = path === href;
@@ -41,7 +65,7 @@ export function shell(me) {
     </dialog>
     ${state.back ? `<nav class="context-nav" aria-label="Retour"><a href="${state.back[0]}">${icon('back')}${state.back[1]}</a></nav>` : ''}
     <main class="client-main" id="main" tabindex="-1"></main>
-    <footer class="footer"><div><a class="logo" href="/">Lokasyon <span>Péyi</span></a><p>Un autre chemin pour découvrir le Péyi.</p><small>Prototype indépendant · Guadeloupe</small></div><nav aria-label="Aide et démonstration" class="row"><a href="/faq">FAQ</a><a href="/assistance">Nous contacter</a><a href="/design-system">Design system</a><a href="/demo">Guide de démonstration</a><a href="/demo/audit">Atelier d’audit</a><a class="photo-credit-link" href="/assets/v32/credits.html">Crédits des photos</a></nav></footer>
+    ${explorer ? homeFooter : `<footer class="footer"><div><a class="logo" href="/">Lokasyon <span>Péyi</span></a><p>Un autre chemin pour découvrir le Péyi.</p><small>Prototype indépendant · Guadeloupe</small></div><nav aria-label="Aide et démonstration" class="row"><a href="/faq">FAQ</a><a href="/assistance">Nous contacter</a><a href="/design-system">Design system</a><a href="/demo">Guide de démonstration</a><a href="/demo/audit">Atelier d’audit</a><a class="photo-credit-link" href="/assets/v32/credits.html">Crédits des photos</a></nav></footer>`}
     ${state.root ? `<nav class="bottom-nav" aria-label="Navigation mobile">${explorer ? homeMobileLinks : primaryLinks(state.active,true)}</nav>` : ''}`;
   const trigger = document.getElementById('menu-toggle'), panel = document.getElementById('navigation-panel');
   trigger.onclick = () => { panel.showModal(); trigger.setAttribute('aria-expanded','true'); };
@@ -85,6 +109,11 @@ export function updateShellIdentity(me) {
   const owner = account.querySelector('a[href="/owner"],a[href="/owner/start"]');
   owner.href = me?.owner ? '/owner' : '/owner/start';
   owner.querySelector('span').textContent = me?.owner ? 'Espace propriétaire' : 'Devenir propriétaire';
+  const footerAccount = document.getElementById('explorer-footer-account');
+  if (footerAccount) {
+    footerAccount.href = me ? '/profile' : '/login';
+    footerAccount.textContent = me ? 'Mon compte' : 'Connexion';
+  }
   if (headerFocus) [...tools.querySelectorAll('a')].find(el => el.getClientRects().length)?.focus({preventScroll:true});
   else if (loginFocus) account.querySelector('a')?.focus({preventScroll:true});
 }
