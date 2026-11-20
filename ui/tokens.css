@@ -114,3 +114,46 @@
   --radius: var(--lp-radius-card);
   --shadow: var(--lp-shadow-card);
 }
+
+/* V3.2 foundations for surfaces that opt in. Keep the shared aliases above stable. */
+.v32 {
+  --v32-ink: #162728;
+  --v32-action: #1C6259;
+  --v32-tropical: #08A04F;
+  --v32-lagoon: #04959C;
+  --v32-blue: #84BCBA;
+  --v32-orange: #FEA90E;
+  --v32-cream: var(--lp-color-ivory);
+  --v32-mint: var(--lp-color-info-bg);
+  --v32-gold: var(--lp-color-ochre);
+  --v32-deep: #103731;
+  --v32-muted: #526760;
+  --v32-white: var(--lp-color-surface);
+  --v32-line: #DCE3DD;
+  --v32-control: #778B84;
+  --v32-error: #A23524;
+  --v32-hover: #154D46;
+  --v32-wrap: 1200px;
+  --v32-nav-max: 1280px;
+  --v32-nav-h: 66px;
+  --v32-hero-h: 690px;
+  --v32-hero-mobile-h: 610px;
+  --v32-search-max: 1060px;
+  --v32-search-radius: 23px;
+  --v32-card-radius: 20px;
+  --v32-filters-width: 242px;
+  --v32-detail-quote-width: 325px;
+  --v32-target: 44px;
+  --v32-glass-blur: 14px;
+  --v32-glass-light: rgb(245 250 246 / 58%);
+  --v32-glass-dark: rgb(240 248 243 / 36%);
+  --v32-glass-line: rgb(255 255 255 / 72%);
+  --v32-glass-solid: #E1EAE3;
+  --v32-glass-reflection: linear-gradient(145deg, #ffffff36, transparent 55%);
+  --v32-glass-shadow: 0 14px 35px #1228253b, inset 0 1px 0 #ffffff83;
+  --v32-font-title: var(--lp-font-editorial);
+  --v32-font-ui: Nunito, Arial, sans-serif;
+  --v32-font-brand: Lobster, cursive;
+  --v32-hero-title: clamp(51px, 5.4vw, 78px);
+  --v32-hero-title-mobile: clamp(37px, 10vw, 50px);
+}

@@ -124,3 +124,113 @@ test('dialogue : nom, erreur récupérable, Échap et retour du focus', async ({
   await page.keyboard.press('Escape'); await expect(replace).toBeFocused();
 
 });
+
+test('verre V3.2 : deux teintes, contrôles lisibles et reflow', async ({page}, info) => {
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await page.goto(client + '/design-system');
+  const demo = page.getByRole('region', {name:'La recherche sur fond clair ou sombre'});
+  const light = demo.getByRole('form', {name:'Fond clair'});
+  const dark = demo.getByRole('form', {name:'Fond sombre'});
+  await expect(light).toHaveCSS('background-color', 'rgba(245, 250, 246, 0.58)');
+  await expect(dark).toHaveCSS('background-color', 'rgba(240, 248, 243, 0.36)');
+  for (const surface of [light, dark]) {
+    await expect(surface).toHaveCSS('backdrop-filter', 'blur(14px)');
+    await expect(surface.locator('label')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+    await expect(surface.getByRole('button')).toHaveCSS('background-color', 'rgb(28, 98, 89)');
+  }
+  for (const width of [320, 390, 768, 1280, 1440]) {
+    await page.setViewportSize({width, height:844});
+    await fits(page);
+    for (const control of await demo.getByRole('button').or(demo.getByRole('textbox')).all()) {
+      const box = await control.boundingBox();
+      expect(box.width, `${width}px`).toBeGreaterThanOrEqual(44);
+      expect(box.height, `${width}px`).toBeGreaterThanOrEqual(44);
+    }
+  }
+  await info.attach('Verre clair et sombre · 1440 px', {
+    body:await demo.screenshot(), contentType:'image/png',
+  });
+});
+
+test('verre V3.2 : clavier, erreur associée, indisponibilité et reprise locale', async ({page}, info) => {
+  await page.setViewportSize({width:320, height:844});
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await page.goto(client + '/design-system');
+  const opaque = page.getByRole('button', {name:'Fond opaque'});
+  const unavailable = page.getByRole('button', {name:'Simuler l’indisponibilité'});
+  const form = page.getByRole('form', {name:'Fond clair'});
+  const field = form.getByRole('textbox', {name:'Lieu de remise'});
+  const submit = form.getByRole('button', {name:'Trouver une voiture'});
+  await opaque.focus();
+  await page.keyboard.press('Space');
+  await expect(opaque).toHaveAttribute('aria-pressed', 'true');
+  await expect(form).toHaveCSS('background-color', 'rgb(225, 234, 227)');
+  await expect(form).toHaveCSS('backdrop-filter', 'none');
+  await page.keyboard.press('Tab');
+  await expect(unavailable).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(field).toBeFocused();
+  await expect(form.locator('label')).toHaveCSS('outline-width', '3px');
+  expect(await field.evaluate(el => {
+    const rect = el.getBoundingClientRect();
+    return el === document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2);
+  })).toBe(true);
+  await page.keyboard.press('Tab');
+  await expect(submit).toBeFocused();
+  await page.keyboard.press('Enter');
+  const error = form.getByRole('alert');
+  await expect(error).toContainText('Indiquez une commune ou un aéroport.');
+  await expect(field).toBeFocused();
+  await expect(field).toHaveAttribute('aria-invalid', 'true');
+  await expect(field).toHaveAttribute('aria-describedby', await error.getAttribute('id'));
+  await info.attach('Repli opaque et validation · 320 px', {
+    body:await form.screenshot(), contentType:'image/png',
+  });
+  await field.fill('Le Gosier');
+  await expect(error).toBeHidden();
+  await expect(field).not.toHaveAttribute('aria-invalid', 'true');
+  await unavailable.click();
+  await expect(unavailable).toHaveAttribute('aria-pressed', 'true');
+  await expect(field).toBeDisabled();
+  await expect(submit).toBeDisabled();
+  await info.attach('Contrôles désactivés · 320 px', {
+    body:await form.screenshot(), contentType:'image/png',
+  });
+  await unavailable.click();
+  await expect(field).toBeEnabled();
+  await expect(field).toHaveValue('Le Gosier');
+  await submit.click();
+  await expect(form.getByRole('status')).toHaveText('Recherche fictive prête.');
+  await expect(page).toHaveURL(client + '/design-system');
+});
+
+test('verre V3.2 : repli pour préférences système et navigateur sans flou', async ({page}) => {
+  await page.goto(client + '/design-system');
+  const dark = page.getByRole('form', {name:'Fond sombre'});
+  const cdp = await page.context().newCDPSession(page);
+  await cdp.send('Emulation.setEmulatedMedia', {
+    features:[{name:'prefers-reduced-transparency', value:'reduce'}],
+  });
+  expect(await page.evaluate(() => matchMedia('(prefers-reduced-transparency: reduce)').matches)).toBe(true);
+  await expect(dark).toHaveCSS('background-color', 'rgb(225, 234, 227)');
+  await expect(dark).toHaveCSS('backdrop-filter', 'none');
+  await page.emulateMedia({forcedColors:'active', reducedMotion:'reduce'});
+  await expect(dark).toHaveCSS('backdrop-filter', 'none');
+  await expect(dark).toHaveCSS('background-image', 'none');
+  await expect(dark).toHaveCSS('border-top-style', 'solid');
+  await expect(dark.getByRole('button')).toHaveCSS('transition-duration', '0s');
+  await page.emulateMedia({forcedColors:'none', reducedMotion:'no-preference'});
+  await cdp.detach();
+
+  await page.route('**/styles/client.css', async route => {
+    const response = await route.fetch();
+    const css = await response.text();
+    // Emulate a parser that rejects the enhancement query, leaving the base rule intact.
+    await route.fulfill({response, body:css.replace(
+      '@supports (backdrop-filter: blur(1px))', '@supports (display: unsupported)',
+    )});
+  });
+  await page.reload();
+  await expect(dark).toHaveCSS('background-color', 'rgb(225, 234, 227)');
+  await expect(dark).toHaveCSS('backdrop-filter', 'none');
+});
