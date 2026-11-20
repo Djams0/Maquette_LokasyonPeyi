@@ -28,6 +28,13 @@
   --lp-color-disabled-text: #475C53;
   --lp-color-skeleton: #E6E9E1;
   --lp-color-overlay: rgb(21 44 39 / 52%);
+  --lp-color-v32-ink: #162728;
+  --lp-color-v32-action: #1C6259;
+  --lp-color-v32-action-hover: #154D46;
+  --lp-color-v32-deep: #103731;
+  --lp-color-v32-muted: #526760;
+  --lp-color-v32-line: #DCE3DD;
+  --lp-color-v32-outline: #778B84;
   --lp-font-ui: Nunito, system-ui, sans-serif;
   --lp-font-editorial: Lora, Georgia, serif;
   --lp-font-wordmark: Lobster, Georgia, serif;

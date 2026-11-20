@@ -1317,8 +1317,8 @@ html:has(.navigation-panel[open]) { overflow: hidden; }
 .message-search-row { display: flex; gap: var(--lp-space-8); margin-block: var(--lp-space-8) var(--lp-space-16); }
 .message-search-row input { min-width: 0; width: 100%; }
 .message-search-row button { flex-shrink: 0; }
-.message-row { display: flex; align-items: flex-start; gap: var(--lp-space-12); padding-block: var(--lp-space-16); border-top: 1px solid var(--line); text-decoration: none; color: var(--ink); }
-.message-row[aria-current] { background: var(--lp-color-info-bg); border-radius: var(--lp-radius-control); }
+.message-row { display: flex; align-items: flex-start; gap: var(--lp-space-12); padding: var(--lp-space-16) var(--lp-space-8); border-top: 1px solid var(--line); text-decoration: none; color: var(--ink); }
+.message-row[aria-current] { background: var(--lp-color-info-bg); border-radius: var(--lp-radius-control); box-shadow: inset 3px 0 var(--lp-color-action); }
 .message-row>.icon { flex-shrink: 0; margin-top: var(--lp-space-16); }
 .message-row-copy { display: grid; gap: var(--lp-space-4); min-width: 0; }
 .message-preview { color: var(--muted); font-size: var(--lp-text-body); line-height: var(--lp-leading-body); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -1330,7 +1330,8 @@ html:has(.navigation-panel[open]) { overflow: hidden; }
 .message-context h2 { font-size: var(--lp-text-card); }
 .message-context p { margin-block: var(--lp-space-4); }
 .message-disclaimer { font-size: var(--lp-text-meta); line-height: var(--lp-leading-meta); color: var(--muted); margin-block: var(--lp-space-16); }
-.message-stream { height: clamp(120px,36dvh,380px); overflow: auto; overscroll-behavior: contain; scroll-padding: var(--lp-space-12); padding: var(--lp-space-12); background: var(--lp-color-ivory); border-radius: var(--lp-radius-card); }
+.message-stream { height: clamp(120px,36dvh,380px); overflow: auto; overscroll-behavior: contain; scroll-padding: var(--lp-space-12); padding: var(--lp-space-12); background: var(--lp-color-ivory); border: 1px solid var(--line); border-radius: var(--lp-radius-card); }
+.message-stream:focus-visible { outline-offset: -3px; }
 .message-bubble { width: fit-content; max-width: 92%; border-radius: var(--lp-radius-card); padding: var(--lp-space-12) var(--lp-space-16); background: var(--lp-color-info-bg); margin-bottom: var(--lp-space-12); overflow-wrap: anywhere; }
 .message-bubble.mine { margin-left: auto; background: var(--lp-color-deep); color: var(--lp-color-surface); }
 .message-bubble p, .message-attempt-text { white-space: pre-wrap; font-size: var(--lp-text-body); line-height: var(--lp-leading-body); margin: 0 0 var(--lp-space-8); overflow-wrap: anywhere; }
@@ -1338,7 +1339,7 @@ html:has(.navigation-panel[open]) { overflow: hidden; }
 .message-bubble.mine small { color: inherit; }
 .message-composer { margin-top: var(--lp-space-16); padding-bottom: env(safe-area-inset-bottom); }
 .message-composer textarea { min-height: 96px; width: 100%; resize: vertical; display: block; margin-block: var(--lp-space-8); font-size: var(--lp-text-body); line-height: var(--lp-leading-body); }
-.message-composer-actions { display: flex; gap: var(--lp-space-12); align-items: center; justify-content: space-between; }
+.message-composer-actions { display: flex; gap: var(--lp-space-12); align-items: end; justify-content: space-between; }
 .message-composer-actions small { max-width: 58%; }
 .message-composer-actions button { flex-shrink: 0; }
 .message-send-state:not(:empty) { margin-top: var(--lp-space-12); border-left: 4px solid var(--lp-color-deep); padding: var(--lp-space-12); background: var(--lp-color-info-bg); border-radius: var(--lp-radius-control); }
@@ -1370,6 +1371,7 @@ html:has(.navigation-panel[open]) { overflow: hidden; }
 .booking-vehicle .link-button { padding-left: 0; text-align: left; justify-content: flex-start; }
 .booking-period .booking-meta { margin-top: var(--lp-space-8); }
 .booking-period>button { margin-top: var(--lp-space-16); }
+.booking-aside.card dl { margin-block: var(--lp-space-12); border-top: 1px solid var(--line); }
 .booking-page .key-value { flex-wrap: wrap; gap: var(--lp-space-8); }
 .booking-page .key-value dt, .booking-page .key-value dd { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
 .booking-page .key-value dd { margin-left: auto; }
@@ -1381,7 +1383,7 @@ html:has(.navigation-panel[open]) { overflow: hidden; }
 .booking-action>div { min-width: 0; }
 .booking-action strong { display: block; font-size: var(--lp-text-section); line-height: var(--lp-leading-section); }
 .booking-action>button, .booking-action>.button { flex-shrink: 0; }
-.booking-aside.card .booking-action { flex-direction: column; align-items: stretch; }
+.booking-aside.card .booking-action { flex-direction: column; align-items: stretch; padding-top: var(--lp-space-12); border-top: 1px solid var(--line); }
 .next-action .booking-action { flex-wrap: wrap; }
 .next-action .booking-action>button, .next-action .booking-action>.button { background: var(--surface); color: var(--primary); }
 .booking-inspection { padding-block: var(--lp-space-16); border-top: 1px solid var(--line); }
@@ -1392,6 +1394,9 @@ html:has(.navigation-panel[open]) { overflow: hidden; }
 @media (min-width:1024px) {
   .booking-layout { grid-template-columns: minmax(0,1.5fr) minmax(320px,1fr); gap: var(--lp-space-32); }
   .booking-aside { position: sticky; top: var(--lp-space-24); max-height: calc(100dvh - 48px); overflow: auto; scroll-padding: var(--lp-space-12); }
+}
+@media (min-width:1024px) and (max-height:599px) {
+  .booking-aside { position: static; max-height: none; overflow: visible; }
 }
 @media (max-width:1023px) {
   .booking-main:has(.booking-action) { padding-bottom: 220px; }
@@ -1433,7 +1438,7 @@ html:has(.navigation-panel[open]) { overflow: hidden; }
 .owner-priority .eyebrow { color: var(--lp-color-ochre); }
 .owner-priority :focus-visible { outline-color: var(--lp-color-focus-inverse); }
 .owner-priority>.button { margin-top: var(--lp-space-12); }
-.owner-draft-card { margin-block: var(--lp-space-20); border-left: 4px solid var(--lp-color-action); }
+.owner-draft-card { margin-block: var(--lp-space-20); border-inline-start: 4px solid var(--lp-color-action); }
 .owner-role { color: var(--lp-color-action); font-weight: var(--lp-weight-strong); }
 .owner-vehicle-list, .owner-request-list { display: grid; gap: var(--lp-space-16); }
 .owner-vehicle-row { display: flex; align-items: flex-start; gap: var(--lp-space-16); }
@@ -1459,7 +1464,7 @@ html:has(.navigation-panel[open]) { overflow: hidden; }
 .owner-document { padding-block: var(--lp-space-16); border-bottom: 1px solid var(--line); }
 .owner-document button { max-width: 100%; white-space: normal; }
 .owner-calendar-list { display: grid; gap: var(--lp-space-12); margin-block: var(--lp-space-16) var(--lp-space-24); }
-.owner-period { border: 1px solid var(--line); border-radius: var(--lp-radius-control); padding: var(--lp-space-16); background: var(--lp-color-ivory); }
+.owner-period { border: 1px solid var(--line); border-radius: var(--lp-radius-control); padding: var(--lp-space-16); background: var(--surface); }
 .owner-period.held { background: var(--lp-color-info-bg); }
 .owner-period.requested { background: var(--lp-color-warning-bg); }
 .owner-period p { margin-block: var(--lp-space-4) var(--lp-space-12); }
@@ -1472,6 +1477,8 @@ html:has(.navigation-panel[open]) { overflow: hidden; }
 .owner-day.requested { background: var(--lp-color-warning-bg); }
 .owner-day.blocked { background: var(--lp-color-disabled-bg); }
 .owner-save-status { min-height: 48px; background: var(--lp-color-info-bg); padding: var(--lp-space-12) var(--lp-space-16); border-radius: var(--lp-radius-control); }
+.photo-grid .photo-slot { border-radius: var(--lp-radius-card); }
+.photo-grid .photo-illustration { background: var(--lp-color-info-bg); color: var(--lp-color-info-text); }
 .owner-wizard-layout { display: grid; gap: var(--lp-space-24); margin-top: var(--lp-space-24); align-items: start; }
 .owner-wizard-layout>* { min-width: 0; }
 .owner-sections { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--lp-space-8); }

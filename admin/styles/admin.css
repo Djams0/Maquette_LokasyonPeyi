@@ -121,6 +121,7 @@ body{background:var(--lp-color-ivory)}
 .admin-back { display: inline-flex; align-items: center; gap: var(--lp-space-8); min-height: var(--lp-layout-touch-min); }
 .admin-result-count { font-size: var(--lp-text-meta); color: var(--lp-color-muted); }
 .admin-main .admin-queue { background: var(--lp-color-surface); }
+.admin-main .admin-queue th { background: var(--lp-color-info-bg); color: var(--lp-color-info-text); }
 .admin-main .admin-queue td { vertical-align: top; }
 .admin-main .admin-queue td:last-child>a { display: inline-flex; align-items: center; min-height: var(--lp-layout-touch-min); white-space: normal; font-weight: var(--lp-weight-strong); }
 .admin-main .admin-queue .badge { white-space: normal; }
@@ -128,7 +129,11 @@ body{background:var(--lp-color-ivory)}
 .admin-main .admin-decision-fields { padding: 0; margin: 0; border: 0; min-width: 0; }
 .admin-main .criteria { min-width: 0; }
 .admin-main .criteria .row { align-items: stretch; gap: var(--lp-space-8); }
-.admin-main .criteria .row label { padding-inline: var(--lp-space-8); border: 1px solid var(--lp-color-line); border-radius: var(--lp-radius-control); }
+.admin-main .criteria .row label { padding-inline: var(--lp-space-8); border: 1px solid var(--lp-color-outline); border-radius: var(--lp-radius-control); }
+.admin-main .criteria label:has(:focus-visible) {
+  outline: var(--lp-layout-focus-width) solid var(--lp-color-focus);
+  outline-offset: var(--lp-layout-focus-offset);
+}
 .admin-main .criteria label:has(:checked) { background: var(--lp-color-info-bg); border-color: var(--lp-color-action); }
 .admin-main .document-preview strong { font-size: var(--lp-text-card); }
 .admin-stale { border: 2px solid var(--lp-color-warning-text); background: var(--lp-color-warning-bg); color: var(--lp-color-warning-text); border-radius: var(--lp-radius-card); padding: var(--lp-space-20); margin-bottom: var(--lp-space-24); scroll-margin-top: var(--lp-space-20); }
@@ -136,6 +141,7 @@ body{background:var(--lp-color-ivory)}
 .sidebar nav a { flex-shrink: 0; }
 .admin-session-stale .admin-layout { display: none; }
 @media (min-width:1101px) {
+  .admin-main .admin-queue-wrap { border: 1px solid var(--line); border-radius: var(--lp-radius-card); }
   .admin-main .admin-queue th:last-child, .admin-main .admin-queue td:last-child { min-width: 128px; }
   .admin-main .admin-queue td:last-child>a { white-space: nowrap; overflow-wrap: normal; }
 }
