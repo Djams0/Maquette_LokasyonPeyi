@@ -13,3 +13,5 @@ Les 23 WebP de [V3.2](v32/manifest.json) sont les variantes dont le manifeste du
 - Les fonds clair et sombre de la démo de verre utilisent la Caravelle et la Traversée. Le hero routier est fourni en 720, 1440 et 1920 px. Les autres usages éditoriaux figurent dans le manifeste.
 
 Les [crédits accessibles](v32/credits.html) sont reliés au pied de page client. Les mentions, sources et licences suivent chaque photo distribuée.
+
+Le logo d’accueil [WebP](v32/marque/logo-horizontal-charte.webp) est une conversion sans perte de l’extrait de la charte livré dans le kit. Les 683 × 122 pixels RGBA sont identiques au PNG de référence.
