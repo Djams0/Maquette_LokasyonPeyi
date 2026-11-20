@@ -1477,8 +1477,8 @@ html:has(.navigation-panel[open]) { overflow: hidden; }
 .owner-day.requested { background: var(--lp-color-warning-bg); }
 .owner-day.blocked { background: var(--lp-color-disabled-bg); }
 .owner-save-status { min-height: 48px; background: var(--lp-color-info-bg); padding: var(--lp-space-12) var(--lp-space-16); border-radius: var(--lp-radius-control); }
-.client-main:has(.photo-grid) .photo-slot { border-radius: var(--lp-radius-card); }
-.client-main:has(.photo-grid) .photo-illustration { background: var(--lp-color-info-bg); color: var(--lp-color-info-text); }
+.photo-grid .photo-slot { border-radius: var(--lp-radius-card); }
+.photo-grid .photo-illustration { background: var(--lp-color-info-bg); color: var(--lp-color-info-text); }
 .owner-wizard-layout { display: grid; gap: var(--lp-space-24); margin-top: var(--lp-space-24); align-items: start; }
 .owner-wizard-layout>* { min-width: 0; }
 .owner-sections { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--lp-space-8); }

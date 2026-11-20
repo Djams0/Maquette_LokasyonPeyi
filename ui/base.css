@@ -2,10 +2,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; font: var(--lp-text-body)/var(--lp-leading-body) var(--lp-font-ui); color: var(--ink); background: var(--bg); }
-:where(
-  .booking-main, .messaging-main, .owner-main, .admin-main, .client-main:has(.photo-grid),
-  body:has(.booking-main, .messaging-main, .owner-main, .admin-main, .client-main .photo-grid) > dialog
-) {
+:where(.booking-main, .messaging-main, .owner-main, .admin-main, .photo-grid) {
   /* Opaque operational surfaces. Semantic warning and error palettes remain shared. */
   --lp-color-ink: var(--lp-color-v32-ink);
   --lp-color-action: var(--lp-color-v32-action);
