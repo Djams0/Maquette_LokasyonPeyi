@@ -2,6 +2,27 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; font: var(--lp-text-body)/var(--lp-leading-body) var(--lp-font-ui); color: var(--ink); background: var(--bg); }
+:where(
+  .booking-main, .messaging-main, .owner-main, .admin-main, .client-main:has(.photo-grid),
+  body:has(.booking-main, .messaging-main, .owner-main, .admin-main, .client-main .photo-grid) > dialog
+) {
+  /* Opaque operational surfaces. Semantic warning and error palettes remain shared. */
+  --lp-color-ink: var(--lp-color-v32-ink);
+  --lp-color-action: var(--lp-color-v32-action);
+  --lp-color-action-hover: var(--lp-color-v32-action-hover);
+  --lp-color-deep: var(--lp-color-v32-deep);
+  --lp-color-muted: var(--lp-color-v32-muted);
+  --lp-color-line: var(--lp-color-v32-line);
+  --lp-color-outline: var(--lp-color-v32-outline);
+  --ink: var(--lp-color-ink);
+  --primary: var(--lp-color-action);
+  --deep: var(--lp-color-deep);
+  --muted: var(--lp-color-muted);
+  --line: var(--lp-color-line);
+  --lp-radius-card: var(--lp-radius-gallery);
+  --lp-shadow-card: 0 5px 20px rgb(22 39 40 / 4%);
+  color: var(--ink);
+}
 h1, h2, h3 { font-family: var(--lp-font-ui); font-weight: var(--lp-weight-strong); overflow-wrap: anywhere; }
 h1 { font-size: var(--lp-text-title); line-height: var(--lp-leading-title); margin: 0 0 var(--lp-space-16); }
 h2 { font-size: var(--lp-text-section); line-height: var(--lp-leading-section); margin: 0 0 var(--lp-space-16); }

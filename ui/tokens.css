@@ -28,6 +28,13 @@
   --lp-color-disabled-text: #475C53;
   --lp-color-skeleton: #E6E9E1;
   --lp-color-overlay: rgb(21 44 39 / 52%);
+  --lp-color-v32-ink: #162728;
+  --lp-color-v32-action: #1C6259;
+  --lp-color-v32-action-hover: #154D46;
+  --lp-color-v32-deep: #103731;
+  --lp-color-v32-muted: #526760;
+  --lp-color-v32-line: #DCE3DD;
+  --lp-color-v32-outline: #778B84;
   --lp-font-ui: Nunito, system-ui, sans-serif;
   --lp-font-editorial: Lora, Georgia, serif;
   --lp-font-wordmark: Lobster, Georgia, serif;
@@ -117,8 +124,8 @@
 
 /* V3.2 foundations for surfaces that opt in. Keep the shared aliases above stable. */
 .v32 {
-  --v32-ink: #162728;
-  --v32-action: #1C6259;
+  --v32-ink: var(--lp-color-v32-ink);
+  --v32-action: var(--lp-color-v32-action);
   --v32-tropical: #08A04F;
   --v32-lagoon: #04959C;
   --v32-blue: #84BCBA;
@@ -126,13 +133,13 @@
   --v32-cream: var(--lp-color-ivory);
   --v32-mint: var(--lp-color-info-bg);
   --v32-gold: var(--lp-color-ochre);
-  --v32-deep: #103731;
-  --v32-muted: #526760;
+  --v32-deep: var(--lp-color-v32-deep);
+  --v32-muted: var(--lp-color-v32-muted);
   --v32-white: var(--lp-color-surface);
-  --v32-line: #DCE3DD;
-  --v32-control: #778B84;
+  --v32-line: var(--lp-color-v32-line);
+  --v32-control: var(--lp-color-v32-outline);
   --v32-error: #A23524;
-  --v32-hover: #154D46;
+  --v32-hover: var(--lp-color-v32-action-hover);
   --v32-wrap: 1200px;
   --v32-nav-max: 1280px;
   --v32-nav-h: 66px;
