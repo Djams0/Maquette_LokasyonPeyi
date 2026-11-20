@@ -90,7 +90,7 @@ test('Recherche: A → retour local → B, historique navigateur, reload et date
   await page.getByRole('link',{name:'Retour aux résultats',exact:true}).click();await settled(page);expect(page.url()).toBe(search);
   await page.locator('.results-cards article').nth(1).getByRole('link').click();expect(new URL(page.url()).pathname).toBe('/vehicle/'+b);
   await page.goBack();await settled(page);expect(page.url()).toBe(search);await page.goForward();await expect(page.getByLabel('Départ · heure Guadeloupe')).toHaveValue('2027-06-10T09:00');
-  await page.getByLabel('Départ · heure Guadeloupe').fill('2027-06-10T14:35');await page.getByLabel('Retour · heure Guadeloupe').focus();await page.reload();
+  await page.locator('#vehicle-date-editor summary').click();await page.getByLabel('Départ · heure Guadeloupe').fill('2027-06-10T14:35');await page.getByLabel('Retour · heure Guadeloupe').focus();await page.reload();
   await expect(page.getByLabel('Départ · heure Guadeloupe')).toHaveValue('2027-06-10T14:35');await page.getByRole('link',{name:'Retour aux résultats',exact:true}).click();await settled(page);expect(new URL(page.url()).searchParams.get('from')).toBe('2027-06-10T14:35');
   await page.locator('.results-cards article').first().getByRole('link').click();await expect(page.getByLabel('Départ · heure Guadeloupe')).toHaveValue('2027-06-10T14:35');expect(errors).toEqual([]);
 });
@@ -118,7 +118,7 @@ test('Recherche: résumé éditable, dates corrigées explicitement et dates eff
   await open(page,'q=Gosier&from=2027-02-31&until=2027-03-04&sort=price&view=map');await page.getByRole('button',{name:'Modifier la recherche',exact:true}).click();const d=page.getByRole('dialog',{name:'Modifier la recherche',exact:true});
   await expect(d).toContainText('2027-02-31');await d.getByLabel('Départ · heure Guadeloupe').fill('2027-06-10T11:00');await d.getByLabel('Retour · heure Guadeloupe').fill('2027-06-14T15:00');await d.getByRole('button',{name:'Rechercher',exact:true}).click();await settled(page);
   expect(new URL(page.url()).searchParams.get('view')).toBe('map');await page.locator('.results-cards article').first().getByRole('link').click();await expect(page.getByLabel('Départ · heure Guadeloupe')).toHaveValue('2027-06-10T11:00');
-  await page.getByLabel('Départ · heure Guadeloupe').fill('');await page.getByLabel('Retour · heure Guadeloupe').fill('');await page.getByLabel('Départ · heure Guadeloupe').focus();await page.reload();await expect(page.getByLabel('Départ · heure Guadeloupe')).toHaveValue('');await expect(page.getByLabel('Retour · heure Guadeloupe')).toHaveValue('');
+  await page.locator('#vehicle-date-editor summary').click();await page.getByLabel('Départ · heure Guadeloupe').fill('');await page.getByLabel('Retour · heure Guadeloupe').fill('');await page.getByLabel('Départ · heure Guadeloupe').focus();await page.reload();await expect(page.getByLabel('Départ · heure Guadeloupe')).toHaveValue('');await expect(page.getByLabel('Retour · heure Guadeloupe')).toHaveValue('');
 });
 test('Recherche: chargement lent, erreur API et état vide gardent les critères et les accès de reprise',async({page},info)=>{
   await page.setViewportSize({width:390,height:844});

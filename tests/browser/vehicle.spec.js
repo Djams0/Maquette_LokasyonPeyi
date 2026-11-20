@@ -11,13 +11,29 @@ test.beforeEach(async()=>{
 test.afterEach(async()=>{children.forEach(c=>c.kill());children=[];if(target)await new Promise(r=>target.server.close(r));});
 const dated='?q=Gosier&from=2027-06-10&until=2027-06-14&max=80&sort=price&view=map';
 async function open(page,id='v1',query=dated){await page.goto(client+'/vehicle/'+id+query);await expect(page.locator('#vehicle-title')).toBeVisible();await page.evaluate(()=>document.fonts.ready);}
-for(const width of [320,375,390,430,768,1024,1440])test(`Fiche: reflow, galerie 3:2 et action à ${width}px`,async({page})=>{
+for(const width of [320,375,390,430,768,1024,1440])test(`Fiche: reflow, galerie 1+2 et action dans le flux à ${width}px`,async({page})=>{
  await page.setViewportSize({width,height:width===1440?950:844});await open(page);
- const cover=page.locator('#open-vehicle-gallery');await expect(cover).toContainText('1 / 5');const box=await cover.boundingBox();expect(box.width/box.height).toBeCloseTo(3/2,2);
+ const cover=page.locator('#open-vehicle-gallery');await expect(cover).toContainText('5 photos');
+ const previews=page.locator('.vehicle-preview');await expect(previews).toHaveCount(2);
+ const box=await cover.boundingBox(),second=await previews.first().boundingBox(),third=await previews.last().boundingBox();
+ if(width>=880){
+   expect(second.x).toBeGreaterThan(box.x+box.width);
+   expect(second.y).toBe(box.y);expect(third.y).toBeGreaterThan(second.y+second.height);
+   expect((await page.locator('.vehicle-reservation').boundingBox()).width).toBe(325);
+ } else {
+   expect(second.y).toBeGreaterThan(box.y+box.height);expect(third.y).toBe(second.y);
+ }
  await expect(page.getByLabel('Départ · heure Guadeloupe')).toHaveValue('2027-06-10T09:00');await expect(page.locator('#vehicle-estimate')).toContainText('128');await expect(page.locator('#vehicle-estimate')).toContainText('estimation fictive');
  expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBeLessThanOrEqual(1);
- const action=page.getByRole('button',{name:'Demander la location',exact:true}),b=await action.boundingBox();expect(b.height).toBeGreaterThanOrEqual(48);if(width<1024){expect(b.y).toBeGreaterThanOrEqual(0);expect(b.y+b.height).toBeLessThanOrEqual(844);}
- await page.getByLabel('Départ · heure Guadeloupe').focus();await expect(page.locator('#main')).toHaveClass(/vehicle-action-in-flow/);expect(await page.locator('.vehicle-action-bar').evaluate(e=>getComputedStyle(e).position)).toBe('static');
+ const action=page.getByRole('button',{name:'Demander la location',exact:true});
+ expect(await action.evaluate(button=>Boolean(document.querySelector('.vehicle-handover').compareDocumentPosition(button)&Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
+ expect(await page.locator('.vehicle-action-bar').evaluate(e=>getComputedStyle(e).position)).toBe('static');
+ await action.scrollIntoViewIfNeeded();await expect(action).toBeInViewport();
+ expect((await action.boundingBox()).height).toBeGreaterThanOrEqual(48);
+ await page.locator('#vehicle-date-editor summary').click();
+ const departure=page.getByLabel('Départ · heure Guadeloupe');
+ await departure.focus();await expect(departure).toBeFocused();
+ expect(await departure.evaluate(el=>{const r=el.getBoundingClientRect();return el.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));})).toBe(true);
 });
 test('Fiche: galerie clavier nommée, compteur réel, cinq vues, Échap et retour du focus',async({page})=>{
  await page.setViewportSize({width:390,height:844});await open(page);const cover=page.getByRole('button',{name:'Ouvrir la photo 1 de Peugeot 208',exact:true});await cover.focus();await page.keyboard.press('Enter');const d=page.getByRole('dialog',{name:'Galerie · Peugeot 208',exact:true});await expect(d).toBeVisible();await expect(d.locator('#gallery-count')).toHaveText('1 / 5');
@@ -55,7 +71,14 @@ test('V3.2: galeries Clio et Duster séparées, formats à la demande et retour 
  await expect(coverImage).toHaveAttribute('height','787');
  await expect(page.getByText('État non renseigné',{exact:true})).toBeVisible();
  await expect(page.getByRole('button',{name:/Rayure superficielle/})).toHaveCount(0);
- expect(images.filter(url => url.includes('/v32/demo/'))).toEqual(['/assets/v32/demo/clio-avant-1050.webp']);
+ const rear=page.getByRole('button',{name:'Ouvrir la photo 2 de Renault Clio'});
+ const face=page.getByRole('button',{name:'Ouvrir la photo 3 de Renault Clio'});
+ await expect(rear.locator('img')).toHaveJSProperty('currentSrc',client+'/assets/v32/demo/clio-arriere-420.webp');
+ await expect(face.locator('img')).toHaveJSProperty('currentSrc',client+'/assets/v32/demo/clio-face-420.webp');
+ expect(images.filter(url => url.includes('/v32/demo/')).sort()).toEqual([
+  '/assets/v32/demo/clio-arriere-420.webp','/assets/v32/demo/clio-avant-1050.webp','/assets/v32/demo/clio-face-420.webp',
+ ]);
+ await info.attach('Clio · fiche V3.2 bureau',{body:await page.screenshot({fullPage:true}),contentType:'image/png'});
  await cover.focus();
  await page.keyboard.press('Enter');
  const gallery = page.getByRole('dialog',{name:'Galerie · Renault Clio'});
@@ -70,6 +93,13 @@ test('V3.2: galeries Clio et Duster séparées, formats à la demande et retour 
  await info.attach('Clio · vue de modèle et provenance', {body:await gallery.screenshot(),contentType:'image/png'});
  await page.keyboard.press('Escape');
  await expect(cover).toBeFocused();
+ await rear.focus();
+ await page.keyboard.press('Enter');
+ await expect(gallery.locator('#gallery-count')).toHaveText('2 / 3');
+ await page.keyboard.press('Shift+Tab');
+ await expect(gallery.getByRole('button',{name:'Revenir à la fiche',exact:true})).toBeFocused();
+ await page.keyboard.press('Escape');
+ await expect(rear).toBeFocused();
  await expect(page.locator('#return-search')).toHaveAttribute('href','/search'+dated);
 
  await page.setViewportSize({width:320,height:844});
@@ -102,7 +132,23 @@ test('Fiche: propriétaire garde la gestion, visiteur garde la demande et son br
 });
 test('Fiche: texte à 200 %, hauteur courte et focus en saisie gardent les contrôles atteignables',async({page})=>{
  await page.route('**/ui/base.css',async r=>{const response=await r.fetch();await r.fulfill({response,body:await response.text()+'\nhtml {font-size:200%}'});});
- await page.setViewportSize({width:390,height:422});await open(page);expect(await page.locator('html').evaluate(e=>getComputedStyle(e).fontSize)).toBe('32px');expect(await page.locator('.vehicle-action-bar').evaluate(e=>getComputedStyle(e).position)).toBe('static');expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBeLessThanOrEqual(1);await page.getByLabel('Départ · heure Guadeloupe').fill('2027-06-11T10:00');await page.getByLabel('Retour · heure Guadeloupe').fill('2027-06-15T11:00');await page.getByRole('button',{name:'Demander la location',exact:true}).scrollIntoViewIfNeeded();await expect(page.getByRole('button',{name:'Demander la location',exact:true})).toBeInViewport();
+ await page.setViewportSize({width:390,height:422});await open(page);expect(await page.locator('html').evaluate(e=>getComputedStyle(e).fontSize)).toBe('32px');expect(await page.locator('.vehicle-action-bar').evaluate(e=>getComputedStyle(e).position)).toBe('static');expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBeLessThanOrEqual(1);await page.locator('#vehicle-date-editor summary').click();await page.getByLabel('Départ · heure Guadeloupe').fill('2027-06-11T10:00');await page.getByLabel('Retour · heure Guadeloupe').fill('2027-06-15T11:00');await page.getByRole('button',{name:'Demander la location',exact:true}).scrollIntoViewIfNeeded();await expect(page.getByRole('button',{name:'Demander la location',exact:true})).toBeInViewport();
+});
+test('Fiche: une période vide ouvre les champs et garde la demande au même endroit en paysage',async({page})=>{
+ await page.setViewportSize({width:844,height:390});await open(page,'v3','?q=Gosier&sort=price&view=map');
+ const action=page.getByRole('button',{name:'Demander la location',exact:true}),editor=page.locator('#vehicle-date-editor');
+ await expect(editor).toHaveJSProperty('open',false);
+ await action.click();
+ await expect(editor).toHaveJSProperty('open',true);
+ await expect(page.locator('#availability [role="alert"]')).toContainText('Départ');
+ await expect(page.getByLabel('Départ · heure Guadeloupe')).toBeFocused();
+ await expect(page.locator('#return-search')).toHaveAttribute('href','/search?q=Gosier&sort=price&view=map');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBeLessThanOrEqual(1);
+ const thumbnail=page.getByRole('button',{name:'Ouvrir la photo 3 de Renault Clio'});
+ await thumbnail.click();
+ const dialog=page.getByRole('dialog',{name:'Galerie · Renault Clio'});
+ await expect(dialog.locator('#gallery-count')).toHaveText('3 / 3');
+ await page.keyboard.press('Escape');await expect(thumbnail).toBeFocused();
 });
 test('Fiche: erreur API récupérable conserve le contexte et les dates au rechargement',async({page})=>{
  await page.route('**/api/v1/vehicles/v1',r=>r.abort());await page.goto(client+'/vehicle/v1'+dated);await expect(page.getByRole('heading',{name:'Impossible de charger cette page',exact:true})).toBeVisible();await expect(page.locator('#main').getByRole('link',{name:'Atelier d’audit',exact:true})).toBeVisible();await page.unroute('**/api/v1/vehicles/v1');await page.getByRole('button',{name:'Réessayer',exact:true}).click();await expect(page.getByLabel('Départ · heure Guadeloupe')).toHaveValue('2027-06-10T09:00');expect(new URL(page.url()).searchParams.get('view')).toBe('map');await expect(page.locator('#return-search')).toHaveAttribute('href','/search'+dated);

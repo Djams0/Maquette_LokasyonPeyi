@@ -3,18 +3,19 @@ import {escape,icon,link,field,notice,empty,money,modal,bindForm,toast,errorSlot
 import {parseSearch,searchURL,vehicleURL,dateParam} from './search-state.js';
 import {vehiclePresentation,vehicleEstimate} from './vehicle-presentation.js';
 
-function mediaHTML(m, {contain = false, eager = false} = {}) {
-  const sizes = !m.modelPhoto ? '(min-width:1024px) 720px, 100vw'
-    : contain ? '(min-width:672px) 590px, calc(100vw - 82px)'
-    : '(min-width:1280px) 730px, (min-width:1024px) calc(61.5vw - 60px), calc(100vw - 32px)';
+function mediaHTML(m, {contain = false, eager = false, preview = false, cover = false, single = false} = {}) {
+  const sizes = contain ? '(min-width:672px) 590px, calc(100vw - 82px)'
+    : preview ? '(min-width:1328px) 275px, (min-width:880px) calc(30vw - 118px), 46vw'
+    : single ? '(min-width:1328px) 852px, (min-width:880px) calc(90.4vw - 348px), 91vw'
+    : '(min-width:1328px) 568px, (min-width:880px) calc(60.8vw - 235px), 91vw';
   const label = m.modelPhoto ? 'Photo illustrative du modèle'
     : m.photo ? 'Photo de démonstration' : m.fallback ? 'Illustration fictive' : '';
-  return `<div class="detail-media ${contain ? 'detail-contain' : ''}">
+  return `<span class="detail-media ${contain || (!m.photo && m.fallback) ? 'detail-contain' : ''}">
     <img data-detail-image data-photo="${Boolean(m.photo)}" data-fallback="${escape(m.fallback || '')}"
       src="${escape(m.src)}" ${m.srcset ? `srcset="${escape(m.srcset)}" sizes="${sizes}"` : ''}
-      alt="${escape(m.alt)}" width="${m.width}" height="${m.height}" loading="${eager ? 'eager' : 'lazy'}" decoding="async">
-    <span class="detail-media-status"${m.modelPhoto ? ' role="status"' : ''}>${label}</span>
-  </div>`;
+      alt="${escape(m.alt)}" width="${m.width}" height="${m.height}" loading="${eager ? 'eager' : 'lazy'}"${cover ? ' fetchpriority="high"' : ''} decoding="async">
+    <span class="detail-media-status"${m.modelPhoto && !preview ? ' role="status"' : ''}>${preview ? '' : label}</span>
+  </span>`;
 }
 function bindMedia(root) {
   root.querySelectorAll('[data-detail-image]').forEach(img=>{
@@ -28,44 +29,174 @@ function bindMedia(root) {
   });
 }
 function readOnlyDialog(title,content,className) {
-  const d=modal(title,content);d.classList.add(className);d.querySelector('.form-actions [data-close]').textContent='Revenir à la fiche';return d;
+  const d=modal(title,content);
+  d.classList.add(className);
+  d.querySelector('.form-actions [data-close]').textContent='Revenir à la fiche';
+  d.addEventListener('keydown',event=>{
+    if(event.key!=='Tab')return;
+    const controls=[...d.querySelectorAll('button:not(:disabled)')];
+    const first=controls[0],last=controls.at(-1);
+    if(event.shiftKey && document.activeElement===first) {
+      event.preventDefault();
+      last.focus();
+    } else if(!event.shiftKey && document.activeElement===last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+  return d;
 }
-function openGallery(vehicle,media) {
-  let index=0;
+function openGallery(vehicle,media,initialIndex) {
+  let index=initialIndex;
   const context = media[0].modelPhoto
     ? 'Les photos illustrent le modèle. Elles ne montrent ni le véhicule proposé, ni ses équipements, ni son état.'
-    : 'Les images de démonstration sont fictives et ne constituent pas des preuves d’état.';
-  const d=readOnlyDialog('Galerie · '+vehicle.name,`<p>${context}</p><div id="gallery-view"></div><div class="detail-gallery-controls"><button type="button" class="secondary" data-previous>Précédente</button><p role="status" id="gallery-count" aria-live="polite"></p><button type="button" class="secondary" data-next>Suivante</button></div>`,'vehicle-gallery-dialog');
+    : media[0].photo ? 'Les images de démonstration sont fictives et ne constituent pas des preuves d’état.'
+    : 'Cette annonce présente une illustration fictive.';
+  const d=readOnlyDialog('Galerie · '+vehicle.name,`<p>${context}</p><div id="gallery-view"></div><div class="detail-gallery-controls"><button type="button" class="secondary" data-previous>Précédente</button><p role="status" id="gallery-count"></p><button type="button" class="secondary" data-next>Suivante</button></div>`,'vehicle-gallery-dialog');
   const render=()=>{d.querySelector('#gallery-view').innerHTML=mediaHTML(media[index],{contain:true,eager:true});d.querySelector('#gallery-count').textContent=(index+1)+' / '+media.length;bindMedia(d.querySelector('#gallery-view'));};
   const move=step=>{index=(index+step+media.length)%media.length;render();};
   d.querySelector('[data-previous]').onclick=()=>move(-1);d.querySelector('[data-next]').onclick=()=>move(1);
   d.querySelectorAll('[data-previous],[data-next]').forEach(b=>b.disabled=media.length===1);
-  d.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();move(e.key==='ArrowLeft'?-1:1);}});render();
+  d.addEventListener('keydown',e=>{if(media.length>1 && ['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();move(e.key==='ArrowLeft'?-1:1);}});render();
+}
+
+function galleryHTML(vehicle,gallery) {
+  const cover=gallery[0], previews=gallery.slice(1,3);
+  const label=cover.modelPhoto ? 'Ouvrir les photos du modèle '+vehicle.name
+    : 'Ouvrir '+(cover.photo?'la photo':'l’illustration')+' 1 de '+vehicle.name;
+  const count=cover.photo ? gallery.length+' photo'+(gallery.length===1?'':'s') : '1 illustration';
+  return `<div class="vehicle-gallery" data-previews="${previews.length}" role="group" aria-label="Vues du véhicule">
+    <button type="button" class="vehicle-cover" id="open-vehicle-gallery" data-gallery-index="0" aria-label="${escape(label)}" aria-haspopup="dialog">
+      ${mediaHTML(cover,{eager:true,cover:true,single:!previews.length})}
+      <span class="gallery-counter">${icon('camera')} ${count}</span>
+    </button>
+    ${previews.map((media,index)=>`<button type="button" class="vehicle-preview" data-gallery-index="${index+1}"
+      aria-haspopup="dialog" aria-label="${escape('Ouvrir la photo '+(index+2)+' de '+vehicle.name)}">${mediaHTML(media,{preview:true})}</button>`).join('')}
+  </div>`;
+}
+
+function conditionHTML(condition,mediaSource) {
+  return `<section class="card vehicle-condition" aria-labelledby="condition-title">
+    <p class="eyebrow">Avant de faire une demande</p>
+    <h2 id="condition-title">État du véhicule et défauts déclarés</h2>
+    ${condition ? `<p class="vehicle-fixture-label">Exemple d’interface fictif · fixture v1 · ${escape(condition.version)}</p>
+      <button type="button" class="secondary vehicle-condition-button" id="open-condition" aria-haspopup="dialog">
+        <img src="${condition.src}" width="64" height="64" alt="" data-condition-thumbnail loading="lazy">
+        <span><strong>${escape(condition.title)}</strong><span>${escape(condition.zone)}</span><small>Déclaration propriétaire fictive · voir le détail</small></span>${icon('arrow')}
+      </button><p class="vehicle-meta">${escape(condition.date)}. Aucune déclaration physique fournie par l’API.</p>`
+      : `<div class="vehicle-condition-summary"><strong>État non renseigné</strong><p>Aucune déclaration d’état fournie pour cette annonce. Cela ne signifie pas une absence de défaut.</p></div>`}
+    <p class="vehicle-meta">${mediaSource} Les constats se font lors de la remise et du retour.</p>
+  </section>`;
+}
+
+const periodFormat = new Intl.DateTimeFormat('fr-FR',{dateStyle:'medium',timeStyle:'short',timeZone:'UTC'});
+function periodRange(start,end) {
+  if(!start || !end)return '';
+  return [start,end].map(value=>periodFormat.format(new Date(value+':00Z'))).join(' → ');
 }
 export async function renderVehicle(id,me,{dateDefaults,toUTC}) {
   const v=await api('/vehicles/'+encodeURIComponent(id)),presentation=vehiclePresentation(v),context=parseSearch(location.search),criteria=context.params,main=document.getElementById('main');
   const defaults=context.period.provided?{start:context.period.startLocal,end:context.period.endLocal}:location.search?{start:'',end:''}:dateDefaults();
   const note=context.errors.length?context.errors.join(' ')+' Période reçue : '+(criteria.get('from')||'départ manquant')+' → '+(criteria.get('until')||'retour manquant'):context.period.provided?'Période de la recherche · heure Guadeloupe.':location.search?'Choisissez explicitement votre période.':'Dates proposées à confirmer · heure Guadeloupe.';
   const owned=Boolean(me&&me.id===v.ownerId),condition=presentation.condition,cover=presentation.gallery[0];
-  const galleryLabel = cover.modelPhoto ? 'Ouvrir les photos du modèle ' + v.name
-    : 'Ouvrir ' + (cover.photo ? 'la photo' : 'l’illustration') + ' 1 de ' + v.name;
   const mediaSource = cover.modelPhoto
-    ? 'Photos du modèle, à titre illustratif. Elles ne montrent ni le véhicule proposé, ni ses équipements, ni son état.'
+    ? 'Les photos de la galerie illustrent le modèle.'
     : cover.photo ? 'Photos de démonstration · médias synthétiques associés à la fixture v1.'
     : 'Illustration locale fictive · aucune photo associée à cette annonce.';
+  const dailyPrice = typeof v.price==='number' && Number.isFinite(v.price) && v.price>0 ? money(v.price) : '';
+  const specs = [['Transmission',v.gearbox],['Places',v.seats+' places'],['Énergie',v.fuel]];
   main.classList.add('vehicle-main');
-  main.innerHTML=`<article class="vehicle-detail"><a id="return-search" class="vehicle-back" href="${escape(searchURL(criteria))}">${icon('back')} Retour aux résultats</a><div class="vehicle-detail-layout"><section class="vehicle-primary" aria-labelledby="vehicle-title"><button type="button" class="vehicle-cover" id="open-vehicle-gallery" aria-label="${escape(galleryLabel)}">${mediaHTML(cover,{eager:true})}<span class="gallery-counter">1 / ${presentation.gallery.length}</span></button><p class="vehicle-media-source">${mediaSource} Aucun média de démonstration n’est une preuve.</p><h1 id="vehicle-title">${escape(v.name)} (${escape(v.year)})</h1><p class="vehicle-location">${escape(v.city)} · remise des clés en présence</p><div class="pill-list vehicle-specs">${[v.gearbox,v.seats+' places',v.fuel].map(x=>`<span class="pill">${escape(x)}</span>`).join('')}</div></section><aside class="card vehicle-reservation" aria-labelledby="vehicle-period-title"><h2 id="vehicle-period-title">Votre période</h2><p id="vehicle-period-note" role="status">${escape(note)}</p><form id="availability">${field('Départ · heure Guadeloupe','start',defaults.start,'datetime-local','required')}${field('Retour · heure Guadeloupe','end',defaults.end,'datetime-local','required')}<p class="vehicle-terms">Caution : montant non défini, distinct du prix de location. Frais et assurance : conditions à valider.</p>${errorSlot}<div class="vehicle-action-bar"><div id="vehicle-estimate" aria-live="polite"></div>${owned?link('/owner/vehicles/'+encodeURIComponent(id),'Gérer mon annonce'):'<button type="submit">Demander la location</button>'}</div></form></aside><div class="vehicle-content"><section class="vehicle-condition" aria-labelledby="condition-title"><h2 id="condition-title">État du véhicule</h2>${condition?`<p class="vehicle-fixture-label">Exemple d’interface fictif · fixture v1 · ${escape(condition.version)}</p><button type="button" class="secondary vehicle-condition-button" id="open-condition"><img src="${condition.src}" width="64" height="64" alt="" data-condition-thumbnail><span><strong>${escape(condition.title)}</strong><span>${escape(condition.zone)}</span><small>Déclaration propriétaire fictive · voir le détail</small></span>${icon('arrow')}</button><p class="vehicle-meta">${escape(condition.date)}. Aucune déclaration physique fournie par l’API.</p>`:notice('<strong>État non renseigné</strong><br>Aucune déclaration d’état fournie pour cette annonce. Cela ne signifie pas une absence de défaut.')}<p class="vehicle-meta">Une déclaration d’annonce, un contrôle documentaire et les constats de remise/retour sont distincts. Les constats restent dans le suivi de la location, selon vos droits.</p>${link('/rentals','Consulter mes locations','link-button')}</section>${presentation.illustration?'<button type="button" class="secondary full vehicle-optional" id="open-model">Voir l’illustration du modèle</button>':''}<section class="section"><h2>Description</h2><p>${escape(v.description)}</p><h3>Équipements</h3><div class="pill-list">${v.equipment.map(e=>`<span class="pill">${escape(e)}</span>`).join('')}</div></section><section class="section"><h2>Règles du véhicule</h2><p>${v.rules.smoking?'Tabac admis dans ce scénario':'Non-fumeur'} · ${v.rules.pets?'Animaux admis dans ce scénario':'Animaux non admis dans ce scénario'} · remise des clés en présence.</p>${notice('<strong>Politique kilométrique</strong><br>Forfaits, dépassements et frais restent à valider. Aucun supplément automatique dans la démo.')}${notice('Sorties inter-îles et traceurs GPS reportés. Assurance et caution : conditions contractuelles à valider.','warning')}</section><section class="section"><h2>Zone approximative</h2><div class="map"><div class="map-pins"><span class="badge">${icon('pin')}${escape(v.city)}</span></div><p>Adresse de démonstration affichée seulement après confirmation de la location.</p></div></section><section class="section"><h2>Avis sur le véhicule</h2><p class="vehicle-meta">★ ${escape(v.rating||'Nouveau')} · avis de démonstration</p>${v.reviews.length?v.reviews.map(r=>`<article class="card"><strong>★ ${escape(r.vehicleRating??r.rating)}/5 · avis fictif</strong><p>${escape(r.comment)}</p>${r.reply?`<p>Réponse : ${escape(r.reply)}</p>`:''}</article>`).join(''):empty('Pas encore d’avis','Les avis publiés après modération apparaîtront ici.')}</section><section class="section card"><h2>Votre propriétaire</h2><strong>${escape(v.ownerName)}</strong><p class="vehicle-meta">Compte fictif. La demande reste soumise à son acceptation ; aucun débit lors de l’envoi.</p><button type="button" class="secondary full" id="contact">Contacter le propriétaire</button></section></div></div></article>`;
+  main.innerHTML = `<article class="vehicle-detail v32">
+    <header class="vehicle-heading">
+      <a id="return-search" class="vehicle-back" href="${escape(searchURL(criteria))}">${icon('back')} Retour aux résultats</a>
+      <p class="eyebrow">Annonce de démonstration</p>
+      <h1 id="vehicle-title">${escape(v.name)}</h1>
+      <p class="vehicle-location">${icon('pin')} ${escape(v.city)} · ${escape(v.category)} · ${escape(v.year)}</p>
+    </header>
+    <div class="vehicle-detail-layout">
+      <div class="vehicle-primary">
+        ${galleryHTML(v,presentation.gallery)}
+        <dl class="vehicle-specs">${specs.map(([label,value])=>`<div><dt>${label}</dt><dd>${escape(value)}</dd></div>`).join('')}</dl>
+        ${conditionHTML(condition,mediaSource)}
+        <section class="vehicle-handover" aria-labelledby="vehicle-handover-title">
+          <h2 id="vehicle-handover-title">Remise et conditions</h2>
+          <p>Zone de remise indicative à ${escape(v.city)}. La remise des clés se fait en présence. Le rendez-vous se précise après confirmation.</p>
+          <p class="vehicle-meta">${v.rules.smoking?'Tabac admis dans ce scénario':'Non-fumeur'} · ${v.rules.pets?'Animaux admis dans ce scénario':'Animaux non admis dans ce scénario'}</p>
+          ${v.equipment.length ? `<p class="vehicle-meta">Équipements annoncés · ${escape(v.equipment.join(', '))}.</p>` : ''}
+        </section>
+      </div>
+      <aside class="card vehicle-reservation" aria-labelledby="vehicle-period-title">
+        <div class="vehicle-rate">${dailyPrice ? `<strong>${dailyPrice}</strong> <small>/ jour fictif</small>` : '<strong>Prix non calculable</strong>'}</div>
+        <p class="vehicle-meta">Prix indicatif de démonstration</p>
+        <h2 id="vehicle-period-title">Votre période</h2>
+        <p id="vehicle-period-value">${escape(context.errors.length?'':periodRange(defaults.start,defaults.end))}</p>
+        <p id="vehicle-period-note" role="${context.errors.length?'alert':'status'}">${escape(note)}</p>
+        <form id="availability">
+          <details id="vehicle-date-editor"${context.errors.length?' open':''}>
+            <summary class="button secondary">${icon('calendar')} Modifier les dates</summary>
+            <div class="vehicle-date-fields">
+              ${field('Départ · heure Guadeloupe','start',defaults.start,'datetime-local','required')}
+              ${field('Retour · heure Guadeloupe','end',defaults.end,'datetime-local','required')}
+            </div>
+          </details>
+          ${errorSlot}
+          <div id="vehicle-estimate" aria-live="polite"></div>
+          <div class="vehicle-action-bar">${owned?link('/owner/vehicles/'+encodeURIComponent(id),'Gérer mon annonce'):'<button type="submit">Demander la location</button>'}</div>
+        </form>
+        <p class="vehicle-terms">La demande précède l’accord du propriétaire et le paiement simulé.</p>
+        <p class="vehicle-terms">Caution distincte, montant non défini. Frais et assurance à valider.</p>
+      </aside>
+      <div class="vehicle-content">
+        <details class="vehicle-more">
+          <summary>Description, conditions détaillées et avis</summary>
+          <section><h2>Description</h2><p>${escape(v.description)}</p></section>
+          <section><h2>Conditions détaillées</h2>${notice('<strong>Politique kilométrique</strong><br>Forfaits, dépassements et frais restent à valider. Aucun supplément automatique dans la démo.')}
+            ${notice('Sorties inter-îles et traceurs GPS reportés. Assurance et caution : conditions contractuelles à valider.','warning')}</section>
+          <section><h2>Zone approximative</h2><div class="map"><div class="map-pins"><span class="badge">${icon('pin')}${escape(v.city)}</span></div>
+            <p>Adresse de démonstration affichée seulement après confirmation de la location.</p></div></section>
+          <section><h2>Avis sur le véhicule</h2><p class="vehicle-meta">★ ${escape(v.rating||'Nouveau')} · avis de démonstration</p>
+            ${v.reviews.length?v.reviews.map(r=>`<article class="card"><strong>★ ${escape(r.vehicleRating??r.rating)}</strong><p>${escape(r.comment)}</p></article>`).join(''):notice('Les avis publiés après modération apparaîtront ici.')}</section>
+        </details>
+        <div class="vehicle-more-actions">
+          <button type="button" class="link-button" id="contact">Contacter le propriétaire</button>
+          ${presentation.illustration?'<button type="button" class="link-button" id="open-model" aria-haspopup="dialog">Voir l’illustration du modèle</button>':''}
+          ${link('/rentals','Consulter mes locations','link-button')}
+        </div>
+        <p class="vehicle-meta">Propriétaire · ${escape(v.ownerName)} · compte fictif</p>
+      </div>
+    </div>
+  </article>`;
   bindMedia(main);
   const thumbnail=main.querySelector('[data-condition-thumbnail]');if(thumbnail){const hide=()=>{thumbnail.hidden=true;};thumbnail.addEventListener('error',hide);if(thumbnail.complete&&!thumbnail.naturalWidth)hide();}
-  const availability=main.querySelector('#availability'),bar=main.querySelector('.vehicle-action-bar'),estimate=main.querySelector('#vehicle-estimate');
-  function updateEstimate() {
-    const state=parseSearch(criteria),quote=state.errors.length?null:vehicleEstimate(v.price,availability.elements.start.value,availability.elements.end.value);
+  const availability=main.querySelector('#availability'),estimate=main.querySelector('#vehicle-estimate');
+  const dateEditor=main.querySelector('#vehicle-date-editor');
+  const periodNote=main.querySelector('#vehicle-period-note'), periodValue=main.querySelector('#vehicle-period-value');
+  availability.addEventListener('invalid',()=>{dateEditor.open=true;},true);
+  function updateEstimate(state) {
+    const quote=state.errors.length?null:vehicleEstimate(v.price,availability.elements.start.value,availability.elements.end.value);
     estimate.innerHTML=quote?`<strong>${money(quote.total)} <small>· estimation fictive</small></strong><span>${quote.days} jour${quote.days>1?'s':''} × ${money(quote.daily)}/jour</span><small>Hors frais non définis · disponibilité à confirmer</small>`:`<strong>Total indisponible</strong><span>${typeof v.price==='number'&&Number.isFinite(v.price)&&v.price>0?money(v.price)+' / jour fictif':'Prix non calculable'}</span><small>Choisissez une période valide. Aucun devis confirmé.</small>`;
   }
-  function syncPeriod(){for(const [key,name] of [['from','start'],['until','end']]){criteria.delete(key);criteria.set(key,dateParam(availability.elements[name].value));}const edited=parseSearch(criteria);history.replaceState(null,'',vehicleURL(id,criteria));main.querySelector('#return-search').href=searchURL(criteria);main.querySelector('#vehicle-period-note').textContent=edited.errors.join(' ')||'Période mise à jour · heure Guadeloupe.';updateEstimate();return edited;}
-  availability.addEventListener('change',syncPeriod);availability.addEventListener('input',()=>{estimate.innerHTML='<strong>Estimation à actualiser</strong><span>Terminez la saisie de votre période.</span>';});updateEstimate();
+  function syncPeriod(){
+    for(const [key,name] of [['from','start'],['until','end']]){
+      criteria.delete(key);
+      criteria.set(key,dateParam(availability.elements[name].value));
+    }
+    const edited=parseSearch(criteria);
+    history.replaceState(null,'',vehicleURL(id,criteria));
+    main.querySelector('#return-search').href=searchURL(criteria);
+    periodValue.textContent=edited.errors.length?'':periodRange(edited.period.startLocal,edited.period.endLocal);
+    periodNote.setAttribute('role',edited.errors.length?'alert':'status');
+    periodNote.textContent=edited.errors.join(' ')||'Période mise à jour · heure Guadeloupe.';
+    updateEstimate(edited);
+    return edited;
+  }
+  availability.addEventListener('change',syncPeriod);
+  availability.addEventListener('input',()=>{estimate.innerHTML='<strong>Estimation à actualiser</strong><span>Terminez la saisie de votre période.</span>';});
+  updateEstimate(context);
   bindForm(availability,async values=>{if(owned)throw Error('Vous ne pouvez pas demander votre propre véhicule.');const edited=syncPeriod();if(edited.errors.length)throw Error(edited.errors[0]);sessionStorage.setItem('rental-draft',JSON.stringify({vehicleId:id,start:toUTC(values.start),end:toUTC(values.end)}));try{sessionStorage.setItem('rental-search-context',JSON.stringify({vehicleId:id,search:searchURL(criteria)}));}catch{/* The dated draft remains usable without optional search context. */}location.href=me?'/request/'+encodeURIComponent(id):'/login?next='+encodeURIComponent('/request/'+id);});
-  main.querySelector('#open-vehicle-gallery').onclick=()=>openGallery(v,presentation.gallery);
+  for(const button of main.querySelectorAll('[data-gallery-index]')) {
+    button.onclick=()=>openGallery(v,presentation.gallery,Number(button.dataset.galleryIndex));
+  }
   main.querySelector('#open-condition')?.addEventListener('click',()=>{
     const d=readOnlyDialog('État du véhicule · déclaration fictive',`<p><strong>Déclaré par le propriétaire · exemple d’interface v1</strong></p><p>${escape(v.name)} · ${escape(condition.date)} · ${escape(condition.version)}</p>${mediaHTML({...condition,photo:false,alt:'Rayure fictive sur le pare-chocs arrière droit. Image de démonstration sans valeur de preuve.'},{contain:true,eager:true})}<p class="pill">${escape(condition.zone)}</p><h3>${escape(condition.title)}</h3><p>${escape(condition.description)}</p>${notice('Comparez la déclaration avec les constats lors de la remise et du retour. Les contrôles documentaires ne certifient pas l’état physique.')}<p class="vehicle-meta">Fixture visuelle locale, sans donnée déclarative d’état dans l’API. Aucun média n’est ajouté aux pièces ou aux constats.</p>`,'vehicle-condition-dialog');bindMedia(d);
   });
@@ -73,7 +204,4 @@ export async function renderVehicle(id,me,{dateDefaults,toUTC}) {
     const d=readOnlyDialog('Illustration du modèle',`<p><strong>Représentation illustrative</strong></p>${mediaHTML({...presentation.illustration,photo:false},{contain:true,eager:true})}${notice('Pour juger l’état du véhicule, consultez les photos et la déclaration. Ce rendu fixe fictif ne représente pas un état physique.')}<button type="button" class="secondary full" id="return-photos">Revenir aux photos de l’annonce</button>`,'vehicle-model-dialog');bindMedia(d);d.querySelector('#return-photos').onclick=()=>{d.addEventListener('close',()=>{const cover=main.querySelector('#open-vehicle-gallery');cover.focus();cover.scrollIntoView({block:'center',behavior:'instant'});},{once:true});d.close();};
   });
   main.querySelector('#contact').onclick=async()=>{if(!me){location.href='/login?next='+encodeURIComponent(vehicleURL(id,criteria));return;}try{const conversation=await api('/conversations',{vehicleId:id});location.href='/messages?conversation='+conversation.id;}catch(error){toast(error.message);}};
-  // Move the single action into normal flow during editing, short viewports or pinch zoom.
-  const updateBar=()=>{const active=document.activeElement;if(bar.contains(active))return;const editing=main.contains(active)&&active.matches('input,select,textarea,[contenteditable]');const obscured=main.contains(active)&&active!==main&&active.getBoundingClientRect().bottom>innerHeight-bar.offsetHeight-8;main.classList.toggle('vehicle-action-in-flow',Boolean(editing||window.visualViewport?.scale>1||innerHeight<600||obscured));};
-  document.addEventListener('focusin',updateBar);document.addEventListener('focusout',()=>setTimeout(updateBar,0));window.addEventListener('resize',updateBar);window.visualViewport?.addEventListener('resize',updateBar);
 }
