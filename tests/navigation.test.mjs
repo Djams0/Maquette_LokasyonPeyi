@@ -1,17 +1,37 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {destinations,navigationState,safeNext} from '../client/pages/navigation.js';
+import {currentDestination,navigationRole,navigationState,primaryDestinations,safeNext} from '../client/pages/navigation.js';
 
-test('navigation: four stable unique primary destinations', () => {
-  assert.deepEqual(destinations.map(([href,,label]) => [href,label]), [['/','Explorer'],['/rentals','Locations'],['/messages','Messages'],['/profile','Profil']]);
-  assert.equal(new Set(destinations.map(([href]) => href)).size,4);
+test('navigation: each session has its own stable primary destinations', () => {
+  const links=role=>primaryDestinations(role).map(([href,,label])=>[href,label]);
+  assert.deepEqual(links('visitor'),[['/search','Explorer'],['/faq','Aide'],['/login?next=%2Fprofile','Compte']]);
+  assert.deepEqual(links('renter'),[['/search','Explorer'],['/rentals','Locations'],['/messages','Messages'],['/profile/documents','Documents']]);
+  assert.deepEqual(links('owner'),[['/search','Explorer'],['/owner/vehicles','Mon parc'],['/owner/requests','Demandes'],['/profile','Profil']]);
+  assert.equal(navigationRole(null),'visitor');
+  assert.equal(navigationRole({internal:true,owner:true}),'visitor');
+  assert.equal(navigationRole({status:'suspended',owner:true}),'visitor');
+  assert.equal(navigationRole({owner:false}),'renter');
+  assert.equal(navigationRole({owner:true}),'owner');
 });
 test('navigation: current section follows nested routes without granting access', () => {
-  for (const path of ['/','/search','/vehicle/v1']) assert.equal(navigationState(path).active,'/');
-  for (const path of ['/rentals','/rental/a','/request/v1','/payment/a','/inspection/a/return','/review/a','/receipt/a']) assert.equal(navigationState(path).active,'/rentals');
-  for (const path of ['/profile','/profile/documents','/notifications','/owner','/owner/vehicles/a','/cases/a','/assistance','/demo/audit']) assert.equal(navigationState(path).active,'/profile');
-  assert.equal(navigationState('/messages').active,'/messages');
-  for (const path of ['/messages-other','/owner-other','/unknown']) assert.equal(navigationState(path).active,null);
+  for(const role of ['visitor','renter','owner']) {
+    for(const path of ['/','/search','/vehicle/v1'])assert.equal(currentDestination(path,role),'/search');
+    for(const path of ['/messages-other','/owner-other','/unknown'])assert.equal(currentDestination(path,role),null);
+  }
+  for(const path of ['/rentals','/rental/a','/request/v1','/payment/a','/inspection/a/return','/review/a','/receipt/a']) {
+    assert.equal(currentDestination(path,'renter'),'/rentals');
+    assert.equal(currentDestination(path,'visitor'),null);
+  }
+  for(const path of ['/profile','/profile/documents','/notifications']) {
+    assert.equal(currentDestination(path,'renter'),'/profile/documents');
+    assert.equal(currentDestination(path,'owner'),'/profile');
+  }
+  assert.equal(currentDestination('/messages','renter'),'/messages');
+  assert.equal(currentDestination('/owner/vehicles/a','owner'),'/owner/vehicles');
+  assert.equal(currentDestination('/owner/requests','owner'),'/owner/requests');
+  assert.equal(currentDestination('/owner/requests','renter'),null);
+  assert.equal(currentDestination('/faq','visitor'),'/faq');
+  assert.equal(currentDestination('/login','visitor'),'/login?next=%2Fprofile');
 });
 test('navigation: bottom bar only on root surfaces and dedicated returns stay named', () => {
   for (const path of ['/','/search','/rentals','/messages','/profile/','/owner']) assert.equal(navigationState(path).root,true,path);

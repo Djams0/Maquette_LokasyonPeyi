@@ -1,5 +1,5 @@
 import {api} from './http.js';
-import {shell,updateShellIdentity} from './shell.js';
+import {shell} from './shell.js';
 import {safeNext} from './pages/navigation.js';
 import {escape,link,notice,empty,shellLoading} from '/ui/components.js';
 import {home,search,vehicle} from './pages/catalog.js';
@@ -12,12 +12,52 @@ import {cases,review,receipt,faq} from './pages/support.js';
 import {demo,designSystem} from './pages/demo.js';
 import {auditWorkshop} from './pages/audit.js';
 const path=location.pathname.replace(/\/$/,'')||'/';
+const loginReturn=()=>encodeURIComponent(safeNext(path+location.search+location.hash));
 // Recovery must work even while the intentionally simulated network is down.
 if(path==='/demo'||path==='/demo/audit')sessionStorage.removeItem('network-demo');
-shell(null);document.getElementById('main').innerHTML=shellLoading;
-try{if(path==='/'){await home(async()=>{const me=await api('/me');updateShellIdentity(me);return me;});}else{const me=await api('/me');shell(me);document.getElementById('main').innerHTML=shellLoading;
+const updateShellIdentity=shell();
+const main=document.getElementById('main');
+main.innerHTML=shellLoading;
+let identity=null;
+async function readIdentity(){
+  try {
+    identity=await api('/me');
+    updateShellIdentity(identity);
+    return identity;
+  } catch(error) {
+    identity=null;
+    updateShellIdentity(null);
+    throw error;
+  }
+}
+window.addEventListener('pageshow',async event=>{
+  if(!event.persisted)return;
+  // A restored page can predate a change of demo account in the same browser.
+  updateShellIdentity(null);
+  if(identity) {
+    main.inert=true;
+    main.setAttribute('data-identity-recheck','');
+  }
+  try {
+    const me=await api('/me');
+    if(me?.id!==identity?.id || me?.owner!==identity?.owner || me?.eligibility!==identity?.eligibility || me?.status!==identity?.status) {
+      location.reload();
+    } else {
+      updateShellIdentity(me);
+      main.inert=false;
+      main.removeAttribute('data-identity-recheck');
+    }
+  } catch {
+    if(identity)location.reload();
+  }
+});
+const publicWithoutIdentity=['/search','/login','/register','/faq','/demo','/demo/audit','/design-system'];
+try{if(path==='/'){await home(readIdentity);}else{const me=await readIdentity().catch(error=>{
+  if(!publicWithoutIdentity.includes(path))throw error;
+  return null;
+});
  const publicPath=['/','/search','/login','/register','/faq','/owner/start','/demo','/demo/audit','/design-system'].includes(path)||path.startsWith('/vehicle/');
- if(!publicPath&&!me&&/^\/(rentals|rental|request|payment|inspection|messages|profile|notifications|owner|cases|assistance|review|receipt)(\/|$)/.test(path)){location.replace('/login?next='+encodeURIComponent(path+location.search));}else{
+ if(!publicPath&&!me&&/^\/(rentals|rental|request|payment|inspection|messages|profile|notifications|owner|cases|assistance|review|receipt)(\/|$)/.test(path)){location.replace('/login?next='+loginReturn());}else{
  const parts=path.split('/').filter(Boolean),[a,b,c]=parts;
  document.title=({search:'Nos véhicules',rentals:'Mes locations',owner:'Espace propriétaire',profile:'Mon profil',faq:'Questions fréquentes'}[a]||'Bienvenue')+' · Lokasyon Péyi';
  if(path==='/search')await search();
@@ -47,4 +87,4 @@ try{if(path==='/'){await home(async()=>{const me=await api('/me');updateShellIde
  else if(path==='/design-system')designSystem();
  else document.getElementById('main').innerHTML=empty('404 · Ce chemin n’existe pas','Revenez à l’accueil ou explorez le catalogue.',link('/','Accueil')+' '+link('/search','Catalogue','secondary'));
  }
-}}catch(e){document.getElementById('main').innerHTML=`<div class="narrow section"><h1>${e.status===403?'Accès non autorisé':e.status===404?'Élément introuvable':'Impossible de charger cette page'}</h1>${notice(escape(e.message),'error')}<div class="form-actions"><button id="retry">Réessayer</button>${link('/demo','Réparer le scénario / changer de profil','secondary')}${link('/demo/audit','Atelier d’audit','secondary')}${e.status===401?link('/login?next='+encodeURIComponent(safeNext(path+location.search)),'Se reconnecter','secondary'):''}${link('/','Accueil','secondary')}</div></div>`;document.getElementById('retry').onclick=()=>location.reload();}
+}}catch(e){document.getElementById('main').innerHTML=`<div class="narrow section"><h1>${e.status===403?'Accès non autorisé':e.status===404?'Élément introuvable':'Impossible de charger cette page'}</h1><div role="alert">${notice(escape(e.message),'error')}</div><div class="form-actions"><button id="retry">Réessayer</button>${link('/demo','Réparer le scénario / changer de profil','secondary')}${link('/demo/audit','Atelier d’audit','secondary')}${e.status===401?link('/login?next='+loginReturn(),'Se reconnecter','secondary'):''}${link('/','Accueil','secondary')}</div></div>`;document.getElementById('retry').onclick=()=>location.reload();}

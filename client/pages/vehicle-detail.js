@@ -158,9 +158,9 @@ export async function renderVehicle(id,me,{dateDefaults,toUTC}) {
             ${v.reviews.length?v.reviews.map(r=>`<article class="card"><strong>★ ${escape(r.vehicleRating??r.rating)}</strong><p>${escape(r.comment)}</p></article>`).join(''):notice('Les avis publiés après modération apparaîtront ici.')}</section>
         </details>
         <div class="vehicle-more-actions">
-          <button type="button" class="link-button" id="contact">Contacter le propriétaire</button>
+          ${owned?'':'<button type="button" class="link-button" id="contact">Contacter le propriétaire</button>'}
           ${presentation.illustration?'<button type="button" class="link-button" id="open-model" aria-haspopup="dialog">Voir l’illustration du modèle</button>':''}
-          ${link('/rentals','Consulter mes locations','link-button')}
+          ${me?link('/rentals','Consulter mes locations','link-button'):''}
         </div>
         <p class="vehicle-meta">Propriétaire · ${escape(v.ownerName)} · compte fictif</p>
       </div>
@@ -203,5 +203,5 @@ export async function renderVehicle(id,me,{dateDefaults,toUTC}) {
   main.querySelector('#open-model')?.addEventListener('click',()=>{
     const d=readOnlyDialog('Illustration du modèle',`<p><strong>Représentation illustrative</strong></p>${mediaHTML({...presentation.illustration,photo:false},{contain:true,eager:true})}${notice('Pour juger l’état du véhicule, consultez les photos et la déclaration. Ce rendu fixe fictif ne représente pas un état physique.')}<button type="button" class="secondary full" id="return-photos">Revenir aux photos de l’annonce</button>`,'vehicle-model-dialog');bindMedia(d);d.querySelector('#return-photos').onclick=()=>{d.addEventListener('close',()=>{const cover=main.querySelector('#open-vehicle-gallery');cover.focus();cover.scrollIntoView({block:'center',behavior:'instant'});},{once:true});d.close();};
   });
-  main.querySelector('#contact').onclick=async()=>{if(!me){location.href='/login?next='+encodeURIComponent(vehicleURL(id,criteria));return;}try{const conversation=await api('/conversations',{vehicleId:id});location.href='/messages?conversation='+conversation.id;}catch(error){toast(error.message);}};
+  main.querySelector('#contact')?.addEventListener('click',async()=>{if(!me){location.href='/login?next='+encodeURIComponent(vehicleURL(id,criteria));return;}try{const conversation=await api('/conversations',{vehicleId:id});location.href='/messages?conversation='+conversation.id;}catch(error){toast(error.message);}});
 }

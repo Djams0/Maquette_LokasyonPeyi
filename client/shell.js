@@ -1,13 +1,17 @@
 import {icon,escape,showFlash} from '/ui/components.js';
-import {destinations,navigationState} from './pages/navigation.js';
-let dispose = () => {};
-const primaryLinks = (active, mobile = false) => destinations.map(([href, symbol, label]) => `<a href="${href}" class="${active === href ? 'active' : ''}" ${active === href ? 'aria-current="page"' : ''}>${mobile ? icon(symbol) : ''}<span>${label}</span></a>`).join('');
-const discoveryLinks = current => `<a href="/search"${current ? ` aria-current="${current}"` : ''}>Explorer les voitures</a><a href="${current ? '/' : ''}#fonctionnement">Comment ça marche</a><a href="/faq">Aide</a>`;
+import {currentDestination,navigationRole,navigationState,primaryDestinations} from './pages/navigation.js';
+const primaryLinks = (role,path,mobile=false) => {
+  const active=currentDestination(path,role);
+  return primaryDestinations(role).map(([href,symbol,label])=>`<a href="${href}"${active===href?` class="active" aria-current="${path===href?'page':'location'}"`:''}>${mobile?navigationIcon(symbol):''}<span>${label}</span></a>`).join('');
+};
+const discoveryLinks = path => `<a href="/search"${path==='/'?'':` aria-current="${path==='/search'?'page':'location'}"`}>Explorer les voitures</a><a href="${path==='/'?'':'/'}#fonctionnement">Comment ça marche</a><a href="/faq">Aide</a>`;
 const homeHelpIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></svg>';
-const homeMobileLinks = [['/search',icon('search'),'Explorer'],['/faq',homeHelpIcon,'Aide'],['/profile',icon('user'),'Compte']]
-  .map(([href,glyph,label]) => `<a href="${href}">${glyph}<span>${label}</span></a>`).join('');
+const navigationIcon = symbol => symbol==='info' ? homeHelpIcon : icon(symbol);
+const accountControls = me => me
+  ? `<a class="link-button button" href="/notifications" aria-label="Notifications">${icon('bell')}</a><a class="avatar" href="/profile" aria-label="Mon profil">${escape(me.name[0])}</a>`
+  : '<a class="button secondary" href="/login">Connexion</a>';
 
-const discoveryFooter = (catalogue,me) => `<footer class="explorer-footer v32">
+const discoveryFooter = catalogue => `<footer class="explorer-footer v32">
   <div class="explorer-wrap">
     <div class="explorer-footer-grid">
       <div class="explorer-footer-brand">
@@ -22,9 +26,9 @@ const discoveryFooter = (catalogue,me) => `<footer class="explorer-footer v32">
       </nav>
       <nav aria-label="Assistance et crédits">
         <h2>Assistance</h2>
-        <a href="/assistance">Aide et contact</a>
+        <a href="/faq" id="shell-footer-help">Aide et contact</a>
         <a href="/assets/v32/credits.html">Crédits des photos</a>
-        <a href="${me ? '/profile' : '/login'}" class="button warm" id="explorer-footer-account">${me ? 'Mon compte' : 'Connexion'}</a>
+        <a href="/login" class="button warm" id="explorer-footer-account">Connexion</a>
       </nav>
     </div>
     <div class="explorer-footer-note"><p>Maquette de validation V3.2 · tarifs et annonces fictifs.</p><a href="/demo">Démo & comptes</a></div>
@@ -34,49 +38,105 @@ const menuLink = (href, symbol, label) => {
   const path = location.pathname.replace(/\/$/,'') || '/';
   const current = path === href;
   const parent = ['/owner','/cases'].includes(href) && path.startsWith(href + '/');
-  return `<a class="menu-link ${current || parent ? 'active' : ''}" ${current || parent ? `aria-current="${current ? 'page' : 'location'}"` : ''} href="${href}">${icon(symbol)}<span>${label}</span>${icon('arrow')}</a>`;
+  return `<a class="menu-link ${current || parent ? 'active' : ''}" ${current || parent ? `aria-current="${current ? 'page' : 'location'}"` : ''} href="${href}">${navigationIcon(symbol)}<span>${label}</span>${icon('arrow')}</a>`;
 };
 
-export function shell(me) {
-  dispose();
+function menuContent(me) {
+  const role=navigationRole(me);
+  const group=(id,title,links)=>`<section aria-labelledby="${id}"><h3 id="${id}">${title}</h3>${links.map(([href,symbol,label])=>menuLink(href,symbol,label)).join('')}</section>`;
+  const travel=[['/search','car','Catalogue des véhicules'],['/#fonctionnement','info','Comment ça marche']];
+  if(me)travel.push(['/rentals','calendar','Locations'],['/messages','message','Messages']);
+  const account=me ? [
+    ['/profile','user','Mon profil'],['/profile/documents','shield','Documents & vérification'],
+    ['/notifications','bell','Notifications'],['/profile/reviews','star','Mes avis'],
+  ] : [['/login?next=%2Fprofile','user','Connexion']];
+  if(role!=='owner')account.push(['/owner/start','car','Devenir propriétaire']);
+  const help=[['/faq','file','Questions fréquentes']];
+  if(me)help.push(['/assistance','message','Contacter l’assistance'],['/cases','file','Mes dossiers']);
+  return `<p class="muted" id="menu-identity">${me?escape(me.name)+' · compte de démonstration':'Explorez librement, connectez-vous pour poursuivre une location.'}</p>
+    <nav aria-label="Accès complémentaires" class="menu-groups">
+      ${role==='owner'?group('menu-owner','Espace propriétaire',[
+        ['/owner','home','Tableau de bord'],['/owner/vehicles','car','Mon parc'],['/owner/requests','file','Demandes'],
+      ]):''}
+      ${group('menu-destinations','Se déplacer',travel)}
+      ${group('menu-account','Mon compte',account)}
+      ${group('menu-help','Aide',help)}
+      ${group('menu-demo','Démonstration',[['/demo','user','Démo & comptes'],['/demo/audit','grid','Atelier d’audit'],['/design-system','grid','Composants visuels']])}
+    </nav>`;
+}
+
+function replaceLinks(slot,markup,fallback) {
+  const focused=slot.contains(document.activeElement) ? document.activeElement : null;
+  slot.innerHTML=markup;
+  if(focused) {
+    const links=[...slot.querySelectorAll('a[href]')].filter(link=>link.getClientRects().length);
+    (links.find(link=>link.href===focused.href)||links[0]||fallback).focus({preventScroll:true});
+  }
+}
+
+export function shell() {
   const state = navigationState(location.pathname, location.search);
-  const explorer = location.pathname === '/';
-  const catalogue = location.pathname.replace(/\/$/,'') === '/search';
-  const vehicle = /^\/vehicle\/[^/]+\/?$/.test(location.pathname);
+  const path=location.pathname.replace(/\/$/,'') || '/';
+  const explorer = path === '/';
+  const catalogue = path === '/search';
+  const vehicle = /^\/vehicle\/[^/]+$/.test(path);
   const discovery = explorer || catalogue || vehicle;
+  const returnHref=state.back?.[0];
+  const privateReturn=returnHref && returnHref!=='/' && returnHref!=='/demo';
+  const returnLink=state.back ? `<a href="${returnHref}">${icon('back')}${state.back[1]}</a>` : '';
   const host = document.getElementById('shell');
   const discoveryClass = explorer ? ' is-explorer' : catalogue ? ' is-catalogue' : vehicle ? ' is-vehicle-detail' : '';
-  host.className = 'client-shell' + (state.root ? ' has-bottom-nav' : '') + discoveryClass;
+  host.className = 'client-shell' + (state.root ? ' has-bottom-nav' : vehicle ? ' has-footer-nav' : '') + discoveryClass;
+  host.dataset.role='visitor';
   host.innerHTML = `
     ${discovery ? '' : '<div class="demo-banner">Maquette interactive · données fictives · aucun paiement réel <a href="/demo">Démo & comptes</a></div>'}
     <header class="header${discovery ? ' v32' : ''}">
       <a class="logo" href="/">${discovery ? '<img src="/assets/v32/marque/logo-horizontal-charte.webp" width="683" height="122" alt="Lokasyon Péyi">' : 'Lokasyon <span>Péyi</span>'}</a>
-      <nav aria-label="Navigation principale" id="header-nav">${discovery ? discoveryLinks(catalogue ? 'page' : vehicle ? 'location' : '') : primaryLinks(state.active)}</nav>
+      <nav aria-label="Navigation principale" id="header-nav">${discovery ? discoveryLinks(path) : primaryLinks('visitor',path)}</nav>
       <div class="tools">
-        ${me ? `<a class="link-button button" href="/notifications" aria-label="Notifications">${icon('bell')}</a><a class="avatar" href="/profile" aria-label="Mon profil">${escape(me.name[0])}</a>` : '<a class="button secondary" href="/login">Connexion</a>'}
+        <span id="shell-account">${accountControls(null)}</span>
         <button type="button" class="secondary navigation-toggle" id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-haspopup="dialog" aria-controls="navigation-panel">${icon('menu')}<span class="menu-label">Menu</span></button>
       </div>
     </header>
     <dialog id="navigation-panel" class="navigation-panel" aria-labelledby="navigation-title">
       <div class="navigation-panel-heading"><h2 id="navigation-title">Menu</h2><button type="button" class="link-button" id="menu-close" aria-label="Fermer le menu">${icon('close')}</button></div>
-      <p class="muted" id="menu-identity">${me ? escape(me.name) + ' · compte de démonstration' : 'Explorez librement, connectez-vous pour poursuivre une location.'}</p>
-      <nav aria-label="Accès complémentaires" class="menu-groups">
-        <section aria-labelledby="menu-destinations"><h3 id="menu-destinations">Se déplacer</h3>${destinations.map(([h,i,t]) => menuLink(h,i,t)).join('')}${menuLink('/search','car','Catalogue des véhicules')}</section>
-        <section aria-labelledby="menu-account"><h3 id="menu-account">Mon compte</h3>${me ? '' : menuLink('/login','user','Connexion')}${menuLink('/profile/documents','shield','Documents & vérification')}${menuLink('/notifications','bell','Notifications')}${menuLink('/profile/reviews','star','Mes avis')}${menuLink(me?.owner ? '/owner' : '/owner/start','car',me?.owner ? 'Espace propriétaire' : 'Devenir propriétaire')}</section>
-        <section aria-labelledby="menu-help"><h3 id="menu-help">Aide</h3>${menuLink('/faq','file','Questions fréquentes')}${menuLink('/assistance','message','Contacter l’assistance')}${menuLink('/cases','file','Mes dossiers')}</section>
-        <section aria-labelledby="menu-demo"><h3 id="menu-demo">Démonstration</h3>${menuLink('/demo','user','Démo & comptes')}${menuLink('/demo/audit','grid','Atelier d’audit')}${menuLink('/design-system','grid','Composants visuels')}</section>
-      </nav>
+      <div id="menu-content">${menuContent(null)}</div>
     </dialog>
-    ${state.back ? `<nav class="context-nav" aria-label="Retour"><a href="${state.back[0]}">${icon('back')}${state.back[1]}</a></nav>` : ''}
+    ${state.back ? `<nav class="context-nav" aria-label="Retour"${privateReturn?' hidden':''}>${privateReturn?'':returnLink}</nav>` : ''}
     <main class="client-main" id="main" tabindex="-1"></main>
-    ${discovery ? discoveryFooter(!explorer,me) : `<footer class="footer"><div><a class="logo" href="/">Lokasyon <span>Péyi</span></a><p>Un autre chemin pour découvrir le Péyi.</p><small>Prototype indépendant · Guadeloupe</small></div><nav aria-label="Aide et démonstration" class="row"><a href="/faq">FAQ</a><a href="/assistance">Nous contacter</a><a href="/design-system">Design system</a><a href="/demo">Guide de démonstration</a><a href="/demo/audit">Atelier d’audit</a><a class="photo-credit-link" href="/assets/v32/credits.html">Crédits des photos</a></nav></footer>`}
-    ${state.root ? `<nav class="bottom-nav" aria-label="Navigation mobile">${explorer ? homeMobileLinks : primaryLinks(state.active,true)}</nav>` : ''}`;
+    ${discovery ? discoveryFooter(!explorer) : `<footer class="footer"><div><a class="logo" href="/">Lokasyon <span>Péyi</span></a><p>Un autre chemin pour découvrir le Péyi.</p><small>Prototype indépendant · Guadeloupe</small></div><nav aria-label="Aide et démonstration" class="row"><a href="/faq">FAQ</a><a href="/faq" id="shell-footer-help">Nous contacter</a><a href="/design-system">Design system</a><a href="/demo">Guide de démonstration</a><a href="/demo/audit">Atelier d’audit</a><a class="photo-credit-link" href="/assets/v32/credits.html">Crédits des photos</a></nav></footer>`}
+    ${state.root || vehicle ? `<nav class="bottom-nav" aria-label="Navigation mobile">${primaryLinks('visitor',path,true)}</nav>` : ''}`;
   const trigger = document.getElementById('menu-toggle'), panel = document.getElementById('navigation-panel');
+  const close = document.getElementById('menu-close'), content = document.getElementById('menu-content');
+  const header = document.getElementById('header-nav'), account = document.getElementById('shell-account');
+  const bottom = host.querySelector('.bottom-nav'), footerAccount = document.getElementById('explorer-footer-account');
+  const footerHelp = document.getElementById('shell-footer-help'), contextNav=host.querySelector('.context-nav');
+  let identity=null, menuIdentity=null, anchor;
+  function syncMenu() {
+    if (identity===menuIdentity) return;
+    replaceLinks(content,menuContent(identity),close);
+    menuIdentity=identity;
+  }
   trigger.onclick = () => { panel.showModal(); trigger.setAttribute('aria-expanded','true'); };
-  document.getElementById('menu-close').onclick = () => panel.close();
+  close.onclick = () => panel.close();
   panel.addEventListener('close', () => {
     trigger.setAttribute('aria-expanded','false');
-    if (trigger.isConnected) trigger.focus({preventScroll:true});
+    syncMenu();
+    if(anchor) {
+      location.hash=anchor;
+      document.getElementById(anchor.slice(1))?.focus();
+      anchor=null;
+    } else trigger.focus({preventScroll:true});
+  });
+  content.addEventListener('click', event=>{
+    const link=event.target.closest('a[href]');
+    if(!link || event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)return;
+    const url=new URL(link.href);
+    if(url.hash && url.pathname===location.pathname && url.search===location.search) {
+      event.preventDefault();
+      anchor=url.hash;
+      panel.close();
+    }
   });
   panel.addEventListener('keydown', e => {
     if (e.key !== 'Tab') return;
@@ -88,8 +148,32 @@ export function shell(me) {
   const desktop = matchMedia(discovery ? '(min-width:880px)' : '(min-width:1024px)');
   const resized = () => { if (panel.open) panel.close(); };
   desktop.addEventListener('change',resized);
-  dispose = () => desktop.removeEventListener('change',resized);
   showFlash();
+  return me=>{
+    const role=navigationRole(me);
+    const previous=navigationRole(identity);
+    identity=role==='visitor' ? null : me;
+    if(role!==previous) {
+      host.dataset.role=role;
+      replaceLinks(header,role==='visitor'&&discovery?discoveryLinks(path):primaryLinks(role,path),trigger);
+      if(bottom)replaceLinks(bottom,primaryLinks(role,path,true),trigger);
+    }
+    replaceLinks(account,accountControls(identity),trigger);
+    if(footerAccount) {
+      footerAccount.href=identity?'/profile':'/login';
+      footerAccount.textContent=identity?'Mon compte':'Connexion';
+    }
+    if(footerHelp) footerHelp.href=identity?'/assistance':'/faq';
+    if(privateReturn) {
+      const allowed=identity && (returnHref!=='/owner' || role==='owner');
+      if(contextNav.hidden===Boolean(allowed)) {
+        contextNav.hidden=!allowed;
+        replaceLinks(contextNav,allowed?returnLink:'',trigger);
+      }
+    }
+    // An open public menu keeps its destinations and focus until it closes.
+    if(!panel.open || (menuIdentity && (menuIdentity.id!==identity?.id || navigationRole(menuIdentity)!==role)))syncMenu();
+  };
 }
 export function ownerNav() {
   const path = location.pathname.replace(/\/$/,'');
@@ -97,27 +181,4 @@ export function ownerNav() {
     const active = href === '/owner' ? path === href : path === href || path.startsWith(href + '/');
     return `<a class="${active ? 'active' : ''}" href="${href}" ${active ? 'aria-current="page"' : ''}>${label}</a>`;
   }).join('')}</nav>`;
-}
-
-export function updateShellIdentity(me) {
-  const tools = document.querySelector('.header .tools'), trigger = document.getElementById('menu-toggle');
-  if (!tools || !trigger) return;
-  const active = document.activeElement;
-  const headerFocus = tools.contains(active) && active !== trigger;
-  [...tools.children].filter(el => el !== trigger).forEach(el => el.remove());
-  trigger.insertAdjacentHTML('beforebegin', me ? `<a class="link-button button" href="/notifications" aria-label="Notifications">${icon('bell')}</a><a class="avatar" href="/profile" aria-label="Mon profil">${escape(me.name[0])}</a>` : '<a class="button secondary" href="/login">Connexion</a>');
-  document.getElementById('menu-identity').textContent = me ? me.name + ' · compte de démonstration' : 'Explorez librement, connectez-vous pour poursuivre une location.';
-  const account = document.getElementById('menu-account').parentElement, login = account.querySelector('a[href="/login"]');
-  const loginFocus = login === active;
-  if (me) login?.remove();
-  const owner = account.querySelector('a[href="/owner"],a[href="/owner/start"]');
-  owner.href = me?.owner ? '/owner' : '/owner/start';
-  owner.querySelector('span').textContent = me?.owner ? 'Espace propriétaire' : 'Devenir propriétaire';
-  const footerAccount = document.getElementById('explorer-footer-account');
-  if (footerAccount) {
-    footerAccount.href = me ? '/profile' : '/login';
-    footerAccount.textContent = me ? 'Mon compte' : 'Connexion';
-  }
-  if (headerFocus) [...tools.querySelectorAll('a')].find(el => el.getClientRects().length)?.focus({preventScroll:true});
-  else if (loginFocus) account.querySelector('a')?.focus({preventScroll:true});
 }
