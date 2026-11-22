@@ -1,0 +1,671 @@
+{
+  "base": "4338f5f7ca252f4d4f02021ec47a226d0d2d6064",
+  "routes": [
+    {
+      "route": "/",
+      "access": "Public",
+      "files": [
+        "client/pages/catalog.js",
+        "client/pages/explorer-state.js"
+      ],
+      "api": "GET /vehicles, GET /me",
+      "data": "Recherche; vedettes; reprise récente",
+      "errors": "Date invalide, vide, erreur, identité lente",
+      "tests": "explorer,search,navigation,visual-qa",
+      "pages": [
+        3
+      ],
+      "group": "PROTECTION",
+      "state": "Protégée",
+      "desktop": "Capsule, hero, moteur, cadran et sections tels que rendus à 4338f5f.",
+      "mobile": "Même composition, champs et retours; vérifier aussi session lente.",
+      "category": "A"
+    },
+    {
+      "route": "/search",
+      "access": "Public",
+      "files": [
+        "client/pages/search-results.js",
+        "client/pages/search-state.js",
+        "client/pages/vehicle-card.js"
+      ],
+      "api": "GET /vehicles, GET /me",
+      "data": "Recherche canonique, vue carte, filtres, tri, édition",
+      "errors": "Vide, chargement, panne, redimensionnement tiroir",
+      "tests": "search,explorer,visual-qa",
+      "pages": [
+        3
+      ],
+      "group": "PROTECTION",
+      "state": "Protégée",
+      "desktop": "Garder résumé, sidebar, grille, carte et critères appliqués.",
+      "mobile": "Tiroir et focus existants, état de resize historique à mesurer.",
+      "category": "A"
+    },
+    {
+      "route": "/vehicle/:id",
+      "access": "Public si publiée; propriétaire de son annonce hors publication",
+      "files": [
+        "client/pages/vehicle-detail.js",
+        "client/pages/vehicle-media.js",
+        "client/pages/vehicle-presentation.js"
+      ],
+      "api": "GET /vehicles/:id, POST /conversations, GET /me",
+      "data": "Galerie, état déclaré, estimation, reprise vers fiche et recherche",
+      "errors": "404, période invalide, media absent, retour contexte",
+      "tests": "vehicle,booking,search,visual-qa",
+      "pages": [
+        3
+      ],
+      "group": "PROTECTION",
+      "state": "Protégée",
+      "desktop": "Conserver galerie, conditions, médias de modèle et défaut fictif distinct.",
+      "mobile": "Conserver focus et contexte, y compris action privée après connexion.",
+      "category": "A"
+    },
+    {
+      "route": "/login",
+      "access": "Public",
+      "files": [
+        "client/pages/account.js",
+        "client/pages/navigation.js"
+      ],
+      "api": "GET /personas?app=client, POST /session",
+      "data": "Choix de persona et next local validé",
+      "errors": "Persona indisponible, mode réseau, retour sans contexte",
+      "tests": "navigation,booking,maquette",
+      "pages": [
+        13
+      ],
+      "group": "ACCOUNT",
+      "state": "À modifier",
+      "desktop": "Carte connexion deux zones, formulaire 55–60%, bourg Deshaies en panneau droit. Label mode démo avant le formulaire.",
+      "mobile": "Une zone, panneau image masqué par présentation; retour et formulaire restent visibles.",
+      "category": "A"
+    },
+    {
+      "route": "/register",
+      "access": "Public",
+      "files": [
+        "client/pages/account.js",
+        "client/pages/navigation.js"
+      ],
+      "api": "GET /personas?app=client, POST /register",
+      "data": "Prénom fictif, consentement démo, cookie, retour next",
+      "errors": "Nom invalide, consentement absent, erreur API",
+      "tests": "navigation,explorer,maquette",
+      "pages": [
+        14
+      ],
+      "group": "ACCOUNT",
+      "state": "À modifier",
+      "desktop": "Même enveloppe d’authentification. Lien vers connexion conserve next. Carte courte et information de vérification.",
+      "mobile": "Empiler les choix; clavier natif et focus sur premier champ en erreur.",
+      "category": "A"
+    },
+    {
+      "route": "/profile",
+      "access": "Client actif",
+      "files": [
+        "client/pages/account.js"
+      ],
+      "api": "GET /bootstrap, DELETE /session",
+      "data": "Identité, éligibilité, raccourcis compte/location/aide, déconnexion",
+      "errors": "Session perdue, données absentes, distinction propriétaire",
+      "tests": "navigation,maquette",
+      "pages": [
+        15
+      ],
+      "group": "ACCOUNT",
+      "state": "Partiel",
+      "desktop": "Bandeau menthe identité puis colonne compte et rail rôles/aide; Démo et audit dans un détail.",
+      "mobile": "Identité compacte puis sections verticales; pas de bouton propriétaire redondant pour un propriétaire.",
+      "category": "A"
+    },
+    {
+      "route": "/profile/documents",
+      "access": "Client actif, pièces du compte",
+      "files": [
+        "client/pages/account.js"
+      ],
+      "api": "GET /bootstrap, POST /documents",
+      "data": "Documents sans vehicleId, type, statut, version, motif vérifié",
+      "errors": "Requis, pending, verified, rejected; échec de création fictive",
+      "tests": "navigation,maquette",
+      "pages": [
+        14
+      ],
+      "group": "ACCOUNT",
+      "state": "À modifier",
+      "desktop": "Liste de cartes par type, statut texte, raison et action au bord de la carte.",
+      "mobile": "Statut près du nom, action pleine largeur si nécessaire. Confirmation unique et état annoncé.",
+      "category": "A"
+    },
+    {
+      "route": "/profile/reviews",
+      "access": "Client actif, avis écrits par le compte",
+      "files": [
+        "client/pages/account.js"
+      ],
+      "api": "GET /bootstrap",
+      "data": "Avis authorId=me.id, note et état de modération",
+      "errors": "Liste vide, pending/published/rejected, erreur API",
+      "tests": "maquette",
+      "pages": [
+        30
+      ],
+      "group": "SUPPORT",
+      "state": "À modifier",
+      "desktop": "Entrée depuis profil, cartes repliables si longues, lien de retour clair; exposer statut effectivement fourni.",
+      "mobile": "Une carte par avis; note accessible et statut en texte.",
+      "category": "A"
+    },
+    {
+      "route": "/notifications",
+      "access": "Client actif",
+      "files": [
+        "client/pages/account.js"
+      ],
+      "api": "GET /bootstrap, POST /notifications/read",
+      "data": "Liste du compte, cible existante, marquer tout comme lu",
+      "errors": "Vide, toutes lues, erreur de marquage",
+      "tests": "navigation,maquette,messaging",
+      "pages": [
+        26
+      ],
+      "group": "NOTIFICATIONS",
+      "state": "À modifier",
+      "desktop": "Liste blanche avec information, date, état et destination, action globale dans entête.",
+      "mobile": "Regrouper cible et date, distinguer vide et lues; garder retour profil.",
+      "category": "A"
+    },
+    {
+      "route": "/rentals",
+      "access": "Client participant pour ses locations",
+      "files": [
+        "client/pages/rentals.js",
+        "client/pages/booking-state.js"
+      ],
+      "api": "GET /bootstrap",
+      "data": "Onglets upcoming/active/history, état réel et prochaine action",
+      "errors": "Pas de location, attente de l’autre rôle, API indisponible",
+      "tests": "booking,maquette,visual-qa",
+      "pages": [
+        16,
+        27
+      ],
+      "group": "RENTALS",
+      "state": "Partiel",
+      "desktop": "Liste de cartes en lignes: image identifiante, dates/commune, badge et une action. Filtre dans URL.",
+      "mobile": "Empiler dates/état/CTA, onglets nommés, état vide adapté à l’onglet.",
+      "category": "A"
+    },
+    {
+      "route": "/request/:id",
+      "access": "Locataire authentifié; envoi conditionné par identité vérifiée et véhicule éligible",
+      "files": [
+        "client/pages/rentals.js",
+        "client/pages/booking-state.js",
+        "client/pages/search-state.js"
+      ],
+      "api": "GET /vehicles/:id, POST /rentals",
+      "data": "Brouillon par véhicule, période, confirmation, estimation, clé d’idempotence",
+      "errors": "Pas de brouillon, période périmée, conflit, réponse perdue, double clic",
+      "tests": "booking,vehicle,maquette",
+      "pages": [
+        17
+      ],
+      "group": "RENTALS",
+      "state": "Partiel",
+      "desktop": "Récap véhicule et période avant confirmation, prix dans un rail de 300–325 px; dire qu’une demande ne paie rien.",
+      "mobile": "Récap en ligne, dates empilables, prix et effet avant CTA; préserver le retour exact à la fiche.",
+      "category": "A"
+    },
+    {
+      "route": "/rental/:id",
+      "access": "Locataire ou propriétaire de la location",
+      "files": [
+        "client/pages/rentals.js",
+        "client/pages/booking-state.js"
+      ],
+      "api": "GET /rentals/:id, POST /rentals/:id/{accept,decline,withdraw,deposit,handover,report_return,verify_return,complete}, GET /conversations",
+      "data": "rentalNext, histoire, constat, rôle, remise, contexte du fil",
+      "errors": "401/403/409/422, attente, refus, retrait, état inconnu",
+      "tests": "booking,maquette,navigation",
+      "pages": [
+        18,
+        19
+      ],
+      "group": "RENTAL_DETAIL",
+      "state": "Partiel",
+      "desktop": "Carte action #103731 avant progression, rail véhicule/conditions. Garder refus et retrait accessibles selon contrat.",
+      "mobile": "Action et acteur avant historique, étapes terminées repliables, retour par rôle, pas de barre couvrant le focus.",
+      "category": "B"
+    },
+    {
+      "route": "/payment/:id",
+      "access": "Participants en lecture; locataire seul agit si awaiting_payment",
+      "files": [
+        "client/pages/rentals.js",
+        "client/pages/booking-state.js"
+      ],
+      "api": "GET /rentals/:id, POST /rentals/:id/pay",
+      "data": "quote, outcome success/failure, statut séparé de deposit",
+      "errors": "Refus laisse awaiting_payment, non éligible, 401/409",
+      "tests": "booking,maquette",
+      "pages": [
+        20
+      ],
+      "group": "PAYMENT",
+      "state": "Partiel",
+      "desktop": "Formulaire de simulation opaque et détail du prix à droite; aucun champ bancaire.",
+      "mobile": "Expliquer refus/absence de débit près du CTA; total et mention fictive visibles.",
+      "category": "A"
+    },
+    {
+      "route": "/inspection/:id/:phase",
+      "access": "Participants; édition départ confirmed ou retour in_progress, si non finalisé",
+      "files": [
+        "client/pages/inspection.js",
+        "client/pages/booking-state.js"
+      ],
+      "api": "GET /rentals/:id, POST /rentals/:id/inspection",
+      "data": "Huit vues, progression, versions, compteurs, observations, finalisation",
+      "errors": "Phase inconnue, photo refusée/floue, km retour trop bas, constat verrouillé",
+      "tests": "maquette,booking",
+      "pages": [
+        21,
+        22,
+        23
+      ],
+      "group": "INSPECTION",
+      "state": "À modifier",
+      "desktop": "Vues en grille à gauche, compteur/charge/observations à droite et état verrouillé lisible.",
+      "mobile": "Première vue manquante et groupe de vues accessible; formulaire atteignable sans traverser huit grandes cartes.",
+      "category": "B"
+    },
+    {
+      "route": "/messages",
+      "access": "Client actif inscrit au fil",
+      "files": [
+        "client/pages/messaging.js",
+        "client/pages/message-state.js",
+        "client/pages/account.js"
+      ],
+      "api": "GET /me, GET /conversations, POST /conversations/:id",
+      "data": "q, conversation, historique, brouillon par compte/fil, corps/clé gelés",
+      "errors": "Fil absent, vide, indisponible, envoi incertain, compte changé",
+      "tests": "messaging,navigation,maquette",
+      "pages": [
+        24,
+        25,
+        27
+      ],
+      "group": "MESSAGING",
+      "state": "Partiel",
+      "desktop": "Liste 300–340 px, fil fluide, en-tête contexte véhicule + retour fiche si autorisé.",
+      "mobile": "Liste puis fil; préserver q au retour, envoyer sans couvrir la saisie ou masquer les erreurs.",
+      "category": "B"
+    },
+    {
+      "route": "/faq",
+      "access": "Public",
+      "files": [
+        "client/pages/support.js",
+        "client/pages/catalog.js"
+      ],
+      "api": "Aucune API FAQ; contenu local partagé",
+      "data": "Recherche et accordéons; aide vers connexion si nécessaire",
+      "errors": "Aucun résultat, session non requise pour consulter",
+      "tests": "maquette,explorer",
+      "pages": [
+        29
+      ],
+      "group": "SUPPORT",
+      "state": "À modifier",
+      "desktop": "Recherche dans bloc opaque, accordéons natifs et lien d’aide contextualisé; préserver homeFaqItems.",
+      "mobile": "Marge 12–16 px, synopsis courts, focus visible sur summary et sortie si aucun résultat.",
+      "category": "A"
+    },
+    {
+      "route": "/assistance",
+      "access": "Client actif",
+      "files": [
+        "client/pages/support.js"
+      ],
+      "api": "GET /bootstrap, POST /cases",
+      "data": "Alias fonctionnel de cases(new), motif et location facultative",
+      "errors": "401 préserve next, 422 champs, échec envoi",
+      "tests": "maquette,navigation",
+      "pages": [
+        28
+      ],
+      "group": "SUPPORT",
+      "state": "À modifier",
+      "desktop": "Formulaire avec choix du motif, location accessible et texte; expliquer le canal fictif.",
+      "mobile": "Choix accessibles, texte non perdu lors d’erreur; état d’envoi annoncé.",
+      "category": "A"
+    },
+    {
+      "route": "/cases",
+      "access": "Client actif, dossiers liés au compte",
+      "files": [
+        "client/pages/support.js"
+      ],
+      "api": "GET /cases",
+      "data": "Liste, état, motif, date et accès détail",
+      "errors": "Vide, accès expiré, erreur réseau",
+      "tests": "maquette,navigation",
+      "pages": [
+        30
+      ],
+      "group": "SUPPORT",
+      "state": "À modifier",
+      "desktop": "Liste de dossiers et CTA d’ouverture; lignes actionnables semantic link.",
+      "mobile": "Cartes compactes en colonne, statut et horodatage restent proches.",
+      "category": "A"
+    },
+    {
+      "route": "/cases/new",
+      "access": "Client actif",
+      "files": [
+        "client/pages/support.js"
+      ],
+      "api": "GET /bootstrap, POST /cases",
+      "data": "Préremplissage kind/rental, motifs du mock et location du compte",
+      "errors": "Paramètres inconnus, résumé invalide, ressource inaccessible",
+      "tests": "maquette",
+      "pages": [
+        28
+      ],
+      "group": "SUPPORT",
+      "state": "À modifier",
+      "desktop": "Même gabarit qu’assistance. Un CTA effectue la création; destination après réponse confirmée.",
+      "mobile": "Afficher erreur au champ et conserver le texte. Motifs annulation/prolongation = dossier seulement.",
+      "category": "A"
+    },
+    {
+      "route": "/cases/:id",
+      "access": "Partie au dossier; données client projetées",
+      "files": [
+        "client/pages/support.js"
+      ],
+      "api": "GET /cases/:id, POST /cases/:id (action message)",
+      "data": "Résumé, état, échanges partagés et demande de complément",
+      "errors": "Refus, introuvable, clôture, erreur réponse",
+      "tests": "maquette",
+      "pages": [
+        28,
+        30
+      ],
+      "group": "SUPPORT",
+      "state": "À modifier",
+      "desktop": "Chronologie et échange dans colonne principale, aide rapide à droite; notes internes absentes.",
+      "mobile": "État puis échanges et formulaire; erreur générique sans détail d’un tiers.",
+      "category": "A"
+    },
+    {
+      "route": "/review/:id",
+      "access": "Locataire après clôture; règles serveur",
+      "files": [
+        "client/pages/support.js"
+      ],
+      "api": "GET /rentals/:id, POST /rentals/:id/review",
+      "data": "Notes véhicule et propriétaire 1–5, texte soumis à modération",
+      "errors": "Avant clôture, second avis, validation ou mauvais rôle",
+      "tests": "maquette,booking",
+      "pages": [
+        31
+      ],
+      "group": "SUPPORT",
+      "state": "À modifier",
+      "desktop": "Deux groupes indépendants et commentaire. Mesurer l’autorisation déjà calculée au suivi, ajouter une présentation cohérente en accès direct sans changer le serveur.",
+      "mobile": "Groupes nommés, focus et nombre annoncé. Éviter interaction étoile seule sans équivalent clavier.",
+      "category": "B"
+    },
+    {
+      "route": "/receipt/:id",
+      "access": "Participants après completed",
+      "files": [
+        "client/pages/support.js"
+      ],
+      "api": "GET /rentals/:id",
+      "data": "Reçu fictif, période, quote et impression",
+      "errors": "Avant clôture, accès refusé, valeur manquante",
+      "tests": "maquette,booking",
+      "pages": [
+        31
+      ],
+      "group": "SUPPORT",
+      "state": "Partiel",
+      "desktop": "Document centré, total et statut séparés, impression navigateur avec mention sans valeur comptable.",
+      "mobile": "Lisible sans défilement horizontal; commande imprimer au-dessous du document.",
+      "category": "A"
+    },
+    {
+      "route": "/owner/start",
+      "access": "Public; activation client actif",
+      "files": [
+        "client/pages/owner.js",
+        "client/pages/navigation.js"
+      ],
+      "api": "POST /owner/onboarding",
+      "data": "Découverte, estimateur brut local, redirection login si nécessaire, activation",
+      "errors": "Non connecté, déjà propriétaire, confirmation absente",
+      "tests": "owner,maquette,navigation",
+      "pages": [
+        32
+      ],
+      "group": "OWNER_DASHBOARD",
+      "state": "À modifier",
+      "desktop": "Panorama Grande Anse, panneau éditorial profond, estimation brute et CTA adapté.",
+      "mobile": "Panorama court avec texte lisible, estimation opaque, libellé démo et pas de promesse de revenu.",
+      "category": "A"
+    },
+    {
+      "route": "/owner",
+      "access": "Propriétaire actif",
+      "files": [
+        "client/pages/owner-workspace.js",
+        "client/pages/owner-state.js"
+      ],
+      "api": "GET /bootstrap, GET /owner/draft, GET /me",
+      "data": "Compteurs, première demande, brouillon, gestion et accès aux sections",
+      "errors": "Parc vide, draft API indisponible, changement de compte",
+      "tests": "owner,navigation,maquette",
+      "pages": [
+        33,
+        42
+      ],
+      "group": "OWNER_DASHBOARD",
+      "state": "Partiel",
+      "desktop": "Compteurs, demande prioritaire et zone reprise; « aujourd’hui » sans générer une fausse alerte.",
+      "mobile": "Compte, demande et reprise avant les liens secondaires; seuil 1024 pour deux zones.",
+      "category": "A"
+    },
+    {
+      "route": "/owner/vehicles",
+      "access": "Propriétaire actif",
+      "files": [
+        "client/pages/owner-workspace.js",
+        "client/pages/vehicle-media.js"
+      ],
+      "api": "GET /bootstrap, GET /me",
+      "data": "Parc, états, filtre URL actuel, ajout et gestion",
+      "errors": "Aucune annonce ou filtre vide, état absent",
+      "tests": "owner,maquette",
+      "pages": [
+        34
+      ],
+      "group": "OWNER_VEHICLES",
+      "state": "Partiel",
+      "desktop": "Cartes et filtre d’état, photo issue du mapping explicite ou repli; trois cartes si lisibles.",
+      "mobile": "Une colonne, filtres repliables sans supprimer l’accès, statut avant action.",
+      "category": "A"
+    },
+    {
+      "route": "/owner/vehicles/:id",
+      "access": "Propriétaire du véhicule",
+      "files": [
+        "client/pages/owner-workspace.js",
+        "client/pages/owner-state.js",
+        "client/pages/vehicle-presentation.js"
+      ],
+      "api": "GET /bootstrap, GET /me, POST /owner/vehicles/:id/{edit,block,unblock,pause,resume,remove}, POST /documents",
+      "data": "Statut, gestion, docs, état, calendrier et confirmations",
+      "errors": "403/404, conflit période, contrôle requis, suppressions interdites si location",
+      "tests": "owner,maquette",
+      "pages": [
+        35,
+        36
+      ],
+      "group": "OWNER_VEHICLES",
+      "state": "Partiel",
+      "desktop": "Visuel de modèle + carte gestion; sections réelles, calendrier à l’ancre #owner-calendar, mois et formulaire de blocage.",
+      "mobile": "Ancres compactes; agenda ordonné et formulaire dessous. Mettre l’état explicitement non renseigné quand absent.",
+      "category": "B"
+    },
+    {
+      "route": "/owner/requests",
+      "access": "Propriétaire actif, demandes de son parc",
+      "files": [
+        "client/pages/owner-workspace.js",
+        "client/pages/booking-state.js"
+      ],
+      "api": "GET /bootstrap, GET /me; actions dans /rental/:id",
+      "data": "Filtres et états des demandes, ouvrir suivi avant décision",
+      "errors": "Vide, refus, dossier modifié entre liste et suivi",
+      "tests": "owner,booking,navigation",
+      "pages": [
+        37
+      ],
+      "group": "OWNER_REQUESTS",
+      "state": "Partiel",
+      "desktop": "Liste par statut, période et prochaine étape. Lien de suivi dominant au lieu d’une action concurrente dans la liste.",
+      "mobile": "Une action lisible par ligne; contexte de retour depuis dossier; filtre non perdu.",
+      "category": "A"
+    },
+    {
+      "route": "/owner/revenue",
+      "access": "Propriétaire actif",
+      "files": [
+        "client/pages/owner-workspace.js"
+      ],
+      "api": "GET /bootstrap, GET /me",
+      "data": "Montants bruts des paiements simulés issus des locations",
+      "errors": "Aucune location payée, valeur non disponible",
+      "tests": "owner,maquette",
+      "pages": [
+        38
+      ],
+      "group": "OWNER_DASHBOARD",
+      "state": "À modifier",
+      "desktop": "Synthèse brut, statut fictif et lignes datées. Frais et montant net sont indéfinis.",
+      "mobile": "Montant puis statut; pas de graphique inventé ni d’estimation présentée comme revenu net.",
+      "category": "A"
+    },
+    {
+      "route": "/owner/reputation",
+      "access": "Propriétaire actif",
+      "files": [
+        "client/pages/owner-workspace.js"
+      ],
+      "api": "GET /bootstrap, GET /me, POST /reviews/:id",
+      "data": "Avis applicables, réponse propriétaire distincte, note et statut",
+      "errors": "Vide, longueur de réponse, avis tiers interdit",
+      "tests": "owner,maquette",
+      "pages": [
+        38
+      ],
+      "group": "OWNER_DASHBOARD",
+      "state": "À modifier",
+      "desktop": "Cartes notes et texte, action de réponse avec dialogue stable.",
+      "mobile": "Une colonne; actions et focus visibles, statut lisible sans couleur.",
+      "category": "A"
+    },
+    {
+      "route": "/owner/vehicles/new",
+      "access": "Propriétaire actif",
+      "files": [
+        "client/pages/wizard.js",
+        "client/pages/owner-state.js"
+      ],
+      "api": "GET /me, GET/POST /owner/draft, POST /owner/vehicles",
+      "data": "Quatre sections, neuf groupes, step historique; tampon local et envoi gelé",
+      "errors": "Divergence, brouillon vide, stockage indisponible, photo insuffisante, résultat incertain",
+      "tests": "owner,maquette,navigation",
+      "pages": [
+        23,
+        39,
+        40,
+        41
+      ],
+      "group": "OWNER_WIZARD",
+      "state": "Partiel",
+      "desktop": "Stepper 4 sections à gauche, formulaire à droite, statut de sauvegarde avant champs, résumé avant revue.",
+      "mobile": "Étape et reprise en tête, formulaire vertical, CTA hors clavier, retour groupe ciblé.",
+      "category": "B"
+    },
+    {
+      "route": "/demo",
+      "access": "Public",
+      "files": [
+        "client/pages/demo.js"
+      ],
+      "api": "GET /personas?app=client, POST/DELETE /session",
+      "data": "Sélecteur, visiteur, réseau lent ou HS en sessionStorage",
+      "errors": "Blocages simulés récupérables sur cette route",
+      "tests": "navigation,explorer,maquette",
+      "pages": [
+        10,
+        44
+      ],
+      "group": "OUTILS",
+      "state": "Hors écran cible",
+      "desktop": "Garder les points d’entrée de démonstration. Éventuelle harmonisation de surface seule au lot 10.",
+      "mobile": "Menu et champs accessibles, éviter d’enfouir la sortie de l’état réseau.",
+      "category": "A"
+    },
+    {
+      "route": "/demo/audit",
+      "access": "Public côté client, profils lorsque fixture audit active",
+      "files": [
+        "client/pages/audit.js"
+      ],
+      "api": "GET /personas?app=client, POST /session",
+      "data": "Sélection audit sans changer le seed; récupération réseau",
+      "errors": "Pas de persona audit dans le seed historique, compte suspendu",
+      "tests": "navigation; profiles.spec.js",
+      "pages": [
+        10,
+        44
+      ],
+      "group": "OUTILS",
+      "state": "Hors écran cible",
+      "desktop": "Respecter l’atelier et les profils de démonstration; ne jamais transformer ces comptes en accès réels.",
+      "mobile": "État vide utile et accès à /demo.",
+      "category": "A"
+    },
+    {
+      "route": "/design-system",
+      "access": "Public de démonstration",
+      "files": [
+        "client/pages/demo.js"
+      ],
+      "api": "Aucune API sur l’écran; shell lit /me",
+      "data": "Échantillons UI et verre V3.2",
+      "errors": "Variantes préférences et contrôles du kit",
+      "tests": "components,visual-qa",
+      "pages": [
+        10,
+        11,
+        12
+      ],
+      "group": "OUTILS",
+      "state": "Hors écran cible",
+      "desktop": "Échantillon de nouveaux composants métier séparé si nécessaire. Préserver démo du verre.",
+      "mobile": "Contrôles lisibles et focus à 320 px.",
+      "category": "A"
+    }
+  ]
+}

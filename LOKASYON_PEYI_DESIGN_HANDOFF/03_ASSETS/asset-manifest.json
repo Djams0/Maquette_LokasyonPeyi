@@ -1,0 +1,693 @@
+{
+  "base": "4338f5f7ca252f4d4f02021ec47a226d0d2d6064",
+  "runtime_resources": [
+    {
+      "id": "commons-1-1000",
+      "path": "assets/v32/demo/208-avant-1000.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/demo/208-avant-1000.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:2019_Peugeot_208_GT_Line_PureTech_Automatic_1.2_Front.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Vauxford · 2019 Peugeot 208 GT Line PureTech Automatic 1.2 Front.jpg · CC BY-SA 4.0",
+      "alt": "Peugeot 208 grise, vue avant de trois quarts en concession",
+      "sizes": [
+        1000,
+        689
+      ],
+      "format": "WEBP",
+      "use": "Couverture de modèle seule. Garder la galerie synthétique actuelle entière si elle doit documenter la fiche fictive. Ne jamais présenter les deux séries comme une même voiture.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "5d2fc63b86bae67ac9456b663803771fa684e4535345c5a05477992b1d425b11"
+    },
+    {
+      "id": "commons-1-480",
+      "path": "assets/v32/demo/208-avant-480.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/demo/208-avant-480.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:2019_Peugeot_208_GT_Line_PureTech_Automatic_1.2_Front.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Vauxford · 2019 Peugeot 208 GT Line PureTech Automatic 1.2 Front.jpg · CC BY-SA 4.0",
+      "alt": "Peugeot 208 grise, vue avant de trois quarts en concession",
+      "sizes": [
+        480,
+        331
+      ],
+      "format": "WEBP",
+      "use": "Couverture de modèle seule. Garder la galerie synthétique actuelle entière si elle doit documenter la fiche fictive. Ne jamais présenter les deux séries comme une même voiture.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "7cb54739376cbf82819e0e988311da5adf069b744f9cf3fb0ef2fa5d437113ce"
+    },
+    {
+      "id": "commons-2-420",
+      "path": "assets/v32/demo/208-arriere-420.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/demo/208-arriere-420.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:2019_Peugeot_208_GT_Line_PureTech_Automatic_1.2_Rear.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Vauxford · 2019 Peugeot 208 GT Line PureTech Automatic 1.2 Rear.jpg · CC BY-SA 4.0",
+      "alt": "Peugeot 208 grise de trois quarts arrière",
+      "sizes": [
+        420,
+        308
+      ],
+      "format": "WEBP",
+      "use": "Série modèle 01–02 distincte. Préserver le défaut fictif et les images actuelles à part.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "057721b3ee6480a98d69501e2514a980f3ccefaa69ced3186e0ad51ae09294f1"
+    },
+    {
+      "id": "commons-2-900",
+      "path": "assets/v32/demo/208-arriere-900.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/demo/208-arriere-900.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:2019_Peugeot_208_GT_Line_PureTech_Automatic_1.2_Rear.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Vauxford · 2019 Peugeot 208 GT Line PureTech Automatic 1.2 Rear.jpg · CC BY-SA 4.0",
+      "alt": "Peugeot 208 grise de trois quarts arrière",
+      "sizes": [
+        900,
+        661
+      ],
+      "format": "WEBP",
+      "use": "Série modèle 01–02 distincte. Préserver le défaut fictif et les images actuelles à part.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "4ef1f9b57f08f23315cc41e1155bba535286b3621d8fa8b9cfea9d65eab28186"
+    },
+    {
+      "id": "commons-4-1050",
+      "path": "assets/v32/demo/clio-avant-1050.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/demo/clio-avant-1050.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Renault_Clio_BF_Valencia_Orange_(1).jpg",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Damian B Oh · Renault Clio BF Valencia Orange (1).jpg · CC BY-SA 4.0",
+      "alt": "Renault Clio orange de trois quarts avant",
+      "sizes": [
+        1050,
+        787
+      ],
+      "format": "WEBP",
+      "use": "Clio V orange, couverture et vignette du cadran.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "f5c4eab91b770850ce089aed6b36e755a77fd1b2bdca67991f3799a3c2ea26c4"
+    },
+    {
+      "id": "commons-4-480",
+      "path": "assets/v32/demo/clio-avant-480.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/demo/clio-avant-480.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Renault_Clio_BF_Valencia_Orange_(1).jpg",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Damian B Oh · Renault Clio BF Valencia Orange (1).jpg · CC BY-SA 4.0",
+      "alt": "Renault Clio orange de trois quarts avant",
+      "sizes": [
+        480,
+        360
+      ],
+      "format": "WEBP",
+      "use": "Clio V orange, couverture et vignette du cadran.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "322a585df6b31da16c0af36f012505eb6f9f53f47e2d988169638f6be69d8583"
+    },
+    {
+      "id": "commons-5-420",
+      "path": "assets/v32/demo/clio-face-420.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/demo/clio-face-420.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Renault_Clio_BF_Valencia_Orange_(2).jpg",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Damian B Oh · Renault Clio BF Valencia Orange (2).jpg · CC BY-SA 4.0",
+      "alt": "Renault Clio orange vue de face",
+      "sizes": [
+        420,
+        315
+      ],
+      "format": "WEBP",
+      "use": "Série Clio de même modèle et finition. Présentation comme vues illustratives.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "8891e0decc3e3e4cf11a6c9cafcaeb5465c49a6cd0aff2014dd867e7966a7fe9"
+    },
+    {
+      "id": "commons-5-900",
+      "path": "assets/v32/demo/clio-face-900.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/demo/clio-face-900.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Renault_Clio_BF_Valencia_Orange_(2).jpg",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Damian B Oh · Renault Clio BF Valencia Orange (2).jpg · CC BY-SA 4.0",
+      "alt": "Renault Clio orange vue de face",
+      "sizes": [
+        900,
+        675
+      ],
+      "format": "WEBP",
+      "use": "Série Clio de même modèle et finition. Présentation comme vues illustratives.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "fbc477562e3da6efc97f406f7fcd02079bebf54806376108305eb462264db79e"
+    },
+    {
+      "id": "commons-6-420",
+      "path": "assets/v32/demo/clio-arriere-420.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/demo/clio-arriere-420.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Renault_Clio_BF_Valencia_Orange_(3).jpg",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Damian B Oh · Renault Clio BF Valencia Orange (3).jpg · CC BY-SA 4.0",
+      "alt": "Renault Clio orange de trois quarts arrière",
+      "sizes": [
+        420,
+        315
+      ],
+      "format": "WEBP",
+      "use": "Série Clio de même modèle et finition. Présentation comme vues illustratives.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "ec7a779bf0d235e2f731f7196fcd5839fc64e3eceb92471b583e6a2bbec335ab"
+    },
+    {
+      "id": "commons-6-900",
+      "path": "assets/v32/demo/clio-arriere-900.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/demo/clio-arriere-900.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Renault_Clio_BF_Valencia_Orange_(3).jpg",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Damian B Oh · Renault Clio BF Valencia Orange (3).jpg · CC BY-SA 4.0",
+      "alt": "Renault Clio orange de trois quarts arrière",
+      "sizes": [
+        900,
+        675
+      ],
+      "format": "WEBP",
+      "use": "Série Clio de même modèle et finition. Présentation comme vues illustratives.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "a638c1657f668f53c93613d14f8af4570e7f6e6d24430c3e02b4c0308a427592"
+    },
+    {
+      "id": "commons-11-1000",
+      "path": "assets/v32/demo/duster-avant-1000.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/demo/duster-avant-1000.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Dacia_Duster_HM_FL_Glacier_White_(2).jpg",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Damian B Oh · Dacia Duster HM FL Glacier White (2).jpg · CC BY-SA 4.0",
+      "alt": "Dacia Duster blanc, vue de trois quarts avant en ville",
+      "sizes": [
+        1000,
+        750
+      ],
+      "format": "WEBP",
+      "use": "Couverture Duster de modèle.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "d33b3623b9e4a05aeb6309aa0051db0ecf6bd30c88fa43b19b0be9a248ead07d"
+    },
+    {
+      "id": "commons-11-480",
+      "path": "assets/v32/demo/duster-avant-480.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/demo/duster-avant-480.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Dacia_Duster_HM_FL_Glacier_White_(2).jpg",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Damian B Oh · Dacia Duster HM FL Glacier White (2).jpg · CC BY-SA 4.0",
+      "alt": "Dacia Duster blanc, vue de trois quarts avant en ville",
+      "sizes": [
+        480,
+        360
+      ],
+      "format": "WEBP",
+      "use": "Couverture Duster de modèle.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "81206c4c204768d462fbf647f2b1bcba8a3350da79d558d8c99bf49c9a155c2c"
+    },
+    {
+      "id": "commons-12-420",
+      "path": "assets/v32/demo/duster-arriere-420.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/demo/duster-arriere-420.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Dacia_Duster_HM_FL_Glacier_White_(3).jpg",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Damian B Oh · Dacia Duster HM FL Glacier White (3).jpg · CC BY-SA 4.0",
+      "alt": "Dacia Duster blanc au passage piéton, vue arrière",
+      "sizes": [
+        420,
+        315
+      ],
+      "format": "WEBP",
+      "use": "Série Duster blanche illustrative.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "5631598c5211fb4604cef3fff74ee4148197a5709cc432a7f9d2c39820460186"
+    },
+    {
+      "id": "commons-12-900",
+      "path": "assets/v32/demo/duster-arriere-900.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/demo/duster-arriere-900.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Dacia_Duster_HM_FL_Glacier_White_(3).jpg",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Damian B Oh · Dacia Duster HM FL Glacier White (3).jpg · CC BY-SA 4.0",
+      "alt": "Dacia Duster blanc au passage piéton, vue arrière",
+      "sizes": [
+        900,
+        675
+      ],
+      "format": "WEBP",
+      "use": "Série Duster blanche illustrative.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "b45f70879aa427d274559d933fd488e71026133d29edcaa091a5e8d1d6703bbd"
+    },
+    {
+      "id": "commons-46-1440",
+      "path": "assets/v32/editorial/deshaies-grande-anse-1440.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/editorial/deshaies-grande-anse-1440.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Grande_Anse_in_Deshaies_(2).jpg",
+      "author": "Tournasol7",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "Tournasol7 · Grande Anse in Deshaies (2).jpg · CC BY 4.0",
+      "alt": "Grande Anse à Deshaies, vue depuis le rivage",
+      "sizes": [
+        1440,
+        553
+      ],
+      "format": "WEBP",
+      "use": "Panorama Deshaies.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "aa8e25813f1ba7f86b02775d677ea236921991eda164a82a99b4a85ff7a36dc0"
+    },
+    {
+      "id": "commons-46-720",
+      "path": "assets/v32/editorial/deshaies-grande-anse-720.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/editorial/deshaies-grande-anse-720.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Grande_Anse_in_Deshaies_(2).jpg",
+      "author": "Tournasol7",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "Tournasol7 · Grande Anse in Deshaies (2).jpg · CC BY 4.0",
+      "alt": "Grande Anse à Deshaies, vue depuis le rivage",
+      "sizes": [
+        720,
+        277
+      ],
+      "format": "WEBP",
+      "use": "Panorama Deshaies.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "110a045c7de964ae900cf84a764e9f7f9315f248ab04ab83b6c52c22a3dab951"
+    },
+    {
+      "id": "commons-47-720",
+      "path": "assets/v32/editorial/route-de-la-traversee-720.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/editorial/route-de-la-traversee-720.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Route_de_la_Travers%C3%A9e_(Guadeloupe).jpg",
+      "author": "Enrevseluj",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Enrevseluj · Route de la Traversée (Guadeloupe).jpg · CC BY-SA 4.0",
+      "alt": "Route bordée de forêt en Basse-Terre",
+      "sizes": [
+        720,
+        960
+      ],
+      "format": "WEBP",
+      "use": "Forêt, carte éditoriale et verre sombre.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "1dc32735c4323516c19ad6f235e70818418667d83bee173deffbea5a8d3f66fe"
+    },
+    {
+      "id": "commons-48-1440",
+      "path": "assets/v32/editorial/sainte-anne-caravelle-1440.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/editorial/sainte-anne-caravelle-1440.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Plage_de_la_Caravelle_St-Anne_(6).jpg",
+      "author": "Tournasol7",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "Tournasol7 · Plage de la Caravelle St-Anne (6).jpg · CC BY 4.0",
+      "alt": "Plage de la Caravelle et palmiers à Sainte-Anne",
+      "sizes": [
+        1440,
+        945
+      ],
+      "format": "WEBP",
+      "use": "Littoral, carte éditoriale et verre clair.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "962f7f296b496f9d088f7d9ccfd80bd443cfa67632fdedb89f4a530239c07863"
+    },
+    {
+      "id": "commons-48-720",
+      "path": "assets/v32/editorial/sainte-anne-caravelle-720.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/editorial/sainte-anne-caravelle-720.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Plage_de_la_Caravelle_St-Anne_(6).jpg",
+      "author": "Tournasol7",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "Tournasol7 · Plage de la Caravelle St-Anne (6).jpg · CC BY 4.0",
+      "alt": "Plage de la Caravelle et palmiers à Sainte-Anne",
+      "sizes": [
+        720,
+        473
+      ],
+      "format": "WEBP",
+      "use": "Littoral, carte éditoriale et verre clair.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "9f024689f1bae71657d21ab8687f83822348c584e3b69bac237f2267374def47"
+    },
+    {
+      "id": "commons-49-1440",
+      "path": "assets/v32/editorial/route-guadeloupe-1440.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/editorial/route-guadeloupe-1440.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Sunset_on_Guadeloupe.jpg",
+      "author": "artificiality",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "attribution": "artificiality · Sunset on Guadeloupe.jpg · CC BY-SA 2.0",
+      "alt": "Voiture sur une route de Guadeloupe au coucher du soleil",
+      "sizes": [
+        1440,
+        960
+      ],
+      "format": "WEBP",
+      "use": "Hero exact, versions 720 / 1440 / 1920, photo prioritaire.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "210fc94f3a8ae279b471129e660e8d033091646c51622394c08f609d2eb75b26"
+    },
+    {
+      "id": "commons-49-1920",
+      "path": "assets/v32/editorial/route-guadeloupe-1920.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/editorial/route-guadeloupe-1920.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Sunset_on_Guadeloupe.jpg",
+      "author": "artificiality",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "attribution": "artificiality · Sunset on Guadeloupe.jpg · CC BY-SA 2.0",
+      "alt": "Voiture sur une route de Guadeloupe au coucher du soleil",
+      "sizes": [
+        1920,
+        1280
+      ],
+      "format": "WEBP",
+      "use": "Hero exact, versions 720 / 1440 / 1920, photo prioritaire.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "d0cf28ad6515d83c9b782cb897fa388aa4ea6f286b51055a502b5f948d1751c3"
+    },
+    {
+      "id": "commons-49-720",
+      "path": "assets/v32/editorial/route-guadeloupe-720.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/editorial/route-guadeloupe-720.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Sunset_on_Guadeloupe.jpg",
+      "author": "artificiality",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "attribution": "artificiality · Sunset on Guadeloupe.jpg · CC BY-SA 2.0",
+      "alt": "Voiture sur une route de Guadeloupe au coucher du soleil",
+      "sizes": [
+        720,
+        480
+      ],
+      "format": "WEBP",
+      "use": "Hero exact, versions 720 / 1440 / 1920, photo prioritaire.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "3f762c19587107026e2c65eb5bcecebd6496d33b52d0283e9332d21a6beca920"
+    },
+    {
+      "id": "commons-53-720",
+      "path": "assets/v32/editorial/bourg-deshaies-720.webp",
+      "kit_source": "04_VISUAL_REFERENCES/ressources/editorial/bourg-deshaies-720.webp",
+      "source": "https://commons.wikimedia.org/wiki/File:Town_centre_of_Deshaies_(1).jpg",
+      "author": "Tournasol7",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "Tournasol7 · Town centre of Deshaies (1).jpg · CC BY 4.0",
+      "alt": "Rue et voitures au pied des collines à Deshaies",
+      "sizes": [
+        720,
+        453
+      ],
+      "format": "WEBP",
+      "use": "Carte de bourg de Deshaies.",
+      "responsive": "Vérifier variants srcset selon gabarit",
+      "status": "Bytes identiques, crédit et manifeste runtime vérifiés",
+      "sha256": "6fb1d0693029e9338dd62dd98e5cc4c831d23d40f9640f5ac0c86da0f06bc190"
+    },
+    {
+      "id": "logo",
+      "path": "assets/v32/marque/logo-horizontal-charte.webp",
+      "source": "charte Lokasyon Péyi / logo horizontal",
+      "author": "Lokasyon Péyi",
+      "license": "Identité du projet, usage projet",
+      "attribution": "charte Lokasyon Péyi / logo horizontal",
+      "sizes": [
+        683,
+        122
+      ],
+      "format": "WEBP",
+      "use": "Marque et navigation",
+      "responsive": "Taille intrinsèque et adaptation locale",
+      "status": "Présent au SHA audité",
+      "sha256": "29fcae5c2d9a640a7d03685d6592ba07e5b370f8742e697f055430f5d6f84f73"
+    },
+    {
+      "id": "font-lora",
+      "path": "assets/fonts/Lora.ttf",
+      "source": "assets/fonts/Lora-OFL.txt",
+      "author": "Lora Project Authors",
+      "license": "SIL OFL 1.1",
+      "attribution": "assets/fonts/Lora-OFL.txt",
+      "sizes": null,
+      "format": "TTF",
+      "use": "Titre éditorial",
+      "responsive": "Taille intrinsèque et adaptation locale",
+      "status": "Présent au SHA audité",
+      "sha256": "822a6621ccbe8d97d20ac88c1c41f5615c9c2c202eaa75f272cd452aac6475a7"
+    },
+    {
+      "id": "font-nunito",
+      "path": "assets/fonts/Nunito.ttf",
+      "source": "assets/fonts/Nunito-OFL.txt",
+      "author": "Nunito Project Authors",
+      "license": "SIL OFL 1.1",
+      "attribution": "assets/fonts/Nunito-OFL.txt",
+      "sizes": null,
+      "format": "TTF",
+      "use": "Interface et titres opérationnels",
+      "responsive": "Taille intrinsèque et adaptation locale",
+      "status": "Présent au SHA audité",
+      "sha256": "bb55a5ca5c2042335b3991af27c4d0705d0ef41cac6164ac737fd8f2a1e85207"
+    },
+    {
+      "id": "font-lobster",
+      "path": "assets/fonts/Lobster.ttf",
+      "source": "assets/fonts/Lobster-OFL.txt",
+      "author": "Pablo Impallari et contributeurs",
+      "license": "SIL OFL 1.1",
+      "attribution": "assets/fonts/Lobster-OFL.txt",
+      "sizes": null,
+      "format": "TTF",
+      "use": "Identité",
+      "responsive": "Taille intrinsèque et adaptation locale",
+      "status": "Présent au SHA audité",
+      "sha256": "d6568e697fd50cedc0be04d8aae4127fe95add607e7bff954ca88604be80c205"
+    },
+    {
+      "id": "icons",
+      "path": "ui/components.js",
+      "source": "ui/components.js, export icon",
+      "author": "Lokasyon Péyi, pictos versionnés",
+      "license": "Provenance dépôt, pas de licence tierce attestée",
+      "attribution": "ui/components.js, export icon",
+      "sizes": null,
+      "format": "JS",
+      "use": "Icônes fonctionnelles",
+      "responsive": "Taille intrinsèque et adaptation locale",
+      "status": "Présent au SHA audité",
+      "sha256": "35ec968937aa44893c348de275ad945f85251267ad6365693bf80d0a65a621d7"
+    },
+    {
+      "id": "empty",
+      "path": "assets/illustrations/catalogue-vide.svg",
+      "source": "assets/illustrations/README.md",
+      "author": "Lokasyon Péyi",
+      "license": "Provenance dépôt, usage interne démonstration",
+      "attribution": "assets/illustrations/README.md",
+      "sizes": [
+        128,
+        96
+      ],
+      "format": "SVG",
+      "use": "Etat vide existant",
+      "responsive": "Taille intrinsèque et adaptation locale",
+      "status": "Présent au SHA audité",
+      "sha256": "82cdbcc99eef5afcf3cff1ed0d90dfa4ac56cac6b7e48050bf66cd59a1f71d2b"
+    },
+    {
+      "id": "citadine-verte-avant-420",
+      "path": "assets/vehicles/citadine-verte-avant-420.webp",
+      "source": "assets/vehicles/manifest.json",
+      "author": "Image générée pour Lokasyon Péyi",
+      "license": "Ressource créée pour Lokasyon Péyi, usage de démonstration. Aucune licence tierce revendiquée.",
+      "attribution": "Photos de démonstration",
+      "sizes": [
+        420,
+        236
+      ],
+      "format": "WEBP",
+      "use": "Image principale",
+      "responsive": "Variante déclarée au manifeste v1",
+      "status": "Fichier historique préservé",
+      "sha256": "2c69d058d9d99defdab74472881af6f6ad58e50c14aba028977aa4bb2198fd5c"
+    },
+    {
+      "id": "citadine-verte-avant-836",
+      "path": "assets/vehicles/citadine-verte-avant-836.webp",
+      "source": "assets/vehicles/manifest.json",
+      "author": "Image générée pour Lokasyon Péyi",
+      "license": "Ressource créée pour Lokasyon Péyi, usage de démonstration. Aucune licence tierce revendiquée.",
+      "attribution": "Photos de démonstration",
+      "sizes": [
+        836,
+        470
+      ],
+      "format": "WEBP",
+      "use": "Image principale",
+      "responsive": "Variante déclarée au manifeste v1",
+      "status": "Fichier historique préservé",
+      "sha256": "6e0357dc652eae983ac03630946097cc3773df1805891956c47ee901d0bceffd"
+    },
+    {
+      "id": "citadine-verte-arriere-768",
+      "path": "assets/vehicles/citadine-verte-arriere-768.webp",
+      "source": "assets/vehicles/detail-manifest.json",
+      "author": "Image générée pour Lokasyon Péyi",
+      "license": "Ressource créée pour Lokasyon Péyi, usage de démonstration. Aucune licence tierce revendiquée.",
+      "attribution": "Photos de démonstration",
+      "sizes": [
+        768,
+        512
+      ],
+      "format": "WEBP",
+      "use": "Vue arrière",
+      "responsive": "Variante déclarée au manifeste v1",
+      "status": "Fichier historique préservé",
+      "sha256": "7228a7b1bb7a3feb70e0b031ef51786da188c051b312097589fd928b46aa0dae"
+    },
+    {
+      "id": "citadine-verte-profil-768",
+      "path": "assets/vehicles/citadine-verte-profil-768.webp",
+      "source": "assets/vehicles/detail-manifest.json",
+      "author": "Image générée pour Lokasyon Péyi",
+      "license": "Ressource créée pour Lokasyon Péyi, usage de démonstration. Aucune licence tierce revendiquée.",
+      "attribution": "Photos de démonstration",
+      "sizes": [
+        768,
+        512
+      ],
+      "format": "WEBP",
+      "use": "Vue de profil",
+      "responsive": "Variante déclarée au manifeste v1",
+      "status": "Fichier historique préservé",
+      "sha256": "a9130077856acaf77b05f413a19eda69b2c8cd43193e4acf830484b25a17f8e5"
+    },
+    {
+      "id": "citadine-verte-habitacle-768",
+      "path": "assets/vehicles/citadine-verte-habitacle-768.webp",
+      "source": "assets/vehicles/detail-manifest.json",
+      "author": "Image générée pour Lokasyon Péyi",
+      "license": "Ressource créée pour Lokasyon Péyi, usage de démonstration. Aucune licence tierce revendiquée.",
+      "attribution": "Photos de démonstration",
+      "sizes": [
+        768,
+        512
+      ],
+      "format": "WEBP",
+      "use": "Vue du poste de conduite",
+      "responsive": "Variante déclarée au manifeste v1",
+      "status": "Fichier historique préservé",
+      "sha256": "d20fe009912df01e031086d55dd07cc90edb56f7b18fcfd23e3b754d0b4c3948"
+    },
+    {
+      "id": "citadine-verte-banquette-768",
+      "path": "assets/vehicles/citadine-verte-banquette-768.webp",
+      "source": "assets/vehicles/detail-manifest.json",
+      "author": "Image générée pour Lokasyon Péyi",
+      "license": "Ressource créée pour Lokasyon Péyi, usage de démonstration. Aucune licence tierce revendiquée.",
+      "attribution": "Photos de démonstration",
+      "sizes": [
+        768,
+        512
+      ],
+      "format": "WEBP",
+      "use": "Détail de la banquette",
+      "responsive": "Variante déclarée au manifeste v1",
+      "status": "Fichier historique préservé",
+      "sha256": "463679037e602e665ee611e5f4a47247d3016ffd65fb5d6a96d3a68abffac4cc"
+    },
+    {
+      "id": "citadine-verte-rayure-836",
+      "path": "assets/vehicles/citadine-verte-rayure-836.webp",
+      "source": "assets/vehicles/detail-manifest.json",
+      "author": "Image générée pour Lokasyon Péyi",
+      "license": "Ressource créée pour Lokasyon Péyi, usage de démonstration. Aucune licence tierce revendiquée.",
+      "attribution": "Photos de démonstration",
+      "sizes": [
+        836,
+        471
+      ],
+      "format": "WEBP",
+      "use": "Défaut cosmétique fictif",
+      "responsive": "Variante déclarée au manifeste v1",
+      "status": "Fichier historique préservé",
+      "sha256": "9ed40fbfa434e022c666da2bae64107ea84353ff3e2399a2bf2e777a6ad457bb"
+    },
+    {
+      "id": "citadine-verte-illustration-836",
+      "path": "assets/vehicles/citadine-verte-illustration-836.webp",
+      "source": "assets/vehicles/detail-manifest.json",
+      "author": "Image générée pour Lokasyon Péyi",
+      "license": "Ressource créée pour Lokasyon Péyi, usage de démonstration. Aucune licence tierce revendiquée.",
+      "attribution": "Photos de démonstration",
+      "sizes": [
+        836,
+        470
+      ],
+      "format": "WEBP",
+      "use": "Rendu fixe générique",
+      "responsive": "Variante déclarée au manifeste v1",
+      "status": "Fichier historique préservé",
+      "sha256": "10e38b9c1defb5ce4df2e31292b218268deed47dd81163fe9150f5e77e29c3e6"
+    }
+  ],
+  "legacy_public_subset": "04_VISUAL_REFERENCES/asset-manifest.json",
+  "embedded_targets": "04_VISUAL_REFERENCES/extension/planches/"
+}

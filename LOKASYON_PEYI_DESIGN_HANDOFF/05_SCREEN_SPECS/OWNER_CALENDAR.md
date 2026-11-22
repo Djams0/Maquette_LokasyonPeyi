@@ -1,0 +1,5 @@
+# Calendrier de gestion propriétaire · p. 36
+
+Ancre réelle `/owner/vehicles/:id#owner-calendar`; le module est `client/pages/owner-workspace.js`. Utiliser `ownerCalendarItems` de `owner-state.js`. Sur bureau le mois et le formulaire de blocage sont des zones adjacentes, formulaire d’environ 300 px, navigation de mois nommée. Sur mobile l’agenda affiche des lignes chronologiques, dates en heure Guadeloupe et statut textuel, puis le formulaire. Le mois reste disponible si ses contrôles tiennent et que le zoom n’impose aucun geste horizontal. Distinguer « demande · créneau non réservé », « créneau occupé » et « blocage manuel ». Les bornes et libérations passent par les endpoints `block` et `unblock` validés par le serveur. Les demandes n’octroient pas de disponibilité garantie.
+
+Aux limites de mois, couvrir le même intervalle des deux côtés. Conserver le hash après mutation et rétablir le focus à la confirmation. Tester une période occupée en 409, début/fin invalides, retrait de blocage et véhicule non possédé. Voir [gestion du parc](OWNER_VEHICLES.md) et [planche](../00_SOURCE_OF_TRUTH/Lokasyon_Peyi_Direction_UXUI_V3.2_Extension_Espaces_Client.pdf#page=36).

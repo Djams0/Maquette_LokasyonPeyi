@@ -1,6 +1,7 @@
 {
-  "version": "3.2",
-  "base": "e42cc6ffa69bba6c1cc5c36333adede531d6d11f",
+  "version": "3.2-extension-client",
+  "base": "4338f5f7ca252f4d4f02021ec47a226d0d2d6064",
+  "public_source": "00_SOURCE_OF_TRUTH/Lokasyon_Peyi_Direction_UXUI_V3.2_Finale.pdf",
   "files": [
     {
       "path": ".gitattributes",
@@ -13,9 +14,69 @@
       "sha256": "47a2ba62f8322643218ef5ceb03b7baca90f598dd644c734a973b07604b596c6"
     },
     {
+      "path": "00_SOURCE_OF_TRUTH/INDEX_PDF.md",
+      "bytes": 7885,
+      "sha256": "0e3f6eb5d9a9be81da6300db1660989e7a078d92073a75868ece6f0f3352ca3a"
+    },
+    {
+      "path": "00_SOURCE_OF_TRUTH/Lokasyon_Peyi_Direction_UXUI_V3.2_Extension_Espaces_Client.pdf",
+      "bytes": 6957684,
+      "sha256": "d3542655afffa94470778753fd693d5b2fd92973fecab11e3b9eadca3f01d844"
+    },
+    {
       "path": "00_SOURCE_OF_TRUTH/Lokasyon_Peyi_Direction_UXUI_V3.2_Finale.pdf",
       "bytes": 2077160,
       "sha256": "55b0c18274d20348b64266e469c5a6355b5f95ef6a4cc2952cba0903bd2821b8"
+    },
+    {
+      "path": "00_SOURCE_OF_TRUTH/SOURCES_ET_ARBITRAGES.md",
+      "bytes": 2364,
+      "sha256": "a3686d5ad5946b2adbe926b1e8ef91e798d4eb2f27b877efe0548ed7e4ea1745"
+    },
+    {
+      "path": "01_AUDIT/AUDIT_HANDOFF_EXISTANT.md",
+      "bytes": 1234,
+      "sha256": "fd45b469c4d4529fc485495b7ba6cec4fae3399358820769c8a2756d517e7b2e"
+    },
+    {
+      "path": "01_AUDIT/ETAT_REEL_DU_DEPOT.md",
+      "bytes": 5068,
+      "sha256": "174289d6069cbd3ebf4ed4f1aeedfc7452f5d9267c8d1fda6fb00dfa3d323230"
+    },
+    {
+      "path": "01_AUDIT/HISTORIQUE_ECARTS_PUBLICS.md",
+      "bytes": 1876,
+      "sha256": "3d95be8d2c7f1d1f47b165df24f0e784e7ad41c735bdd6d5f9a6fbc5b7999f43"
+    },
+    {
+      "path": "01_AUDIT/INVENTAIRE_FONCTIONNEL.md",
+      "bytes": 6938,
+      "sha256": "60f433aaf45227761f4ec050f7a725aa9c239ef98e72f224f6a0e0694e57e073"
+    },
+    {
+      "path": "01_AUDIT/INVENTAIRE_HANDOFF_EXISTANT.csv",
+      "bytes": 33013,
+      "sha256": "5e77dd404cd55401a30d646edb1d9e96edc7f171ecbedb8296b343b52d110622"
+    },
+    {
+      "path": "01_AUDIT/MATRICE_ECARTS_UXUI.csv",
+      "bytes": 10769,
+      "sha256": "0f1fb1b0c0ba59b4e0bf71c54a4c20fe16325c68bcb3185c6a06844da32e3299"
+    },
+    {
+      "path": "01_AUDIT/MATRICE_ROUTES_COMPOSANTS_API.csv",
+      "bytes": 10129,
+      "sha256": "c928ee314ed4969d780cf4b54e19e624a8476788d77c4c7a781dc86fc34fdf5f"
+    },
+    {
+      "path": "01_AUDIT/PLAN_MIGRATION.md",
+      "bytes": 1270,
+      "sha256": "e1e698c930455991a6a79d07339fee80b836c91ce7a257f6753336fb59a4357f"
+    },
+    {
+      "path": "01_AUDIT/RISQUES_ET_REGRESSIONS.md",
+      "bytes": 1784,
+      "sha256": "2194661ecee9f68f1f80f9765588745d403bf4605bb4457436a1af81ca631aed"
     },
     {
       "path": "01_AUDIT_EXISTANT/AUDIT_ANCIEN_HANDOFF_ET_SUPPRESSIONS.md",
@@ -38,6 +99,41 @@
       "sha256": "587fa1fb7743eaf2462c6661f76342bd623ded53eaec44608ec8a0cfd9a19900"
     },
     {
+      "path": "02_DESIGN_SYSTEM/ACCESSIBILITY.md",
+      "bytes": 792,
+      "sha256": "0c899cacbf79b407ad7fd23c848fe09c5a9a751bc0174362f99e6ab5e8f797ae"
+    },
+    {
+      "path": "02_DESIGN_SYSTEM/COMPONENTS.md",
+      "bytes": 2460,
+      "sha256": "54b0edff586bcefeaa84b723478f71149216a13f52aaf0758e7b75c59f09425e"
+    },
+    {
+      "path": "02_DESIGN_SYSTEM/DESIGN_SYSTEM_V3.2.md",
+      "bytes": 1626,
+      "sha256": "9209fdd1680711db67e4fde39ef6f2fcedc6373db3a1c3e1a69893caa7e0ea56"
+    },
+    {
+      "path": "02_DESIGN_SYSTEM/FORM_STATES.md",
+      "bytes": 1183,
+      "sha256": "cb2bc64d71bff4eb4b8b55cd8470e32c05577b37e464721a3bc360cca13b83a8"
+    },
+    {
+      "path": "02_DESIGN_SYSTEM/NAVIGATION.md",
+      "bytes": 1072,
+      "sha256": "1fafb1bc5416d2e50276718f20616e4bd621933e0159a3e6a9c14f5371b09eb3"
+    },
+    {
+      "path": "02_DESIGN_SYSTEM/RESPONSIVE.md",
+      "bytes": 930,
+      "sha256": "de4cc62091718b16362d1fb4b7f176bd9d162d41d1f92102d3692d1a2c6caf97"
+    },
+    {
+      "path": "02_DESIGN_SYSTEM/TOKENS.md",
+      "bytes": 1070,
+      "sha256": "e5e64476ba986c7006d8dca66121d071f5bde156376cbb79237167ce3cd00b17"
+    },
+    {
       "path": "02_FONDATIONS_V3.2/DESIGN_SYSTEM.md",
       "bytes": 4160,
       "sha256": "64f0ec7cd27f0f90da0ba8704f2376992084f57195202bde64713d1c184dcc99"
@@ -53,9 +149,24 @@
       "sha256": "2c71c6029dcb6941d025fe9b44045f9c9c703e69d72f1e61aea05ebac6e40ef3"
     },
     {
+      "path": "03_ASSETS/ASSET_MAPPING_EXTENSION.md",
+      "bytes": 1482,
+      "sha256": "6d11baf675253f135ce5a5dc366c20cf752dde8c241ce21d3ae38de3713d6cf7"
+    },
+    {
+      "path": "03_ASSETS/LICENSES_AND_CREDITS.md",
+      "bytes": 990,
+      "sha256": "0769c043e9a40bf639661b0195ad2a1261363b344d2a0f9e1fd824157d1a346e"
+    },
+    {
       "path": "03_ASSETS/README.md",
       "bytes": 471,
       "sha256": "b060f816b2c0bdc1cc73b139e342afc80dca5e0398642c290b857c65a549449b"
+    },
+    {
+      "path": "03_ASSETS/asset-manifest.json",
+      "bytes": 31238,
+      "sha256": "702c968b79d2eb7f9e4244fd58d005e8cb08ab4131b8b02f7d2726e1ecf0caf4"
     },
     {
       "path": "03_ASSETS/illustrations/catalogue-vide.svg",
@@ -121,6 +232,511 @@
       "path": "04_VISUAL_REFERENCES/asset-manifest.json",
       "bytes": 33707,
       "sha256": "fe6c6fbc75e4f9349356bdd09d52c51e90f6bd1ad22929c37e7c850ab8278ef3"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/README.md",
+      "bytes": 2135,
+      "sha256": "c508ca2e3659ba9d4d884c6ef0c6dcaecc1b42533d5cc2b384a0d58e5eac16fc"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-assistance-1440.jpg",
+      "bytes": 68284,
+      "sha256": "701b4c9f9ced8428336c89d0b0566e0f55ea2c27b03e707c98dca56d13a54059"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-assistance-390.jpg",
+      "bytes": 42309,
+      "sha256": "3655d492828b0100afea476ff93c245ae725fb7ad8fa3c20deded93c89229cd1"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-assistant-1440.jpg",
+      "bytes": 89344,
+      "sha256": "d2cde47da3c7ccad67fde320329f2fc59c23c142a68c760c458e83fc5da6f783"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-assistant-390.jpg",
+      "bytes": 40967,
+      "sha256": "51103e7ebd03bfaa228d567b275aca3d7ea36d69fb02b559fc528f8543f6d277"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-audit-1440.jpg",
+      "bytes": 91760,
+      "sha256": "999ed465bcc761ccc72694cd349d28b742decdb98d3a2ebab19022e2fa6a5151"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-audit-390.jpg",
+      "bytes": 51061,
+      "sha256": "3f1f20a4660d269992485e0c184d2d0165009b16a9070bdb122ef9a6e1369093"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-avis-1440.jpg",
+      "bytes": 55133,
+      "sha256": "036201086730e4965440e70c2b1e6333d8d8e4f56e6df345fd63f19b5bfccfcd"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-avis-390.jpg",
+      "bytes": 31602,
+      "sha256": "56047f33ad6ac36eb7ff5709d3c8f107f4e092dac79ff83e2d0d67e409e353e9"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-composants-1440.jpg",
+      "bytes": 154869,
+      "sha256": "c928426d7cb182db6e61904c351ee7640fe6552483a0ccaa08b53467e22d9289"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-composants-390.jpg",
+      "bytes": 65626,
+      "sha256": "7ae55e23ab9dafa1b609c780015934711b3b826f3523ef722d3a6ea5a5fb5cdc"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-connexion-1440.jpg",
+      "bytes": 77142,
+      "sha256": "d280b85d812922c6d68c2e84b7c3e9a2d7cd30402e91911f9b5462511d91e81a"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-connexion-390.jpg",
+      "bytes": 40690,
+      "sha256": "b054014e485d517522557470931f8f6b6bfbf24b7d6d64bdaccb38eba1e5301f"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-demandes-1440.jpg",
+      "bytes": 73215,
+      "sha256": "2cca7a708225275665950b01e9ce97edfa7398ffebe39d17efbf0a9e264247c5"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-demandes-390.jpg",
+      "bytes": 46501,
+      "sha256": "c298d8c0d37b94cca3772612e8a3c07192593b5d3caafab1f35c07922c0b6fd3"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-demo-1440.jpg",
+      "bytes": 90133,
+      "sha256": "073497c396e36437319dbc5b01651b9fe4c38f5c63e4562e73b3c66349815b99"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-demo-390.jpg",
+      "bytes": 49151,
+      "sha256": "504400cedf655463ad8d582f5aaa2bc5ae7de021f1f5d24e7ebbf101e2c8ea15"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-documents-1440.jpg",
+      "bytes": 76640,
+      "sha256": "fccf5d7abc583f00789ba1837248d5cfbf845cde1f6253b30ded5c8ef65459cb"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-documents-390.jpg",
+      "bytes": 45480,
+      "sha256": "2b4e2623e883143f27b2ae415cd2efa291e439fefa20ee2c4f2ee75d23ad5134"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-dossier-1440.jpg",
+      "bytes": 78051,
+      "sha256": "d5c9166f781825f8bf09cb186f6138c6a2503972fbc761f8790c15491029d66e"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-dossier-390.jpg",
+      "bytes": 46304,
+      "sha256": "1d7c7a5ed173d8ebf743f6cd9c34b69f83aa79cb774b54320cf9bc8db03a9680"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-dossiers-1440.jpg",
+      "bytes": 64346,
+      "sha256": "b787744137461cbc00e3fa71cf2c4aabfdd72e8e27572f36b72b3638c5931ac0"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-dossiers-390.jpg",
+      "bytes": 38796,
+      "sha256": "2b68056dc00ad7abde1308f56b9319cdcf5c4c8c8dff98bf2843f48ed3449dc8"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-faq-1440.jpg",
+      "bytes": 65432,
+      "sha256": "8daea9d820eac791867489b5a00b578993a8fa6b70b8fdd1f2427baa5c6a259a"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-faq-390.jpg",
+      "bytes": 41763,
+      "sha256": "53ac4fb2923b7e0022e71c7a7dd87c3ea058129232bd53c47ee8bf13ca1809ad"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-gestion-1440.jpg",
+      "bytes": 173853,
+      "sha256": "1bbde77aaf74ac3223bb5b05edd418aa554412a225823975974341e489da70e6"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-gestion-390.jpg",
+      "bytes": 54268,
+      "sha256": "e26e1fee525352147790578b384243aa880d8322d09581225e6a87f65f8f72a4"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-inscription-1440.jpg",
+      "bytes": 76302,
+      "sha256": "274549fc36a6edaefd7b314aaae4d480d78dcf5ed532c3e4195961dd6e76ec84"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-inscription-390.jpg",
+      "bytes": 43288,
+      "sha256": "6c04175339c82c42828ac68faded24475ea6a5c9b4f30307120b1523b92ca37d"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-locations-1440.jpg",
+      "bytes": 66578,
+      "sha256": "1e1f2a7cb1f64b9006f92c99f7ceaab1971d00b8a49f51a7a49cc7ad04d94c83"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-locations-390.jpg",
+      "bytes": 38110,
+      "sha256": "c41aea0172edca933dc8864fdf987f030d53b8d5b8341acf160e7cff52feeb95"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-messages-1440.jpg",
+      "bytes": 75819,
+      "sha256": "e8972da8b4278e57cca1aa784af03fe7ecb30f06f2b29b4884311bbdd8a5ae67"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-messages-390.jpg",
+      "bytes": 45030,
+      "sha256": "2af24aa8151c045eeafcebbedf3e77708df9cd7bfec364c71f7886eed2b2f475"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-notifications-1440.jpg",
+      "bytes": 58655,
+      "sha256": "5894401a03e941080ce4197fc5ca4a5fdff6ca27f0d89a08178e03e335ecb02f"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-notifications-390.jpg",
+      "bytes": 31871,
+      "sha256": "fcc0f60f912433ec57fd6fda94db337343f4af21dc6f5edeeafb7587adbeb79f"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-owner-1440.jpg",
+      "bytes": 87113,
+      "sha256": "4a2ec730fdc310f40eeba91cdaff5edf2e5ca0786370d2387b751f4967fb8b4e"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-owner-390.jpg",
+      "bytes": 50145,
+      "sha256": "496ba4f568313566a89bcebba468e55804cd3783fd8631fb0f2a93431beafc86"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-parc-1440.jpg",
+      "bytes": 105388,
+      "sha256": "cbe3478d26b8d0a1c74738588ca8fe8abd25a10277811b33806b69f307ccb4a8"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-parc-390.jpg",
+      "bytes": 47023,
+      "sha256": "b79ab1c0d187d07ea2800199d9fa167b9360f9c4e7b9ba4e2f4b29848d176364"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-profil-1440.jpg",
+      "bytes": 66477,
+      "sha256": "4e1e4a40e85b2aac7bbe9dc42000a5b09d5c0a99ce3836fff4f6dd670b8117d6"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-profil-390.jpg",
+      "bytes": 45077,
+      "sha256": "256565d1746052c2bc4891ed2bba8eadc149d6cc0796d65399c7ea55db5a7994"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-proprietaire-intro-1440.jpg",
+      "bytes": 118755,
+      "sha256": "47d9dde983b1441210a99ce4b8ed4529ee5d2ddb16eaf50a59a31aecd9326e63"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-proprietaire-intro-390.jpg",
+      "bytes": 43595,
+      "sha256": "73beae5cc52932150382298b06b2a9ab48981d47e7fd94b468583a19e48e2a5e"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-reputation-1440.jpg",
+      "bytes": 62077,
+      "sha256": "980e25060ad78ff5a1d87eed948c439f7a6d1aff0a37a288560b540b9e9efb16"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-reputation-390.jpg",
+      "bytes": 35981,
+      "sha256": "692b3d539e18cd30ca96f9e3320c670dc8259fbe0f1f6cd7ab4b9b71b608c330"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-revenus-1440.jpg",
+      "bytes": 72746,
+      "sha256": "cd4e0385629ebe9eabcab3bf11184bdf16051791ff104af708eff197da64da86"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/client-revenus-390.jpg",
+      "bytes": 47003,
+      "sha256": "795bd5a1ad10b2841a9ea2e74983afa2b3dbab0d32d38783d542c88b552762fc"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/parcours-client-recu.jpg",
+      "bytes": 87942,
+      "sha256": "0a05105bc06ccff098226eaed8ca24b97aff941a6d3e7f31e1790f0b1d8aef31"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/parcours-inspection-depart.jpg",
+      "bytes": 191795,
+      "sha256": "bd9f19d127252333d2f96bd29e6f0a45ed3e92571e46e9f5166ccf6a0f6bae78"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/parcours-inspection-retour.jpg",
+      "bytes": 191486,
+      "sha256": "4cd68e0348bcbe778acc126196e2b656ba926e34a4f14bdcf2390dded8f156d2"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/actuel/parcours-proprietaire-recapitulatif.jpg",
+      "bytes": 161506,
+      "sha256": "40adcc0c90e0359c87ecd5c92a402f285673f5d5ca50c6fde88ced5805c9d18d"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/comparatifs/assistant.jpg",
+      "bytes": 82271,
+      "sha256": "3ad559d18dbc2009258fc03cef60d75d95c2ecc57f91d576390e06a8e77c303e"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/comparatifs/connexion.jpg",
+      "bytes": 86758,
+      "sha256": "1be262ffdc4b28dbd15092723a0d61d089e664e36abc33ff37ad980de4682f42"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/comparatifs/demandes.jpg",
+      "bytes": 75787,
+      "sha256": "3c44a383d8905b4c5a373472cc07306276b515180850e677d0caa2a4b5e8c265"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/comparatifs/faq.jpg",
+      "bytes": 79352,
+      "sha256": "f598ce6c379f481110f64fa4dfd08d54c7c37583d9eb20a680e76f71fe0fe2c4"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/comparatifs/locations.jpg",
+      "bytes": 84077,
+      "sha256": "7cc96dab6c42d989c4e3afb3b04c0a8933d2fb685b282b6a385f15a1cdbdb115"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/comparatifs/messages.jpg",
+      "bytes": 78713,
+      "sha256": "4cac7588137fe8eddd248dfb1b535005954c4f3504ffb334d998cc3cd9bdf04b"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/comparatifs/notifications.jpg",
+      "bytes": 62384,
+      "sha256": "cb5030b50448e0dddbe4d244e4e02961db64b2c9250b2c17e52c1b3782c6d2c7"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/comparatifs/owner.jpg",
+      "bytes": 87728,
+      "sha256": "e0221a807cd76bab570be5d5b9215112ff7aab95758f844f80b0513209108ccf"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/comparatifs/parc.jpg",
+      "bytes": 100893,
+      "sha256": "8ae80ec7fa45f3d0d2bd5a647006d8f72296262a0ead37b9333107132f732eb3"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/comparatifs/profil.jpg",
+      "bytes": 74446,
+      "sha256": "3792f4e88f9843385611c4f23ea8891cb9af6c1b49a785a8c27208bb0c0bef50"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/comparatifs/proprietaire-intro.jpg",
+      "bytes": 100733,
+      "sha256": "6b51f5a64cb33278b7dbbf9695786bb2b84358a3bf8def2df59ee5c5a6afff3e"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-11.jpg",
+      "bytes": 213777,
+      "sha256": "311b7c90be81c2751038c67716098a9113e6dbd525487663de5872dfec7f5827"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-12.jpg",
+      "bytes": 214285,
+      "sha256": "2367cd8a4639c653526465a4a4f8731026f6aa6d521410dab0bd4933a11caf6a"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-13.jpg",
+      "bytes": 231004,
+      "sha256": "ec9bdd39086e308914c48c1029ebba8331f3280e77e26c82cc27931dff8d3ff5"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-14.jpg",
+      "bytes": 213864,
+      "sha256": "a5ee896624cbc9cddac7246fd0394b38dc4ab3de78e0469033601a65bd5aecc4"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-15.jpg",
+      "bytes": 190750,
+      "sha256": "a84759d936085cd38c80c36d3254efa6d3802f6b118e66917049887464f7077c"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-16.jpg",
+      "bytes": 224871,
+      "sha256": "4a198378f962c91f4249c3f0f9ddf63f0d0254ad7b591d465835abe69519dea2"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-17.jpg",
+      "bytes": 193551,
+      "sha256": "5dfa1086109539d2969710087fe55895cbef7537bb635a02a2c892ba15dd04b1"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-18.jpg",
+      "bytes": 211350,
+      "sha256": "79d8a50f43c5d8f01164dd36cec46896d383ba204806c962255c8ba741e18eeb"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-19.jpg",
+      "bytes": 213027,
+      "sha256": "b709118850863bf385542b0377f6fadd02832184e908b8012cec17da619ce193"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-20.jpg",
+      "bytes": 180083,
+      "sha256": "997f1b4f8f81d6c0eea551d4cf8c0f7a5e75c526b8cdf2c76c8315a9bbdc9710"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-21.jpg",
+      "bytes": 208000,
+      "sha256": "463892a31206f4b37708d3bcba53ec5ec2b0763ad416b2280384df87bea84e24"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-22.jpg",
+      "bytes": 213024,
+      "sha256": "0557f79674ac981c5f41ad3aa762365e80e63e65b5a8a9cc98fefa630b6c6605"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-23.jpg",
+      "bytes": 212447,
+      "sha256": "46b3c5e4ed28da633825bf2b361131e2a01b78df616553e3ffb2a2a2ac6e0e8b"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-24.jpg",
+      "bytes": 200501,
+      "sha256": "f3b746e4a48443e32e208646d84745cca8c961f9e6d2ebe49462eb3efd5cd999"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-25.jpg",
+      "bytes": 205287,
+      "sha256": "a193d92dff34c8fe5d19dafe1e86e13b58be2e9c6d54bfd866a46da2d76d74c9"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-26.jpg",
+      "bytes": 157527,
+      "sha256": "b389271f8c318db4e3dd7cfa3667de10710802bed26a2376722f549c20a0bb6c"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-27.jpg",
+      "bytes": 178176,
+      "sha256": "f69894f1156df6ff57dd6853d7c733c834c6b384d1ccbdc3f18b6abf0de8fc97"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-28.jpg",
+      "bytes": 181094,
+      "sha256": "e976e8b2aa0faa048dcbf6ba1d7c9fee295283ac2691be9ab6fa68d2673e6146"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-29.jpg",
+      "bytes": 211171,
+      "sha256": "78084ec2485b074c09e64891b0a32f854eedaf1bfb9a8deec24c0644d36e3051"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-30.jpg",
+      "bytes": 169819,
+      "sha256": "f3ad4b7caa59a55ad063a259b2a3454265fd197b9ef83f24da477e9faa84fd2d"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-31.jpg",
+      "bytes": 188055,
+      "sha256": "1b15dbb125f763bfe0d93f02a662bb4db0490d3f8e6eecbe3ea0713c707af3a7"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-32.jpg",
+      "bytes": 241460,
+      "sha256": "f72920cfeb6d2c407e72e232b56cba86afea872671741b933625b5f7867800a0"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-33.jpg",
+      "bytes": 210527,
+      "sha256": "404850061c36a2dffb044cf27316b212f4cc8c9a02e9225b2a2ce9010dd8e076"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-34.jpg",
+      "bytes": 255881,
+      "sha256": "f48ce6492294ad1ceb3f449f689cb59c4927ad92a55964d9ee016d39a991f833"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-35.jpg",
+      "bytes": 235456,
+      "sha256": "d0c2988c414ec9c31105a35b3911e79949432ae3a2ddb71b22b9448747241b6e"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-36.jpg",
+      "bytes": 205886,
+      "sha256": "0d2928d28e0047afa2e5ee1747fef97bf38a8317b0502fc208118e650c1737c3"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-37.jpg",
+      "bytes": 188652,
+      "sha256": "a3de4f8eaa861a1b25d5f373d45004bf5af780c82eb161c386001bcd80a92b28"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-38.jpg",
+      "bytes": 168640,
+      "sha256": "ff08e9d4584359c482d8130c2a3acf7ea8f49480be38bba516eafa2b6fcc271a"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-39.jpg",
+      "bytes": 191789,
+      "sha256": "7a19cb9c1858bcb5249437001f3436068dc65c2dd088b4d023fa150f983c7a5c"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-40.jpg",
+      "bytes": 183143,
+      "sha256": "49fc16402f21a36860811c78c7a1e38d6f5b1038f184caf936acf344c8db6d29"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-41.jpg",
+      "bytes": 224540,
+      "sha256": "8af4a71659bf4b0b694f07d04d3640a0970889e4ed34c79aac73ad3dfe44946b"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-42.jpg",
+      "bytes": 200346,
+      "sha256": "86c9f9cfca2c7cf72be89e26c5859e4401595b3352742ff79a30c754ab6766d3"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-43.jpg",
+      "bytes": 202035,
+      "sha256": "ffef55d669aaa4ab41b884a51e769f2b3434d6e3ea9946ee36c0d51c84c7d60c"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-44.jpg",
+      "bytes": 193166,
+      "sha256": "17b94f84b46e7e07aeb24feed47feed8c9e90e68fc050c3200b410f15d438bc7"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-45.jpg",
+      "bytes": 178504,
+      "sha256": "d14c227dd2ca2efd9d167a285791eda817c58de203d726e2d879554c9483ed0e"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-46.jpg",
+      "bytes": 208690,
+      "sha256": "da07eaf12a45601a367524fda21987f8fc41ea248eaf3015d1b457ecc185ce20"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-47.jpg",
+      "bytes": 190751,
+      "sha256": "ce507126ee7c42793dcdea3d995af7893acb5c0e243163aec43266f5d605d565"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-48.jpg",
+      "bytes": 233051,
+      "sha256": "dfb002aa70d6b29e59973097ff7b52aafaf32d6c339f375369199389681a30e6"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/planches/B-49.jpg",
+      "bytes": 178739,
+      "sha256": "096c2a94821faab30ed0a737fff9cff15115d0a733ce1ae3e2fc2e3db740d548"
     },
     {
       "path": "04_VISUAL_REFERENCES/maquettes/Accueil_Desktop.png",
@@ -206,6 +822,136 @@
       "path": "04_VISUAL_REFERENCES/maquettes/maquette.js",
       "bytes": 30442,
       "sha256": "82c4f4d53fdbb3ec9391d4ca35de4e1b66e077c7d39dc858e4678cf94a0ff05b"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/CAPTURE_MANIFEST.json",
+      "bytes": 45815,
+      "sha256": "1991bb00a0e9a2950bf15763136ad6867f41deeed6e4ae98529ed224e61a783c"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/README.md",
+      "bytes": 2634,
+      "sha256": "1e34bcf005ef1a1880aff88ce050f81f44a5e0707c01c09736d5a441104e242e"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-accueil-1024.png",
+      "bytes": 591924,
+      "sha256": "425e4eaa054bf2a0ed649ad2f7118bbec9ff62e0622dbaf5c2d123d83481a55e"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-accueil-1280.png",
+      "bytes": 690763,
+      "sha256": "83734025af054781f7b133c357e54656610a4678ca7eb0e54180a695e5c2d34a"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-accueil-1440.png",
+      "bytes": 827666,
+      "sha256": "a75728edc72f502a2b0a5eeff41b50bb8d67f2355c72ff3967ec76c4e79f952c"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-accueil-320.png",
+      "bytes": 117981,
+      "sha256": "fc42632119ca7a92dd13a06ea4d6e02fac41d5b4c098ef5b230a769d49b68d6f"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-accueil-375.png",
+      "bytes": 131533,
+      "sha256": "f7e1b408055dd9c59f12da3a2e321c037405eeb6be14fde14e8300675f0cb202"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-accueil-390.png",
+      "bytes": 135848,
+      "sha256": "5ac06d430251588f6859d736b647398266326c771b7c8f785a5b76a0e0ecced0"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-accueil-430.png",
+      "bytes": 156272,
+      "sha256": "20ab361d3a177615e3fe462b936687127a46356690a2861a8ce539809c23862a"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-accueil-768.png",
+      "bytes": 346589,
+      "sha256": "78dab9e9aeee372c96cd3c1c9270cc420bc2abd3f2555e1a8c576205334c2cb9"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-catalogue-1024.png",
+      "bytes": 377567,
+      "sha256": "82f181384ebdc4e3c8230633d115a5fb987acc87fd59d34638cd09188d5569ad"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-catalogue-1280.png",
+      "bytes": 373248,
+      "sha256": "c640d797bff623e90afcfd937ad6a5f9f4eea852879fec42a059401604903db7"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-catalogue-1440.png",
+      "bytes": 433466,
+      "sha256": "340515b9058e3161e26e978f698ac83fae8d550be3ac3db9082689a0faba3e86"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-catalogue-320.png",
+      "bytes": 154003,
+      "sha256": "430a7f3f265c859945f3ff09e8172fefe5958b9353695f7f358d2a6f471c6f3b"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-catalogue-375.png",
+      "bytes": 186586,
+      "sha256": "bbce15cf397a4c5c81a64608febb4592d1d86191ccfd0143b5446a75f260b141"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-catalogue-390.png",
+      "bytes": 196561,
+      "sha256": "1167bd67d6f7fc5645ec43bbb60de7058e6b4f6acf558f2cbfb85747772d9933"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-catalogue-430.png",
+      "bytes": 226315,
+      "sha256": "3df46c41ff351b01337372e4e7ea49c3124e872f7f447c2dd541e014342e7ab3"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-catalogue-768.png",
+      "bytes": 362446,
+      "sha256": "6125c93aff851cbecec042019823e71ba46703dfb051e1387a64914d3e5fe296"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-fiche-1024.png",
+      "bytes": 432915,
+      "sha256": "c6367ee94cb8f81564c1030f267885febc524b4a674e2c64be01b6d50480eac9"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-fiche-1280.png",
+      "bytes": 683443,
+      "sha256": "b5368f30b58909e26104a6cac7cd11dd70c7630dba681ee15d893b95321e9e09"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-fiche-1440.png",
+      "bytes": 743147,
+      "sha256": "e56831ad73de27da496b085e7cebb8125e19a27f44a53f0bf32f7384de5ff80c"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-fiche-320.png",
+      "bytes": 200402,
+      "sha256": "532f2a0c90d8e77bbb33bae3ab585e2202a97de7b1af47fac1bbd753fa36a23f"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-fiche-375.png",
+      "bytes": 249158,
+      "sha256": "6e0c057aa65dfa2434437180f4f223f88ee2e8316466457f0ac037b71a7b4ad9"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-fiche-390.png",
+      "bytes": 260956,
+      "sha256": "a9df309e19cf14fcbe200cff818345cf2083e26d1004f0eeeec6843764431f87"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-fiche-430.png",
+      "bytes": 278558,
+      "sha256": "eea58ca8383503639924136c2bc02af5b72e2addce3981f9bc1bff793a5f047d"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/protected_baseline/protected-fiche-768.png",
+      "bytes": 481227,
+      "sha256": "2e53033a125101f8b5840cd1ca77d14afba44e02f71d940e7758c3560cb97c08"
     },
     {
       "path": "04_VISUAL_REFERENCES/ressources/Credits.html",
@@ -408,6 +1154,91 @@
       "sha256": "bd42bc48179798ce411905d7f28d4ed02825eb763b3755988c398f9f5ab1f121"
     },
     {
+      "path": "05_SCREEN_SPECS/ACCOUNT.md",
+      "bytes": 4296,
+      "sha256": "af9236e5f7f577045ee5e7f1b23b356f00f72511b3a1a9cb7c598e4e067a7932"
+    },
+    {
+      "path": "05_SCREEN_SPECS/INSPECTION.md",
+      "bytes": 2029,
+      "sha256": "96149f3a5e88c1d071710905424b937bf40b19933f69c93e6dd42b92abcc78de"
+    },
+    {
+      "path": "05_SCREEN_SPECS/MESSAGING.md",
+      "bytes": 1851,
+      "sha256": "7bf4211d7d98316e3f79ad4a8841c4870bcb393327cef2eca3a390b349463bd3"
+    },
+    {
+      "path": "05_SCREEN_SPECS/NOTIFICATIONS.md",
+      "bytes": 1368,
+      "sha256": "cf9bd5e5a2203959266172d264ebbb7a2b2b838cfc1027a3cb4665364693dcc0"
+    },
+    {
+      "path": "05_SCREEN_SPECS/OUTILS.md",
+      "bytes": 3273,
+      "sha256": "5a25f40803ba97c566075f179c6f194aa6945836787dcbfb3841d3b5ece9e635"
+    },
+    {
+      "path": "05_SCREEN_SPECS/OWNER_CALENDAR.md",
+      "bytes": 1215,
+      "sha256": "d78ab9f2ec7c0a898b1f7a4ca24c86188e451009bb2e99fb9bd3a05b398c4dbb"
+    },
+    {
+      "path": "05_SCREEN_SPECS/OWNER_DASHBOARD.md",
+      "bytes": 4241,
+      "sha256": "0e40226d8cc3bb478ddeaba322087c5edc28e52c9fae65bc32c99d5ca243bea7"
+    },
+    {
+      "path": "05_SCREEN_SPECS/OWNER_REQUESTS.md",
+      "bytes": 1466,
+      "sha256": "a957007caa16fe7837dcb3c3725d3b1f8c346a28ce7b6d70c99565c95afd60fc"
+    },
+    {
+      "path": "05_SCREEN_SPECS/OWNER_VEHICLES.md",
+      "bytes": 2750,
+      "sha256": "200a6daa5252b7828a1d49e1e9691730751fc1cdeacf248a6ac64a70e6491c3a"
+    },
+    {
+      "path": "05_SCREEN_SPECS/OWNER_WIZARD.md",
+      "bytes": 2148,
+      "sha256": "a685d62571a0bc248cfc6f8e1d065aa02c9da432381838f2456dbd5b455c5198"
+    },
+    {
+      "path": "05_SCREEN_SPECS/PAYMENT.md",
+      "bytes": 1631,
+      "sha256": "5832847811a1ab7e61a6512786e8c1f92ea678a07a216f93f70a372e563007e9"
+    },
+    {
+      "path": "05_SCREEN_SPECS/PROTECTION.md",
+      "bytes": 2969,
+      "sha256": "58ac0a3d725ea33df4110ab30f0191a4267c3e9ba138541cf872555db44fbb80"
+    },
+    {
+      "path": "05_SCREEN_SPECS/README.md",
+      "bytes": 871,
+      "sha256": "a1af28926f5ff706080285c06b29d827e8043e407d9eb701585b870496d7c502"
+    },
+    {
+      "path": "05_SCREEN_SPECS/RENTALS.md",
+      "bytes": 2854,
+      "sha256": "13f2cc9ea0674dad3a40f0e6d1f4a50e051b930d21d638ef55af4f98dd262832"
+    },
+    {
+      "path": "05_SCREEN_SPECS/RENTAL_DETAIL.md",
+      "bytes": 1942,
+      "sha256": "0d6b9827c4d2c604337b934dcc0fbfb2a6c7c40fc802402747d25935fe48cec9"
+    },
+    {
+      "path": "05_SCREEN_SPECS/SCREEN_INDEX.json",
+      "bytes": 25672,
+      "sha256": "a4a084c8a89e6b607884b38ed7fd4ae51fe05b6830e2bd628ecfe146e55485af"
+    },
+    {
+      "path": "05_SCREEN_SPECS/SUPPORT.md",
+      "bytes": 7435,
+      "sha256": "c5211375d69eb7fa08192f5c7ff43005db0b9b7c04edce4faf593ae2483d61fe"
+    },
+    {
       "path": "05_SCREEN_SPECS_V3.2/ACCUEIL.md",
       "bytes": 4669,
       "sha256": "85fcea87352713521a05531b8c0d72a2c23f5347750a84944033333aae45b889"
@@ -439,8 +1270,8 @@
     },
     {
       "path": "06_CODEX_PROMPTS/00_README.md",
-      "bytes": 1348,
-      "sha256": "6d987b43300a873363e71e0d20b8af4dd75657a9f5409cda53b8b3db2f6a7100"
+      "bytes": 1307,
+      "sha256": "ab380512802a4c2544d4088df473f4ca9f0bf5d26042836a00d05ea300ba3a99"
     },
     {
       "path": "06_CODEX_PROMPTS/LOT_00_BASELINE.md",
@@ -491,6 +1322,106 @@
       "path": "06_CODEX_PROMPTS/LOT_09_FINAL_QA.md",
       "bytes": 4511,
       "sha256": "85a6a31649d6b329fe9664b689e18fb1b8d072e1c0f1228028c12c3988edf12e"
+    },
+    {
+      "path": "06_FONCTIONNEL/AMELIORATIONS_COMPATIBLES.md",
+      "bytes": 1814,
+      "sha256": "c9f69e35d7a5f0c0c0d9c6cb8f4e892040146f6d15793cdbcd41c38f7087ffff"
+    },
+    {
+      "path": "06_FONCTIONNEL/BUSINESS_RULES.md",
+      "bytes": 1219,
+      "sha256": "65f2fe74f21c715245ded4aecbc2787d3f73cc4c959039bb7d8e70ba0b8957e3"
+    },
+    {
+      "path": "06_FONCTIONNEL/ERROR_AND_RECOVERY_CASES.md",
+      "bytes": 1819,
+      "sha256": "17b94af066eeffd0007565722919e02db9e3c04fc1f48a1981981f6b002f9eac"
+    },
+    {
+      "path": "06_FONCTIONNEL/EVOLUTIONS_A_VALIDER.md",
+      "bytes": 3937,
+      "sha256": "55327d27c990ab80aa24be30d0643748494d58de3bedccf26af94f7bd0b7beaf"
+    },
+    {
+      "path": "06_FONCTIONNEL/FONCTIONNALITES_EXISTANTES.md",
+      "bytes": 1562,
+      "sha256": "2bf1500e6c1a73b7c5f514c6914b9e37a5ca732ab40446b313ff993e4025ac06"
+    },
+    {
+      "path": "06_FONCTIONNEL/ROLES_AND_PERMISSIONS.md",
+      "bytes": 1224,
+      "sha256": "c370eb8d3ff37e08f44bf7f4a42c713275d09d589652883edf1f3e959ae686bf"
+    },
+    {
+      "path": "06_FONCTIONNEL/STATE_MACHINES.md",
+      "bytes": 2214,
+      "sha256": "29b10a4f13fbbdb71ef7cee6c53c78d1b3a755ffe324f10e6bf373b87b687bcf"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/LOT_00_BASELINE.md",
+      "bytes": 6869,
+      "sha256": "b777cd0bc8be6d37573e5f774a67f801af8d25ce333bc91e317510fb0f4d96a5"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/LOT_01_FOUNDATIONS.md",
+      "bytes": 6822,
+      "sha256": "25f8e8ce37ce0802fda57a4cb2d21d9d62611aa5a193359592eaed0d44032a45"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/LOT_02_ACCOUNT.md",
+      "bytes": 7302,
+      "sha256": "a31fadcdd639ff0db04e84b902f33c5f65bcec4f480faeb4450d5e9529b387b9"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/LOT_03_RENTALS.md",
+      "bytes": 6862,
+      "sha256": "db8cfd1eb4353ea95c4f416ebb9e54be13ad38cccf9820efb09e5b6a83abb7bb"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/LOT_04_RENTAL_DETAIL_PAYMENT.md",
+      "bytes": 7031,
+      "sha256": "839000d9da1930429385089930413495021afbc87f7e9ae2e51171c46617621a"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/LOT_05_INSPECTION.md",
+      "bytes": 6662,
+      "sha256": "8721280c4d4f68ce3f5b0b19ff0e8bb42741bd4a0f306ab743433d13f0ec98c7"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/LOT_06_MESSAGING_NOTIFICATIONS.md",
+      "bytes": 6973,
+      "sha256": "20073bb1dc4c73c5b3044f85a054bd0f63c9b6c7b8689e9d9a082c10b9c74079"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/LOT_07_OWNER_DASHBOARD.md",
+      "bytes": 8875,
+      "sha256": "3de3ba8a2950f3c101bac92a39f0cc8444027e46dc1e9455ab9b7c52130f3d7a"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/LOT_08_OWNER_WIZARD.md",
+      "bytes": 6800,
+      "sha256": "9726045d1a65bedffa0617ee82adb6b196fa235bcfea6901cc84be965d41121f"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/LOT_09_SUPPORT.md",
+      "bytes": 8225,
+      "sha256": "c00c516f799f383eadae4275aebaef3ee7e917c52faef5c414c875ce83f140a4"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/LOT_10_POLISH.md",
+      "bytes": 6809,
+      "sha256": "58a3b8cf554772e1e8f5bfa4a67d44e89f15f4c7ae2cd355cd8041306f8b0701"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/LOT_11_FINAL_QA.md",
+      "bytes": 7279,
+      "sha256": "7a555cbcf17a939a126b45d14576b05e268769baeafbc06bec8f42d6ba2c8a45"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/README.md",
+      "bytes": 3042,
+      "sha256": "62cda36a7064ba51bbc053e53b52838320be1d39364fcef1ea58482f75d10c62"
     },
     {
       "path": "07_VALIDATION/MATRICE_VISUELLE.csv",
@@ -658,14 +1589,104 @@
       "sha256": "710d20a568d59f732b2e95509334b30a543a6ebe07b5fc5ee00833696e14a0ae"
     },
     {
+      "path": "08_VALIDATION/ACCEPTANCE_CRITERIA.md",
+      "bytes": 1022,
+      "sha256": "59d166a5f43f57532bf2f133b76bd3cfe42b542d1503d897183b8f449777bd44"
+    },
+    {
+      "path": "08_VALIDATION/ACCESSIBILITY_CHECKLIST.md",
+      "bytes": 796,
+      "sha256": "3361b9164ca8907b344855dfd8cfb7eb55891a49ab37132e3fb581cf37dd72b7"
+    },
+    {
+      "path": "08_VALIDATION/FUNCTIONAL_TEST_MATRIX.md",
+      "bytes": 2514,
+      "sha256": "4167d84890fbc5106f2d7b91ed8491edcf8c7fe03addb221cc9ce3d002a80b06"
+    },
+    {
+      "path": "08_VALIDATION/PROTECTED_PAGES_TESTS.md",
+      "bytes": 1770,
+      "sha256": "b9f6b8d88cb0853918990f875dc82dbae58fe1bd5135f4857c537effbe91fd82"
+    },
+    {
+      "path": "08_VALIDATION/REGRESSION_STRATEGY.md",
+      "bytes": 1001,
+      "sha256": "e00d4371bf5ca12123b66e6cdbf48b09f8ac40b7c5dcb51e6e6526232c78f341"
+    },
+    {
+      "path": "08_VALIDATION/RELEASE_GATES.md",
+      "bytes": 880,
+      "sha256": "fdfedd71f55426cfb86dae7e6e307ae782a15281263cfe0ea854c33ecef4384a"
+    },
+    {
+      "path": "08_VALIDATION/VISUAL_TEST_MATRIX.md",
+      "bytes": 2526,
+      "sha256": "e038ce15216339f60ee8771f1f0b7d3ec4c9fc14b943a8910610ba070fa1a83d"
+    },
+    {
+      "path": "09_IMPLEMENTATION/DEPENDENCY_GRAPH.md",
+      "bytes": 2067,
+      "sha256": "5f25d237ac53eff02dce2f7ba631c943c10ad6b29e8d3d973869fcd3d7d7017c"
+    },
+    {
+      "path": "09_IMPLEMENTATION/GO_NO_GO.md",
+      "bytes": 930,
+      "sha256": "5f1602e73ac54fb323d426464a1c69e95bf867546c6e098212ded634c4f58e92"
+    },
+    {
+      "path": "09_IMPLEMENTATION/IMPLEMENTATION_ORDER.md",
+      "bytes": 992,
+      "sha256": "edacd8605274ceb421f61756e9ae545c00c87ea36271622189ddd9e8ab266b24"
+    },
+    {
+      "path": "09_IMPLEMENTATION/LOT_INDEX.json",
+      "bytes": 20298,
+      "sha256": "89c4e2f03693dab512b9bf3982b791ad6413eb3d5511e8f2d7cb8a14598e2555"
+    },
+    {
+      "path": "09_IMPLEMENTATION/PROGRESS_TRACKER.md",
+      "bytes": 1892,
+      "sha256": "1fb05d19e1bffd083cc0e4eda55bcf302191b9b603a9056de617315974a04da5"
+    },
+    {
+      "path": "09_IMPLEMENTATION/PR_STRATEGY.md",
+      "bytes": 909,
+      "sha256": "19d2a9a3252b7bbe21fd8d0662e9f88d294917aaacb1d638a0527ea875e33f66"
+    },
+    {
+      "path": "09_IMPLEMENTATION/RAPPORT_DE_LIVRAISON.md",
+      "bytes": 2374,
+      "sha256": "546c38b7efe59d8549a9bdd2f2f84b66d72e943da803d2f94d123094e42a5dcc"
+    },
+    {
+      "path": "09_IMPLEMENTATION/REVIEW_TEMPLATE.md",
+      "bytes": 655,
+      "sha256": "4a87ae2f978f51a367572df88506242a8b04886f2d4550ba01e8262f9dac56b9"
+    },
+    {
       "path": "AGENTS.md",
-      "bytes": 1228,
-      "sha256": "3a92ce9bf85bfca4860219e5a7ed5f56315650154c968f3aac3e00da09338778"
+      "bytes": 1507,
+      "sha256": "c22c17d5741d4281db282fc56e19bdc5a83fe4e2ba1ef5f55af82c6620ed3015"
+    },
+    {
+      "path": "CODEX_START_HERE.md",
+      "bytes": 1682,
+      "sha256": "774de491c0e86097704a4a26887c3183c670d60300f1271321ac4217bf8001f4"
+    },
+    {
+      "path": "INSTALLATION.md",
+      "bytes": 2809,
+      "sha256": "39308ab481e3d32626e8327c90cfb236fc9b9c06020dc3bc84a2a3885684afe7"
     },
     {
       "path": "README.md",
-      "bytes": 1752,
-      "sha256": "2e8d320fe4142fc74832ba9e7992f78444b5e0043cf7037b2981a480c3e40805"
+      "bytes": 2079,
+      "sha256": "ae6178b6501dad4329b5536cc1b6fa8a0786bcd2d7568396e8fa99a7794c3361"
+    },
+    {
+      "path": "tools/README.md",
+      "bytes": 916,
+      "sha256": "7ebcbd3713bc35cac1f7f15269e075b6d422dee3720df2bc6554b5353d6f32c2"
     },
     {
       "path": "tools/capture-v32.mjs",
@@ -673,9 +1694,24 @@
       "sha256": "4ef4f1d5ea4f2766f95b5aeabf63f8f0e050997064d7699bd0d57a597c4c3933"
     },
     {
+      "path": "tools/capture_extension.mjs",
+      "bytes": 4330,
+      "sha256": "8102e0bd0d7b20ad9dc925989a943481726ae258ada37781f6ef05f568315c8f"
+    },
+    {
       "path": "tools/compare_v32.py",
       "bytes": 1764,
       "sha256": "e1067f800fea392f92eae8500b04956679c6108eeba0b565fa26e3e3699595be"
+    },
+    {
+      "path": "tools/install_extension.py",
+      "bytes": 3999,
+      "sha256": "be4890b2eea12fffb912c8a81c7c59e407902061b0dd9f5dd7ee9b6385d22f39"
+    },
+    {
+      "path": "tools/verify_extension.py",
+      "bytes": 4327,
+      "sha256": "5cabb06c0f1a0d6ab31f76e70b5888bb5c97919f34015eb0333c217856fa451e"
     },
     {
       "path": "tools/verify_v32.py",

@@ -1,18 +1,21 @@
-# Lokasyon Péyi · Design handoff V3.2
+# Lokasyon Péyi · V3.2 consolidée
 
-**Péyi en mouvement** · Référence validée le 19 novembre 2026.
+Ce kit prépare l’extension « Péyi en mouvement » aux espaces client. Base auditée **4338f5f7ca252f4d4f02021ec47a226d0d2d6064**, merge de la PR #22. Les références de l’accueil, du catalogue et de la fiche sont les écrans actuellement validés sur cette base.
 
-Le kit prépare l’évolution de la maquette existante. Commencer par le [PDF approuvé](00_SOURCE_OF_TRUTH/Lokasyon_Peyi_Direction_UXUI_V3.2_Finale.pdf), puis ouvrir les [maquettes natives](04_VISUAL_REFERENCES/README.md). L’[index des lots](06_CODEX_PROMPTS/00_README.md) mène au [lot 00 — Baseline](06_CODEX_PROMPTS/LOT_00_BASELINE.md).
+**Commencer par [CODEX_START_HERE.md](CODEX_START_HERE.md).** Pour installer, consulter [le guide](INSTALLATION.md). Le [rapport de livraison](09_IMPLEMENTATION/RAPPORT_DE_LIVRAISON.md) récapitule le kit. La [synthèse de l’audit](01_AUDIT/ETAT_REEL_DU_DEPOT.md) indique les contrôles exécutés et les limites.
 
-| Besoin | Fichier |
+| Dossier | Contenu |
 |---|---|
-| Autorité, limites et arbitrages | [Décisions et sources](00_SOURCE_OF_TRUTH/DECISIONS_ET_SOURCES.md) |
-| Dépôt, écrans actuels et écarts | [Audit](01_AUDIT_EXISTANT/ETAT_REEL_ET_ECARTS.md) · [Parcours](01_AUDIT_EXISTANT/INVENTAIRE_FONCTIONNEL.md) |
-| Sort de chaque fichier V2 | [Audit des suppressions](01_AUDIT_EXISTANT/AUDIT_ANCIEN_HANDOFF_ET_SUPPRESSIONS.md) |
-| Fondations et valeurs | [Design system](02_FONDATIONS_V3.2/DESIGN_SYSTEM.md) · [Tokens](02_FONDATIONS_V3.2/design-tokens.json) |
-| Écrans et composants | [Spécifications](05_SCREEN_SPECS_V3.2/README.md) |
-| Photos et fixtures | [Ressources](04_VISUAL_REFERENCES/ASSET_MAPPING.md) · [Manifeste](04_VISUAL_REFERENCES/asset-manifest.json) |
-| Preuves et recette | [Protocole et grille](07_VALIDATION/RECETTE.md) · [Matrice](07_VALIDATION/MATRICE_VISUELLE.csv) |
-| Mise en œuvre et portes de sortie | [Plan](08_IMPLEMENTATION/PLAN.md) · [Rapport de préparation](08_IMPLEMENTATION/RAPPORT.md) |
+| [Sources](00_SOURCE_OF_TRUTH/SOURCES_ET_ARBITRAGES.md) | Deux PDF et arbitrages code / conception |
+| [Audit](01_AUDIT/INVENTAIRE_FONCTIONNEL.md) | Routes, API, écarts, historique et migration |
+| [Design system](02_DESIGN_SYSTEM/DESIGN_SYSTEM_V3.2.md) | Gabarits, tokens, composants, navigation, accessibilité |
+| [Assets](03_ASSETS/ASSET_MAPPING_EXTENSION.md) | Ressources réutilisées et crédits |
+| [Références](04_VISUAL_REFERENCES/extension/README.md) | Planches B, captures de main, baseline protégée et comparatifs |
+| [Écrans](05_SCREEN_SPECS/README.md) | Spécifications par écran et index |
+| [Fonctionnel](06_FONCTIONNEL/FONCTIONNALITES_EXISTANTES.md) | Contrats, états, reprise et backlog produit |
+| [Prompts Codex](07_CODEX_PROMPTS/README.md) | Les 12 lots de cette campagne |
+| [Validation](08_VALIDATION/ACCEPTANCE_CRITERIA.md) | Matrices, pages protégées et critères de sortie |
+| [Mise en œuvre](09_IMPLEMENTATION/IMPLEMENTATION_ORDER.md) | PR, dépendances, suivi et décisions |
+| [Outils](tools/README.md) | Capture, comparaison, vérification et installation locale |
 
-Depuis la racine du dépôt, vérifier le kit avec `python3 LOKASYON_PEYI_DESIGN_HANDOFF/tools/verify_v32.py`. Le plan d’intégration est incrémental. Chaque lot a une branche et une revue explicite. Référence de l’audit web et métier **e42cc6ffa69bba6c1cc5c36333adede531d6d11f**.
+Les dossiers du premier handoff restent à leurs chemins pour la provenance, la CI et les liens historiques. L’[index des lots publics](06_CODEX_PROMPTS/00_README.md) décrit la campagne déjà fusionnée. Lire le [registre des références](00_SOURCE_OF_TRUTH/INDEX_PDF.md) avant d’implémenter un écran.
