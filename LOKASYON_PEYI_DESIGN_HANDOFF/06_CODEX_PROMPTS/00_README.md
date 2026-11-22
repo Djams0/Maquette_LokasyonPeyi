@@ -1,6 +1,6 @@
-# Prompts Codex · V3.2
+# Historique · lots publics V3.2 00 à 09
 
-Commencer par [LOT_00_BASELINE.md](LOT_00_BASELINE.md) sur le dépôt Maquette_LokasyonPeyi avec le kit installé. Communiquer le SHA qui installe le kit. Le SHA d’audit figure dans chaque prompt. Vérifier le SHA courant et conserver les preuves.
+Ces lots sont l’historique de la campagne publique, maintenant fusionnée. La campagne active des espaces client commence par le [nouvel index des prompts](../07_CODEX_PROMPTS/README.md).
 
 | Lot | Mission | Dépendances | Priorité | Complexité |
 |---|---|---|---|---|

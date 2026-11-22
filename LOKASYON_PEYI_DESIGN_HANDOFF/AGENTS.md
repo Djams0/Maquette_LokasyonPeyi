@@ -1,7 +1,9 @@
-# Instructions pour le handoff V3.2
+# Instructions Codex · extension des espaces client V3.2
 
-Ce fichier s’applique au contenu du dossier. Lire le README, les décisions et le prompt du lot avant chaque intervention. La V3.2 approuvée fixe les écrans publics et leur identité. Les routes, les actions, les contrats et les permissions sont vérifiés dans le code, les API et les tests actuels. Les références V2 sont historiques. Les ressources V2 encore présentes à leur chemin d’origine préservent la provenance de l’existant.
+Ce fichier s’applique au handoff. Lire CODEX_START_HERE.md, SOURCES_ET_ARBITRAGES.md et le prompt actif depuis la racine du dépôt. Pour le code applicatif, respecter aussi les instructions du dépôt et des dossiers associés si elles apparaissent sur un SHA ultérieur.
 
-Préserver les parcours, les données fictives, le stockage, les contrôles côté serveur et la séparation client/admin. Utiliser les images exactes et les crédits de leur manifeste. Limiter les photos de modèle aux fixtures explicitement mappées. Les défauts viennent des déclarations. Les photographies tierces servent à illustrer le modèle. Éviter toute assimilation à un véhicule loué ou à un constat.
+Protéger /, /search et /vehicle/:id ainsi que leur shell, données, interactions et navigation sur tous les rôles. Garder l’administration et les contrats API hors du diff graphique. Préférer un conteneur explicite de route opérationnelle, des variantes des composants réutilisés et des feuilles client ciblées. Toute variation partagée exige une analyse d’impact et une comparaison des pages protégées.
 
-Une branche dédiée issue de la base approuvée par lot. Relever SHA, diff et preuves. Exécuter le vérificateur du kit, `npm run check`, `npm test` et les tests navigateur pertinents. La recette complète clôt le lot 09. Ouvrir une PR, attendre la validation avant le lot suivant et laisser la fusion au mainteneur.
+Les PDF fixent la direction graphique, le mock fixe les états, rôles, validations et données. Les fonctionnalités nécessitant un arbitrage produit restent au backlog. Les opérations de démonstration restent fictives. Conserver focus, droits, idempotence, formulaires, identité de session et reprise. Utiliser uniquement des données fictives et expurger les preuves.
+
+Chaque lot part d’une base vérifiée et s’arrête après une branche dédiée, une revue, les preuves, le rapport et un GO/NO-GO. Aucune fusion automatique, push forcé ou lancement implicite du lot suivant. Les artefacts de test restent ignorés ou joints à une revue expurgée. Garder les tests qui caractérisent un défaut. Lire le résultat de chaque étape de CI.

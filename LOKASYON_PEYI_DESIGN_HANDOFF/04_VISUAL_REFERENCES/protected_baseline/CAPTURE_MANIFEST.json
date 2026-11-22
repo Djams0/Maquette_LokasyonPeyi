@@ -1,0 +1,1563 @@
+{
+  "browser": "141.0.7390.37",
+  "fixedTime": "2026-11-21T16:00:00Z",
+  "locale": "fr-FR",
+  "timezone": "America/Guadeloupe",
+  "result": [
+    {
+      "type": "protected",
+      "route": "/",
+      "role": null,
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "filename": "protected-accueil-320.png",
+      "url": "/",
+      "h1": "Roulez au rythme du Péyi.",
+      "scrollWidth": 320,
+      "headings": [
+        "Votre trajet, votre façon de rouler.",
+        "Des voitures à découvrir",
+        "Comment se passe une location ?",
+        "La Guadeloupe, à votre rythme.",
+        "Consultez les détails avant de choisir.",
+        "Vous avez une voiture à proposer ?",
+        "Questions fréquentes"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-accueil-320.png",
+      "sha256": "fc42632119ca7a92dd13a06ea4d6e02fac41d5b4c098ef5b230a769d49b68d6f"
+    },
+    {
+      "type": "protected",
+      "route": "/search",
+      "role": null,
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "filename": "protected-catalogue-320.png",
+      "url": "/search",
+      "h1": "Trouvez votre prochaine voiture.",
+      "scrollWidth": 320,
+      "headings": [
+        "5 véhicules"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-catalogue-320.png",
+      "sha256": "430a7f3f265c859945f3ff09e8172fefe5958b9353695f7f358d2a6f471c6f3b"
+    },
+    {
+      "type": "protected",
+      "route": "/vehicle/v3",
+      "role": null,
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "filename": "protected-fiche-320.png",
+      "url": "/vehicle/v3",
+      "h1": "Renault Clio",
+      "scrollWidth": 320,
+      "headings": [
+        "État du véhicule et défauts déclarés",
+        "Remise et conditions",
+        "Votre période",
+        "Description",
+        "Conditions détaillées",
+        "Zone approximative",
+        "Avis sur le véhicule"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-fiche-320.png",
+      "sha256": "532f2a0c90d8e77bbb33bae3ab585e2202a97de7b1af47fac1bbd753fa36a23f"
+    },
+    {
+      "type": "protected",
+      "route": "/",
+      "role": null,
+      "viewport": {
+        "width": 375,
+        "height": 844
+      },
+      "filename": "protected-accueil-375.png",
+      "url": "/",
+      "h1": "Roulez au rythme du Péyi.",
+      "scrollWidth": 375,
+      "headings": [
+        "Votre trajet, votre façon de rouler.",
+        "Des voitures à découvrir",
+        "Comment se passe une location ?",
+        "La Guadeloupe, à votre rythme.",
+        "Consultez les détails avant de choisir.",
+        "Vous avez une voiture à proposer ?",
+        "Questions fréquentes"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-accueil-375.png",
+      "sha256": "f7e1b408055dd9c59f12da3a2e321c037405eeb6be14fde14e8300675f0cb202"
+    },
+    {
+      "type": "protected",
+      "route": "/search",
+      "role": null,
+      "viewport": {
+        "width": 375,
+        "height": 844
+      },
+      "filename": "protected-catalogue-375.png",
+      "url": "/search",
+      "h1": "Trouvez votre prochaine voiture.",
+      "scrollWidth": 375,
+      "headings": [
+        "5 véhicules"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-catalogue-375.png",
+      "sha256": "bbce15cf397a4c5c81a64608febb4592d1d86191ccfd0143b5446a75f260b141"
+    },
+    {
+      "type": "protected",
+      "route": "/vehicle/v3",
+      "role": null,
+      "viewport": {
+        "width": 375,
+        "height": 844
+      },
+      "filename": "protected-fiche-375.png",
+      "url": "/vehicle/v3",
+      "h1": "Renault Clio",
+      "scrollWidth": 375,
+      "headings": [
+        "État du véhicule et défauts déclarés",
+        "Remise et conditions",
+        "Votre période",
+        "Description",
+        "Conditions détaillées",
+        "Zone approximative",
+        "Avis sur le véhicule"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-fiche-375.png",
+      "sha256": "6e0c057aa65dfa2434437180f4f223f88ee2e8316466457f0ac037b71a7b4ad9"
+    },
+    {
+      "type": "protected",
+      "route": "/",
+      "role": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "protected-accueil-390.png",
+      "url": "/",
+      "h1": "Roulez au rythme du Péyi.",
+      "scrollWidth": 390,
+      "headings": [
+        "Votre trajet, votre façon de rouler.",
+        "Des voitures à découvrir",
+        "Comment se passe une location ?",
+        "La Guadeloupe, à votre rythme.",
+        "Consultez les détails avant de choisir.",
+        "Vous avez une voiture à proposer ?",
+        "Questions fréquentes"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-accueil-390.png",
+      "sha256": "5ac06d430251588f6859d736b647398266326c771b7c8f785a5b76a0e0ecced0"
+    },
+    {
+      "type": "protected",
+      "route": "/search",
+      "role": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "protected-catalogue-390.png",
+      "url": "/search",
+      "h1": "Trouvez votre prochaine voiture.",
+      "scrollWidth": 390,
+      "headings": [
+        "5 véhicules"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-catalogue-390.png",
+      "sha256": "1167bd67d6f7fc5645ec43bbb60de7058e6b4f6acf558f2cbfb85747772d9933"
+    },
+    {
+      "type": "protected",
+      "route": "/vehicle/v3",
+      "role": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "protected-fiche-390.png",
+      "url": "/vehicle/v3",
+      "h1": "Renault Clio",
+      "scrollWidth": 390,
+      "headings": [
+        "État du véhicule et défauts déclarés",
+        "Remise et conditions",
+        "Votre période",
+        "Description",
+        "Conditions détaillées",
+        "Zone approximative",
+        "Avis sur le véhicule"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-fiche-390.png",
+      "sha256": "a9df309e19cf14fcbe200cff818345cf2083e26d1004f0eeeec6843764431f87"
+    },
+    {
+      "type": "protected",
+      "route": "/",
+      "role": null,
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "filename": "protected-accueil-430.png",
+      "url": "/",
+      "h1": "Roulez au rythme du Péyi.",
+      "scrollWidth": 430,
+      "headings": [
+        "Votre trajet, votre façon de rouler.",
+        "Des voitures à découvrir",
+        "Comment se passe une location ?",
+        "La Guadeloupe, à votre rythme.",
+        "Consultez les détails avant de choisir.",
+        "Vous avez une voiture à proposer ?",
+        "Questions fréquentes"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-accueil-430.png",
+      "sha256": "20ab361d3a177615e3fe462b936687127a46356690a2861a8ce539809c23862a"
+    },
+    {
+      "type": "protected",
+      "route": "/search",
+      "role": null,
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "filename": "protected-catalogue-430.png",
+      "url": "/search",
+      "h1": "Trouvez votre prochaine voiture.",
+      "scrollWidth": 430,
+      "headings": [
+        "5 véhicules"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-catalogue-430.png",
+      "sha256": "3df46c41ff351b01337372e4e7ea49c3124e872f7f447c2dd541e014342e7ab3"
+    },
+    {
+      "type": "protected",
+      "route": "/vehicle/v3",
+      "role": null,
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "filename": "protected-fiche-430.png",
+      "url": "/vehicle/v3",
+      "h1": "Renault Clio",
+      "scrollWidth": 430,
+      "headings": [
+        "État du véhicule et défauts déclarés",
+        "Remise et conditions",
+        "Votre période",
+        "Description",
+        "Conditions détaillées",
+        "Zone approximative",
+        "Avis sur le véhicule"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-fiche-430.png",
+      "sha256": "eea58ca8383503639924136c2bc02af5b72e2addce3981f9bc1bff793a5f047d"
+    },
+    {
+      "type": "protected",
+      "route": "/",
+      "role": null,
+      "viewport": {
+        "width": 768,
+        "height": 950
+      },
+      "filename": "protected-accueil-768.png",
+      "url": "/",
+      "h1": "Roulez au rythme du Péyi.",
+      "scrollWidth": 768,
+      "headings": [
+        "Votre trajet, votre façon de rouler.",
+        "Des voitures à découvrir",
+        "Comment se passe une location ?",
+        "La Guadeloupe, à votre rythme.",
+        "Consultez les détails avant de choisir.",
+        "Vous avez une voiture à proposer ?",
+        "Questions fréquentes"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-accueil-768.png",
+      "sha256": "78dab9e9aeee372c96cd3c1c9270cc420bc2abd3f2555e1a8c576205334c2cb9"
+    },
+    {
+      "type": "protected",
+      "route": "/search",
+      "role": null,
+      "viewport": {
+        "width": 768,
+        "height": 950
+      },
+      "filename": "protected-catalogue-768.png",
+      "url": "/search",
+      "h1": "Trouvez votre prochaine voiture.",
+      "scrollWidth": 768,
+      "headings": [
+        "5 véhicules"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-catalogue-768.png",
+      "sha256": "6125c93aff851cbecec042019823e71ba46703dfb051e1387a64914d3e5fe296"
+    },
+    {
+      "type": "protected",
+      "route": "/vehicle/v3",
+      "role": null,
+      "viewport": {
+        "width": 768,
+        "height": 950
+      },
+      "filename": "protected-fiche-768.png",
+      "url": "/vehicle/v3",
+      "h1": "Renault Clio",
+      "scrollWidth": 768,
+      "headings": [
+        "État du véhicule et défauts déclarés",
+        "Remise et conditions",
+        "Votre période",
+        "Description",
+        "Conditions détaillées",
+        "Zone approximative",
+        "Avis sur le véhicule"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-fiche-768.png",
+      "sha256": "2e53033a125101f8b5840cd1ca77d14afba44e02f71d940e7758c3560cb97c08"
+    },
+    {
+      "type": "protected",
+      "route": "/",
+      "role": null,
+      "viewport": {
+        "width": 1024,
+        "height": 900
+      },
+      "filename": "protected-accueil-1024.png",
+      "url": "/",
+      "h1": "Roulez au rythme du Péyi.",
+      "scrollWidth": 1024,
+      "headings": [
+        "Votre trajet, votre façon de rouler.",
+        "Des voitures à découvrir",
+        "Comment se passe une location ?",
+        "La Guadeloupe, à votre rythme.",
+        "Consultez les détails avant de choisir.",
+        "Vous avez une voiture à proposer ?",
+        "Questions fréquentes"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-accueil-1024.png",
+      "sha256": "425e4eaa054bf2a0ed649ad2f7118bbec9ff62e0622dbaf5c2d123d83481a55e"
+    },
+    {
+      "type": "protected",
+      "route": "/search",
+      "role": null,
+      "viewport": {
+        "width": 1024,
+        "height": 900
+      },
+      "filename": "protected-catalogue-1024.png",
+      "url": "/search",
+      "h1": "Trouvez votre prochaine voiture.",
+      "scrollWidth": 1024,
+      "headings": [
+        "Affinez la recherche",
+        "5 véhicules"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-catalogue-1024.png",
+      "sha256": "82f181384ebdc4e3c8230633d115a5fb987acc87fd59d34638cd09188d5569ad"
+    },
+    {
+      "type": "protected",
+      "route": "/vehicle/v3",
+      "role": null,
+      "viewport": {
+        "width": 1024,
+        "height": 900
+      },
+      "filename": "protected-fiche-1024.png",
+      "url": "/vehicle/v3",
+      "h1": "Renault Clio",
+      "scrollWidth": 1024,
+      "headings": [
+        "État du véhicule et défauts déclarés",
+        "Remise et conditions",
+        "Votre période",
+        "Description",
+        "Conditions détaillées",
+        "Zone approximative",
+        "Avis sur le véhicule"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-fiche-1024.png",
+      "sha256": "c6367ee94cb8f81564c1030f267885febc524b4a674e2c64be01b6d50480eac9"
+    },
+    {
+      "type": "protected",
+      "route": "/",
+      "role": null,
+      "viewport": {
+        "width": 1280,
+        "height": 760
+      },
+      "filename": "protected-accueil-1280.png",
+      "url": "/",
+      "h1": "Roulez au rythme du Péyi.",
+      "scrollWidth": 1280,
+      "headings": [
+        "Votre trajet, votre façon de rouler.",
+        "Des voitures à découvrir",
+        "Comment se passe une location ?",
+        "La Guadeloupe, à votre rythme.",
+        "Consultez les détails avant de choisir.",
+        "Vous avez une voiture à proposer ?",
+        "Questions fréquentes"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-accueil-1280.png",
+      "sha256": "83734025af054781f7b133c357e54656610a4678ca7eb0e54180a695e5c2d34a"
+    },
+    {
+      "type": "protected",
+      "route": "/search",
+      "role": null,
+      "viewport": {
+        "width": 1280,
+        "height": 760
+      },
+      "filename": "protected-catalogue-1280.png",
+      "url": "/search",
+      "h1": "Trouvez votre prochaine voiture.",
+      "scrollWidth": 1280,
+      "headings": [
+        "Affinez la recherche",
+        "5 véhicules"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-catalogue-1280.png",
+      "sha256": "c640d797bff623e90afcfd937ad6a5f9f4eea852879fec42a059401604903db7"
+    },
+    {
+      "type": "protected",
+      "route": "/vehicle/v3",
+      "role": null,
+      "viewport": {
+        "width": 1280,
+        "height": 760
+      },
+      "filename": "protected-fiche-1280.png",
+      "url": "/vehicle/v3",
+      "h1": "Renault Clio",
+      "scrollWidth": 1280,
+      "headings": [
+        "État du véhicule et défauts déclarés",
+        "Remise et conditions",
+        "Votre période",
+        "Description",
+        "Conditions détaillées",
+        "Zone approximative",
+        "Avis sur le véhicule"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-fiche-1280.png",
+      "sha256": "b5368f30b58909e26104a6cac7cd11dd70c7630dba681ee15d893b95321e9e09"
+    },
+    {
+      "type": "protected",
+      "route": "/",
+      "role": null,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "protected-accueil-1440.png",
+      "url": "/",
+      "h1": "Roulez au rythme du Péyi.",
+      "scrollWidth": 1440,
+      "headings": [
+        "Votre trajet, votre façon de rouler.",
+        "Des voitures à découvrir",
+        "Comment se passe une location ?",
+        "La Guadeloupe, à votre rythme.",
+        "Consultez les détails avant de choisir.",
+        "Vous avez une voiture à proposer ?",
+        "Questions fréquentes"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-accueil-1440.png",
+      "sha256": "a75728edc72f502a2b0a5eeff41b50bb8d67f2355c72ff3967ec76c4e79f952c"
+    },
+    {
+      "type": "protected",
+      "route": "/search",
+      "role": null,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "protected-catalogue-1440.png",
+      "url": "/search",
+      "h1": "Trouvez votre prochaine voiture.",
+      "scrollWidth": 1440,
+      "headings": [
+        "Affinez la recherche",
+        "5 véhicules"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-catalogue-1440.png",
+      "sha256": "340515b9058e3161e26e978f698ac83fae8d550be3ac3db9082689a0faba3e86"
+    },
+    {
+      "type": "protected",
+      "route": "/vehicle/v3",
+      "role": null,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "protected-fiche-1440.png",
+      "url": "/vehicle/v3",
+      "h1": "Renault Clio",
+      "scrollWidth": 1440,
+      "headings": [
+        "État du véhicule et défauts déclarés",
+        "Remise et conditions",
+        "Votre période",
+        "Description",
+        "Conditions détaillées",
+        "Zone approximative",
+        "Avis sur le véhicule"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/protected_baseline/protected-fiche-1440.png",
+      "sha256": "e56831ad73de27da496b085e7cebb8125e19a27f44a53f0bf32f7384de5ff80c"
+    },
+    {
+      "type": "client",
+      "route": "/login",
+      "role": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-connexion-390.png",
+      "url": "/login",
+      "h1": "Heureux de vous revoir",
+      "scrollWidth": 390,
+      "headings": [],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-connexion-390.jpg",
+      "sha256": "b054014e485d517522557470931f8f6b6bfbf24b7d6d64bdaccb38eba1e5301f"
+    },
+    {
+      "type": "client",
+      "route": "/register",
+      "role": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-inscription-390.png",
+      "url": "/register",
+      "h1": "Bienvenue au Péyi",
+      "scrollWidth": 390,
+      "headings": [],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-inscription-390.jpg",
+      "sha256": "6c04175339c82c42828ac68faded24475ea6a5c9b4f30307120b1523b92ca37d"
+    },
+    {
+      "type": "client",
+      "route": "/faq",
+      "role": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-faq-390.png",
+      "url": "/faq",
+      "h1": "Les réponses à vos questions.",
+      "scrollWidth": 390,
+      "headings": [
+        "Encore une question ?"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-faq-390.jpg",
+      "sha256": "53ac4fb2923b7e0022e71c7a7dd87c3ea058129232bd53c47ee8bf13ca1809ad"
+    },
+    {
+      "type": "client",
+      "route": "/owner/start",
+      "role": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-proprietaire-intro-390.png",
+      "url": "/owner/start",
+      "h1": "Faites rouler le partage.",
+      "scrollWidth": 390,
+      "headings": [
+        "Estimer un revenu brut",
+        "Un cadre à vérifier",
+        "Vous gardez la main",
+        "Préparer votre espace propriétaire"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-proprietaire-intro-390.jpg",
+      "sha256": "73beae5cc52932150382298b06b2a9ab48981d47e7fd94b468583a19e48e2a5e"
+    },
+    {
+      "type": "client",
+      "route": "/profile",
+      "role": "renter",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-profil-390.png",
+      "url": "/profile",
+      "h1": "Mon profil",
+      "scrollWidth": 390,
+      "headings": [
+        "Votre compte",
+        "Espace propriétaire",
+        "Aide"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-profil-390.jpg",
+      "sha256": "256565d1746052c2bc4891ed2bba8eadc149d6cc0796d65399c7ea55db5a7994"
+    },
+    {
+      "type": "client",
+      "route": "/profile/documents",
+      "role": "newcomer",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-documents-390.png",
+      "url": "/profile/documents",
+      "h1": "Vos documents",
+      "scrollWidth": 390,
+      "headings": [
+        "Permis de conduire",
+        "Pièce d’identité"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-documents-390.jpg",
+      "sha256": "2b4e2623e883143f27b2ae415cd2efa291e439fefa20ee2c4f2ee75d23ad5134"
+    },
+    {
+      "type": "client",
+      "route": "/notifications",
+      "role": "renter",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-notifications-390.png",
+      "url": "/notifications",
+      "h1": "Notifications",
+      "scrollWidth": 390,
+      "headings": [
+        "Tout est à jour"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-notifications-390.jpg",
+      "sha256": "fcc0f60f912433ec57fd6fda94db337343f4af21dc6f5edeeafb7587adbeb79f"
+    },
+    {
+      "type": "client",
+      "route": "/profile/reviews",
+      "role": "renter",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-avis-390.png",
+      "url": "/profile/reviews",
+      "h1": "Mes avis",
+      "scrollWidth": 390,
+      "headings": [
+        "5 / 5"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-avis-390.jpg",
+      "sha256": "56047f33ad6ac36eb7ff5709d3c8f107f4e092dac79ff83e2d0d67e409e353e9"
+    },
+    {
+      "type": "client",
+      "route": "/rentals",
+      "role": "renter",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-locations-390.png",
+      "url": "/rentals",
+      "h1": "Mes locations",
+      "scrollWidth": 390,
+      "headings": [
+        "Pas de location dans cette rubrique"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-locations-390.jpg",
+      "sha256": "c41aea0172edca933dc8864fdf987f030d53b8d5b8341acf160e7cff52feeb95"
+    },
+    {
+      "type": "client",
+      "route": "/messages",
+      "role": "renter",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-messages-390.png",
+      "url": "/messages",
+      "h1": "Messagerie",
+      "scrollWidth": 390,
+      "headings": [
+        "Vos conversations"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-messages-390.jpg",
+      "sha256": "2af24aa8151c045eeafcebbedf3e77708df9cd7bfec364c71f7886eed2b2f475"
+    },
+    {
+      "type": "client",
+      "route": "/assistance",
+      "role": "renter",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-assistance-390.png",
+      "url": "/assistance",
+      "h1": "Comment pouvons-nous vous aider ?",
+      "scrollWidth": 390,
+      "headings": [],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-assistance-390.jpg",
+      "sha256": "3655d492828b0100afea476ff93c245ae725fb7ad8fa3c20deded93c89229cd1"
+    },
+    {
+      "type": "client",
+      "route": "/cases",
+      "role": "renter",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-dossiers-390.png",
+      "url": "/cases",
+      "h1": "Mes dossiers et assistance",
+      "scrollWidth": 390,
+      "headings": [
+        "Demande d’information"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-dossiers-390.jpg",
+      "sha256": "2b68056dc00ad7abde1308f56b9319cdcf5c4c8c8dff98bf2843f48ed3449dc8"
+    },
+    {
+      "type": "client",
+      "route": "/cases/case-demo",
+      "role": "renter",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-dossier-390.png",
+      "url": "/cases/case-demo",
+      "h1": "Demande d’information",
+      "scrollWidth": 390,
+      "headings": [
+        "Votre demande",
+        "Échanges partagés"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-dossier-390.jpg",
+      "sha256": "1d7c7a5ed173d8ebf743f6cd9c34b69f83aa79cb774b54320cf9bc8db03a9680"
+    },
+    {
+      "type": "client",
+      "route": "/owner",
+      "role": "owner",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-owner-390.png",
+      "url": "/owner",
+      "h1": "Aujourd’hui",
+      "scrollWidth": 390,
+      "headings": [
+        "Votre parc, à votre rythme",
+        "Mon parc",
+        "Peugeot 208",
+        "Dacia Duster",
+        "Renault Clio"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-owner-390.jpg",
+      "sha256": "496ba4f568313566a89bcebba468e55804cd3783fd8631fb0f2a93431beafc86"
+    },
+    {
+      "type": "client",
+      "route": "/owner/vehicles",
+      "role": "owner",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-parc-390.png",
+      "url": "/owner/vehicles",
+      "h1": "Mes véhicules",
+      "scrollWidth": 390,
+      "headings": [
+        "Peugeot 208",
+        "Dacia Duster",
+        "Renault Clio",
+        "Citroën C3",
+        "Renault Twingo"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-parc-390.jpg",
+      "sha256": "b79ab1c0d187d07ea2800199d9fa167b9360f9c4e7b9ba4e2f4b29848d176364"
+    },
+    {
+      "type": "client",
+      "route": "/owner/vehicles/v1",
+      "role": "owner",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-gestion-390.png",
+      "url": "/owner/vehicles/v1",
+      "h1": "Peugeot 208",
+      "scrollWidth": 390,
+      "headings": [
+        "État et photos",
+        "Calendrier de disponibilité",
+        "Modifier les informations",
+        "Gérer l’annonce",
+        "Documents du véhicule",
+        "Territoire"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-gestion-390.jpg",
+      "sha256": "e26e1fee525352147790578b384243aa880d8322d09581225e6a87f65f8f72a4"
+    },
+    {
+      "type": "client",
+      "route": "/owner/requests",
+      "role": "owner",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-demandes-390.png",
+      "url": "/owner/requests",
+      "h1": "Demandes et locations",
+      "scrollWidth": 390,
+      "headings": [
+        "Aucune demande dans cette vue"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-demandes-390.jpg",
+      "sha256": "c298d8c0d37b94cca3772612e8a3c07192593b5d3caafab1f35c07922c0b6fd3"
+    },
+    {
+      "type": "client",
+      "route": "/owner/revenue",
+      "role": "owner",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-revenus-390.png",
+      "url": "/owner/revenue",
+      "h1": "Mes revenus fictifs",
+      "scrollWidth": 390,
+      "headings": [
+        "Aucun paiement simulé"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-revenus-390.jpg",
+      "sha256": "795bd5a1ad10b2841a9ea2e74983afa2b3dbab0d32d38783d542c88b552762fc"
+    },
+    {
+      "type": "client",
+      "route": "/owner/reputation",
+      "role": "owner",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-reputation-390.png",
+      "url": "/owner/reputation",
+      "h1": "Réputation et avis",
+      "scrollWidth": 390,
+      "headings": [
+        "5 / 5"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-reputation-390.jpg",
+      "sha256": "692b3d539e18cd30ca96f9e3320c670dc8259fbe0f1f6cd7ab4b9b71b608c330"
+    },
+    {
+      "type": "client",
+      "route": "/owner/vehicles/new?step=5",
+      "role": "owner",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-assistant-390.png",
+      "url": "/owner/vehicles/new",
+      "h1": "État et photos",
+      "scrollWidth": 390,
+      "headings": [
+        "Équipements",
+        "Photos"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-assistant-390.jpg",
+      "sha256": "51103e7ebd03bfaa228d567b275aca3d7ea36d69fb02b559fc528f8543f6d277"
+    },
+    {
+      "type": "client",
+      "route": "/demo",
+      "role": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-demo-390.png",
+      "url": "/demo",
+      "h1": "Explorez chaque point de vue.",
+      "scrollWidth": 390,
+      "headings": [
+        "Changer de profil client",
+        "Scénario complet",
+        "Ouvrir le back-office indépendant",
+        "Tester les états de l’interface"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-demo-390.jpg",
+      "sha256": "504400cedf655463ad8d582f5aaa2bc5ae7de021f1f5d24e7ebbf101e2c8ea15"
+    },
+    {
+      "type": "client",
+      "route": "/demo/audit",
+      "role": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-audit-390.png",
+      "url": "/demo/audit",
+      "h1": "Atelier d’audit",
+      "scrollWidth": 390,
+      "headings": [
+        "Scénarios et limites"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-audit-390.jpg",
+      "sha256": "3f1f20a4660d269992485e0c184d2d0165009b16a9070bdb122ef9a6e1369093"
+    },
+    {
+      "type": "client",
+      "route": "/design-system",
+      "role": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "client-composants-390.png",
+      "url": "/design-system",
+      "h1": "Les fondations de Péyi contemporain.",
+      "scrollWidth": 390,
+      "headings": [
+        "La recherche sur fond clair ou sombre",
+        "Actions",
+        "Champs et reprise",
+        "États explicites",
+        "Informations et retours",
+        "État vide",
+        "Aucun élément ici",
+        "Chargement",
+        "Une typographie lisible"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-composants-390.jpg",
+      "sha256": "7ae55e23ab9dafa1b609c780015934711b3b826f3523ef722d3a6ea5a5fb5cdc"
+    },
+    {
+      "type": "client",
+      "route": "/login",
+      "role": null,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-connexion-1440.png",
+      "url": "/login",
+      "h1": "Heureux de vous revoir",
+      "scrollWidth": 1440,
+      "headings": [
+        "Votre voyage commence par une rencontre."
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-connexion-1440.jpg",
+      "sha256": "d280b85d812922c6d68c2e84b7c3e9a2d7cd30402e91911f9b5462511d91e81a"
+    },
+    {
+      "type": "client",
+      "route": "/register",
+      "role": null,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-inscription-1440.png",
+      "url": "/register",
+      "h1": "Bienvenue au Péyi",
+      "scrollWidth": 1440,
+      "headings": [
+        "Votre voyage commence par une rencontre."
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-inscription-1440.jpg",
+      "sha256": "274549fc36a6edaefd7b314aaae4d480d78dcf5ed532c3e4195961dd6e76ec84"
+    },
+    {
+      "type": "client",
+      "route": "/faq",
+      "role": null,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-faq-1440.png",
+      "url": "/faq",
+      "h1": "Les réponses à vos questions.",
+      "scrollWidth": 1440,
+      "headings": [
+        "Encore une question ?"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-faq-1440.jpg",
+      "sha256": "8daea9d820eac791867489b5a00b578993a8fa6b70b8fdd1f2427baa5c6a259a"
+    },
+    {
+      "type": "client",
+      "route": "/owner/start",
+      "role": null,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-proprietaire-intro-1440.png",
+      "url": "/owner/start",
+      "h1": "Faites rouler le partage.",
+      "scrollWidth": 1440,
+      "headings": [
+        "Estimer un revenu brut",
+        "Un cadre à vérifier",
+        "Vous gardez la main",
+        "Préparer votre espace propriétaire"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-proprietaire-intro-1440.jpg",
+      "sha256": "47d9dde983b1441210a99ce4b8ed4529ee5d2ddb16eaf50a59a31aecd9326e63"
+    },
+    {
+      "type": "client",
+      "route": "/profile",
+      "role": "renter",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-profil-1440.png",
+      "url": "/profile",
+      "h1": "Mon profil",
+      "scrollWidth": 1440,
+      "headings": [
+        "Votre compte",
+        "Espace propriétaire",
+        "Aide"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-profil-1440.jpg",
+      "sha256": "4e1e4a40e85b2aac7bbe9dc42000a5b09d5c0a99ce3836fff4f6dd670b8117d6"
+    },
+    {
+      "type": "client",
+      "route": "/profile/documents",
+      "role": "newcomer",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-documents-1440.png",
+      "url": "/profile/documents",
+      "h1": "Vos documents",
+      "scrollWidth": 1440,
+      "headings": [
+        "Permis de conduire",
+        "Pièce d’identité"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-documents-1440.jpg",
+      "sha256": "fccf5d7abc583f00789ba1837248d5cfbf845cde1f6253b30ded5c8ef65459cb"
+    },
+    {
+      "type": "client",
+      "route": "/notifications",
+      "role": "renter",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-notifications-1440.png",
+      "url": "/notifications",
+      "h1": "Notifications",
+      "scrollWidth": 1440,
+      "headings": [
+        "Tout est à jour"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-notifications-1440.jpg",
+      "sha256": "5894401a03e941080ce4197fc5ca4a5fdff6ca27f0d89a08178e03e335ecb02f"
+    },
+    {
+      "type": "client",
+      "route": "/profile/reviews",
+      "role": "renter",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-avis-1440.png",
+      "url": "/profile/reviews",
+      "h1": "Mes avis",
+      "scrollWidth": 1440,
+      "headings": [
+        "5 / 5"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-avis-1440.jpg",
+      "sha256": "036201086730e4965440e70c2b1e6333d8d8e4f56e6df345fd63f19b5bfccfcd"
+    },
+    {
+      "type": "client",
+      "route": "/rentals",
+      "role": "renter",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-locations-1440.png",
+      "url": "/rentals",
+      "h1": "Mes locations",
+      "scrollWidth": 1440,
+      "headings": [
+        "Pas de location dans cette rubrique"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-locations-1440.jpg",
+      "sha256": "1e1f2a7cb1f64b9006f92c99f7ceaab1971d00b8a49f51a7a49cc7ad04d94c83"
+    },
+    {
+      "type": "client",
+      "route": "/messages",
+      "role": "renter",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-messages-1440.png",
+      "url": "/messages",
+      "h1": "Messagerie",
+      "scrollWidth": 1440,
+      "headings": [
+        "Vos conversations"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-messages-1440.jpg",
+      "sha256": "e8972da8b4278e57cca1aa784af03fe7ecb30f06f2b29b4884311bbdd8a5ae67"
+    },
+    {
+      "type": "client",
+      "route": "/assistance",
+      "role": "renter",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-assistance-1440.png",
+      "url": "/assistance",
+      "h1": "Comment pouvons-nous vous aider ?",
+      "scrollWidth": 1440,
+      "headings": [],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-assistance-1440.jpg",
+      "sha256": "701b4c9f9ced8428336c89d0b0566e0f55ea2c27b03e707c98dca56d13a54059"
+    },
+    {
+      "type": "client",
+      "route": "/cases",
+      "role": "renter",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-dossiers-1440.png",
+      "url": "/cases",
+      "h1": "Mes dossiers et assistance",
+      "scrollWidth": 1440,
+      "headings": [
+        "Demande d’information"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-dossiers-1440.jpg",
+      "sha256": "b787744137461cbc00e3fa71cf2c4aabfdd72e8e27572f36b72b3638c5931ac0"
+    },
+    {
+      "type": "client",
+      "route": "/cases/case-demo",
+      "role": "renter",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-dossier-1440.png",
+      "url": "/cases/case-demo",
+      "h1": "Demande d’information",
+      "scrollWidth": 1440,
+      "headings": [
+        "Votre demande",
+        "Échanges partagés"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-dossier-1440.jpg",
+      "sha256": "d5c9166f781825f8bf09cb186f6138c6a2503972fbc761f8790c15491029d66e"
+    },
+    {
+      "type": "client",
+      "route": "/owner",
+      "role": "owner",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-owner-1440.png",
+      "url": "/owner",
+      "h1": "Aujourd’hui",
+      "scrollWidth": 1440,
+      "headings": [
+        "Votre parc, à votre rythme",
+        "Mon parc",
+        "Peugeot 208",
+        "Dacia Duster",
+        "Renault Clio"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-owner-1440.jpg",
+      "sha256": "4a2ec730fdc310f40eeba91cdaff5edf2e5ca0786370d2387b751f4967fb8b4e"
+    },
+    {
+      "type": "client",
+      "route": "/owner/vehicles",
+      "role": "owner",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-parc-1440.png",
+      "url": "/owner/vehicles",
+      "h1": "Mes véhicules",
+      "scrollWidth": 1440,
+      "headings": [
+        "Peugeot 208",
+        "Dacia Duster",
+        "Renault Clio",
+        "Citroën C3",
+        "Renault Twingo"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-parc-1440.jpg",
+      "sha256": "cbe3478d26b8d0a1c74738588ca8fe8abd25a10277811b33806b69f307ccb4a8"
+    },
+    {
+      "type": "client",
+      "route": "/owner/vehicles/v1",
+      "role": "owner",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-gestion-1440.png",
+      "url": "/owner/vehicles/v1",
+      "h1": "Peugeot 208",
+      "scrollWidth": 1440,
+      "headings": [
+        "État et photos",
+        "Calendrier de disponibilité",
+        "Modifier les informations",
+        "Gérer l’annonce",
+        "Documents du véhicule",
+        "Territoire"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-gestion-1440.jpg",
+      "sha256": "1bbde77aaf74ac3223bb5b05edd418aa554412a225823975974341e489da70e6"
+    },
+    {
+      "type": "client",
+      "route": "/owner/requests",
+      "role": "owner",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-demandes-1440.png",
+      "url": "/owner/requests",
+      "h1": "Demandes et locations",
+      "scrollWidth": 1440,
+      "headings": [
+        "Aucune demande dans cette vue"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-demandes-1440.jpg",
+      "sha256": "2cca7a708225275665950b01e9ce97edfa7398ffebe39d17efbf0a9e264247c5"
+    },
+    {
+      "type": "client",
+      "route": "/owner/revenue",
+      "role": "owner",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-revenus-1440.png",
+      "url": "/owner/revenue",
+      "h1": "Mes revenus fictifs",
+      "scrollWidth": 1440,
+      "headings": [
+        "Aucun paiement simulé"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-revenus-1440.jpg",
+      "sha256": "cd4e0385629ebe9eabcab3bf11184bdf16051791ff104af708eff197da64da86"
+    },
+    {
+      "type": "client",
+      "route": "/owner/reputation",
+      "role": "owner",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-reputation-1440.png",
+      "url": "/owner/reputation",
+      "h1": "Réputation et avis",
+      "scrollWidth": 1440,
+      "headings": [
+        "5 / 5"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-reputation-1440.jpg",
+      "sha256": "980e25060ad78ff5a1d87eed948c439f7a6d1aff0a37a288560b540b9e9efb16"
+    },
+    {
+      "type": "client",
+      "route": "/owner/vehicles/new?step=5",
+      "role": "owner",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-assistant-1440.png",
+      "url": "/owner/vehicles/new",
+      "h1": "État et photos",
+      "scrollWidth": 1440,
+      "headings": [
+        "Équipements",
+        "Photos"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-assistant-1440.jpg",
+      "sha256": "d2cde47da3c7ccad67fde320329f2fc59c23c142a68c760c458e83fc5da6f783"
+    },
+    {
+      "type": "client",
+      "route": "/demo",
+      "role": null,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-demo-1440.png",
+      "url": "/demo",
+      "h1": "Explorez chaque point de vue.",
+      "scrollWidth": 1440,
+      "headings": [
+        "Changer de profil client",
+        "Scénario complet",
+        "Ouvrir le back-office indépendant",
+        "Tester les états de l’interface"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-demo-1440.jpg",
+      "sha256": "073497c396e36437319dbc5b01651b9fe4c38f5c63e4562e73b3c66349815b99"
+    },
+    {
+      "type": "client",
+      "route": "/demo/audit",
+      "role": null,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-audit-1440.png",
+      "url": "/demo/audit",
+      "h1": "Atelier d’audit",
+      "scrollWidth": 1440,
+      "headings": [
+        "Scénarios et limites"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-audit-1440.jpg",
+      "sha256": "999ed465bcc761ccc72694cd349d28b742decdb98d3a2ebab19022e2fa6a5151"
+    },
+    {
+      "type": "client",
+      "route": "/design-system",
+      "role": null,
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "filename": "client-composants-1440.png",
+      "url": "/design-system",
+      "h1": "Les fondations de Péyi contemporain.",
+      "scrollWidth": 1440,
+      "headings": [
+        "La recherche sur fond clair ou sombre",
+        "Actions",
+        "Champs et reprise",
+        "États explicites",
+        "Informations et retours",
+        "État vide",
+        "Aucun élément ici",
+        "Chargement",
+        "Une typographie lisible"
+      ],
+      "errorsVisible": [],
+      "errors": [],
+      "kit_path": "04_VISUAL_REFERENCES/extension/actuel/client-composants-1440.jpg",
+      "sha256": "c928426d7cb182db6e61904c351ee7640fe6552483a0ccaa08b53467e22d9289"
+    }
+  ]
+}

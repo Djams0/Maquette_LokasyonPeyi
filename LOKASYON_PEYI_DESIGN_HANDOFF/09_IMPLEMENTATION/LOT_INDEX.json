@@ -1,0 +1,497 @@
+{
+  "base": "4338f5f7ca252f4d4f02021ec47a226d0d2d6064",
+  "lots": [
+    {
+      "slug": "BASELINE",
+      "title": "Baseline et protection",
+      "deps": [],
+      "priority": "P0/S",
+      "groups": [
+        "PROTECTION",
+        "OUTILS"
+      ],
+      "pages": [
+        13,
+        16,
+        21,
+        33,
+        43
+      ],
+      "files": [
+        "client/app.js",
+        "client/shell.js",
+        "client/pages/navigation.js",
+        "client/styles/client.css",
+        "ui/base.css",
+        "ui/tokens.css",
+        "ui/components.js",
+        ".github/workflows/ci.yml"
+      ],
+      "tests": [
+        "tests/browser/visual-qa.spec.js",
+        "tests/browser/search.spec.js",
+        "tests/browser/navigation.spec.js",
+        "tests/browser/maquette.spec.js"
+      ],
+      "mission": "Reproduire la baseline locale et préparer les preuves de comparaison. Comparer main avec le SHA verrouillé du kit sans changer le rendu.",
+      "desktop": "Stick aux captures protégées et aux scènes de référence actuelles. Noter les variantes à fixture différente.",
+      "mobile": "Capturer les 8 largeurs. Mesurer débordement, focus natif à 320, clavier de formulaire et navigateur.",
+      "allow": "Aucune modification applicative. Sortir un relevé avant/cible, une table des tests et un historique PUB-01 pour le tiroir.",
+      "accept": "Un SHA, des jeux jetables et le résultat des 174 cas et des profils. Zéro autre échec inexpliqué; reproduire et classer la réserve historique.",
+      "risks": "Version Chromium, données, diffs causés par les fixtures; noter CI souple même si elle est verte.",
+      "index": 0,
+      "prompt": "07_CODEX_PROMPTS/LOT_00_BASELINE.md"
+    },
+    {
+      "slug": "FOUNDATIONS",
+      "title": "Fondations des surfaces client",
+      "deps": [
+        0
+      ],
+      "priority": "P1/M",
+      "groups": [
+        "OUTILS",
+        "PROTECTION"
+      ],
+      "pages": [
+        11,
+        12,
+        43,
+        44,
+        45
+      ],
+      "files": [
+        "client/styles/client.css",
+        "ui/tokens.css",
+        "ui/base.css",
+        "ui/components.js",
+        "client/shell.js",
+        "client/pages/navigation.js",
+        "client/pages/demo.js"
+      ],
+      "tests": [
+        "tests/browser/components.spec.js",
+        "tests/browser/visual-qa.spec.js",
+        "tests/browser/admin.spec.js",
+        "tests/browser/navigation.spec.js"
+      ],
+      "mission": "Installer gabarits, contrôles, cartes et feedback avec une portée limitée. Réutiliser les helpers et mesurer leur impact sur les routes publiques et Admin.",
+      "desktop": "1200 utile, rails 280–360, padding 20–24, Nunito opérationnel et Lora éditorial. Vérifier h1 de demande et résultat.",
+      "mobile": "Portée sous main, 12/16 px de marge, cibles 44 px. Vérifier dialogue à 320 et zoom, capsule publique intacte.",
+      "allow": "Créer variantes scoppées de composant et un échantillon de revue sans déplacer les styles de découverte.",
+      "accept": "Chaque variante est approuvée par état; rendu protégé identique et admin comparé si shared. Préserver verre public et modal natif.",
+      "risks": "Cascade globale opaque, tailles par défaut, focus et comportement partagé du helper bindForm.",
+      "index": 1,
+      "prompt": "07_CODEX_PROMPTS/LOT_01_FOUNDATIONS.md"
+    },
+    {
+      "slug": "ACCOUNT",
+      "title": "Compte et authentification simulée",
+      "deps": [
+        1
+      ],
+      "priority": "P1/M",
+      "groups": [
+        "ACCOUNT"
+      ],
+      "pages": [
+        13,
+        14,
+        15,
+        44
+      ],
+      "files": [
+        "client/pages/account.js",
+        "client/pages/navigation.js",
+        "client/app.js",
+        "client/styles/client.css",
+        "ui/components.js"
+      ],
+      "tests": [
+        "tests/browser/navigation.spec.js",
+        "tests/browser/booking.spec.js",
+        "tests/browser/maquette.spec.js"
+      ],
+      "mission": "Reprendre connexion, inscription, profil et pièces. Préserver bfcache, /me et retour next. Les notifications relèvent de 06 et les avis de 09.",
+      "desktop": "Carte auth 55–60% formulaire et bourg crédité à droite; compte avec zone identitaire et rail actions; documents par type et statut.",
+      "mobile": "Formulaire en plein contenu et retour accessible; cacher uniquement le panneau décoratif; action de justificatif compacte ou pleine largeur.",
+      "allow": "Adapter le rendu des fonctions login/profile/documents et leurs classes. Garder paramètres et contrats. Tester /owner/start et demande après login.",
+      "accept": "Invité revient à la fiche et à la période. Profil incomplet, documents versionnés, raison de refus et déconnexion cohérents.",
+      "risks": "Partage d’account.js, redirection next, persona suspendu; session et retour entre comptes.",
+      "index": 2,
+      "prompt": "07_CODEX_PROMPTS/LOT_02_ACCOUNT.md"
+    },
+    {
+      "slug": "RENTALS",
+      "title": "Liste et demande de location",
+      "deps": [
+        2
+      ],
+      "priority": "P1/M",
+      "groups": [
+        "RENTALS"
+      ],
+      "pages": [
+        16,
+        17,
+        27
+      ],
+      "files": [
+        "client/pages/rentals.js",
+        "client/pages/booking-state.js",
+        "client/pages/search-state.js",
+        "client/styles/client.css",
+        "ui/components.js"
+      ],
+      "tests": [
+        "tests/browser/booking.spec.js",
+        "tests/browser/vehicle.spec.js",
+        "tests/browser/search.spec.js",
+        "tests/browser/maquette.spec.js"
+      ],
+      "mission": "Recomposer /rentals et /request/:id à partir des vrais états. Le suivi et le paiement restent au lot 04.",
+      "desktop": "Liste, onglets, carte état et prix; récapitulatif véhicule et période, rail estimation et effet de la demande.",
+      "mobile": "Date/période et statut avant CTA; pas de sticky masquant confirmation. Retours contextualisés sur historique.",
+      "allow": "Réorganiser cartes et formulaire; garder clé, brouillon, estimation, URL fiche et comportements d’erreur exacts.",
+      "accept": "Dates explicites, estimation unité/jour, retours exacts, une demande avec double clic ou réponse perdue, garde compte incomplet.",
+      "risks": "Régression fiche via import; lecture de tarif fictif, prise d’action sans données, perte des filtres ou demande dupliquée.",
+      "index": 3,
+      "prompt": "07_CODEX_PROMPTS/LOT_03_RENTALS.md"
+    },
+    {
+      "slug": "RENTAL_DETAIL_PAYMENT",
+      "title": "Suivi, paiement et caution",
+      "deps": [
+        3
+      ],
+      "priority": "P0/L",
+      "groups": [
+        "RENTAL_DETAIL",
+        "PAYMENT"
+      ],
+      "pages": [
+        18,
+        19,
+        20
+      ],
+      "files": [
+        "client/pages/rentals.js",
+        "client/pages/booking-state.js",
+        "client/styles/client.css",
+        "ui/components.js",
+        "api/modules/rentals.mjs"
+      ],
+      "tests": [
+        "tests/browser/booking.spec.js",
+        "tests/browser/navigation.spec.js",
+        "tests/browser/maquette.spec.js",
+        "tests/browser/visual-qa.spec.js"
+      ],
+      "mission": "Faire ressortir action, acteur et prérequis, suivi à sept jalons et paiement fictif distinct de la caution.",
+      "desktop": "Carte d’action profonde avant timeline, rail véhicule/quote, panneau de paiement opaque sans contrôle bancaire.",
+      "mobile": "CTA dans le flux; passé repliable accessible, devis après action avec montant et mention claire; petits écrans sans sticky. ",
+      "allow": "Modifier rendus rental/payment et préférences de mise en page, sans récrire rentalNext ni les transitions API.",
+      "accept": "Toute la chaîne demande→clôture par les bons rôles. Refus récupérable et retour, actes et prérequis bien séparés; paiement fictif uniquement.",
+      "risks": "Transition non autorisée, caution confondue, rendez-vous privé exposé, état terminal marqué terminé à tort.",
+      "index": 4,
+      "prompt": "07_CODEX_PROMPTS/LOT_04_RENTAL_DETAIL_PAYMENT.md"
+    },
+    {
+      "slug": "INSPECTION",
+      "title": "États des lieux",
+      "deps": [
+        4
+      ],
+      "priority": "P1/L",
+      "groups": [
+        "INSPECTION"
+      ],
+      "pages": [
+        21,
+        22,
+        23
+      ],
+      "files": [
+        "client/pages/inspection.js",
+        "client/pages/booking-state.js",
+        "client/styles/client.css",
+        "ui/components.js",
+        "api/modules/rentals.mjs"
+      ],
+      "tests": [
+        "tests/browser/maquette.spec.js",
+        "tests/browser/booking.spec.js",
+        "tests/browser/components.spec.js"
+      ],
+      "mission": "Réorganiser la prise de vue guidée et le formulaire en conservant le contrat photo/save/finalize des deux phases.",
+      "desktop": "Grille de vues et panneau compteur/carburant/observations. Statut version et lecture du constat verrouillé.",
+      "mobile": "La première vue manquante, le formulaire et le bouton de retour restent atteignables. Autres vues visibles dans une liste compacte.",
+      "allow": "Ajuster le rendu et le focus après capture et remplacement. Réutiliser le dialogue simulé, pointer une réserve vers le dossier.",
+      "accept": "Huit vues distinctes, impossibilité de finaliser incomplète, charge bornée, km retour ≥ départ; prérequis de remise et retour vrais.",
+      "risks": "Confusion photo/constat, scroll, navigateur/OS réel sollicité, remplacement effaçant la version bonne.",
+      "index": 5,
+      "prompt": "07_CODEX_PROMPTS/LOT_05_INSPECTION.md"
+    },
+    {
+      "slug": "MESSAGING_NOTIFICATIONS",
+      "title": "Messagerie et notifications",
+      "deps": [
+        2,
+        5
+      ],
+      "priority": "P0/L",
+      "groups": [
+        "MESSAGING",
+        "NOTIFICATIONS"
+      ],
+      "pages": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "files": [
+        "client/pages/messaging.js",
+        "client/pages/message-state.js",
+        "client/pages/account.js",
+        "client/pages/navigation.js",
+        "client/styles/client.css",
+        "ui/components.js",
+        "api/modules/communication.mjs"
+      ],
+      "tests": [
+        "tests/browser/messaging.spec.js",
+        "tests/browser/navigation.spec.js",
+        "tests/browser/maquette.spec.js"
+      ],
+      "mission": "Moderniser la liste, le fil, les notifications et les états d’envoi/reprise; respecter participants et q.",
+      "desktop": "Deux zones, inbox env. 320 px, contexte véhicule, attente/action marquer tout comme lu. Composer et retry près du fil.",
+      "mobile": "Liste puis fil, q restauré; barre basse écartée du fil, saisie et annulation atteignables avec clavier.",
+      "allow": "Adapter le rendu et l’agencement; conserver brouillon, corps/clé/ID, relecture /me et endpoint de lecture globale.",
+      "accept": "Aucun double envoi avant/après écriture, aucune reprise de fil d’un autre compte, destinations coordonnées avec la notification.",
+      "risks": "Faux accusé de lecture, faux lien location, perte brouillon, URL de retour hors périmètre, perte focus lors de rafraîchissement.",
+      "index": 6,
+      "prompt": "07_CODEX_PROMPTS/LOT_06_MESSAGING_NOTIFICATIONS.md"
+    },
+    {
+      "slug": "OWNER_DASHBOARD",
+      "title": "Espace propriétaire et calendrier",
+      "deps": [
+        4,
+        6
+      ],
+      "priority": "P1/L",
+      "groups": [
+        "OWNER_DASHBOARD",
+        "OWNER_VEHICLES",
+        "OWNER_REQUESTS"
+      ],
+      "pages": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        42
+      ],
+      "files": [
+        "client/pages/owner.js",
+        "client/pages/owner-workspace.js",
+        "client/pages/owner-state.js",
+        "client/pages/vehicle-media.js",
+        "client/pages/vehicle-presentation.js",
+        "client/styles/client.css",
+        "ui/components.js",
+        "api/modules/vehicles.mjs"
+      ],
+      "tests": [
+        "tests/browser/owner.spec.js",
+        "tests/browser/booking.spec.js",
+        "tests/browser/navigation.spec.js",
+        "tests/browser/maquette.spec.js"
+      ],
+      "mission": "Améliorer introduction, tableau, parc, demandes, gestion calendrier, revenus et réputation. Séparer les commits tableau/parc/agenda si pertinent.",
+      "desktop": "Compteurs, carte prioritaire, reprise, galerie informée, calendrier mois et blocage; panorama sur introduction et revenus bruts.",
+      "mobile": "Filtre parc simple, demande et reprise avant liens; agenda, dates et actions sous la liste. Pas de barre si détail.",
+      "allow": "Composer les vues owner avec services et helpers existants. Activation, édition et blocage conditionnels aux droits vérifiés.",
+      "accept": "Vue limitée au bon parc, filtre et retour; tests pause/reprise/retrait, conflit 409, calendrier et brut illustratif, avis et compte changé.",
+      "risks": "Image incorrecte en plus du statut, demande prise pour blocage, intermédiaires temporels, mutation sur ressource d’un autre compte.",
+      "index": 7,
+      "prompt": "07_CODEX_PROMPTS/LOT_07_OWNER_DASHBOARD.md"
+    },
+    {
+      "slug": "OWNER_WIZARD",
+      "title": "Assistant de publication et reprise",
+      "deps": [
+        7
+      ],
+      "priority": "P0/L",
+      "groups": [
+        "OWNER_WIZARD"
+      ],
+      "pages": [
+        23,
+        39,
+        40,
+        41
+      ],
+      "files": [
+        "client/pages/wizard.js",
+        "client/pages/owner-state.js",
+        "client/pages/owner-workspace.js",
+        "client/styles/client.css",
+        "ui/components.js",
+        "api/modules/vehicles.mjs"
+      ],
+      "tests": [
+        "tests/browser/owner.spec.js",
+        "tests/browser/maquette.spec.js",
+        "tests/browser/navigation.spec.js"
+      ],
+      "mission": "Présenter en quatre sections les neuf groupes existants. Garder les mécanismes locaux/serveur et préconditions de revue.",
+      "desktop": "Stepper, statut de sauvegarde/dernière étape en tête, formulaire groupé et récap par secteur avant la soumission.",
+      "mobile": "Stepper lisible, liens vers incomplets, reprise/divergence au-dessus du formulaire, boutons accessibles au clavier et champs natifs.",
+      "allow": "Adapter visibilité, focus et hiérarchie. Laisser tampon, groupFields, ownerDraftErrors et corps/clé gelés au contrat courant.",
+      "accept": "Neuf URL historiques, cinq vues et trois justificatifs, conflit explicite, sauvegarde après choix; une seule annonce pending malgré résultat perdu.",
+      "risks": "Sauvegarde implicite, second envoi, données écrasées, mauvaise photo, fausse version serveur, perte du groupe historique.",
+      "index": 8,
+      "prompt": "07_CODEX_PROMPTS/LOT_08_OWNER_WIZARD.md"
+    },
+    {
+      "slug": "SUPPORT",
+      "title": "Assistance, dossiers, avis et reçus",
+      "deps": [
+        4,
+        8
+      ],
+      "priority": "P1/M",
+      "groups": [
+        "SUPPORT"
+      ],
+      "pages": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "files": [
+        "client/pages/support.js",
+        "client/pages/account.js",
+        "client/pages/catalog.js",
+        "client/styles/client.css",
+        "ui/components.js",
+        "api/modules/cases.mjs",
+        "api/modules/communication.mjs"
+      ],
+      "tests": [
+        "tests/browser/maquette.spec.js",
+        "tests/browser/booking.spec.js",
+        "tests/browser/explorer.spec.js",
+        "tests/browser/navigation.spec.js"
+      ],
+      "mission": "Améliorer FAQ, assistance, dossier, avis et reçu sans toucher l’accordéon de / ou les notes internes.",
+      "desktop": "Formulaire par motif, liste/échange assistance, accordéon recherche, reçu imprimable et notes modérées. Aide secondaire en rail.",
+      "mobile": "Une colonne lisible, CTA après explication, note et formulaire accessibles et lien retour sûr, impression par navigateur.",
+      "allow": "Adapter fonctions FAQ/cases/review/receipt et myReviews. Préserver homeFaqItems et renderFaqItems consommés par l’accueil.",
+      "accept": "Cas vide, motif et dossier créé, échanges partagés, accès tiers refusé, avis unique et reçu fictif de clôture; diff accueil nul.",
+      "risks": "Effet partagé FAQ sur /, affichage de note privée, motif pris pour action de réservation, reçu interprété comme pièce comptable.",
+      "index": 9,
+      "prompt": "07_CODEX_PROMPTS/LOT_09_SUPPORT.md"
+    },
+    {
+      "slug": "POLISH",
+      "title": "Cohérence opérationnelle",
+      "deps": [
+        9
+      ],
+      "priority": "P2/M",
+      "groups": [
+        "OUTILS",
+        "ACCOUNT",
+        "OWNER_DASHBOARD"
+      ],
+      "pages": [
+        11,
+        12,
+        43,
+        44,
+        45
+      ],
+      "files": [
+        "client/styles/client.css",
+        "client/pages/demo.js",
+        "client/pages/navigation.js",
+        "ui/components.js"
+      ],
+      "tests": [
+        "tests/browser/components.spec.js",
+        "tests/browser/navigation.spec.js",
+        "tests/browser/maquette.spec.js",
+        "tests/browser/visual-qa.spec.js",
+        "tests/browser/admin.spec.js"
+      ],
+      "mission": "Vérifier la cohérence de tous les écrans modifiés, titres d’action, textes de feedback et contrôles. Traiter les petits écarts dans leur portée locale.",
+      "desktop": "Alignements, états, contrôles et hiérarchie, styles d’impression si déjà présents.",
+      "mobile": "Réduction mouvement, zoom, reflow, focus et labels, absence de sticky qui masque les actions.",
+      "allow": "Corrections ciblées sur la couche opérationnelle et ses helpers si nécessaire; revue de chaque fichier touché.",
+      "accept": "Cohérence démontrée avec captations par route et rôles; aucune correction des pages protégées, aucun contrat changé.",
+      "risks": "Retouche globale, disparition d’une erreur, déplacement de CTA de transaction, lien d’atelier indisponible.",
+      "index": 10,
+      "prompt": "07_CODEX_PROMPTS/LOT_10_POLISH.md"
+    },
+    {
+      "slug": "FINAL_QA",
+      "title": "Recette, preuves et arrêt",
+      "deps": [
+        10
+      ],
+      "priority": "P0/L",
+      "groups": [
+        "PROTECTION",
+        "OUTILS"
+      ],
+      "pages": [
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "files": [
+        ".github/workflows/ci.yml",
+        "playwright.config.js",
+        "playwright.audit.config.js",
+        "scripts/sanitize-evidence.py",
+        "scripts/audit-evidence.mjs",
+        "tests/audit-browser/profiles.spec.js",
+        "tests/browser/visual-qa.spec.js",
+        "client/styles/client.css"
+      ],
+      "tests": [
+        "tests/browser/maquette.spec.js",
+        "tests/browser/visual-qa.spec.js",
+        "tests/browser/search.spec.js",
+        "tests/browser/owner.spec.js",
+        "tests/browser/booking.spec.js",
+        "tests/browser/messaging.spec.js",
+        "tests/browser/navigation.spec.js",
+        "tests/browser/admin.spec.js",
+        "tests/browser/vehicle.spec.js",
+        "tests/browser/components.spec.js",
+        "tests/browser/explorer.spec.js"
+      ],
+      "mission": "Rejouer les cas bout en bout, classer chaque écart et rendre le score par écran et vue; contrôler le retour et les permissions.",
+      "desktop": "Plans comparatifs, calcul de score, performance, ressources et CI par étape. Documenter les écarts d’état des fixtures.",
+      "mobile": "Huit largeurs, appareils physiques et lecteurs d’écran si disponibles. Test reflow 320 et zoom, focus, clavier réel.",
+      "allow": "Ajuster uniquement les preuves, scénarios et correctifs attribués validés. Refaire tous les tests concernés après un correctif.",
+      "accept": "≥95/100 par cible principale, aucun nouveau P0/P1 et aucun diff sur pages protégées. Consigner PUB-01 séparément et tout essai non réalisé.",
+      "risks": "Confondre status CI et assertions, comparer données divergentes, afficher traces personnelles ou conclure 100% sans preuve.",
+      "index": 11,
+      "prompt": "07_CODEX_PROMPTS/LOT_11_FINAL_QA.md"
+    }
+  ]
+}
