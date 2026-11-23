@@ -41,6 +41,8 @@ La chaîne complète passe par les actes existants. Les refus 401 et 403 protèg
 
 Un rejeu à 320 px a relevé le centre du bouton de caution alors que seul son bord supérieur entrait dans la fenêtre. La capture confirme l’absence de superposition. L’essai vérifie désormais le focus au clavier, centre le bouton et mesure sa taille et son recouvrement. Le seuil de visibilité de 99 % absorbe l’arrondi de sous-pixel observé lors de la première correction.
 
+La CI 45265960567 a révélé une course dans le scénario 409. Le test pouvait exécuter le paiement concurrent avant le premier rendu du formulaire. Il attend maintenant l’affichage de l’action autorisée avant de changer l’état côté API, puis vérifie le refus et la relecture dans l’interface. L’expiration de session et le conflit sur l’acceptation suivent le même ordre explicite.
+
 ## Captures, mesures et scores
 
 Les preuves locales sont dans `audit-results/client-v32-lot-04/`. `comparaison.html` présente les PNG avant/après, `comparaison.json` leurs mesures pixel, `tests-individuels.csv` le résultat de chaque test et `accessibilite/mesures.json` les mesures clavier et zoom.

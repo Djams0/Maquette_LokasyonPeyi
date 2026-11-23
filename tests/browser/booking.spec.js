@@ -97,7 +97,7 @@ test('Réservation: session expirée reprend le même brouillon après connexion
 });
 test('Réservation: tiers refusé et conflit d’état ne donnent aucun droit ni confirmation optimiste',async({page})=>{
  const r=await create(page);await persona(page,'other');expect((await page.request.get(client+'/api/v1/rentals/'+r.id)).status()).toBe(403);await page.goto(client+'/rental/'+r.id);await expect(page.getByRole('heading',{name:'Accès non autorisé',exact:true})).toBeVisible();await expect(page.getByRole('button',{name:'Accepter la demande',exact:true})).toHaveCount(0);
- await persona(page,'owner');await page.goto(client+'/rental/'+r.id);await json(page,'/rentals/'+r.id+'/accept',{});await page.getByRole('button',{name:'Accepter la demande',exact:true}).click();const d=page.getByRole('dialog',{name:'Action refusée',exact:true});await expect(d).toBeVisible();await d.getByRole('button',{name:'Actualiser le statut',exact:true}).click();await expect(page.locator('.next-action')).toContainText('En attente du locataire');await expect(page.getByRole('button',{name:'Accepter la demande',exact:true})).toHaveCount(0);
+ await persona(page,'owner');await page.goto(client+'/rental/'+r.id);await expect(page.getByRole('button',{name:'Accepter la demande',exact:true})).toBeVisible();await json(page,'/rentals/'+r.id+'/accept',{});await page.getByRole('button',{name:'Accepter la demande',exact:true}).click();const d=page.getByRole('dialog',{name:'Action refusée',exact:true});await expect(d).toBeVisible();await d.getByRole('button',{name:'Actualiser le statut',exact:true}).click();await expect(page.locator('.next-action')).toContainText('En attente du locataire');await expect(page.getByRole('button',{name:'Accepter la demande',exact:true})).toHaveCount(0);
 });
 test('Réservation: conversation du bon véhicule et des bonnes parties, aide indépendante si lecture indisponible',async({page})=>{
  const r=await create(page);const c=await json(page,'/conversations',{vehicleId:'v1'});await page.goto(client+'/rental/'+r.id);await expect(page.getByRole('link',{name:'Ouvrir la conversation du véhicule',exact:true})).toHaveAttribute('href','/messages?conversation='+c.id);await expect(page.locator('#rental-conversation')).toContainText('aucun rattachement à une location précise');await page.route('**/api/v1/conversations',route=>route.abort());await page.reload();await expect(page.getByRole('heading',{name:'Demande envoyée',exact:true})).toBeVisible();await expect(page.locator('#rental-conversation').getByRole('link',{name:'Messagerie',exact:true})).toBeVisible();await expect(page.getByRole('link',{name:'Assistance',exact:true})).toBeVisible();
@@ -397,8 +397,10 @@ test('Paiement: session expirée rend la connexion puis le devis sans envoi auto
  await persona(page);
  const back = '/payment/'+r.id;
  await page.goto(client+back);
+ const consent = page.getByLabel('J’ai compris que cette opération');
+ await expect(consent).toBeVisible();
  await page.request.delete(client+'/api/v1/session');
- await page.getByLabel('J’ai compris que cette opération').check();
+ await consent.check();
  await page.getByRole('button',{name:'Simuler le paiement'}).click();
  await page.waitForURL(u=>u.pathname==='/login');
  expect(new URL(page.url()).searchParams.get('next')).toBe(back);
@@ -413,8 +415,10 @@ test('Paiement: un 409 concurrent affiche le résultat relu et retire la command
  const r = await create(page,'awaiting_payment');
  await persona(page);
  await page.goto(client+'/payment/'+r.id);
+ const consent = page.getByLabel('J’ai compris que cette opération');
+ await expect(consent).toBeVisible();
  await json(page,'/rentals/'+r.id+'/pay',{outcome:'success'});
- await page.getByLabel('J’ai compris que cette opération').check();
+ await consent.check();
  await page.getByRole('button',{name:'Simuler le paiement'}).click();
  await expect(page.getByRole('alert')).toContainText('Cette transition n’est pas disponible');
  await expect(page.getByRole('button',{name:'Simuler le paiement'})).toBeDisabled();
