@@ -115,6 +115,7 @@ export async function requestPage(id,me) {
            ${errorSlot}
            <button type="submit">Envoyer ma demande</button>
          </form>` : !draft.payload&&!attempt ? link(back,'Choisir une période sur la fiche','secondary') : ''}
+         <p id="request-status" class="booking-meta" role="status" aria-atomic="true"></p>
          <p class="request-links">${link('/rentals','Consulter mes demandes','link-button')}${link('/assistance','Besoin d’aide ?','link-button')}</p>
        </section>
        <details class="card request-rules"><summary>Annonce et règles du véhicule</summary>
@@ -124,7 +125,6 @@ export async function requestPage(id,me) {
          ${link(back,'Relire les règles du véhicule','link-button')}
        </details>
      </div>
-     <p id="request-status" class="sr-only" role="status" aria-atomic="true"></p>
    </div>`;
    bindVehicleMedia(main);
    const edit = main.querySelector('#edit-booking');
@@ -182,7 +182,7 @@ export async function requestPage(id,me) {
            throw Error(error.message+' Le brouillon reste disponible.');
          }
          if (error.status===401) throw error;
-         uncertain.hidden = false;
+         uncertain.hidden = true;
          throw Error(requestUncertain);
        }
      } catch (error) {

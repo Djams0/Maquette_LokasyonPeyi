@@ -1759,6 +1759,7 @@ html:has(.navigation-panel[open]) { overflow: hidden; }
   background: var(--lp-color-warning-bg);
   color: var(--lp-color-warning-text);
 }
+.request-confirmation #request-status:empty { margin: 0; }
 .request-links { margin: var(--lp-space-8) 0 0; }
 .request-links .link-button { padding-inline: 0; text-align: start; }
 .request-rules summary { cursor: pointer; min-block-size: var(--lp-layout-touch-min); align-content: center; }

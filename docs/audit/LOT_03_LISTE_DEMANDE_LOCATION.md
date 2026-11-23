@@ -33,12 +33,12 @@ Node 24.22.2, Playwright 1.56.1, Chromium 141.0.7390.37, Python 3.13.5. Services
 | `python -m unittest discover -s tests -p "test_*.py"` | 2/2. |
 | `npm run smoke` | Passé sur services jetables. |
 | `python tools/verify_v32.py`, `python tools/verify_extension.py` | Passés depuis le kit. |
-| Playwright requis `booking`, `vehicle`, `search`, `maquette` | Candidat 75/75. Campagne comparative finale par cas jointe à la revue. |
+| Playwright requis `booking`, `vehicle`, `search`, `maquette` | Référence 68/68. Candidat 75/75. Campagne comparative par cas jointe à la revue. |
 | Réservation et demande | 24/24, dont la précision du tarif et l’absence de CTA sans tarif. Les cas critiques ont été rejoués après vérification stricte de la clé stockée. |
 | Protections `home`, `navigation`, `search`, `vehicle`, `visual-qa`, `account` | 57/57, dont conservation de l’URL, rôle, retour de galerie et reprise après connexion. |
 | Contrôles CI souples | Lire les résultats bruts des étapes UI, audit essentiel, audit étendu et expurgation dans la PR. Le statut global peut être vert avec une réserve UI. |
 
-Le premier essai de développement signalait huit assertions devenues inadaptées avec la suppression de la barre fixe, dont cinq sur la position dans le premier écran et trois sur la classe activée à la prise de focus. Les assertions vérifient désormais la présence du prix avant la commande mobile, une hauteur d’au moins 48 px et l’absence d’obstacle au point d’interaction après défilement. Les essais suivants ont passé ces huit cas.
+Le premier essai de développement signalait huit assertions devenues inadaptées avec la suppression de la barre fixe, dont cinq sur la position dans le premier écran et trois sur la classe activée à la prise de focus. Les assertions vérifient désormais la présence du prix avant la commande mobile, une hauteur d’au moins 48 px et l’absence d’obstacle au point d’interaction après défilement. Les essais suivants ont passé ces huit cas. Une tentative de mesure simultanée de la référence sur ports alternatifs déclenchait la garde d’origine de la démo. Le rejeu avec les ports usuels a validé les 68 cas. Lors de la relecture de la réponse perdue, l’assertion de succès a été bornée au texte de l’accusé de réception pour distinguer celui-ci du chargement du suivi.
 
 ## Captures, mesures et scores
 
@@ -47,6 +47,7 @@ Les preuves locales sont dans `audit-results/client-v32-lot-03/`. La galerie `co
 - 24 paires protégées aux largeurs 320, 375, 390, 430, 768, 1024, 1280 et 1440, en `fr-FR`, fuseau `America/Guadeloupe`, DPR 1 et horloge 21 novembre 2026 à 16 h UTC. 14 sont strictement identiques. Neuf variations restent à 5 niveaux ou moins par canal. Au catalogue 1440, les variations fortes se concentrent sur le texte des sélecteurs natifs. Deux captures du candidat seul reproduisent 2 206 px variables et une répétition de la branche revient à 148 px au plus face à la référence. Les valeurs, dimensions, polices et styles des contrôles sont égaux dans les quatre répétitions.
 - 18 scénarios d’interaction par arbre, tous réussis. La variation initiale de 200 px sur le sélecteur « Tous » en modération à 320 est absente des deux répétitions du candidat, pixel à pixel. Les sélecteurs de lot ne s’appliquent qu’aux deux surfaces client.
 - 26 paires sur les surfaces du lot. Liste et demande aux huit largeurs, dialogue, historique, liste vide, indisponibilité et garde compte incomplet à 390 et 1440. Le contexte et les prix proviennent des mêmes données sur chaque arbre.
+- Six paires supplémentaires à 390 et 1440 montrent la demande en cours, la réponse perdue et le suivi après confirmation. Les deux POST utilisent la même clé et une seule location existe.
 - Neuf mesures d’accessibilité sur la liste, la demande et le compte bloqué. Zéro débordement ou cible masquée, focus visible, 48 CSS px au minimum pour les actions mesurées, zéro violation Axe sur les échantillons. Reflow et texte agrandi à 320 px, zoom Chromium natif 200 % mesuré à 307 CSS px, clavier et retour de focus du dialogue vérifiés.
 
 | Écran et états | Largeurs | Score provisoire |
