@@ -64,4 +64,3 @@ Le score suit la grille du kit avec 5 points sur 10 pour l’accessibilité. Res
 Le scénario du tiroir 880 → 390 reste inchangé. La réserve historique apparaît 1 fois sur 8 côté candidat et 6 fois sur 8 côté référence, avec `#search-filters` absent du dialogue au retour à 390 alors que l’assertion en attend un. Le journal des répétitions de la référence et du candidat est dans l’index des preuves. Les trois pages publiques font partie de la campagne obligatoire de chaque lot.
 
 **En revue humaine.** GO technique soumis aux preuves finales de la PR et à l’acceptation de la réserve PUB-01. Le lot suivant attend cette validation.
-
