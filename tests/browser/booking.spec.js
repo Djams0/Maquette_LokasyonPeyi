@@ -69,7 +69,14 @@ test('Réservation: réponse perdue, double validation et reload réutilisent la
 });
 test('Réservation: conflit serveur conserve le brouillon et permet une période corrigée',async({page})=>{
  await persona(page,'audit-r02');const other=await json(page,'/rentals',{vehicleId:'v1',...dates});await persona(page,'owner');await json(page,'/rentals/'+other.id+'/accept',{});await requestScreen(page);await page.getByLabel('J’ai lu les règles').check();await page.getByRole('button',{name:'Envoyer ma demande',exact:true}).click();await expect(page.locator('#request-form .form-error')).toContainText('Ce créneau est indisponible');expect(JSON.parse(await page.evaluate(()=>sessionStorage.getItem('rental-draft')))).toEqual({vehicleId:'v1',...dates});
- await page.getByRole('button',{name:'Modifier la période',exact:true}).click();const d=page.getByRole('dialog',{name:'Modifier la période',exact:true});await d.getByLabel('Départ · heure Guadeloupe').fill('2027-06-16T09:00');await d.getByLabel('Retour · heure Guadeloupe').fill('2027-06-18T09:00');await d.getByRole('button',{name:'Appliquer la période',exact:true}).click();await page.getByLabel('J’ai lu les règles').check();await page.getByRole('button',{name:'Envoyer ma demande',exact:true}).click();await page.waitForURL(/\/rental\//);expect((await record(page,new URL(page.url()).pathname.split('/').at(-1))).start).toBe('2027-06-16T13:00:00.000Z');
+ await page.getByRole('button',{name:'Modifier la période',exact:true}).click();const d=page.getByRole('dialog',{name:'Modifier la période',exact:true});await d.getByLabel('Départ · heure Guadeloupe').fill('2027-06-16T09:00');await d.getByLabel('Retour · heure Guadeloupe').fill('2027-06-18T09:00');await d.getByRole('button',{name:'Appliquer la période',exact:true}).click();
+ await expect(page.locator('.booking-period')).toContainText('16 juin 2027');
+ await expect(page.getByRole('button',{name:'Modifier la période',exact:true})).toBeFocused();
+ const consent = page.getByLabel('J’ai lu les règles');
+ await expect(consent).not.toBeChecked();
+ await consent.check();
+ await expect(consent).toBeChecked();
+ await page.getByRole('button',{name:'Envoyer ma demande',exact:true}).click();await page.waitForURL(/\/rental\//);expect((await record(page,new URL(page.url()).pathname.split('/').at(-1))).start).toBe('2027-06-16T13:00:00.000Z');
 });
 test('Réservation: refus et retrait gardent une progression sans paiement',async({page})=>{
  let r=await create(page);await persona(page,'owner');await page.goto(client+'/rental/'+r.id);await page.getByRole('button',{name:'Refuser',exact:true}).click();await page.getByRole('dialog').getByRole('button',{name:'Confirmer',exact:true}).click();await expect(page.getByRole('heading',{name:'Demande non retenue',exact:true})).toBeVisible();await expect(page.locator('.timeline li')).toHaveCount(2);expect((await record(page,r.id)).payment).toBe('not_started');

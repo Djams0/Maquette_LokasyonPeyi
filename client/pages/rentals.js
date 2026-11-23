@@ -139,10 +139,9 @@ export async function requestPage(id,me) {
        const payload = {vehicleId:id,start:new Date(values.start+':00-04:00').toISOString(),end:new Date(values.end+':00-04:00').toISOString()};
        try {sessionStorage.setItem(draftStorage,JSON.stringify(payload));}
        catch {throw Error('Le brouillon local est indisponible. La période n’a pas été enregistrée.');}
-       dialog.addEventListener('close',()=>{
-         render();
-         main.querySelector('#edit-booking')?.focus();
-       },{once:true});
+       dialog.close();
+       render();
+       main.querySelector('#edit-booking')?.focus();
      });
      dialog.classList.add('request-period-dialog');
      dialog.querySelector('[type=submit]').textContent = 'Appliquer la période';
