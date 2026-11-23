@@ -125,6 +125,176 @@ test('dialogue : nom, erreur récupérable, Échap et retour du focus', async ({
 
 });
 
+test('surfaces opérationnelles : gabarit à huit largeurs, contraste et texte à 200 %', async ({page}, info) => {
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await page.goto(client + '/design-system');
+  await ready(page);
+  const sample = page.getByRole('region',{name:'Surfaces opérationnelles',exact:true});
+  const form = sample.getByRole('form',{name:'Vérifier une période',exact:true});
+  const submit = form.getByRole('button',{name:'Vérifier la période',exact:true});
+  const rail = sample.locator('.operational-rail');
+  const firstCard = sample.locator('article').first();
+  await expect(sample.getByRole('heading',{name:'Aucune demande à suivre'})).toBeVisible();
+  await expect(sample.getByText('Le propriétaire peut répondre. Le locataire peut retirer sa demande.')).toBeVisible();
+  await expect(submit).toHaveCSS('background-color','rgb(28, 98, 89)');
+  await expect(firstCard).toHaveCSS('background-color','rgb(255, 255, 255)');
+  await expect(firstCard).toHaveCSS('border-radius','20px');
+  await expect(form.getByLabel('Date de retour',{exact:true})).toHaveCSS('border-radius','12px');
+  await expect(form.getByLabel('Date de retour',{exact:true})).toHaveCSS('border-color','rgb(119, 139, 132)');
+  await expect(form.getByLabel('Date de retour',{exact:true})).toHaveCSS('font-size','16px');
+  await expect(sample.getByRole('heading',{name:'Vérifier une période'})).toHaveCSS('font-family',/Nunito/);
+  await expect(sample.getByRole('heading',{name:'Vérifier une période'})).toHaveCSS('font-weight','800');
+
+  const measurements = [];
+  for (const width of [320,375,390,430,768,1024,1280,1440]) {
+    await page.setViewportSize({width,height:844});
+    await fits(page);
+    const stage = await sample.boundingBox();
+    const first = await firstCard.boundingBox();
+    const summary = await rail.boundingBox();
+    const controls = await sample.locator('button,input,select,.button').evaluateAll(nodes => nodes.map(node => {
+      const rect = node.getBoundingClientRect();
+      return {width:rect.width,height:rect.height};
+    }));
+    for (const control of controls) {
+      expect(control.width, `${width}px`).toBeGreaterThanOrEqual(44);
+      expect(control.height, `${width}px`).toBeGreaterThanOrEqual(44);
+    }
+    expect(stage.width).toBeLessThanOrEqual(1200);
+    if (width < 1024) {
+      expect(summary.y).toBeGreaterThan(first.y + first.height);
+      expect(summary.x).toBe(first.x);
+    } else {
+      expect(summary.x).toBeGreaterThan(first.x + first.width);
+      expect(summary.y).toBe(first.y);
+      expect(summary.width).toBeGreaterThanOrEqual(280);
+      expect(summary.width).toBeLessThanOrEqual(360);
+    }
+    if (width === 320) expect(stage.x).toBe(12);
+    if ([375,390].includes(width)) expect(stage.x).toBe(16);
+    if (width === 1440) expect(stage.width).toBe(1200);
+    measurements.push({width,scene:stage.width,gutter:stage.x,rail:summary.width,controls});
+    if ([320,390,1440].includes(width)) await info.attach(`Surfaces opérationnelles · ${width}px`,{
+      body:await sample.screenshot(),contentType:'image/png',
+    });
+  }
+  await info.attach('Mesures des huit largeurs',{body:JSON.stringify(measurements,null,2),contentType:'application/json'});
+  await page.setViewportSize({width:320,height:430});
+  await page.evaluate(() => document.documentElement.style.fontSize = '200%');
+  await expect(form.getByLabel('Date de retour',{exact:true})).toHaveCSS('font-size','32px');
+  expect(await sample.evaluate(e => e.scrollWidth - e.clientWidth)).toBeLessThanOrEqual(1);
+  await submit.focus();
+  await page.keyboard.press('Shift+Tab');
+  await page.keyboard.press('Tab');
+  await expect(submit).toBeFocused();
+  await expect(submit).toHaveCSS('outline-width','3px');
+  expect(await submit.evaluate(button => {
+    const rect = button.getBoundingClientRect();
+    return button.contains(document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2));
+  })).toBe(true);
+  await info.attach('Texte à 200 % · 320px',{body:await form.screenshot(),contentType:'image/png'});
+});
+
+test('surfaces opérationnelles : format, refus, panne, réponse tardive et confirmation locale', async ({page}, info) => {
+  await page.setViewportSize({width:390,height:844});
+  await page.goto(client + '/design-system');
+  const sample = page.getByRole('region',{name:'Surfaces opérationnelles',exact:true});
+  const form = sample.getByRole('form',{name:'Vérifier une période',exact:true});
+  const departure = form.getByLabel('Date de départ',{exact:true});
+  const returned = form.getByLabel('Date de retour',{exact:true});
+  const outcome = form.getByLabel('Réponse simulée',{exact:true});
+  const submit = form.getByRole('button',{name:'Vérifier la période',exact:true});
+  const alert = form.getByRole('alert');
+  const status = sample.locator('#operational-period-status');
+  const mutations = [];
+  page.on('request',request => {
+    if (request.url().includes('/api/v1/') && request.method() !== 'GET') mutations.push(request.method());
+  });
+  await expect(status).toHaveText('En attente d’une vérification.');
+  await returned.fill('2027-06-09');
+  await submit.click();
+  await expect(alert).toContainText('La date de retour doit suivre la date de départ.');
+  await expect(returned).toBeFocused();
+  await expect(returned).toHaveAttribute('aria-invalid','true');
+  await expect(returned).toHaveAttribute('aria-describedby',`operational-period-help ${await alert.getAttribute('id')}`);
+  await info.attach('Format invalide · 390px',{body:await form.screenshot(),contentType:'image/png'});
+
+  await returned.fill('2027-06-14');
+  await expect(returned).toHaveAttribute('aria-describedby','operational-period-help');
+  await page.clock.install({time:new Date('2026-11-21T16:00:00Z')});
+  await page.clock.pauseAt(new Date('2026-11-21T16:01:00Z'));
+  for (const [mode,message] of [['refused','Cette période est indisponible'],['network','Vos dates sont conservées']]) {
+    await outcome.selectOption(mode);
+    await submit.press('Enter');
+    await expect(form).toHaveAttribute('aria-busy','true');
+    await expect(submit).toBeDisabled();
+    await expect(status).toHaveText('Vérification de la période en cours…');
+    if (mode === 'refused') await info.attach('Chargement · 390px',{body:await sample.screenshot(),contentType:'image/png'});
+    await page.clock.runFor(600);
+    await expect(alert).toContainText(message);
+    await expect(alert).toBeFocused();
+    await expect(returned).not.toHaveAttribute('aria-invalid','true');
+    await expect(returned).toHaveValue('2027-06-14');
+    await expect(submit).toBeEnabled();
+    await info.attach(mode === 'refused' ? 'Refus · 390px' : 'Panne · 390px',{body:await sample.screenshot(),contentType:'image/png'});
+  }
+
+  await outcome.selectOption('accepted');
+  await submit.press('Enter');
+  await expect(form).toHaveAttribute('aria-busy','true');
+  await departure.fill('2027-06-11');
+  await page.clock.runFor(600);
+  await expect(status).toHaveText('La saisie a changé. Vérifiez de nouveau la période.');
+  await expect(departure).toHaveValue('2027-06-11');
+  await info.attach('Réponse tardive · 390px',{body:await sample.screenshot(),contentType:'image/png'});
+  await submit.press('Enter');
+  await page.clock.runFor(600);
+  await expect(status).toHaveText('Période disponible dans cet exemple.');
+  await expect(status).toHaveCSS('background-color','rgb(225, 241, 235)');
+  await expect(form).not.toHaveAttribute('aria-busy','true');
+  await info.attach('Succès confirmé · 390px',{body:await sample.screenshot(),contentType:'image/png'});
+  expect(mutations).toEqual([]);
+  await expect(page).toHaveURL(client + '/design-system');
+});
+
+test('surfaces opérationnelles : dialogue natif, annulation et restauration du focus', async ({page}, info) => {
+  await page.setViewportSize({width:320,height:430});
+  await page.goto(client + '/design-system');
+  const sample = page.getByRole('region',{name:'Surfaces opérationnelles',exact:true});
+  const trigger = sample.getByRole('button',{name:'Simuler un retrait',exact:true});
+  const request = sample.getByRole('article',{name:'Demande fictive'});
+  const dialog = page.getByRole('dialog',{name:'Retirer la demande ?',exact:true});
+  await expect(request.getByRole('status')).toHaveText('En attente du propriétaire');
+  await trigger.press('Enter');
+  await expect(dialog).toBeVisible();
+  await expect(dialog).toHaveAccessibleDescription('La demande de démonstration passe à l’état « Retirée ».');
+  await expect(dialog.getByRole('button',{name:'Fermer',exact:true})).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(dialog.getByRole('button',{name:'Annuler',exact:true})).toBeFocused();
+  await page.keyboard.press('Tab');
+  const confirm = dialog.getByRole('button',{name:'Retirer la demande',exact:true});
+  await expect(confirm).toBeFocused();
+  await expect(confirm).toHaveCSS('outline-width','3px');
+  expect(await confirm.evaluate(button => {
+    const rect = button.getBoundingClientRect();
+    return rect.height >= 48 && button.contains(document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2));
+  })).toBe(true);
+  await info.attach('Dialogue critique · 320px',{body:await page.screenshot({animations:'disabled'}),contentType:'image/png'});
+  await page.keyboard.press('Escape');
+  await expect(dialog).toHaveCount(0);
+  await expect(trigger).toBeFocused();
+  await expect(request.getByRole('status')).toHaveText('En attente du propriétaire');
+  await trigger.press('Enter');
+  await confirm.press('Enter');
+  await expect(dialog).toHaveCount(0);
+  const reset = sample.getByRole('button',{name:'Réinitialiser l’exemple',exact:true});
+  await expect(reset).toBeFocused();
+  await expect(request.getByRole('status')).toHaveText('Retirée');
+  await reset.press('Enter');
+  await expect(trigger).toBeFocused();
+  await expect(request.getByRole('status')).toHaveText('En attente du propriétaire');
+});
+
 test('verre V3.2 : deux teintes, contrôles lisibles et reflow', async ({page}, info) => {
   await page.emulateMedia({reducedMotion:'reduce'});
   await page.goto(client + '/design-system');

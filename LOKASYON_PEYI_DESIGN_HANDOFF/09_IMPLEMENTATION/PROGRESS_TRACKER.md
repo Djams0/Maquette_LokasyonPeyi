@@ -4,8 +4,8 @@ L’audit Work précède les lots Codex. Remplir la ligne du lot après sa recet
 
 | Lot | Objet | Statut | Branche | SHA départ | SHA final | PR | Fichiers | Tests | Captures | Score | Écarts | Risques / régressions | GO/NO-GO | Validation humaine |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 00 | Baseline et protection | À faire | — | — | — | — | — | — | — | — | — | — | — | — |
-| 01 | Fondations des surfaces client | À faire | — | — | — | — | — | — | — | — | — | — | — | — |
+| 00 | Baseline et protection | Fusionné | `client-v32/lot-00` | `4338f5f` | `ad0b310` | [#23](https://github.com/Djams0/Maquette_LokasyonPeyi/pull/23) | [Rapport](../../docs/audit/LOT_00_BASELINE_EXTENSION.md) | 174 UI, 11 profils | 24 protégées | Identité dans le rapport | PUB-01, texte agrandi sur connexion | Réserves historiques | Passage au lot 01 demandé | Fusion confirmée, lot 01 envoyé le 23/11 |
+| 01 | Fondations des surfaces client | En revue | `client-v32/lot-01` | `006fdca` | HEAD de revue | Branche de revue | [Rapport](../../docs/audit/LOT_01_FONDATIONS_CLIENT.md) | 45 ciblés, 53 protégés | 24 protégées et échantillon | 95/100 provisoire | PUB-01 | Essais assistés à compléter | GO final en attente | À valider |
 | 02 | Compte et authentification simulée | À faire | — | — | — | — | — | — | — | — | — | — | — | — |
 | 03 | Liste et demande de location | À faire | — | — | — | — | — | — | — | — | — | — | — | — |
 | 04 | Suivi, paiement et caution | À faire | — | — | — | — | — | — | — | — | — | — | — | — |
