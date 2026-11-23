@@ -72,7 +72,7 @@ try{if(path==='/'){await home(readIdentity);}else{const me=await readIdentity().
  else if(a==='request'&&b)await requestPage(b,me);
  else if(a==='rental'&&b)await rental(b,me);
  else if(a==='payment'&&b)await payment(b,me);
- else if(a==='inspection'&&b&&c)await inspection(b,c);
+ else if(a==='inspection'&&b&&c)await inspection(b,c,me);
  else if(path==='/owner/start')await ownerStart(me);
  else if(path==='/owner/vehicles/new')await wizard(me);
  else if(path==='/owner')await ownerPage('dashboard',me);

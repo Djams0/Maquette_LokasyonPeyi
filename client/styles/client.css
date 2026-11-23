@@ -1894,3 +1894,97 @@ html:has(.navigation-panel[open]) { overflow: hidden; }
   .follow-surface .follow-actions > *,
   .follow-surface .payment-panel [type="submit"] { inline-size: 100%; }
 }
+
+/* The inspection keeps capture, form and views in the same keyboard order on small screens. */
+#main .inspection-heading { margin-block-end: var(--lp-space-16); }
+#main .inspection-heading h1 {
+  font: var(--lp-weight-strong) clamp(var(--lp-text-section),3.4vw,var(--lp-text-title))/var(--lp-leading-title) var(--lp-font-ui);
+  margin-block-end: var(--lp-space-8);
+}
+.inspection-heading p, .inspection-help,
+.inspection-view p, .inspection-view time { color: var(--muted); }
+#main .inspection-surface h2 {
+  font: var(--lp-weight-strong) var(--lp-text-card)/var(--lp-leading-card) var(--lp-font-ui);
+}
+.inspection-layout { display: grid; grid-template-columns: minmax(0,1fr); gap: var(--lp-space-16); align-items: start; }
+.inspection-layout > * { min-inline-size: 0; }
+.inspection-progress p { margin-block-end: var(--lp-space-8); }
+.inspection-progress progress {
+  display: block;
+  inline-size: 100%;
+  block-size: var(--lp-space-12);
+  accent-color: var(--primary);
+}
+.inspection-next { margin-block-start: var(--lp-space-20); }
+.inspection-next h3 {
+  font: var(--lp-weight-strong) var(--lp-text-body)/var(--lp-leading-body) var(--lp-font-ui);
+}
+.inspection-frame {
+  display: flex;
+  align-items: center;
+  gap: var(--lp-space-12);
+  margin-block: var(--lp-space-8) var(--lp-space-12);
+  padding: var(--lp-space-16);
+  border-radius: var(--lp-radius-control);
+  background: var(--lp-color-info-bg);
+  color: var(--lp-color-info-text);
+}
+.inspection-frame p { margin: 0; }
+.inspection-frame .icon { flex: none; }
+.inspection-view-list {
+  display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.inspection-view {
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr);
+  gap: var(--lp-space-4) var(--lp-space-8);
+  padding-block: var(--lp-space-12);
+  border-block-start: 1px solid var(--line);
+}
+.inspection-view-icon { color: var(--primary); }
+.inspection-view p, .inspection-view time, .inspection-help {
+  margin-block: 0;
+  font-size: var(--lp-text-meta);
+}
+.inspection-view > button { grid-column: 2; justify-self: start; text-align: start; }
+.inspection-view details summary {
+  min-block-size: var(--lp-layout-touch-min);
+  padding-block: var(--lp-space-8);
+  align-content: center;
+}
+.inspection-view details ul { margin: 0; padding-inline-start: var(--lp-space-16); }
+.inspection-surface button, .inspection-surface .button, .inspection-camera button { white-space: normal; }
+.inspection-surface .form-actions, .inspection-camera .form-actions { flex-wrap: wrap; }
+.inspection-form-panel fieldset { min-inline-size: 0; margin: 0; border: 0; padding: 0; }
+.inspection-form-panel .form-error:not(:empty) { margin-block-start: var(--lp-space-12); }
+.inspection-form-panel .check { align-items: flex-start; min-block-size: var(--lp-layout-touch-min); }
+.inspection-form-panel .check input { flex: none; }
+.inspection-form-panel dl { display: grid; gap: var(--lp-space-8); }
+.inspection-form-panel dd { margin-inline-start: 0; font-weight: var(--lp-weight-strong); }
+.inspection-surface .notice p { margin: 0; }
+.inspection-status:empty { margin: 0; }
+.inspection-status:not(:empty) { margin-block: var(--lp-space-8); }
+.inspection-camera { overflow-wrap: anywhere; }
+.inspection-camera form > .row:first-child { display: grid; grid-template-columns: minmax(0,1fr) auto; }
+
+@media (min-width:900px) {
+  .inspection-layout { grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); grid-template-rows: min-content auto; }
+  .inspection-form-panel { grid-column: 2; grid-row: 1 / span 2; }
+  .inspection-list { grid-column: 1; grid-row: 2; }
+  .inspection-view-list { grid-template-columns: repeat(2,minmax(0,1fr)); column-gap: var(--lp-space-16); }
+}
+@media (max-width:767px) {
+  #shell:has(> #main > .inspection-surface) > .header,
+  #shell:has(> #main > .inspection-surface) > .header .tools { flex-wrap: wrap; }
+  #shell:has(> #main > .inspection-surface) > .header .logo { min-inline-size: 0; white-space: normal; }
+  .inspection-next button, .inspection-form-panel .form-actions > * { inline-size: 100%; }
+  .inspection-view { grid-template-columns: auto minmax(0,1fr) auto; align-items: start; }
+  .inspection-view > button { grid-column: 3; }
+}
+@media (max-width:359px) {
+  .inspection-view { grid-template-columns: auto minmax(0,1fr); }
+  .inspection-view > button { grid-column: 2; }
+}
