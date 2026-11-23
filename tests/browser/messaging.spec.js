@@ -24,7 +24,7 @@ const editor = page => page.getByLabel('Votre message', {exact: true});
 const send = page => page.getByRole('button', {name: 'Envoyer', exact: true});
 const posts = page => { const requests = []; page.on('request', r => { if (r.method() === 'POST' && new URL(r.url()).pathname === '/api/v1/conversations/qa-chat-a') requests.push({key: r.headers()['idempotency-key'], body: r.postDataJSON()}); }); return requests; };
 
-for (const width of [320, 375, 390, 430, 768, 1024, 1440]) test(`Messagerie: liste et fil séparés, commandes à ${width}px`, async ({page}) => {
+for (const width of [320, 375, 390, 430, 768, 1024, 1280, 1440]) test(`Messagerie: liste et fil séparés, commandes à ${width}px`, async ({page}) => {
   await page.setViewportSize({width, height: 844}); await open(page, 'renter', '/messages');
   await expect(page.locator('.message-row')).toHaveCount(2); await expect(page.locator('.message-thread')).toBeHidden();
   await page.locator('.message-row').first().click(); await expect(editor(page)).toBeEnabled();
@@ -132,4 +132,120 @@ test('Messagerie: historique navigateur reprend le bon fil et son texte sans env
   await page.locator('[data-conversation="qa-chat-b"]').click(); await expect(editor(page)).toHaveValue(''); await editor(page).fill('Brouillon du fil B');
   await page.goBack(); await page.goBack(); await expect(editor(page)).toHaveValue('Brouillon du fil A');
   await expect(page.locator('.message-context')).toContainText('Peugeot 208'); expect(sent).toHaveLength(0);
+});
+
+test('Messagerie: une reprise sans prévol réussi conserve le résultat incertain', async ({page}) => {
+  await open(page);
+  const sent = posts(page), sendState = page.locator('#send-state');
+  await page.route('**/api/v1/conversations/qa-chat-a', async route => { await route.fetch(); await route.abort(); });
+  await editor(page).fill('Un seul exemplaire');
+  await send(page).click();
+  await expect(sendState).toContainText('Envoi à vérifier');
+  await page.unroute('**/api/v1/conversations/qa-chat-a');
+  await page.route('**/api/v1/me', route => route.abort());
+  const retry = page.getByRole('button', {name: 'Réessayer le même envoi', exact: true});
+  await retry.click();
+  await expect(page.locator('#message-sync')).toContainText('Impossible de vérifier');
+  await expect(sendState).toContainText('Envoi à vérifier');
+  expect(sent).toHaveLength(1);
+  await page.unroute('**/api/v1/me');
+  await retry.click();
+  await expect(sendState).toContainText('Message envoyé');
+  expect(sent).toHaveLength(2);
+  expect(sent[1]).toEqual(sent[0]);
+  expect(target.store.db.conversations[0].messages).toHaveLength(1);
+});
+
+test('Messagerie: une sauvegarde illisible laisse consulter le fil sans créer de clé', async ({page}) => {
+  await open(page);
+  const sent = posts(page);
+  await page.addInitScript(() => {
+    if (sessionStorage.getItem('qa-broken-message-state')) return;
+    sessionStorage.setItem('qa-broken-message-state', 'true');
+    sessionStorage.setItem('peyi-message-v1:renter:qa-chat-a', '{');
+  });
+  await page.reload();
+  await expect(page.locator('#send-state')).toContainText('Envoi à vérifier');
+  await editor(page).fill('Une saisie conservée');
+  await expect(send(page)).toBeDisabled();
+  await page.getByRole('button', {name: 'Vérifier le fil', exact: true}).click();
+  await expect(page.locator('#message-sync')).toContainText('sans renvoi');
+  expect(sent).toHaveLength(0);
+  await page.reload();
+  await expect(editor(page)).toHaveValue('Une saisie conservée');
+  await expect(send(page)).toBeDisabled();
+});
+
+const notifications = page => page.locator('#notifications-status');
+const readAll = page => page.getByRole('button', {name: 'Tout marquer comme lu', exact: true});
+const reloadNotifications = page => page.getByRole('button', {name: 'Actualiser les notifications', exact: true});
+const readEndpoint = '**/api/v1/notifications/read';
+
+async function messageForOwner(page) {
+  await persona(page);
+  const response = await page.request.post(client + '/api/v1/conversations/qa-chat-a', {data: {text: 'Une notification liée au fil'}});
+  expect(response.ok()).toBe(true);
+}
+
+test('Notifications: vide, cible du message, lecture globale et retour clavier', async ({page}) => {
+  await page.setViewportSize({width: 320, height: 844});
+  await open(page, 'owner', '/notifications');
+  await expect(page.getByRole('heading', {name: 'Aucune notification'})).toBeVisible();
+  await expect(readAll(page)).toHaveCount(0);
+  await messageForOwner(page);
+  await open(page, 'owner', '/notifications');
+  const notice = page.getByRole('link', {name: /Nouveau message/});
+  await expect(notice).toContainText('Non lue');
+  await expect(notice).toHaveAttribute('href', thread);
+  await notice.press('Enter');
+  await expect(page.locator('#message-stream')).toContainText('Une notification liée au fil');
+  await page.goBack();
+  await expect(notice).toContainText('Non lue');
+  await readAll(page).focus();
+  await page.keyboard.press('Enter');
+  await expect(notifications(page)).toContainText('Tout est à jour');
+  await expect(notice).toContainText('Lue');
+  await expect(notice).not.toContainText('Non lue');
+  await expect(page.getByRole('heading', {name: 'Notifications', exact: true})).toBeFocused();
+  await expect(readAll(page)).toHaveCount(0);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+});
+
+for (const afterWrite of [false, true]) test(`Notifications: réponse perdue ${afterWrite ? 'après' : 'avant'} le marquage, relecture seule`, async ({page}) => {
+  await messageForOwner(page);
+  await open(page, 'owner', '/notifications');
+  let requests = 0, release;
+  const gate = new Promise(resolve => { release = resolve; });
+  await page.route(readEndpoint, async route => {
+    requests++;
+    if (afterWrite) await route.fetch();
+    await gate;
+    await route.abort();
+  });
+  try {
+    await readAll(page).evaluate(button => { button.focus(); button.click(); button.click(); });
+    await expect(notifications(page)).toContainText('en cours');
+    await expect(page.getByText('Non lue', {exact: true})).toBeVisible();
+  } finally {
+    release();
+  }
+  await expect(notifications(page)).toContainText('n’a pas pu être vérifié');
+  await expect(reloadNotifications(page)).toBeFocused();
+  await expect(page.getByText('Non lue', {exact: true})).toBeVisible();
+  await page.keyboard.press('Enter');
+  await expect(notifications(page)).toHaveText(afterWrite ? 'Tout est à jour.' : '1 notification non lue.');
+  expect(requests).toBe(1);
+  expect(target.store.db.notifications[0].read).toBe(afterWrite);
+});
+
+test('Notifications: une session changée efface la liste et empêche le marquage', async ({page}) => {
+  await messageForOwner(page);
+  await open(page, 'owner', '/notifications');
+  await expect(readAll(page)).toBeVisible();
+  await persona(page);
+  await readAll(page).click();
+  await expect(notifications(page)).toContainText('Ce compte ne peut plus');
+  await expect(page.getByText('Nouveau message', {exact: true})).toHaveCount(0);
+  await expect(page.getByRole('link', {name: 'Recharger avec le compte courant'})).toBeFocused();
+  expect(target.store.db.notifications[0].read).toBe(false);
 });
