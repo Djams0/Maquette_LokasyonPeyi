@@ -12,7 +12,7 @@ export function bookingDraft(value,vehicleId,now=new Date()) {
 }
 export function requestVehicleURL(id,payload,storedContext) {
  let params=new URLSearchParams();
- try{const record=JSON.parse(storedContext);if(record.vehicleId===id&&typeof record.search==='string'&&record.search.startsWith('/search?')&&!/[\\\u0000-\u001f]/.test(record.search)){const url=new URL(record.search,'https://booking.invalid');const state=parseSearch(url.searchParams);if(url.origin==='https://booking.invalid'&&url.pathname==='/search'&&!state.errors.length)params=state.params;}}catch{/* Invalid local context never becomes a return target. */}
+ try{const record=JSON.parse(storedContext);if(record.vehicleId===id&&typeof record.search==='string'&&record.search.startsWith('/search?')&&!/[\\\u0000-\u001f]/.test(record.search)){const url=new URL(record.search,'https://booking.invalid');const state=parseSearch(url.searchParams,new Date(0));if(url.origin==='https://booking.invalid'&&url.pathname==='/search'&&!state.errors.length)params=state.params;}}catch{/* Invalid local context never becomes a return target. */}
  if(payload){params.set('from',dateParam(localRentalDate(payload.start)));params.set('until',dateParam(localRentalDate(payload.end)));}
  return vehicleURL(id,params);
 }
