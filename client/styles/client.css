@@ -275,6 +275,64 @@
 .component-samples .stack { justify-items: start; }
 .component-samples .stack>.notice, .component-samples .stack>.full, .component-samples form { width: 100%; }
 .component-samples .button-row { display: flex; gap: var(--lp-space-12); flex-wrap: wrap; }
+
+#main .client-operational {
+  --ink: var(--lp-color-v32-ink);
+  --muted: var(--lp-color-v32-muted);
+  --primary: var(--lp-color-v32-action);
+  --line: var(--lp-color-v32-line);
+  --lp-color-action-hover: var(--lp-color-v32-action-hover);
+  --lp-color-outline: var(--lp-color-v32-outline);
+  --lp-radius-card: var(--lp-radius-gallery);
+  max-inline-size: 1200px;
+  margin-inline: auto;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+#main .client-operational .operational-layout,
+#main .client-operational .operational-rail {
+  display: grid;
+  gap: var(--lp-space-16);
+  min-inline-size: 0;
+  align-items: start;
+}
+
+#main .client-operational .card { min-inline-size: 0; padding: var(--lp-space-16); }
+#main .client-operational .operational-rail .empty { text-align: start; }
+#main .client-operational .empty h2 { font-size: var(--lp-text-card); }
+#main .client-operational #operational-request-status { margin-block-end: var(--lp-space-12); }
+
+#main .client-operational .operational-feedback {
+  min-block-size: 3lh;
+  margin: var(--lp-space-16) 0 0;
+  border-radius: var(--lp-radius-control);
+  padding: var(--lp-space-12);
+  background: var(--lp-color-disabled-bg);
+  color: var(--muted);
+}
+
+#main .client-operational .operational-feedback[data-state="loading"] {
+  background: var(--lp-color-info-bg);
+  color: var(--lp-color-info-text);
+}
+
+#main .client-operational .operational-feedback[data-state="success"] {
+  background: var(--lp-color-success-bg);
+  color: var(--lp-color-success-text);
+}
+
+@media (max-width:359px) {
+  #main .client-operational .card { padding: var(--lp-space-12); }
+}
+
+@media (min-width:1024px) {
+  #main .client-operational .operational-layout {
+    grid-template-columns: minmax(0,1fr) minmax(var(--lp-layout-rail-min),30%);
+    gap: var(--lp-space-24);
+  }
+  #main .client-operational .card { padding: var(--lp-space-24); }
+}
 @media (min-width:1024px) {
   .client-main { padding-inline: var(--lp-layout-edge-desktop); }
 }
