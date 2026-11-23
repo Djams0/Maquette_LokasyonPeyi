@@ -56,7 +56,7 @@ Les preuves locales sont dans `audit-results/client-v32-lot-05/`. `comparaison.h
 | Retour · original finalisé et accès à la réserve | 320, 375, 390, 430, 768, 1024, 1280, 1440 | 95/100 |
 | Retour · vide ou capture floue | 390, 1440 | 95/100 |
 
-La grille du kit attribue la moitié des points d’accessibilité quand la preuve est partielle. Le lecteur d’écran et le clavier virtuel Android/iOS restent à vérifier. Aucune permission de caméra réelle n’est exercée par ce scénario simulé.
+La grille du kit attribue la moitié des points d’accessibilité quand la preuve est partielle. La relecture du dialogue à 320 px et texte 200 % a conduit à empiler ses deux boutons, ainsi que ceux du formulaire, pour garder les libellés lisibles. Les trois mesures du dialogue vérifient aussi l’erreur annoncée, Échap et le retour au déclencheur. Le lecteur d’écran et le clavier virtuel Android/iOS restent à vérifier. Aucune permission de caméra réelle n’est exercée par ce scénario simulé.
 
 ## PUB-01 et décision
 

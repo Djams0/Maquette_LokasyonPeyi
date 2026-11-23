@@ -1984,7 +1984,14 @@ html:has(.navigation-panel[open]) { overflow: hidden; }
   .inspection-view { grid-template-columns: auto minmax(0,1fr) auto; align-items: start; }
   .inspection-view > button { grid-column: 3; }
 }
+@media (max-width:599px) {
+  .inspection-camera .form-actions, .inspection-form-panel .form-actions {
+    display: grid;
+    grid-template-columns: minmax(0,1fr);
+  }
+}
 @media (max-width:359px) {
+  .inspection-camera { padding: var(--lp-space-16); }
   .inspection-view { grid-template-columns: auto minmax(0,1fr); }
   .inspection-view > button { grid-column: 2; }
 }
