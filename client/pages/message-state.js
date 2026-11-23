@@ -11,7 +11,11 @@ export function restoreMessageState(raw, accountId, conversationId) {
   const state = newMessageState(accountId, conversationId);
   try {
     const saved = JSON.parse(raw);
-    if (saved.version !== 1 || saved.accountId !== accountId || saved.conversationId !== conversationId) return state;
+    if (raw === null) return state;
+    if (saved?.version !== 1 || saved.accountId !== accountId || saved.conversationId !== conversationId) {
+      return {...state, verificationOnly: true};
+    }
+    if (saved.verificationOnly === true) state.verificationOnly = true;
     state.draft = typeof saved.draft === 'string' ? saved.draft.slice(0, 1500) : '';
     state.reading = Number.isFinite(saved.reading) ? Math.max(0, saved.reading) : null;
     state.pageScroll = Number.isFinite(saved.pageScroll) ? Math.max(0, saved.pageScroll) : null;
@@ -24,8 +28,12 @@ export function restoreMessageState(raw, accountId, conversationId) {
       state.attempt = {key: valid ? a.key : null, body: {text: a.body.text}, signature,
         status: valid && ['failed', 'refused', 'sent'].includes(a.status) ? a.status : 'uncertain',
         retryAllowed: valid && a.retryAllowed !== false, serverId: typeof a.serverId === 'string' ? a.serverId : null};
+    } else if (a != null) {
+      state.verificationOnly = true;
     }
-  } catch { /* A broken storage record never authorizes a replay. */ }
+  } catch {
+    state.verificationOnly = true;
+  }
   return state;
 }
 export function serverMessages(messages) {

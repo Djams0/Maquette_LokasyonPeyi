@@ -7,7 +7,8 @@ test('message recovery: account and thread isolate drafts; invalid storage canno
   const s = newMessageState('renter', 'a'); s.draft = 'Texte fictif';
   assert.equal(restoreMessageState(JSON.stringify(s), 'owner', 'a').draft, '');
   assert.equal(restoreMessageState(JSON.stringify(s), 'renter', 'b').draft, '');
-  assert.equal(restoreMessageState('{', 'renter', 'a').attempt, null);
+  assert.equal(restoreMessageState('{', 'renter', 'a').verificationOnly, true);
+  assert.equal(restoreMessageState(null, 'renter', 'a').verificationOnly, undefined);
   assert.notEqual(messageStorageKey('a:b', 'c'), messageStorageKey('a', 'b:c'));
 });
 test('message recovery: reload preserves the frozen body and key, never assumes a pending write failed', () => {

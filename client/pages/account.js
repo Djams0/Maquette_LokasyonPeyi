@@ -201,7 +201,99 @@ export async function documents() {
   });
 }
 
-export async function notifications(){const b=await api('/bootstrap');document.getElementById('main').innerHTML=`<div class="narrow"><div class="section-heading"><h1>Notifications</h1><button class="secondary" id="read-all">Tout lire</button></div><div class="card">${b.notifications.length?b.notifications.map(n=>`<a class="list-item" href="${escape(n.href)}">${icon(n.read?'check':'bell')}<div><strong>${escape(n.title)}</strong><small>${date(n.at)} · ${n.read?'Lu':'Non lu'}</small></div>${icon('arrow')}</a>`).join(''):empty('Tout est à jour','Les changements de vos locations et vos nouveaux messages apparaîtront ici.')}</div></div>`;document.getElementById('read-all').onclick=async()=>{await api('/notifications/read',{});flash('Notifications marquées comme lues.');location.reload();};}
+export async function notifications(me) {
+  const main = document.getElementById('main');
+  main.innerHTML = `<section class="notifications-surface">
+    <header class="notifications-heading"><h1 id="notifications-title" tabindex="-1">Notifications</h1>
+      <button type="button" class="secondary" id="read-all" hidden aria-disabled="false">${icon('check')} Tout marquer comme lu</button>
+    </header>
+    <div class="notifications-feedback"><p id="notifications-status" role="status">Chargement des notifications…</p>
+      <button type="button" class="secondary" id="refresh-notifications" hidden aria-disabled="false">${icon('refresh')} Actualiser les notifications</button></div>
+    <div id="notifications-list"></div>
+  </section>`;
+  const section = main.querySelector('.notifications-surface');
+  const title = section.querySelector('#notifications-title'), status = section.querySelector('#notifications-status');
+  const read = section.querySelector('#read-all'), refresh = section.querySelector('#refresh-notifications');
+  const list = section.querySelector('#notifications-list');
+  let busy = false, blocked = false;
+
+  function block(current) {
+    const restoreFocus = section.contains(document.activeElement);
+    blocked = true;
+    read.hidden = refresh.hidden = true;
+    list.replaceChildren();
+    const resume = document.createElement('a');
+    resume.className = 'button secondary';
+    resume.href = current ? '/notifications' : '/login?next=%2Fnotifications';
+    resume.textContent = current ? 'Recharger avec le compte courant' : 'Se connecter';
+    status.textContent = current ? 'Ce compte ne peut plus consulter les notifications affichées.' : 'Votre session a expiré.';
+    status.after(resume);
+    if (restoreFocus) resume.focus({preventScroll: true});
+  }
+
+  function isCurrent(current) {
+    if (current?.id === me.id && current.status === 'active' && !current.internal) return true;
+    block(current);
+    return false;
+  }
+
+  function render(items) {
+    const unread = items.filter(item => !item.read).length;
+    read.hidden = unread === 0;
+    list.innerHTML = items.length ? `<ul class="notification-list card">${items.map(item => {
+      const href = safeNext(item.href);
+      const contents = `<span class="notification-icon">${icon(item.read ? 'check' : 'bell')}</span>
+        <span class="notification-copy"><strong>${escape(item.title)}</strong><small>${date(item.at)}</small></span>
+        <span class="notification-state">${item.read ? 'Lue' : 'Non lue'}</span>`;
+      return `<li class="${item.read ? '' : 'unread'}">${href !== '/'
+        ? `<a class="notification-row" href="${escape(href)}">${contents}${icon('arrow')}</a>`
+        : `<div class="notification-row">${contents}</div>`}</li>`;
+    }).join('')}</ul>` : empty('Aucune notification', 'Vos notifications de location, de compte et de messagerie apparaîtront ici.');
+    return unread;
+  }
+
+  async function update(mark = false) {
+    if (busy || blocked) return;
+    const action = document.activeElement;
+    busy = true;
+    read.setAttribute('aria-disabled', 'true');
+    refresh.setAttribute('aria-disabled', 'true');
+    status.textContent = mark ? 'Marquage des notifications en cours…' : 'Chargement des notifications…';
+    let writeAttempted = false;
+    try {
+      if (mark) {
+        if (!isCurrent(await api('/me'))) return;
+        writeAttempted = true;
+        await api('/notifications/read', {});
+      }
+      const data = await api('/bootstrap');
+      if (!isCurrent(data.me) || !isCurrent(await api('/me'))) return;
+      const unread = render(data.notifications);
+      refresh.hidden = true;
+      status.textContent = !data.notifications.length ? '' : unread
+        ? `${unread} notification${unread > 1 ? 's non lues' : ' non lue'}.`
+        : mark ? 'Notifications marquées comme lues. Tout est à jour.' : 'Tout est à jour.';
+    } catch (error) {
+      if (error.status === 401 || error.status === 403) { block(error.status === 403); return; }
+      read.hidden = true;
+      refresh.hidden = false;
+      status.textContent = writeAttempted
+        ? 'Le marquage n’a pas pu être vérifié. Actualisez les notifications pour connaître leur état.'
+        : 'Les notifications sont indisponibles. Actualisez pour réessayer.';
+    } finally {
+      busy = false;
+      read.setAttribute('aria-disabled', 'false');
+      refresh.setAttribute('aria-disabled', 'false');
+      if (!blocked && (action === read || action === refresh) && action.hidden && [action, document.body].includes(document.activeElement)) {
+        (refresh.hidden ? title : refresh).focus({preventScroll: true});
+      }
+    }
+  }
+
+  read.onclick = () => update(true);
+  refresh.onclick = () => update();
+  await update();
+}
 export {messages} from './messaging.js';
 
 export async function myReviews(){const b=await api('/bootstrap');const reviews=b.reviews.filter(r=>r.authorId===b.me.id);document.getElementById('main').innerHTML=`<div class="narrow"><a href="/profile">${icon('back')} Mon profil</a><h1 class="section">Mes avis</h1>${reviews.length?reviews.map(r=>`<article class="card section"><h2>${r.vehicleRating??r.rating} / 5</h2>${badge(r.status)}<p>${escape(r.comment)}</p>${r.reply?notice('Réponse du propriétaire : '+escape(r.reply)):''}${link('/vehicle/'+r.vehicleId,'Voir le véhicule','secondary')}</article>`).join(''):empty('Aucun avis envoyé','Vous pourrez laisser un avis après la clôture d’une location.',link('/rentals?tab=history','Mes locations terminées','secondary'))}</div>`;}

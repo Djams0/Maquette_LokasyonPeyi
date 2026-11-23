@@ -66,7 +66,7 @@ try{if(path==='/'){await home(readIdentity);}else{const me=await readIdentity().
  else if(path==='/profile')await profile(me);
  else if(path==='/profile/documents')await documents();
  else if(path==='/profile/reviews')await myReviews();
- else if(path==='/notifications')await notifications();
+ else if(path==='/notifications')await notifications(me);
  else if(path==='/messages')await messages(me);
  else if(path==='/rentals')await rentals(me);
  else if(a==='request'&&b)await requestPage(b,me);
