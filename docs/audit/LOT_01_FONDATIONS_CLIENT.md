@@ -19,6 +19,7 @@ Recette du 23 novembre 2026. L’échantillon opérationnel est accessible sur `
 | `client/pages/operational-samples.js` | Compose l’exemple avec `field`, `select`, `bindForm`, `formValues`, `errorSlot`, `badge`, `empty`, `link` et `modal`. |
 | `client/styles/client.css` | Utilise les tokens V3.2 existants sous `#main .client-operational`. Gabarit à 1200 px, rail responsive, cartes opaques et styles de retour. |
 | `tests/browser/components.spec.js` | Ajoute les règles de gabarit, les états du formulaire et le dialogue au clavier. |
+| `tests/browser/maquette.spec.js` | Attend le message confirmé dans le fil avant la bascule du locataire vers le propriétaire. |
 | `docs/audit/LOT_01_FONDATIONS_CLIENT.md`, suivi et manifeste du handoff | Conservent la recette, ses limites et les décisions humaines attendues. Le manifeste actualise la taille et l’empreinte du suivi. |
 
 Classe A. B p. 11–12 donne la palette, la structure des cartes/formulaires et la hiérarchie des actions. Le gabarit répond à B p. 43. Les contrôles à B p. 44–45 restent liés aux rôles et au focus. L’échantillon sélectionne un cas de validation de période et de retrait local. Les écrans métier seront traités par leurs lots. La démo du verre d’A p. 9 reste distincte. `ui/base.css`, `ui/tokens.css`, `ui/components.js`, le shell et les contrats `/api/v1` sont inchangés.
@@ -52,7 +53,15 @@ Windows x64, Node 24.22.2, Python 3.13.5, Playwright 1.56.1, Chromium 141.0.7390
 | Trois tests de l’échantillon final | 3/3. Ils produisent les preuves d’état et la capture du dialogue au niveau viewport. |
 | Rejeu ciblé du tiroir `--grep 'tiroir unique' --repeat-each=8` | Branche 5/8. Référence 4/8. |
 
-Les tests visuels vérifient aussi les H1 de demande et du catalogue, respectivement Nunito et Lora, et le parcours clavier à 1280 px. Les preuves sont expurgées avec `scripts/sanitize-evidence.py`. Le bilan CI détaillé sera joint à la PR après vérification de ses résultats bruts. Les étapes UI et profils essentiels sont souples par défaut. L’audit étendu est déclenché à la demande.
+Les tests visuels vérifient aussi les H1 de demande et du catalogue, respectivement Nunito et Lora, et le parcours clavier à 1280 px. Les preuves sont expurgées avec `scripts/sanitize-evidence.py`. Le bilan CI détaillé est joint à la PR après vérification de ses résultats bruts. Les étapes UI et profils essentiels sont souples par défaut. L’audit étendu est déclenché à la demande.
+
+### Diagnostic de la suite complète
+
+Les deux premières tentatives de la CI de branche donnent 176/177 puis 175/177. Les 4 profils essentiels passent dans les deux cas. La première tentative échoue sur `maquette.spec.js`, pendant l’assertion de réception du message côté propriétaire. La deuxième reproduit cet échec et PUB-01. [Journal de la première tentative](https://github.com/Djams0/Maquette_LokasyonPeyi/actions/runs/45134930152/job/137558840876) · [Journal de la deuxième tentative](https://github.com/Djams0/Maquette_LokasyonPeyi/actions/runs/45134930152/job/137561707619)
+
+La trace de la première tentative montre que l’assertion locataire trouve le texte dans `.message-attempt-text`, pendant « Envoi en cours ». Aucun POST de message ne précède la bascule. Le propriétaire charge alors le fil créé, encore vide. Le protocole contrôlé reproduit cette séquence sur `006fdca` et sur la version initiale du lot. Sur les deux révisions, l’attente du message confirmé dans « Messages du fil » mène à un POST unique et à la réception côté propriétaire. Le diff de recette borne la première assertion à ce fil. L’assertion de réception et le scénario financier restent en place. [Version initiale du lot](https://github.com/Djams0/Maquette_LokasyonPeyi/commit/28fbcd418560688632af58126201c1502afb4712)
+
+Un rejeu local complémentaire en parallèle de `maquette.spec.js` donne 12/13 sur chaque checkout. Le parcours long atteint la limite globale de 60 secondes, au reçu sur la référence et au constat sur la branche. Il passe dans les deux jobs CI ci-dessus. Le diagnostic expurgé et le rejeu ciblé sont conservés dans le dossier de preuves du lot.
 
 ## Comparaisons et scores
 
