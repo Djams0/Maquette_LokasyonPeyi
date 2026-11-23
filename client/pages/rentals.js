@@ -1,13 +1,12 @@
 import {api} from '../http.js';
 import {escape,icon,link,notice,empty,badge,statuses,money,date,field,select,kv,bindForm,flash,modal,errorSlot,shellLoading} from '/ui/components.js';
 import {parseSearch} from './search-state.js';
-import {bookingDraft,localRentalDate,requestVehicleURL,rentalNext,rentalProgress} from './booking-state.js';
+import {bookingDraft,localRentalDate,requestVehicleURL,rentalNext,rentalProgress,rentalTitles,departureReady,returnReady} from './booking-state.js';
 import {vehicleMedia,bindVehicleMedia} from './vehicle-media.js';
 import {vehiclePresentation,vehicleEstimate} from './vehicle-presentation.js';
 
 const storageRead=key=>{try{return sessionStorage.getItem(key);}catch{return null;}};
 const knownMoney=(value,format=money)=>typeof value==='number'&&Number.isFinite(value)&&value>=0?format(value):'Montant non disponible';
-const period=r=>`<strong>${date(r.start)} → ${date(r.end)}</strong><span class="booking-meta">Heure de Guadeloupe</span>`;
 function bookingPhoto(v,sizes,m=vehicleMedia(v)) {
  return `<img class="vehicle-image" data-vehicle-image data-photo="${m.photo}" data-vehicle-name="${escape(v.name)}" data-fallback="${m.fallback}" src="${m.src}" ${m.srcset?`srcset="${m.srcset}" sizes="${sizes}"`:''} width="${m.width}" height="${m.height}" alt="${escape(m.alt)}">`;
 }
@@ -15,19 +14,11 @@ function vehicleSummary(v,href) {
  const m=vehicleMedia(v);
  return `<article class="card catalogue-media booking-vehicle">${bookingPhoto(v,'96px',m)}<div><h2>${escape(v.name)}</h2>${v.city?`<p>${escape(v.city)}</p>`:''}<span class="media-label">${m.photo?'Photo de démonstration':'Illustration fictive'}</span>${link(href,'Fiche véhicule','link-button')}</div></article>`;
 }
-function amounts(quote,estimate=false) {
- return `<h2>${estimate?'Estimation fictive':'Montants de démonstration'}</h2><dl>${kv('Location',knownMoney(quote?.total))}${Number.isFinite(quote?.daily)&&Number.isFinite(quote?.days)?kv('Unité',escape(quote.days)+' jour(s) × '+money(quote.daily)+'/jour'):''}${kv('Frais / assurance',escape(quote?.fees||'Non définis')+' · '+escape(quote?.insurance||'Conditions à valider'))}${kv('Caution séparée',quote?.depositAmount==null?'Montant non défini':knownMoney(quote.depositAmount))}${!estimate&&quote?.version?kv('Devis simulé',escape(quote.version)):''}</dl><p class="booking-meta">${estimate?'Calcul illustratif par tranches de 24 heures arrondies. Unité commerciale à valider (D-03). Montant indicatif et disponibilité à confirmer avant le paiement.':'Devis simulé enregistré avec la demande. La clôture de la location ne résout pas automatiquement la caution.'}</p>`;
-}
 function actionMarkup(action) {
  if(!action)return '';
  if(action.kind==='link')return link(action.path,action.label);
  const attrs=action.kind==='transition'?`data-transition="${action.key}"`:action.kind==='deposit'?`data-deposit="${action.key}"`:`id="${action.key}"`;
  return `<button type="button" ${attrs}>${escape(action.label)}</button>`;
-}
-function configureBar(main) {
- const bar=main.querySelector('.booking-action');if(!bar)return;
- const update=()=>{const active=document.activeElement;if(bar.contains(active))return;const editing=main.contains(active)&&active.matches('input,select,textarea,[contenteditable]');const obscured=main.contains(active)&&active!==main&&active.getBoundingClientRect().bottom>innerHeight-bar.offsetHeight-8;main.classList.toggle('booking-action-in-flow',Boolean(editing||innerHeight<600||window.visualViewport?.scale>1||obscured));};
- document.addEventListener('focusin',update);document.addEventListener('focusout',()=>setTimeout(update,0));window.addEventListener('resize',update);window.visualViewport?.addEventListener('resize',update);
 }
 const reauthenticate=path=>{location.href='/login?next='+encodeURIComponent(path);};
 
@@ -249,29 +240,382 @@ export async function rentals(me) {
  await load(false);
 }
 
+const meetingStates = ['confirmed','in_progress','return_reported','returned','completed'];
+const refusalReasons = [['unavailable','Indisponibilité'],['maintenance','Entretien'],['other','Autre motif opérationnel']];
+const refreshMessage = 'Actualisez le statut avant de reprendre une action.';
+const recoveryMessage = 'Résultat non confirmé. Vérifiez le statut de la location avant de réessayer.';
+const statusLabel = value => Object.hasOwn(statuses,value) ? badge(value) : 'État à vérifier';
+
+function quotePanel(quote) {
+ return `<section class="card follow-quote">
+   <h2>Devis simulé</h2>
+   <dl>${kv('Tarif journalier',Number.isFinite(quote?.daily)?rentalMoney(quote.daily)+' / jour':'Montant non disponible')}
+     ${kv('Durée',Number.isFinite(quote?.days)?escape(quote.days)+(quote.days===1?' jour':' jours'):'Durée non disponible')}
+     ${kv('Total fictif','<strong>'+knownMoney(quote?.total,rentalMoney)+'</strong>')}
+     ${kv('Caution séparée',quote?.depositAmount==null?'Montant non défini':knownMoney(quote.depositAmount,rentalMoney))}</dl>
+   <p class="booking-meta">${escape(quote?.fees?'Frais · '+quote.fees:'Frais non définis')}. ${escape(quote?.insurance||'Conditions d’assurance à valider')}.</p>
+ </section>`;
+}
+
+function progression(r) {
+ const steps = rentalProgress(r.status);
+ const past = steps.filter(step=>step.done&&!step.current);
+ const remaining = steps.slice(past.length);
+ const outcome = r.status==='completed'?'Parcours terminé':['declined','withdrawn'].includes(r.status)?'Parcours arrêté':'Étape actuelle';
+ const item = step => `<li class="${step.done?'done':''} ${step.current?'current':''}"${step.current?' aria-current="step"':''}>${escape(step.label)}
+   <span class="booking-step-state">${step.current?outcome:step.done?'Réalisé':'À venir'}</span></li>`;
+ return `<section class="card follow-progress" aria-labelledby="follow-progress-title"><h2 id="follow-progress-title">Votre progression</h2>
+   ${past.length?`<details class="follow-past" ${matchMedia('(min-width:768px)').matches?'open':''}>
+     <summary>Étapes précédentes (${past.length})</summary>
+     <ol class="timeline" aria-label="Jalons précédents">${past.map(item).join('')}</ol>
+   </details>`:''}
+   <ol class="timeline" aria-label="Jalons du suivi" start="${past.length+1}">${remaining.map(item).join('')}</ol>
+ </section>`;
+}
+
+function rentalActivity(r) {
+ const actions = {accept:'Acceptation de la demande',decline:'Refus de la demande',withdraw:'Retrait de la demande',
+  pay:'Simulation du paiement',deposit:'Contrôle simulé de caution',handover:'Remise du véhicule',
+  report_return:'Déclaration du retour',verify_return:'Confirmation de la récupération',complete:'Clôture'};
+ if (!r.history?.length) return '';
+ return `<details class="card follow-history"><summary>Historique des opérations</summary><ul>
+   ${r.history.toReversed().map(event=>`<li><strong>${escape(actions[event.action]||'Mise à jour')}</strong> ·
+     ${event.actor===r.ownerId?'Propriétaire':event.actor===r.renterId?'Locataire':'Acteur non renseigné'} · ${rentalTime(event.at)}</li>`).join('')}
+ </ul></details>`;
+}
+
+async function activeRentalIdentity(me) {
+ const current = await api('/me');
+ if (!current) {
+   reauthenticate(location.pathname+location.search);
+   return false;
+ }
+ if (current.id!==me.id) {
+   location.reload();
+   return false;
+ }
+ return true;
+}
+
+const rentalActionStorage = (r,me) => 'rental-transition:'+me.id+':'+r.id;
+
+function readRentalAction(storage) {
+ try {
+   const saved = JSON.parse(sessionStorage.getItem(storage));
+   if (saved && (!Number.isSafeInteger(saved.version) || typeof saved.match!=='string' ||
+       typeof saved.key!=='string' || !/^[a-f\d]{8}-[a-f\d]{4}-4[a-f\d]{3}-[89ab][a-f\d]{3}-[a-f\d]{12}$/.test(saved.key))) throw Error();
+   return saved;
+ } catch {
+   throw Error('La tentative enregistrée ne peut pas être vérifiée. Consultez le statut de la location.');
+ }
+}
+
+function pendingRentalValues(r,me,action) {
+ try {
+   const saved = readRentalAction(rentalActionStorage(r,me));
+   if (saved?.version===r.version) {
+     const attempt = JSON.parse(saved.match);
+     if (attempt.action===action) return attempt.body;
+   }
+ } catch {/* The submission handles invalid stored attempts. */}
+ return null;
+}
+
+async function postRentalAction(r,me,action,body={}) {
+ if (!await activeRentalIdentity(me)) return null;
+ const storage = rentalActionStorage(r,me);
+ const match = JSON.stringify({action,body});
+ const saved = readRentalAction(storage);
+ if (saved?.version>r.version || (saved?.version===r.version && saved.match!==match)) {
+   throw Error('Une autre action reste à vérifier pour cette location. Actualisez le statut avant de reprendre.');
+ }
+ const key = saved?.version===r.version?saved.key:crypto.randomUUID();
+ try {sessionStorage.setItem(storage,JSON.stringify({key,version:r.version,match}));}
+ catch {throw Error('Le stockage local est indisponible. L’action n’a pas été envoyée.');}
+ try {
+   const result = await api('/rentals/'+encodeURIComponent(r.id)+'/'+action,body,'POST',key);
+   const event = result?.history?.at(-1);
+   if (result?.id!==r.id || !(result.version>r.version) || event?.action!==action || event.actor!==me.id) {
+     throw Error(recoveryMessage);
+   }
+   clearRequestStorage(storage);
+   return result;
+ } catch (error) {
+   if ([404,409,422].includes(error.status) && !error.message.startsWith('Clé déjà utilisée')) clearRequestStorage(storage);
+   throw error;
+ }
+}
+
+function exitOnRentalAccess(error) {
+ if (error.status===401) {
+   reauthenticate(location.pathname+location.search);
+   return true;
+ }
+ if (error.status===403) {
+   location.reload();
+   return true;
+ }
+ return false;
+}
+
 export async function rental(id,me) {
- const r=await api('/rentals/'+encodeURIComponent(id)),owner=r.ownerId===me.id,next=rentalNext(r,me.id),main=document.getElementById('main'),urlId=encodeURIComponent(id),back=requestVehicleURL(r.vehicleId,r,null);let secondary='';
- if(r.status==='requested')secondary=owner?'<button type="button" class="danger" id="decline">Refuser</button>':'<button type="button" class="danger" id="withdraw">Retirer ma demande</button>';
- if(r.status==='confirmed')secondary=(next.primary?.path?.endsWith('/departure')?'':link('/inspection/'+urlId+'/departure','État des lieux de départ','secondary'))+(!owner?'<button type="button" class="secondary" data-deposit="failure">Simuler un échec de caution</button>':'');
- if(r.status==='in_progress')secondary=(next.primary?.path?.endsWith('/return')?'':link('/inspection/'+urlId+'/return','État des lieux de retour','secondary'))+link('/cases/new?rental='+urlId+'&kind=Prolongation','Demander une prolongation','secondary');
- if(r.status==='return_reported'&&!owner)secondary=link('/cases/new?rental='+urlId+'&kind='+encodeURIComponent('Retour non confirmé'),'Retour non confirmé ? Contacter le support','secondary');if(r.status==='completed'&&!owner)secondary=link('/review/'+urlId,'Laisser un avis','secondary');
+ const urlId = encodeURIComponent(id), r = await api('/rentals/'+urlId), main = document.getElementById('main');
+ const owner = r.ownerId===me.id, known = Object.hasOwn(rentalTitles,r.status);
+ const next = rentalNext(known?r:{...r,status:''},me.id);
+ const vehicleBack = requestVehicleURL(r.vehicleId,r,null);
  const fromTab = new URLSearchParams(location.search).get('tab');
  const listBack = Object.hasOwn(rentalTabs,fromTab) ? '/rentals?tab='+fromTab : '/rentals';
- main.classList.add('booking-main');
- main.innerHTML=`<div class="booking-page"><a class="booking-back" href="${owner?'/owner/requests':listBack}">${icon('back')} ${owner?'Mes demandes':'Mes locations'}</a><header class="booking-heading"><p class="eyebrow">${escape(r.id)} · Espace ${owner?'propriétaire':'locataire'}</p><h1>${escape(next.title)}</h1>${badge(r.status)}</header><div class="booking-layout"><section class="booking-content">${vehicleSummary({id:r.vehicleId,name:r.vehicleName},back)}<section class="next-action" aria-labelledby="next-action-title"><p class="next-action-actor">${escape(next.actor)}</p><h2 id="next-action-title">${next.primary?'Votre prochaine action':'Suivre la prochaine étape'}</h2><p>${escape(next.description)}</p>${next.primary?`<div class="booking-action"><div><strong>${knownMoney(r.quote?.total)}</strong><span class="booking-meta">Devis simulé · caution séparée</span></div>${actionMarkup(next.primary)}</div>`:''}</section><section class="card"><h2>Période et remise</h2>${period(r)}${r.meeting?notice('<strong>Lieu de remise fictif</strong><p>'+escape(r.meeting)+'</p>'):notice('L’adresse de remise sera visible après confirmation.')}${secondary?`<div class="form-actions section booking-secondary">${secondary}</div>`:''}</section><section class="card"><h2>Trois suivis distincts</h2><dl>${kv('Location',badge(r.status))}${kv('Paiement',badge(r.payment))}${kv('Caution',badge(r.deposit))}</dl><p class="booking-meta">Une autorisation fictive de caution n’est ni un débit ni une garantie réelle. Sa résolution reste distincte de la clôture.</p></section>${owner?`<section class="card"><h2>Profil public de la demande</h2><p>${escape(r.renterName)} · membre depuis ${escape(r.publicProfile.memberSince)} · ${escape(r.publicProfile.completed)} locations fictives terminées.</p>${badge(r.publicProfile.eligibility)}<p class="booking-meta section">Aucune pièce brute, naissance, adresse ou note interne n’est transmise au propriétaire.</p></section>`:''}<section class="card"><h2>Constats enregistrés</h2>${r.inspections.length?r.inspections.map(i=>`<article class="booking-inspection"><h3>${i.phase==='departure'?'Départ':'Retour'} · ${i.finalized?'Finalisé':'Brouillon'}</h3><p class="booking-meta">${i.photos.length}/8 vues · ${escape(i.km??'—')} km · ${escape(i.fuel??'—')} %${i.finalizedAt?' · '+date(i.finalizedAt):''}</p><p>${escape(i.observation||'Aucune observation')}</p>${link('/inspection/'+urlId+'/'+i.phase,'Consulter le constat '+(i.phase==='departure'?'de départ':'de retour'),'secondary')}</article>`).join(''):'<p class="muted">Aucun état des lieux pour le moment.</p>'}<p class="booking-meta">Les photos sont des éléments du dossier et ne déterminent pas automatiquement une responsabilité.</p></section><section class="card"><h2>Conversation et aide</h2><div id="rental-conversation">${link('/messages','Messagerie','secondary')}</div><div class="form-actions section">${link('/assistance?rental='+urlId,'Assistance','secondary')}${link('/cases/new?rental='+urlId,'Ouvrir une réclamation','secondary')}${['awaiting_payment','confirmed'].includes(r.status)?link('/cases/new?rental='+urlId+'&kind=Annulation','Demander une annulation','danger'):''}</div></section></section><aside class="booking-aside stack"><section class="card"><h2>Votre progression</h2><ol class="timeline" aria-label="Progression de la location">${rentalProgress(r.status).map(s=>`<li class="${s.done?'done':''} ${s.current?'current':''}" ${s.current?'aria-current="step"':''}>${escape(s.label)}<span class="booking-step-state">${s.current?'Étape actuelle':s.done?'Réalisé':'Non atteint'}</span></li>`).join('')}</ol></section><section class="card">${amounts(r.quote)}</section><button type="button" class="secondary" id="refresh">${icon('refresh')}Actualiser le statut</button><a href="/demo">Changer de persona pour continuer le parcours</a></aside></div></div>`;
- bindVehicleMedia(main);configureBar(main);
- const run=async(action,body={})=>{try{await api('/rentals/'+urlId+'/'+action,body);flash('Étape enregistrée par l’API.');location.reload();}catch(error){if(error.status===401){reauthenticate('/rental/'+urlId);return;}throw error;}};
- const bind=(selector,fn)=>main.querySelectorAll(selector).forEach(el=>{let pending=false;el.onclick=async()=>{if(pending)return;pending=true;el.disabled=true;el.setAttribute('aria-busy','true');try{await fn(el);}catch(error){el.disabled=false;el.focus({preventScroll:true});const d=modal(error.status?'Action refusée':'Résultat à vérifier',`<p>${escape(error.message)}</p><p>Le suivi n’a pas confirmé de nouvel état. Actualisez avant de reprendre une action.</p><button type="button" class="secondary full" data-reload>Actualiser le statut</button>`);d.querySelector('[data-reload]').onclick=()=>location.reload();}finally{pending=false;el.disabled=false;el.removeAttribute('aria-busy');}};});
- bind('[data-transition]',el=>run(el.dataset.transition));bind('[data-deposit]',el=>run('deposit',{outcome:el.dataset.deposit}));main.querySelector('#refresh').onclick=()=>location.reload();
- main.querySelector('#withdraw')?.addEventListener('click',()=>modal('Retirer la demande ?','<p>Aucun débit n’a été effectué. Le propriétaire verra le retrait.</p>',()=>run('withdraw')));
- main.querySelector('#decline')?.addEventListener('click',()=>modal('Refuser la demande ?',`${select('Motif opérationnel','reason',[['unavailable','Indisponibilité'],['maintenance','Entretien'],['other','Autre motif opérationnel']])}<p>Aucun remboursement : aucun débit n’a été initié.</p>`,values=>run('decline',values)));
- main.querySelector('#handover')?.addEventListener('click',()=>modal('Remise du véhicule','<p>Contrôle de caution et constat de départ sont vérifiés par l’API.</p><label class="check"><input name="controls" type="checkbox" required>Je confirme les contrôles pré-départ fictifs et la remise en présence.</label>',values=>run('handover',{controls:!!values.controls})));
- main.querySelector('#verify-return')?.addEventListener('click',()=>modal('Récupération du véhicule','<p>Cette confirmation reste distincte de l’examen d’un dommage et de la caution.</p><label class="check"><input name="keys" type="checkbox" required>Clés et véhicule récupérés dans la simulation.</label>',values=>run('verify_return',{keys:!!values.keys})));
- try{const conversations=await api('/conversations'),c=conversations.find(c=>c.vehicleId===r.vehicleId&&c.participants.includes(r.renterId)&&c.participants.includes(r.ownerId));if(c)main.querySelector('#rental-conversation').innerHTML=link('/messages?conversation='+encodeURIComponent(c.id),'Ouvrir la conversation du véhicule','secondary')+'<p class="booking-meta">Fil du véhicule renvoyé par l’API ; aucun rattachement à une location précise n’est fourni.</p>';}catch{/* Tracking stays usable if conversations are unavailable. */}
+ const paid = r.payment==='simulated_paid';
+ let decision = '', secondary = '';
+ if (r.status==='requested') decision = owner?'<button type="button" class="secondary" id="decline">Refuser</button>':'<button type="button" class="secondary" id="withdraw">Retirer ma demande</button>';
+ if (r.status==='confirmed') {
+   if (!next.primary?.path?.endsWith('/departure')) secondary += link('/inspection/'+urlId+'/departure','État des lieux de départ','secondary');
+   if (!owner) secondary += '<button type="button" class="secondary" data-deposit="failure">Simuler un échec de caution</button>';
+ }
+ if (r.status==='in_progress') {
+   if (!next.primary?.path?.endsWith('/return')) secondary += link('/inspection/'+urlId+'/return','État des lieux de retour','secondary');
+   secondary += link('/cases/new?rental='+urlId+'&kind=Prolongation','Demander une prolongation','secondary');
+ }
+ if (r.status==='return_reported'&&!owner) secondary += link('/cases/new?rental='+urlId+'&kind='+encodeURIComponent('Retour non confirmé'),'Retour non confirmé ? Contacter le support','secondary');
+ if (r.status==='completed'&&!owner) secondary += link('/review/'+urlId,'Laisser un avis','secondary');
+ const conditions = r.status==='confirmed'?kv('Paiement fictif',paid?'Confirmé':'À vérifier')+
+   kv('Caution',statusLabel(r.deposit))+kv('Constat de départ',departureReady(r)?'Finalisé':'À finaliser'):
+   r.status==='in_progress'?kv('Constat de retour',returnReady(r)?'Finalisé':'À finaliser'):'';
+ const reason = r.status==='declined'?refusalReasons.find(([value])=>value===r.reason)?.[1]:'';
+ main.innerHTML = `<div class="client-operational rental-surface follow-surface">
+   <a class="booking-back" href="${owner?'/owner/requests':listBack}">${icon('back')} ${owner?'Mes demandes':'Mes locations'}</a>
+   <header class="booking-heading"><h1>${escape(next.title)}</h1>
+     <p>${escape(r.vehicleName)} · ${escape(r.id)} · Espace ${owner?'propriétaire':'locataire'}</p>${statuses[r.status]!==next.title?statusLabel(r.status):''}</header>
+   <div class="follow-layout">
+     <div class="follow-column">
+       <section class="next-action" aria-labelledby="next-action-title">
+         <p class="next-action-actor">${escape(next.actor)}</p>
+         <h2 id="next-action-title">${next.primary?'Votre prochaine action':'La suite du parcours'}</h2>
+         <p>${escape(next.description)}</p>
+         ${reason?`<p>Motif · ${escape(reason)}</p>`:''}
+         ${conditions?`<dl class="follow-prerequisites">${conditions}</dl>`:''}
+         ${next.primary||decision?`<div class="follow-actions">${actionMarkup(next.primary)}${decision}</div>`:''}
+         <p id="rental-status" class="follow-live" role="status" aria-atomic="true"></p>
+       </section>
+       ${progression(r)}
+     </div>
+     <aside class="follow-column follow-rail" aria-label="Véhicule et conditions">
+       ${vehicleSummary({id:r.vehicleId,name:r.vehicleName},vehicleBack)}
+       <section class="card"><h2>Période et remise</h2>
+         <dl class="request-dates"><div><dt>Départ</dt><dd>${rentalTime(r.start)}</dd></div><div><dt>Retour</dt><dd>${rentalTime(r.end)}</dd></div></dl>
+         <p class="booking-meta">Heure de Guadeloupe</p>
+         ${r.meeting&&meetingStates.includes(r.status)?notice('<strong>Lieu de remise fictif</strong><p>'+escape(r.meeting)+'</p>'):
+         '<p>Le lieu de remise s’affiche après confirmation.</p>'}
+         ${secondary?`<div class="follow-actions">${secondary}</div>`:''}
+       </section>
+       ${quotePanel(r.quote)}
+       <section class="card"><h2>Trois suivis distincts</h2>
+         <dl>${kv('Location',statusLabel(r.status))}${kv('Paiement fictif',statusLabel(r.payment))}${kv('Caution',statusLabel(r.deposit))}</dl>
+         <p class="booking-meta">La caution suit son propre contrôle. La clôture ne règle pas la caution.</p>
+       </section>
+       ${owner&&r.publicProfile?`<section class="card"><h2>Profil public de la demande</h2>
+         <p>${escape(r.renterName)} · membre depuis ${escape(r.publicProfile.memberSince)} · ${escape(r.publicProfile.completed)} locations fictives terminées.</p>
+         ${statusLabel(r.publicProfile.eligibility)}
+       </section>`:''}
+       <section class="card"><h2>Conversation et aide</h2>
+         <div id="rental-conversation">${link('/messages','Messagerie','secondary')}</div>
+         <div class="follow-actions">${link('/assistance?rental='+urlId,'Assistance','secondary')}${link('/cases/new?rental='+urlId,'Ouvrir une réclamation','secondary')}
+           ${['awaiting_payment','confirmed'].includes(r.status)?link('/cases/new?rental='+urlId+'&kind=Annulation','Demander une annulation','danger'):''}</div>
+       </section>
+       <button type="button" class="secondary" id="refresh">${icon('refresh')}Actualiser le statut</button>
+       ${link('/demo','Changer de persona','link-button')}
+     </aside>
+     <div class="follow-column follow-records">
+       ${rentalActivity(r)}
+       <section class="card"><h2>Constats enregistrés</h2>
+         ${r.inspections?.length?r.inspections.map(i=>`<article class="booking-inspection">
+           <h3>${i.phase==='departure'?'Départ':'Retour'} · ${i.finalized?'Finalisé':'Brouillon'}</h3>
+           <p class="booking-meta">${i.photos.length}/8 vues · ${escape(i.km??'—')} km · ${escape(i.fuel??'—')} %${i.finalizedAt?' · '+date(i.finalizedAt):''}</p>
+           <p>${escape(i.observation||'Aucune observation')}</p>
+           ${link('/inspection/'+urlId+'/'+i.phase,'Consulter le constat '+(i.phase==='departure'?'de départ':'de retour'),'secondary')}
+         </article>`).join(''):'<p class="muted">Aucun état des lieux pour le moment.</p>'}
+         <p class="booking-meta">Les photos sont des éléments du dossier. L’examen d’une réserve relève du dossier d’assistance.</p>
+       </section>
+     </div>
+   </div>
+ </div>`;
+
+ const acknowledgement = document.body.querySelector(':scope > .toast');
+ if (acknowledgement) main.querySelector('.booking-heading').after(acknowledgement);
+ bindVehicleMedia(main);
+ const status = main.querySelector('#rental-status');
+ const transitions = main.querySelectorAll('[data-transition],[data-deposit],#decline,#withdraw,#handover,#verify-return');
+ let pending = false, needsRefresh = false, leaving = false;
+ const run = async(action,body)=>{
+   if (pending || needsRefresh || leaving) return;
+   pending = true;
+   status.textContent = 'Action en cours de vérification.';
+   transitions.forEach(control=>{control.disabled=true;});
+   try {
+     const result = await postRentalAction(r,me,action,body);
+     leaving = true;
+     if (result) {
+       flash('Étape enregistrée par l’API.');
+       location.reload();
+     }
+   } catch (error) {
+     if (exitOnRentalAccess(error)) {leaving=true;return;}
+     needsRefresh = !error.status || error.status===409 || error.status>=500;
+     throw error;
+   } finally {
+     pending = false;
+     status.textContent = needsRefresh?'Actualisez le statut pour poursuivre.':'';
+     transitions.forEach(control=>{control.disabled=needsRefresh||leaving;});
+   }
+ };
+ const refresh = ()=>location.reload();
+ main.querySelector('#refresh').onclick = refresh;
+ const recover = dialog => {dialog.querySelector('[data-reread]').onclick=refresh;};
+ const recoveryButton = '<button type="button" class="secondary full" data-reread>Actualiser le statut</button>';
+ for (const button of main.querySelectorAll('[data-transition],[data-deposit]')) {
+   button.onclick = async()=>{
+     try {
+       if (button.dataset.deposit) await run('deposit',{outcome:button.dataset.deposit});
+       else await run(button.dataset.transition);
+     } catch (error) {
+       const message = error.status&&error.status<500?escape(error.message):recoveryMessage;
+       if (!button.disabled) button.focus({preventScroll:true});
+       const dialog = modal(error.status&&error.status<500?'Action refusée':'Résultat à vérifier',
+         `<p>${message}</p>${needsRefresh?`<p>${refreshMessage}</p>`+recoveryButton:''}`);
+       dialog.classList.add('rental-transition-dialog');
+       if (needsRefresh) {
+         recover(dialog);
+         dialog.addEventListener('close',()=>main.querySelector('#refresh').focus(),{once:true});
+       }
+     }
+   };
+ }
+ function confirm(buttonId,title,content,action,body) {
+   main.querySelector('#'+buttonId)?.addEventListener('click',()=>{
+     const dialog = modal(title,content+'<p class="follow-live" role="status"></p>'+ `<div hidden data-recovery>${recoveryButton}</div>`,async values=>{
+       if (needsRefresh) throw Error(refreshMessage);
+       const live = dialog.querySelector('[role=status]');
+       live.textContent = 'Action en cours de vérification.';
+       dialog.querySelectorAll('[data-close]').forEach(button=>{button.disabled=true;});
+       const fields = dialog.querySelectorAll('input, select');
+       fields.forEach(field=>{field.disabled=true;});
+       try {await run(action,body?.(values));}
+       catch (error) {
+         if (needsRefresh) dialog.querySelector('[data-recovery]').hidden=false;
+         if (!error.status || error.status>=500) throw Error(recoveryMessage);
+         throw error;
+       } finally {
+         live.textContent = '';
+         fields.forEach(field=>{field.disabled=false;});
+         dialog.querySelectorAll('[data-close]').forEach(button=>{button.disabled=false;});
+       }
+     });
+     dialog.classList.add('rental-transition-dialog');
+     dialog.addEventListener('cancel',event=>{if (pending) event.preventDefault();});
+     dialog.addEventListener('close',()=>{if (needsRefresh) main.querySelector('#refresh').focus();},{once:true});
+     recover(dialog);
+   });
+ }
+ confirm('withdraw','Retirer la demande ?','<p>Aucun débit n’a été effectué. Le propriétaire verra le retrait.</p>','withdraw');
+ confirm('decline','Refuser la demande ?',select('Motif opérationnel','reason',refusalReasons,pendingRentalValues(r,me,'decline')?.reason)+'<p>Le refus met fin à cette demande. Aucun débit n’a été effectué.</p>','decline',values=>values);
+ confirm('handover','Remise du véhicule','<p>Le contrôle de caution et le constat de départ doivent être finalisés.</p><label class="check"><input name="controls" type="checkbox" required>Je confirme les contrôles pré-départ fictifs et la remise en présence.</label>','handover',values=>({controls:!!values.controls}));
+ confirm('verify-return','Récupération du véhicule','<p>Cette confirmation enregistre la récupération des clés. La clôture suit une action distincte.</p><label class="check"><input name="keys" type="checkbox" required>Clés et véhicule récupérés dans la simulation.</label>','verify_return',values=>({keys:!!values.keys}));
+
+ try {
+   const conversations = await api('/conversations');
+   const c = conversations.find(c=>c.vehicleId===r.vehicleId&&c.participants.includes(r.renterId)&&c.participants.includes(r.ownerId));
+   if (c) main.querySelector('#rental-conversation').innerHTML =
+     link('/messages?conversation='+encodeURIComponent(c.id),'Ouvrir la conversation du véhicule','secondary')+
+     '<p class="booking-meta">Fil du véhicule renvoyé par l’API. L’API ne fournit aucun rattachement à une location précise.</p>';
+ } catch {/* Tracking remains available while messages are unavailable. */}
 }
 
 export async function payment(id,me) {
- const r=await api('/rentals/'+encodeURIComponent(id)),main=document.getElementById('main'),urlId=encodeURIComponent(id),allowed=r.status==='awaiting_payment'&&me.id===r.renterId;main.classList.add('booking-main');
- main.innerHTML=`<div class="booking-page"><a class="booking-back" href="/rental/${urlId}">${icon('back')} Retour au suivi</a><header class="booking-heading"><h1>Paiement de démonstration</h1><p>${escape(r.vehicleName)}</p></header>${notice('Aucune carte à saisir. Aucun prestataire ni fonds réels. Paiement possible uniquement après acceptation.','warning')}<div class="booking-layout section"><section class="booking-content"><article class="card"><h2>Votre période</h2>${period(r)}</article><article class="card"><h2>État du paiement</h2>${badge(r.payment)}${r.payment==='failed'?notice('Paiement refusé simulé. Aucun montant réel débité. Vous pouvez réessayer.','error'):''}<p class="booking-meta">Caution séparée : ${badge(r.deposit)}. Son montant et ses conditions restent distincts du paiement.</p></article></section><aside class="card booking-aside">${amounts(r.quote)}${allowed?`<form id="payment-form">${select('Résultat à simuler','outcome',[['success','Paiement réussi'],['failure','Paiement refusé']])}<label class="check"><input name="confirm" type="checkbox" required>J’ai compris que cette opération est entièrement fictive.</label>${errorSlot}<div class="booking-action"><div><strong>${knownMoney(r.quote?.total)}</strong><span class="booking-meta">Paiement fictif · caution séparée</span></div><button type="submit">Simuler le paiement</button></div></form>`:notice('Le paiement n’est pas disponible pour votre rôle ou dans l’état actuel. Consultez le suivi de la location.')}</aside></div></div>`;
- configureBar(main);bindForm('payment-form',async values=>{try{await api('/rentals/'+urlId+'/pay',{outcome:values.outcome});if(values.outcome==='failure'){flash('Paiement refusé simulé. Aucun montant réel débité. Réessayez.');location.reload();}else location.href='/rental/'+urlId;}catch(error){if(error.status===401){reauthenticate('/payment/'+urlId);return;}throw error;}});
+ const main = document.getElementById('main'), urlId = encodeURIComponent(id), route = '/rentals/'+urlId;
+ function render(r,focus=false) {
+   const awaiting = r.status==='awaiting_payment', paid = r.payment==='simulated_paid';
+   const refused = awaiting&&r.payment==='failed';
+   const allowed = awaiting&&me.id===r.renterId;
+   const amount = knownMoney(r.quote?.total,rentalMoney);
+   const amountAvailable = Number.isFinite(r.quote?.total)&&r.quote.total>=0;
+   main.innerHTML = `<div class="client-operational rental-surface follow-surface payment-surface">
+     <a class="booking-back" href="/rental/${urlId}">${icon('back')} Retour au suivi</a>
+     <header class="booking-heading"><h1>Paiement de démonstration</h1><p>${escape(r.vehicleName)}</p>${statusLabel(r.status)}</header>
+     <div class="follow-layout">
+       <section class="card payment-panel">
+         <h2 id="payment-state" tabindex="-1">État du paiement</h2>
+         ${refused||paid?'':statusLabel(r.payment)}
+         ${refused?`<div role="status">${notice('Paiement refusé simulé. La demande reste acceptée. Aucun montant réel débité.','error')}</div>`:''}
+         ${paid?`<div role="status">${notice('Paiement fictif confirmé. Le suivi indique la prochaine étape.')}</div>`:''}
+         <p>${refused?'':'Aucun montant réel n’est débité. '}Le contrôle de caution reste séparé du paiement.</p>
+         ${allowed&&amountAvailable?`<form id="payment-form">
+           <fieldset aria-label="Simulation de paiement">
+           ${select('Résultat à simuler','outcome',[['success','Paiement réussi'],['failure','Paiement refusé']],pendingRentalValues(r,me,'pay')?.outcome)}
+           <label class="check"><input name="confirm" type="checkbox" required>J’ai compris que cette opération est entièrement fictive.</label>
+           <p class="payment-total"><strong>${amount}</strong> · paiement fictif</p>
+           <button type="submit">Simuler le paiement</button></fieldset>
+           ${errorSlot}
+         </form>`:allowed?notice('Montant indisponible. Actualisez le statut avant de poursuivre.','warning'):
+           '<p>Le locataire peut simuler le paiement lorsque la demande est acceptée et en attente de paiement.</p>'}
+         <p class="follow-live" id="payment-status" role="status" aria-atomic="true"></p>
+         <button type="button" class="secondary" id="payment-refresh" ${allowed&&amountAvailable?'hidden':''}>Actualiser le statut</button>
+       </section>
+       <aside class="follow-column follow-rail" aria-label="Devis et période">
+         ${quotePanel(r.quote)}
+         <section class="card"><h2>Votre période</h2>
+           <dl class="request-dates"><div><dt>Départ</dt><dd>${rentalTime(r.start)}</dd></div><div><dt>Retour</dt><dd>${rentalTime(r.end)}</dd></div></dl>
+           <p class="booking-meta">Heure de Guadeloupe</p><p>Caution · ${statusLabel(r.deposit)}</p>
+         </section>
+       </aside>
+     </div>
+   </div>`;
+   if (focus) main.querySelector('#payment-state').focus();
+   const status = main.querySelector('#payment-status'), refresh = main.querySelector('#payment-refresh');
+   const form = main.querySelector('#payment-form'), fields = form?.querySelector('fieldset');
+   let needsRefresh = false, leaving = false;
+   refresh.onclick = async()=>{
+     refresh.disabled = true;
+     status.textContent = 'Lecture du statut en cours.';
+     try {
+       if (!await activeRentalIdentity(me)) return;
+       const current = await api(route);
+       if (current.version!==r.version || !form) {render(current,true);return;}
+       needsRefresh = false;
+       fields.disabled = false;
+       form.querySelector('.form-error').replaceChildren();
+       refresh.hidden = true;
+       status.textContent = 'Statut vérifié. Vous pouvez reprendre la simulation.';
+       form.querySelector('[type=submit]').focus();
+     } catch (error) {
+       if (!exitOnRentalAccess(error)) status.textContent = error.message;
+     } finally {refresh.disabled=false;}
+   };
+   bindForm(form,async values=>{
+     if (needsRefresh || leaving) throw Error(refreshMessage);
+     fields.disabled = true;
+     status.textContent = 'Simulation de paiement en cours.';
+     refresh.disabled = true;
+     try {
+       const result = await postRentalAction(r,me,'pay',{outcome:values.outcome});
+       if (!result) {leaving=true;return;}
+       if (result.payment==='failed'&&result.status==='awaiting_payment') render(result,true);
+       else if (result.payment==='simulated_paid'&&result.status==='confirmed') {
+         leaving = true;
+         flash('Paiement fictif confirmé.');
+         location.href = '/rental/'+urlId;
+       } else throw Error(recoveryMessage);
+     } catch (error) {
+       if (exitOnRentalAccess(error)) {leaving=true;return;}
+       needsRefresh = !error.status || error.status===409 || error.status>=500;
+       refresh.hidden = !needsRefresh;
+       if (!error.status || error.status>=500) throw Error(recoveryMessage+' '+error.message);
+       throw error;
+     } finally {
+       fields.disabled = needsRefresh||leaving;
+       status.textContent = '';
+       refresh.disabled = false;
+     }
+   });
+ }
+ render(await api(route));
 }

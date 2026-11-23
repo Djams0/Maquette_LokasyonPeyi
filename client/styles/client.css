@@ -1789,3 +1789,108 @@ html:has(.navigation-panel[open]) { overflow: hidden; }
   #shell:has(> #main > .rental-surface) > .bottom-nav a { min-inline-size: 0; white-space: normal; overflow-wrap: anywhere; }
   .rental-card-action > .button, .request-confirmation [type="submit"] { inline-size: 100%; }
 }
+
+/* The rental follow-up and payment keep their controls in document order. */
+#main .follow-surface .booking-heading h1 {
+  font-size: clamp(var(--lp-text-section), 3.6vw, var(--lp-text-title));
+}
+.follow-surface .follow-layout,
+.follow-surface .follow-column {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: var(--lp-space-16);
+  min-inline-size: 0;
+}
+.follow-surface .follow-column > *,
+.follow-surface .payment-panel { min-inline-size: 0; }
+.follow-surface .toast {
+  position: static;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  margin-block-end: var(--lp-space-16);
+}
+.follow-surface .next-action { padding: var(--lp-space-20); }
+.follow-surface .next-action h2 { margin-block: 0 var(--lp-space-8); }
+.follow-surface .next-action-actor {
+  color: var(--lp-color-ochre);
+  margin-block: 0 var(--lp-space-4);
+}
+.follow-surface .next-action .button,
+.follow-surface .next-action button {
+  background: var(--surface);
+  border-color: var(--surface);
+  color: var(--lp-color-v32-action);
+}
+.follow-surface .next-action .secondary { background: transparent; color: var(--surface); }
+.follow-surface .next-action button:disabled { opacity: .65; }
+.follow-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--lp-space-8);
+  margin-block-start: var(--lp-space-12);
+}
+.follow-surface .key-value { flex-wrap: wrap; gap: var(--lp-space-4) var(--lp-space-12); }
+.follow-surface .key-value dd { margin-inline-start: auto; }
+.follow-surface .follow-prerequisites {
+  margin-block: var(--lp-space-12);
+  border-block-start: 1px solid var(--lp-color-v32-outline);
+}
+.follow-surface .follow-prerequisites .key-value {
+  color: inherit;
+  border-bottom-color: var(--lp-color-v32-outline);
+}
+.follow-surface .follow-prerequisites dt { color: inherit; }
+.follow-surface .follow-prerequisites .badge { white-space: normal; }
+.follow-surface .timeline { margin-block-start: var(--lp-space-4); }
+.follow-surface .timeline .current { color: var(--primary); }
+.follow-surface .follow-past summary,
+.follow-surface .follow-history summary {
+  min-block-size: var(--lp-layout-touch-min);
+  padding-block: var(--lp-space-12);
+}
+.follow-surface .follow-history li + li { margin-block-start: var(--lp-space-8); }
+.follow-surface .notice p { margin-block: 0; }
+.follow-surface .follow-quote p { margin-block-end: 0; }
+.follow-surface .payment-panel {
+  display: grid;
+  gap: var(--lp-space-12);
+  justify-items: start;
+}
+.follow-surface .payment-panel :is(h2,p) { margin-block: 0; }
+.follow-surface .payment-panel form { inline-size: 100%; }
+.follow-surface .payment-panel fieldset {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  min-inline-size: 0;
+}
+.follow-surface .payment-panel .payment-total {
+  margin-block: var(--lp-space-12);
+  font-variant-numeric: tabular-nums;
+}
+.follow-surface .payment-total strong { font-size: var(--lp-text-card); }
+.follow-surface .follow-live:not(:empty), .rental-transition-dialog .follow-live:not(:empty) {
+  margin-block-start: var(--lp-space-12);
+  font-size: var(--lp-text-meta);
+}
+.follow-surface .payment-panel .follow-live:empty { grid-column: 1; position: absolute; }
+.rental-transition-dialog { overflow-wrap: anywhere; }
+.rental-transition-dialog form > .row:first-child, .rental-transition-dialog .form-actions { flex-wrap: wrap; }
+.rental-transition-dialog button { white-space: normal; }
+
+@media (min-width:900px) {
+  .follow-surface .follow-layout {
+    grid-template-columns: minmax(0,1fr) minmax(280px, min(32%, 340px));
+    gap: var(--lp-space-24);
+  }
+  .follow-surface:not(.payment-surface) .follow-layout { grid-template-rows: min-content auto; }
+  .follow-surface:not(.payment-surface) .follow-rail { grid-column: 2; grid-row: 1 / span 2; }
+  .follow-surface .follow-records { grid-column: 1; grid-row: 2; }
+  .follow-surface .next-action { padding: var(--lp-space-24); }
+}
+@media (max-width:599px) {
+  .follow-surface .follow-actions > *,
+  .follow-surface .payment-panel [type="submit"] { inline-size: 100%; }
+}
