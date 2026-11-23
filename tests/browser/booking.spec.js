@@ -18,10 +18,38 @@ async function create(page,status='requested'){
  await persona(page);const r=await json(page,'/rentals',{vehicleId:'v1',...dates});if(status!=='requested'){await persona(page,'owner');await json(page,'/rentals/'+r.id+'/accept',{});if(status==='confirmed'){await persona(page);await json(page,'/rentals/'+r.id+'/pay',{outcome:'success'});}}return r;
 }
 async function inspect(page,id,phase){for(const view of ['Avant','Arrière','Côté gauche','Côté droit','Intérieur','Compteur','Carburant / charge','Vue générale'])await json(page,'/rentals/'+id+'/inspection',{phase,action:'photo',view});await json(page,'/rentals/'+id+'/inspection',{phase,action:'finalize',km:phase==='departure'?10000:10100,fuel:80,confirm:true});}
-for(const width of [320,375,390,430,768,1024,1440])test(`Réservation: récapitulatif, action et reflow à ${width}px`,async({page})=>{
- await page.setViewportSize({width,height:width===1440?950:844});await requestScreen(page);await page.evaluate(()=>document.fonts.ready);await expect(page.locator('.booking-vehicle')).toContainText('Peugeot 208');await expect(page.locator('.booking-period')).toContainText('10 juin 2027');await expect(page.locator('.booking-period')).toContainText('14 juin 2027');await expect(page.locator('.booking-aside')).toContainText('128');
- expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBeLessThanOrEqual(1);const submit=page.getByRole('button',{name:'Envoyer ma demande',exact:true}),box=await submit.boundingBox();expect(box.height).toBeGreaterThanOrEqual(48);if(width<1024)expect(box.y+box.height).toBeLessThanOrEqual(844);
- await page.getByLabel('J’ai lu les règles').check();await expect(page.locator('#main')).toHaveClass(/booking-action-in-flow/);
+for(const width of [320,375,390,430,768,1024,1280,1440])test(`Réservation: récapitulatif, action et reflow à ${width}px`,async({page})=>{
+ await page.setViewportSize({width,height:width===1440?950:844});
+ await requestScreen(page);
+ await page.evaluate(()=>document.fonts.ready);
+ await expect(page.locator('.booking-vehicle')).toContainText('Peugeot 208');
+ const period = page.locator('.booking-period');
+ await expect(period).toContainText('Départ');
+ await expect(period).toContainText('10 juin 2027');
+ await expect(period).toContainText('Retour');
+ await expect(period).toContainText('14 juin 2027');
+ const rail = page.locator('.booking-aside');
+ await expect(rail).toContainText('32');
+ await expect(rail).toContainText('/ jour');
+ await expect(rail).toContainText('4 jours');
+ await expect(rail).toContainText('128');
+ await expect(rail).toContainText('Aucun paiement ni blocage de caution');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBeLessThanOrEqual(1);
+ const submit = page.getByRole('button',{name:'Envoyer ma demande',exact:true});
+ const box = await submit.boundingBox();
+ expect(box.height).toBeGreaterThanOrEqual(48);
+ if (width<1024) {
+   const estimate = await rail.boundingBox();
+   expect(estimate.y+estimate.height).toBeLessThan(box.y);
+ }
+ await submit.scrollIntoViewIfNeeded();
+ await expect(submit).toBeInViewport();
+ expect(await submit.evaluate(el=>{
+   const r = el.getBoundingClientRect();
+   return el.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));
+ })).toBe(true);
+ await page.getByLabel('J’ai lu les règles').check();
+ await expect(submit).toBeEnabled();
 });
 test('Réservation: modifier, annuler, revenir à la fiche et envoyer conservent le véhicule, la période et les critères',async({page})=>{
  await requestScreen(page);const original=await page.evaluate(()=>sessionStorage.getItem('rental-draft'));await page.getByRole('button',{name:'Modifier la période',exact:true}).click();let d=page.getByRole('dialog',{name:'Modifier la période',exact:true});await d.getByLabel('Départ · heure Guadeloupe').fill('2027-06-11T10:30');await d.getByRole('button',{name:'Annuler',exact:true}).click();expect(await page.evaluate(()=>sessionStorage.getItem('rental-draft'))).toBe(original);
@@ -36,12 +64,19 @@ test('Réservation: brouillon absent, corrompu, autre véhicule ou dates invalid
 });
 test('Réservation: réponse perdue, double validation et reload réutilisent la même clé sans seconde demande',async({page})=>{
  await requestScreen(page);let release,calls=0;const gate=new Promise(r=>release=r),keys=[];await page.route('**/api/v1/rentals',async route=>{if(route.request().method()!=='POST')return route.continue();calls++;keys.push(route.request().headers()['idempotency-key']);if(calls===1){await gate;await route.fetch();await route.abort();}else await route.continue();});
- await page.getByLabel('J’ai lu les règles').check();await page.getByRole('button',{name:'Envoyer ma demande',exact:true}).click();await expect(page.getByRole('button',{name:'Envoyer ma demande',exact:true})).toBeDisabled();await page.locator('#request-form').evaluate(f=>f.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true})));expect(calls).toBe(1);release();await expect(page.locator('#request-form .form-error')).toContainText('Résultat non confirmé');
- await page.reload();await page.getByLabel('J’ai lu les règles').check();await page.getByRole('button',{name:'Envoyer ma demande',exact:true}).click();await page.waitForURL(/\/rental\//);expect(keys.length).toBe(2);expect(keys[1]).toBe(keys[0]);const b=await (await page.request.get(client+'/api/v1/bootstrap')).json();expect(b.rentals.filter(r=>r.vehicleId==='v1'&&r.renterId==='renter')).toHaveLength(1);
+ await page.getByLabel('J’ai lu les règles').check();await page.getByRole('button',{name:'Envoyer ma demande',exact:true}).click();await expect(page.getByRole('button',{name:'Envoyer ma demande',exact:true})).toBeDisabled();await expect(page.locator('#request-status')).toBeVisible();await expect(page.locator('#request-status')).toHaveText('Envoi de la demande en cours.');await page.locator('#request-form').evaluate(f=>f.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true})));try{await expect.poll(()=>calls).toBe(1);}finally{release();}await expect(page.locator('#request-form .form-error')).toContainText('Résultat non confirmé');await expect(page.locator('#request-uncertain')).toBeHidden();
+ await page.reload();await expect(page.locator('#request-uncertain')).toBeVisible();await page.getByLabel('J’ai lu les règles').check();await page.getByRole('button',{name:'Envoyer ma demande',exact:true}).click();await page.waitForURL(/\/rental\//);await expect(page.getByRole('status').filter({hasText:'Demande envoyée au propriétaire.'})).toBeVisible();expect(keys.length).toBe(2);expect(keys[1]).toBe(keys[0]);const b=await (await page.request.get(client+'/api/v1/bootstrap')).json();expect(b.rentals.filter(r=>r.vehicleId==='v1'&&r.renterId==='renter')).toHaveLength(1);
 });
 test('Réservation: conflit serveur conserve le brouillon et permet une période corrigée',async({page})=>{
  await persona(page,'audit-r02');const other=await json(page,'/rentals',{vehicleId:'v1',...dates});await persona(page,'owner');await json(page,'/rentals/'+other.id+'/accept',{});await requestScreen(page);await page.getByLabel('J’ai lu les règles').check();await page.getByRole('button',{name:'Envoyer ma demande',exact:true}).click();await expect(page.locator('#request-form .form-error')).toContainText('Ce créneau est indisponible');expect(JSON.parse(await page.evaluate(()=>sessionStorage.getItem('rental-draft')))).toEqual({vehicleId:'v1',...dates});
- await page.getByRole('button',{name:'Modifier la période',exact:true}).click();const d=page.getByRole('dialog',{name:'Modifier la période',exact:true});await d.getByLabel('Départ · heure Guadeloupe').fill('2027-06-16T09:00');await d.getByLabel('Retour · heure Guadeloupe').fill('2027-06-18T09:00');await d.getByRole('button',{name:'Appliquer la période',exact:true}).click();await page.getByLabel('J’ai lu les règles').check();await page.getByRole('button',{name:'Envoyer ma demande',exact:true}).click();await page.waitForURL(/\/rental\//);expect((await record(page,new URL(page.url()).pathname.split('/').at(-1))).start).toBe('2027-06-16T13:00:00.000Z');
+ await page.getByRole('button',{name:'Modifier la période',exact:true}).click();const d=page.getByRole('dialog',{name:'Modifier la période',exact:true});await d.getByLabel('Départ · heure Guadeloupe').fill('2027-06-16T09:00');await d.getByLabel('Retour · heure Guadeloupe').fill('2027-06-18T09:00');await d.getByRole('button',{name:'Appliquer la période',exact:true}).click();
+ await expect(page.locator('.booking-period')).toContainText('16 juin 2027');
+ await expect(page.getByRole('button',{name:'Modifier la période',exact:true})).toBeFocused();
+ const consent = page.getByLabel('J’ai lu les règles');
+ await expect(consent).not.toBeChecked();
+ await consent.check();
+ await expect(consent).toBeChecked();
+ await page.getByRole('button',{name:'Envoyer ma demande',exact:true}).click();await page.waitForURL(/\/rental\//);expect((await record(page,new URL(page.url()).pathname.split('/').at(-1))).start).toBe('2027-06-16T13:00:00.000Z');
 });
 test('Réservation: refus et retrait gardent une progression sans paiement',async({page})=>{
  let r=await create(page);await persona(page,'owner');await page.goto(client+'/rental/'+r.id);await page.getByRole('button',{name:'Refuser',exact:true}).click();await page.getByRole('dialog').getByRole('button',{name:'Confirmer',exact:true}).click();await expect(page.getByRole('heading',{name:'Demande non retenue',exact:true})).toBeVisible();await expect(page.locator('.timeline li')).toHaveCount(2);expect((await record(page,r.id)).payment).toBe('not_started');
@@ -66,4 +101,160 @@ test('Réservation: tiers refusé et conflit d’état ne donnent aucun droit ni
 });
 test('Réservation: conversation du bon véhicule et des bonnes parties, aide indépendante si lecture indisponible',async({page})=>{
  const r=await create(page);const c=await json(page,'/conversations',{vehicleId:'v1'});await page.goto(client+'/rental/'+r.id);await expect(page.getByRole('link',{name:'Ouvrir la conversation du véhicule',exact:true})).toHaveAttribute('href','/messages?conversation='+c.id);await expect(page.locator('#rental-conversation')).toContainText('aucun rattachement à une location précise');await page.route('**/api/v1/conversations',route=>route.abort());await page.reload();await expect(page.getByRole('heading',{name:'Demande envoyée',exact:true})).toBeVisible();await expect(page.locator('#rental-conversation').getByRole('link',{name:'Messagerie',exact:true})).toBeVisible();await expect(page.getByRole('link',{name:'Assistance',exact:true})).toBeVisible();
+});
+
+test('Locations: onglets et retours gardent la période, la prochaine action et le bon participant',async({page})=>{
+ const pending = await create(page);
+ const accepted = await create(page,'awaiting_payment');
+ await persona(page,'audit-r02');
+ const other = await json(page,'/rentals',{vehicleId:'v1',start:'2027-06-16T13:00:00.000Z',end:'2027-06-18T13:00:00.000Z'});
+ await persona(page);
+ const withdrawn = await json(page,'/rentals',{vehicleId:'v1',start:'2027-06-19T13:00:00.000Z',end:'2027-06-22T13:00:00.000Z'});
+ await json(page,'/rentals/'+withdrawn.id+'/withdraw',{});
+ await page.goto(client+'/rentals?tab=upcoming');
+ const cards = page.locator('.booking-list-card');
+ const forRental = id => cards.filter({hasText:id});
+ await expect(forRental(pending.id)).toContainText('En attente du propriétaire');
+ await expect(forRental(pending.id).getByRole('link')).toHaveAttribute('href','/rental/'+pending.id+'?tab=upcoming');
+ await expect(forRental(pending.id).locator('time').first()).toHaveAttribute('datetime',dates.start);
+ await expect(forRental(accepted.id).getByRole('link')).toHaveAttribute('href','/payment/'+accepted.id);
+ await expect(forRental(other.id)).toHaveCount(0);
+ await expect(forRental(withdrawn.id)).toHaveCount(0);
+ await page.getByRole('link',{name:'En cours',exact:true}).press('Enter');
+ await expect(page.getByRole('heading',{name:'Aucune location en cours'})).toBeVisible();
+ await expect(page.getByRole('link',{name:'En cours',exact:true})).toHaveAttribute('aria-current','page');
+ await page.getByRole('link',{name:'Historique',exact:true}).press('Enter');
+ await expect(forRental(withdrawn.id)).toContainText('Demande retirée par le locataire');
+ await forRental(withdrawn.id).getByRole('link').press('Enter');
+ await page.getByRole('link',{name:'Mes locations',exact:true}).press('Enter');
+ await expect(page).toHaveURL(client+'/rentals?tab=history');
+ await expect(forRental(withdrawn.id)).toBeVisible();
+});
+
+test('Locations: chargement, échec et reprise se distinguent de la liste vide',async({page})=>{
+ await persona(page,'newcomer');
+ let release;
+ const gate = new Promise(done=>{release=done;});
+ const bootstrap = '**/api/v1/bootstrap';
+ await page.route(bootstrap,async route=>{await gate;await route.abort();});
+ await page.goto(client+'/rentals?tab=history');
+ await expect(page.getByRole('status',{name:'Chargement'})).toBeVisible();
+ await expect(page.getByRole('heading',{name:'Votre historique est vide'})).toHaveCount(0);
+ release();
+ await expect(page.getByRole('heading',{name:'Locations indisponibles'})).toBeVisible();
+ await expect(page.getByRole('alert')).toContainText('API injoignable');
+ await page.unroute(bootstrap);
+ await page.getByRole('button',{name:'Réessayer'}).press('Enter');
+ await expect(page.getByRole('heading',{name:'Votre historique est vide'})).toBeFocused();
+ await expect(page).toHaveURL(client+'/rentals?tab=history');
+});
+
+test('Demande: compte incomplet, véhicule propre et période passée empêchent l’envoi',async({page})=>{
+ await requestScreen(page);
+ const saved = await page.evaluate(()=>sessionStorage.getItem('rental-draft'));
+ const attempts = [];
+ page.on('request',r=>{if(new URL(r.url()).pathname==='/api/v1/rentals'&&r.method()==='POST')attempts.push(r);});
+ await persona(page,'newcomer');
+ await page.reload();
+ await expect(page.getByRole('link',{name:'Voir mes documents'})).toHaveAttribute('href','/profile/documents');
+ await expect(page.getByRole('button',{name:'Envoyer ma demande'})).toHaveCount(0);
+ await expect(page.locator('.booking-period')).toContainText('10 juin 2027');
+ await persona(page,'owner');
+ await page.reload();
+ await expect(page.getByRole('link',{name:'Gérer mon annonce'})).toBeVisible();
+ await expect(page.getByRole('button',{name:'Envoyer ma demande'})).toHaveCount(0);
+ await persona(page);
+ await page.clock.setFixedTime(new Date('2027-06-15T16:00:00Z'));
+ await page.reload();
+ await expect(page.locator('.booking-period')).toContainText('Cette période est passée');
+ await expect(page.getByRole('button',{name:'Envoyer ma demande'})).toHaveCount(0);
+ const back = new URL(await page.getByRole('link',{name:'Retour à la fiche'}).getAttribute('href'),client);
+ expect(back.searchParams.get('view')).toBe('map');
+ expect(back.searchParams.get('sort')).toBe('price');
+ expect(back.searchParams.get('max')).toBe('80');
+ const edit = page.getByRole('button',{name:'Modifier la période'});
+ await edit.press('Enter');
+ await expect(page.getByLabel('Départ · heure Guadeloupe')).toHaveValue('2027-06-10T09:00');
+ await page.keyboard.press('Escape');
+ await expect(edit).toBeFocused();
+ expect(await page.evaluate(()=>sessionStorage.getItem('rental-draft'))).toBe(saved);
+ expect(attempts).toHaveLength(0);
+});
+
+test('Demande: une coupure avant écriture conserve la clé et la période même après un retour fiche',async({page})=>{
+ await requestScreen(page);
+ const sent = [];
+ await page.route('**/api/v1/rentals',async route=>{
+   if (route.request().method()!=='POST') return route.continue();
+   sent.push([route.request().headers()['idempotency-key'],route.request().postData()]);
+   if (sent.length===1) await route.abort();
+   else await route.continue();
+ });
+ await page.getByLabel('J’ai lu les règles').check();
+ await page.getByRole('button',{name:'Envoyer ma demande'}).click();
+ await expect(page.locator('#request-form .form-error')).toContainText('Résultat non confirmé');
+ await expect(page.getByLabel('J’ai lu les règles')).toBeChecked();
+ await expect(page.getByRole('button',{name:'Modifier la période'})).toBeDisabled();
+ let data = await (await page.request.get(client+'/api/v1/bootstrap')).json();
+ expect(data.rentals.filter(r=>r.vehicleId==='v1'&&r.renterId==='renter')).toHaveLength(0);
+ await page.getByRole('link',{name:'Retour à la fiche'}).click();
+ await page.goto(client+'/vehicle/v1?from=2027-06-16&until=2027-06-18');
+ await page.getByRole('button',{name:'Demander la location',exact:true}).click();
+ await expect(page.locator('#request-uncertain')).toBeVisible();
+ await expect(page.locator('.booking-period')).toContainText('10 juin 2027');
+ await expect(page.getByRole('button',{name:'Modifier la période'})).toHaveCount(0);
+ const back = new URL(await page.getByRole('link',{name:'Retour à la fiche'}).getAttribute('href'),client);
+ expect(back.searchParams.get('view')).toBe('map');
+ expect(back.searchParams.get('max')).toBe('80');
+ expect(back.searchParams.get('from')).toBe('2027-06-10');
+ await page.getByLabel('J’ai lu les règles').check();
+ await page.getByRole('button',{name:'Envoyer ma demande'}).click();
+ await page.waitForURL(/\/rental\//);
+ expect(sent).toHaveLength(2);
+ expect(sent[1]).toEqual(sent[0]);
+ data = await (await page.request.get(client+'/api/v1/bootstrap')).json();
+ expect(data.rentals.filter(r=>r.vehicleId==='v1'&&r.renterId==='renter'&&r.start===dates.start)).toHaveLength(1);
+ expect(JSON.parse(await page.evaluate(()=>sessionStorage.getItem('rental-draft'))).start).toBe('2027-06-16T13:00:00.000Z');
+});
+
+test('Demande: un formulaire ouvert sous un autre compte ne peut pas envoyer',async({page})=>{
+ await requestScreen(page);
+ await persona(page,'newcomer');
+ await page.getByLabel('J’ai lu les règles').check();
+ await page.getByRole('button',{name:'Envoyer ma demande'}).click();
+ await expect(page.getByRole('link',{name:'Voir mes documents'})).toBeVisible();
+ await expect(page.getByLabel('J’ai lu les règles')).toHaveCount(0);
+ const data = await (await page.request.get(client+'/api/v1/bootstrap')).json();
+ expect(data.rentals.filter(r=>r.vehicleId==='v1')).toHaveLength(0);
+ await persona(page);
+ await page.reload();
+ await expect(page.locator('.booking-period')).toContainText('10 juin 2027');
+ await expect(page.getByLabel('J’ai lu les règles')).not.toBeChecked();
+});
+
+test('Demande: le calcul conserve les centimes et un tarif absent bloque la confirmation',async({page})=>{
+ await requestScreen(page);
+ let price = 32.5;
+ await page.route('**/api/v1/vehicles/v1',async route=>{
+   const response = await route.fetch();
+   await route.fulfill({response,json:{...await response.json(),price}});
+ });
+ await page.reload();
+ const estimate = page.locator('.request-estimate');
+ await expect(estimate).toContainText('32,5');
+ await expect(estimate).toContainText('4 jours');
+ await expect(estimate).toContainText('130');
+ price = null;
+ await page.reload();
+ await expect(estimate).toContainText('Montant à confirmer');
+ await expect(page.getByText('Tarif indisponible.',{exact:false})).toBeVisible();
+ await expect(page.getByRole('button',{name:'Envoyer ma demande'})).toHaveCount(0);
+ price = 32;
+ await page.evaluate(()=>{
+   const signature = sessionStorage.getItem('rental-draft');
+   sessionStorage.setItem('rental-attempt:renter:v1',JSON.stringify({signature,key:'------------------------------------'}));
+ });
+ await page.reload();
+ await expect(page.getByText('La tentative locale ne peut pas être vérifiée.',{exact:false})).toBeVisible();
+ await expect(page.getByRole('button',{name:'Envoyer ma demande'})).toHaveCount(0);
 });

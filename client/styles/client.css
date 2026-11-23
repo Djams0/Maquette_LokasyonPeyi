@@ -1698,3 +1698,94 @@ html:has(.navigation-panel[open]) { overflow: hidden; }
   #main .account-auth-photo figcaption { font-size: var(--lp-text-meta); }
   #main .account-auth-photo figcaption a { display: inline-flex; align-items: center; min-block-size: 44px; }
 }
+
+/* Rental list and request use the operational surfaces without the tracking action bar. */
+#main .rental-surface h2 { font: var(--lp-weight-strong) var(--lp-text-card)/var(--lp-leading-card) var(--lp-font-ui); }
+#main .rental-surface .booking-heading p { color: var(--muted); }
+#main .rental-surface .button, #main .rental-surface button { white-space: normal; }
+.rental-tabs, .request-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--lp-space-8);
+}
+.rental-tabs { margin-bottom: var(--lp-space-16); }
+.rental-tabs a[aria-current="page"] { background: var(--primary); border-color: var(--primary); color: var(--surface); }
+.rental-cards { display: grid; gap: var(--lp-space-12); list-style: none; padding: 0; margin: 0; }
+.rental-surface .booking-list-card {
+  display: grid;
+  gap: var(--lp-space-16);
+  grid-template-columns: minmax(0,1fr);
+  align-items: start;
+}
+.rental-card-trip { display: flex; gap: var(--lp-space-12); align-items: flex-start; }
+.rental-card-trip > div { min-inline-size: 0; }
+.rental-card-trip .vehicle-image {
+  inline-size: clamp(64px,18vw,112px);
+  aspect-ratio: 4/3;
+  flex: none;
+  object-fit: cover;
+  border-radius: var(--lp-radius-control);
+}
+.rental-card-trip .is-illustration { object-fit: contain; }
+.rental-card-trip h2, .rental-card-trip p, .rental-card-next p, .rental-card-action p { margin: 0; }
+.rental-card-dates, .request-dates { display: grid; gap: var(--lp-space-8); margin-block: var(--lp-space-8); }
+.rental-card-dates dd, .request-dates dd { margin: 0; font-weight: var(--lp-weight-strong); }
+.rental-card-dates dt, .request-dates dt, .rental-card-next p { font-size: var(--lp-text-meta); }
+.rental-card-next p { margin-block-start: var(--lp-space-4); }
+.rental-card-action .button { margin-block: var(--lp-space-8); }
+.rental-card-action > strong { font-size: var(--lp-text-card); }
+.rental-surface .rental-list-error button { margin-block-start: var(--lp-space-12); }
+
+.request-layout { display: grid; gap: var(--lp-space-16); align-items: start; }
+.request-layout > *, .request-summary > * { min-inline-size: 0; }
+.request-summary .notice p { margin: 0; }
+.request-layout .request-estimate { position: static; max-height: none; overflow: visible; }
+.request-estimate .key-value { flex-wrap: wrap; gap: var(--lp-space-8); }
+.request-estimate .key-value dd { margin-left: auto; }
+.request-estimate h3 { font: var(--lp-weight-strong) var(--lp-text-body)/var(--lp-leading-body) var(--lp-font-ui); }
+.request-confirmation .check {
+  display: flex;
+  align-items: flex-start;
+  min-block-size: var(--lp-layout-touch-min);
+  padding-block: var(--lp-space-8);
+}
+.request-confirmation .check input { flex: none; }
+.request-confirmation .button { margin-block-start: var(--lp-space-4); }
+.request-confirmation [type="submit"] { min-block-size: var(--lp-layout-touch-min); }
+.request-confirmation #request-uncertain {
+  padding: var(--lp-space-12);
+  border-radius: var(--lp-radius-control);
+  background: var(--lp-color-warning-bg);
+  color: var(--lp-color-warning-text);
+}
+.request-confirmation #request-status:empty { margin: 0; }
+.request-links { margin: var(--lp-space-8) 0 0; }
+.request-links .link-button { padding-inline: 0; text-align: start; }
+.request-rules summary { cursor: pointer; min-block-size: var(--lp-layout-touch-min); align-content: center; }
+.request-period-dialog { overflow-wrap: anywhere; }
+.request-period-dialog .row, .request-period-dialog .form-actions { flex-wrap: wrap; }
+.request-period-dialog input { min-inline-size: 0; inline-size: 100%; }
+.request-period-dialog button { white-space: normal; }
+
+@media (min-width:430px) {
+  .request-dates { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (min-width:900px) {
+  .rental-surface .booking-list-card {
+    grid-template-columns: minmax(0,1.25fr) minmax(0,1fr) minmax(0,.8fr);
+    align-items: center;
+  }
+}
+@media (min-width:1024px) {
+  .request-layout { grid-template-columns: minmax(0,1fr) 320px; gap: var(--lp-space-20); }
+  .request-estimate { grid-column: 2; grid-row: 1 / span 2; }
+  .request-confirmation, .request-rules { grid-column: 1; }
+}
+@media (max-width:767px) {
+  #shell:has(> #main > .rental-surface) > .header,
+  #shell:has(> #main > .rental-surface) > .header .tools { flex-wrap: wrap; }
+  #shell:has(> #main > .rental-surface) > .header .logo,
+  #shell:has(> #main > .rental-surface) > .bottom-nav a { min-inline-size: 0; white-space: normal; overflow-wrap: anywhere; }
+  .rental-card-action > .button, .request-confirmation [type="submit"] { inline-size: 100%; }
+}
