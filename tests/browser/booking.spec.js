@@ -79,8 +79,8 @@ test('Réservation: conflit serveur conserve le brouillon et permet une période
  await page.getByRole('button',{name:'Envoyer ma demande',exact:true}).click();await page.waitForURL(/\/rental\//);expect((await record(page,new URL(page.url()).pathname.split('/').at(-1))).start).toBe('2027-06-16T13:00:00.000Z');
 });
 test('Réservation: refus et retrait gardent une progression sans paiement',async({page})=>{
- let r=await create(page);await persona(page,'owner');await page.goto(client+'/rental/'+r.id);await page.getByRole('button',{name:'Refuser',exact:true}).click();await page.getByRole('dialog').getByRole('button',{name:'Confirmer',exact:true}).click();await expect(page.getByRole('heading',{name:'Demande non retenue',exact:true})).toBeVisible();await expect(page.locator('.timeline li')).toHaveCount(2);expect((await record(page,r.id)).payment).toBe('not_started');
- r=await create(page);await page.goto(client+'/rental/'+r.id);await page.getByRole('button',{name:'Retirer ma demande',exact:true}).click();await page.getByRole('dialog').getByRole('button',{name:'Confirmer',exact:true}).click();await expect(page.getByRole('heading',{name:'Demande retirée',exact:true})).toBeVisible();await expect(page.locator('.timeline li')).toHaveCount(2);expect((await record(page,r.id)).payment).toBe('not_started');
+ let r=await create(page);await persona(page,'owner');await page.goto(client+'/rental/'+r.id);await page.getByRole('button',{name:'Refuser',exact:true}).click();await page.getByRole('dialog').getByRole('button',{name:'Confirmer',exact:true}).click();await expect(page.getByRole('heading',{name:'Demande non retenue',exact:true})).toBeVisible();await expect(page.locator('.timeline li')).toHaveCount(2);await expect(page.locator('.timeline [aria-current=step]')).toContainText('Parcours arrêté');expect((await record(page,r.id)).payment).toBe('not_started');
+ r=await create(page);await page.goto(client+'/rental/'+r.id);await page.getByRole('button',{name:'Retirer ma demande',exact:true}).click();await page.getByRole('dialog').getByRole('button',{name:'Confirmer',exact:true}).click();await expect(page.getByRole('heading',{name:'Demande retirée',exact:true})).toBeVisible();await expect(page.locator('.timeline li')).toHaveCount(2);await expect(page.locator('.timeline [aria-current=step]')).toContainText('Parcours arrêté');expect((await record(page,r.id)).payment).toBe('not_started');
 });
 test('Réservation: paiement réservé au locataire, refus simulé puis récupération sans caution confondue',async({page})=>{
  const r=await create(page,'awaiting_payment');await page.goto(client+'/payment/'+r.id);await expect(page.getByRole('button',{name:'Simuler le paiement',exact:true})).toHaveCount(0);const denied=await page.request.post(client+'/api/v1/rentals/'+r.id+'/pay',{data:{outcome:'success'}});expect(denied.status()).toBe(409);
@@ -257,4 +257,192 @@ test('Demande: le calcul conserve les centimes et un tarif absent bloque la conf
  await page.reload();
  await expect(page.getByText('La tentative locale ne peut pas être vérifiée.',{exact:false})).toBeVisible();
  await expect(page.getByRole('button',{name:'Envoyer ma demande'})).toHaveCount(0);
+});
+
+test('Paiement: réponse perdue après écriture, statut relu sans double simulation',async({page})=>{
+ const r = await create(page,'awaiting_payment');
+ await persona(page);
+ await page.goto(client+'/payment/'+r.id);
+ let release, writes = 0;
+ const gate = new Promise(done=>{release=done;});
+ await page.route('**/api/v1/rentals/'+r.id+'/pay',async route=>{
+   writes++;
+   await gate;
+   expect((await route.fetch()).ok()).toBe(true);
+   await route.abort();
+ });
+ const outcome = page.getByLabel('Résultat à simuler');
+ const consent = page.getByLabel('J’ai compris que cette opération');
+ const submit = page.getByRole('button',{name:'Simuler le paiement'});
+ await outcome.selectOption('failure');
+ await consent.check();
+ await submit.click();
+ try {
+   await expect(submit).toBeDisabled();
+   await expect(page.locator('#payment-status')).toHaveText('Simulation de paiement en cours.');
+   await expect(page.getByText('Paiement fictif confirmé.',{exact:false})).toHaveCount(0);
+   await page.locator('#payment-form').evaluate(el=>el.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true})));
+   await expect.poll(()=>writes).toBe(1);
+ } finally {release();}
+ await expect(page.getByRole('alert')).toContainText('Résultat non confirmé');
+ await expect(submit).toBeDisabled();
+ await expect(outcome).toHaveValue('failure');
+ await expect(consent).toBeChecked();
+ await page.getByRole('button',{name:'Actualiser le statut'}).click();
+ await expect(page.locator('.notice.error')).toContainText('La demande reste acceptée');
+ await expect(page.getByRole('heading',{name:'État du paiement'})).toBeFocused();
+ const latest = await record(page,r.id);
+ expect(latest.status).toBe('awaiting_payment');
+ expect(latest.payment).toBe('failed');
+ expect(latest.deposit).toBe('not_started');
+ expect(latest.history.filter(e=>e.action==='pay')).toHaveLength(1);
+ expect(writes).toBe(1);
+});
+
+test('Paiement: après une coupure avant écriture, la relecture conserve la saisie et la clé',async({page})=>{
+ const r = await create(page,'awaiting_payment');
+ await persona(page);
+ await page.goto(client+'/payment/'+r.id);
+ const attempts = [];
+ await page.route('**/api/v1/rentals/'+r.id+'/pay',async route=>{
+   attempts.push({key:route.request().headers()['idempotency-key'],body:route.request().postDataJSON()});
+   if (attempts.length===1) await route.abort();
+   else await route.continue();
+ });
+ const outcome = page.getByLabel('Résultat à simuler');
+ const consent = page.getByLabel('J’ai compris que cette opération');
+ const submit = page.getByRole('button',{name:'Simuler le paiement'});
+ await outcome.selectOption('failure');
+ await consent.check();
+ await submit.click();
+ await expect(page.getByRole('alert')).toContainText('Résultat non confirmé');
+ expect((await record(page,r.id)).history.filter(e=>e.action==='pay')).toHaveLength(0);
+ await page.getByRole('button',{name:'Actualiser le statut'}).press('Enter');
+ await expect(page.locator('#payment-status')).toContainText('Statut vérifié');
+ await expect(outcome).toHaveValue('failure');
+ await expect(consent).toBeChecked();
+ await expect(submit).toBeFocused();
+ await page.reload();
+ await expect(outcome).toHaveValue('failure');
+ await expect(consent).not.toBeChecked();
+ await consent.check();
+ await submit.press('Enter');
+ await expect(page.locator('.notice.error')).toContainText('Paiement refusé simulé');
+ expect((await record(page,r.id)).history.filter(e=>e.action==='pay')).toHaveLength(1);
+ expect(attempts).toHaveLength(2);
+ expect(attempts[0].key).toMatch(/^[a-f0-9-]{36}$/);
+ expect(attempts[1]).toEqual(attempts[0]);
+});
+
+test('Suivi: une acceptation à réponse perdue impose une relecture et garde le rendez-vous masqué',async({page})=>{
+ const r = await create(page);
+ await persona(page,'owner');
+ await page.goto(client+'/rental/'+r.id);
+ await expect(page.getByText('Point de rendez-vous fictif',{exact:false})).toHaveCount(0);
+ let writes = 0;
+ await page.route('**/api/v1/rentals/'+r.id+'/accept',async route=>{
+   writes++;
+   expect((await route.fetch()).ok()).toBe(true);
+   await route.abort();
+ });
+ await page.getByRole('button',{name:'Accepter la demande'}).click();
+ const uncertain = page.getByRole('dialog',{name:'Résultat à vérifier'});
+ await expect(uncertain).toBeVisible();
+ await expect(page.getByRole('heading',{name:'Demande envoyée',exact:true})).toBeVisible();
+ await uncertain.getByRole('button',{name:'Actualiser le statut'}).click();
+ await expect(page.getByRole('heading',{name:'Votre demande a été acceptée'})).toBeVisible();
+ await expect(page.getByText('Point de rendez-vous fictif',{exact:false})).toHaveCount(0);
+ await expect(page.getByRole('button',{name:'Accepter la demande'})).toHaveCount(0);
+ expect((await record(page,r.id)).history.filter(e=>e.action==='accept')).toHaveLength(1);
+ expect(writes).toBe(1);
+});
+
+test('Suivi: à 320 px, sept jalons, étapes précédentes accessibles et statut inconnu sans action',async({page})=>{
+ const r = await create(page,'confirmed');
+ await page.setViewportSize({width:320,height:720});
+ await page.goto(client+'/rental/'+r.id);
+ const current = page.locator('[aria-current=step]');
+ await expect(current).toContainText('Paiement et confirmation');
+ await expect(page.locator('.timeline li')).toHaveCount(7);
+ const previous = page.getByText('Étapes précédentes (2)',{exact:true});
+ await expect(page.getByRole('list',{name:'Jalons précédents'})).toBeHidden();
+ await previous.press('Enter');
+ await expect(page.getByRole('list',{name:'Jalons précédents'})).toBeVisible();
+ const deposit = page.getByRole('button',{name:'Simuler le contrôle de caution',exact:true});
+ await deposit.focus();
+ await expect(deposit).toBeInViewport();
+ expect(await deposit.evaluate(el=>{
+   const r = el.getBoundingClientRect();
+   return r.height>=44 && el.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));
+ })).toBe(true);
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBe(320);
+ await page.route('**/api/v1/rentals/'+r.id,async route=>{
+   const response = await route.fetch();
+   await route.fulfill({response,json:{...await response.json(),status:'futur',meeting:'Adresse de test confidentielle'}});
+ });
+ await page.reload();
+ await expect(page.getByRole('heading',{name:'État à actualiser'})).toBeVisible();
+ await expect(page.locator('.next-action')).toContainText('Statut à vérifier');
+ await expect(current).toHaveCount(0);
+ await expect(deposit).toHaveCount(0);
+ await expect(page.getByText('Adresse de test confidentielle')).toHaveCount(0);
+});
+
+test('Paiement: session expirée rend la connexion puis le devis sans envoi automatique',async({page})=>{
+ const r = await create(page,'awaiting_payment');
+ await persona(page);
+ const back = '/payment/'+r.id;
+ await page.goto(client+back);
+ await page.request.delete(client+'/api/v1/session');
+ await page.getByLabel('J’ai compris que cette opération').check();
+ await page.getByRole('button',{name:'Simuler le paiement'}).click();
+ await page.waitForURL(u=>u.pathname==='/login');
+ expect(new URL(page.url()).searchParams.get('next')).toBe(back);
+ await page.getByLabel('Compte de démonstration').selectOption('renter');
+ await page.getByRole('button',{name:'Entrer dans la démo',exact:true}).click();
+ await expect(page).toHaveURL(client+back);
+ await expect(page.getByLabel('J’ai compris que cette opération')).not.toBeChecked();
+ expect((await record(page,r.id)).history.filter(e=>e.action==='pay')).toHaveLength(0);
+});
+
+test('Paiement: un 409 concurrent affiche le résultat relu et retire la commande',async({page})=>{
+ const r = await create(page,'awaiting_payment');
+ await persona(page);
+ await page.goto(client+'/payment/'+r.id);
+ await json(page,'/rentals/'+r.id+'/pay',{outcome:'success'});
+ await page.getByLabel('J’ai compris que cette opération').check();
+ await page.getByRole('button',{name:'Simuler le paiement'}).click();
+ await expect(page.getByRole('alert')).toContainText('Cette transition n’est pas disponible');
+ await expect(page.getByRole('button',{name:'Simuler le paiement'})).toBeDisabled();
+ await page.getByRole('button',{name:'Actualiser le statut'}).click();
+ await expect(page.getByText('Paiement fictif confirmé.',{exact:false})).toBeVisible();
+ await expect(page.getByRole('button',{name:'Simuler le paiement'})).toHaveCount(0);
+ const current = await record(page,r.id);
+ expect(current.history.filter(e=>e.action==='pay')).toHaveLength(1);
+ expect(current.deposit).toBe('not_started');
+});
+
+test('Suivi: un prérequis refusé par l’API garde la confirmation et le focus dans le dialogue',async({page})=>{
+ const r = await create(page,'confirmed');
+ await json(page,'/rentals/'+r.id+'/deposit',{outcome:'success'});
+ await persona(page,'owner');
+ await page.route('**/api/v1/rentals/'+r.id,async route=>{
+   const response = await route.fetch();
+   const rental = await response.json();
+   await route.fulfill({response,json:{...rental,inspections:[{phase:'departure',finalized:true,photos:[]}]}});
+ });
+ await page.goto(client+'/rental/'+r.id);
+ const trigger = page.getByRole('button',{name:'Remettre les clés'});
+ await trigger.press('Enter');
+ const dialog = page.getByRole('dialog',{name:'Remise du véhicule'});
+ const confirm = dialog.getByLabel('Je confirme les contrôles');
+ await confirm.check();
+ await dialog.getByRole('button',{name:'Confirmer',exact:true}).click();
+ const error = dialog.getByRole('alert');
+ await expect(error).toContainText('L’état des lieux de départ doit être finalisé.');
+ await expect(error).toBeFocused();
+ await expect(confirm).toBeChecked();
+ expect((await record(page,r.id)).status).toBe('confirmed');
+ await page.keyboard.press('Escape');
+ await expect(trigger).toBeFocused();
 });
