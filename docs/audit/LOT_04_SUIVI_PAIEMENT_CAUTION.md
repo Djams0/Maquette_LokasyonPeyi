@@ -39,12 +39,15 @@ Node 24.22.2, Playwright 1.56.1, Chromium 141.0.7390.37 et Python 3.13.5 sur Win
 
 La chaîne complète passe par les actes existants. Les refus 401 et 403 protègent les données de la location. Le conflit 409 impose la relecture de l’état et le refus 422 garde la saisie valide et porte le focus sur le message. Un test perd la réponse après une écriture de paiement refusé et vérifie qu’une seule opération existe dans l’historique. Un autre interrompt l’action avant écriture, relit le statut et rejoue la même clé avec le même résultat choisi après actualisation.
 
+Un rejeu à 320 px a relevé le centre du bouton de caution alors que seul son bord supérieur entrait dans la fenêtre. La capture confirme l’absence de superposition. L’essai vérifie désormais le focus au clavier, centre le bouton et mesure sa taille et son recouvrement. Le seuil de visibilité de 99 % absorbe l’arrondi de sous-pixel observé lors de la première correction.
+
 ## Captures, mesures et scores
 
 Les preuves locales sont dans `audit-results/client-v32-lot-04/`. `comparaison.html` présente les PNG avant/après, `comparaison.json` leurs mesures pixel, `tests-individuels.csv` le résultat de chaque test et `accessibilite/mesures.json` les mesures clavier et zoom.
 
 - 24 paires protégées à 320, 375, 390, 430, 768, 1024, 1280 et 1440, en fr-FR, fuseau America/Guadeloupe, DPR 1 et horloge au 21 novembre 2026, 16 h UTC. 19 paires pixel-identiques. Les cinq autres varient de 6 niveaux par canal au maximum. Les essais de rôle, de retour, de filtre/tri, de galerie et d’accessibilité sont joints.
 - 28 paires des écrans du lot, dont le suivi confirmé et le paiement attendu aux huit largeurs. Les états supplémentaires montrent le propriétaire, le refus et la clôture à 390 et 1440. Le compte, les médias et les tarifs des planches sont illustratifs. Les captures de recette reprennent le mock.
+- Six paires à 390 et 1440 documentent le paiement en cours, la perte de réponse et le résultat relu. Le mock confirme une seule écriture par scénario.
 - Neuf mesures de focus, taille et recouvrement sur les actions de suivi locataire, suivi propriétaire et paiement. Reflow à 320 px, texte 200 %, zoom natif 200 % et contrastes des échantillons analysés avec Axe. La commande mesurée est d’au moins 48 CSS px.
 
 | Écran et états | Largeurs | Score provisoire |
@@ -58,6 +61,6 @@ La grille du kit attribue la moitié des points d’accessibilité quand la preu
 
 ## PUB-01 et décision
 
-L’essai historique du tiroir 880 → 390 est conservé. Le candidat reproduit le défaut une fois sur huit. Le journal des répétitions sur les deux arbres est joint aux preuves. Lorsque le défaut se reproduit, le dialogue contient zéro occurrence de `#search-filters` au lieu d’une.
+L’essai historique du tiroir 880 → 390 est conservé. Le candidat reproduit le défaut une fois sur huit et la référence passe ses huit essais de cette campagne. La signature de l’échec est celle des lots précédents. Le journal des répétitions sur les deux arbres est joint aux preuves. Lorsque le défaut se reproduit, le dialogue contient zéro occurrence de `#search-filters` au lieu d’une.
 
 **En revue humaine.** Le verdict technique final et les résultats du workflow sont dans la PR. Le lot suivant attend le GO humain.

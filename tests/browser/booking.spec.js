@@ -369,8 +369,12 @@ test('Suivi: à 320 px, sept jalons, étapes précédentes accessibles et statut
  await previous.press('Enter');
  await expect(page.getByRole('list',{name:'Jalons précédents'})).toBeVisible();
  const deposit = page.getByRole('button',{name:'Simuler le contrôle de caution',exact:true});
- await deposit.focus();
- await expect(deposit).toBeInViewport();
+ await deposit.press('Tab');
+ await page.keyboard.press('Shift+Tab');
+ await expect(deposit).toBeFocused();
+ await page.evaluate(()=>document.fonts.ready);
+ await deposit.evaluate(el=>el.scrollIntoView({block:'center',behavior:'instant'}));
+ await expect(deposit).toBeInViewport({ratio:.99});
  expect(await deposit.evaluate(el=>{
    const r = el.getBoundingClientRect();
    return r.height>=44 && el.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));
