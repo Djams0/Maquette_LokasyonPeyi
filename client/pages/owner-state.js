@@ -1,5 +1,5 @@
 import {localDate} from './search-state.js';
-import {localRentalDate} from './booking-state.js';
+import {localRentalDate, rentalTitles} from './booking-state.js';
 
 export const ownerSections = [
   {title: 'Véhicule', groups: [1, 3]},
@@ -71,6 +71,9 @@ export function ownerDraftErrors(value) {
   if (!start || !end || end <= start) errors.push({group: 8, label: 'Période de disponibilité valide · heure Guadeloupe'});
   return errors;
 }
+export const ownerRequestTabs = {all: 'Toutes', requested: 'À traiter', in_progress: 'En cours', return_reported: 'Retours', completed: 'Clôturées'};
+export const ownerRequestReturn = tab => '/owner/requests' + (tab !== 'all' && Object.hasOwn(rentalTitles, tab) ? '?tab=' + tab : '');
+
 export function ownerCalendarItems(vehicle, rentals) {
   const held = ['awaiting_payment','confirmed','in_progress','return_reported'];
   return [

@@ -74,11 +74,13 @@ test('Propriétaire: publication contrôlée, pause, remplacement documentaire e
 test('Propriétaire: calendrier en liste, blocage conflictuel, libération et annonce obsolète',async({page})=>{
   const db=target.store.db,renter=db.users.find(u=>u.id==='renter'),owner=db.users.find(u=>u.id==='owner');const r=request(db,renter,{vehicleId:'v1',start:'2027-09-10T13:00Z',end:'2027-09-12T13:00Z'});transition(db,owner,r,'accept',{});
   await page.setViewportSize({width:320,height:844});await open(page,'/owner/vehicles/v1#owner-calendar');await expect(page.locator('.owner-calendar-list')).toContainText('Créneau occupé');await expect(page.locator('.owner-calendar-desktop')).toBeHidden();
-  await page.getByLabel('Indisponible à partir du',{exact:true}).fill('2027-09-10T09:00');await page.getByLabel('Jusqu’au',{exact:true}).fill('2027-09-11T09:00');await page.getByRole('button',{name:'Bloquer ce créneau',exact:true}).click();await expect(page.locator('#block-dates .form-error')).toContainText('location occupe');await expect(page.getByLabel('Indisponible à partir du',{exact:true})).toHaveValue('2027-09-10T09:00');
-  await page.getByLabel('Indisponible à partir du',{exact:true}).fill('2027-09-20T09:00');await page.getByLabel('Jusqu’au',{exact:true}).fill('2027-09-21T09:00');await page.getByRole('button',{name:'Bloquer ce créneau',exact:true}).click();await expect(page.getByRole('button',{name:'Libérer',exact:true})).toBeVisible();await page.getByRole('button',{name:'Libérer',exact:true}).click();await expect(page.getByRole('button',{name:'Libérer',exact:true})).toHaveCount(0);
+  await page.getByLabel('Indisponible à partir du',{exact:true}).fill('2027-09-10T09:00');await page.getByLabel('Jusqu’au',{exact:true}).fill('2027-09-11T09:00');await page.getByRole('button',{name:'Bloquer ce créneau',exact:true}).click();await confirmOwner(page);await expect(page.getByRole('dialog').locator('.form-error')).toContainText('location occupe');await page.getByRole('button',{name:'Annuler',exact:true}).click();await expect(page.getByLabel('Indisponible à partir du',{exact:true})).toHaveValue('2027-09-10T09:00');
+  await page.getByLabel('Indisponible à partir du',{exact:true}).fill('2027-09-20T09:00');await page.getByLabel('Jusqu’au',{exact:true}).fill('2027-09-21T09:00');await page.getByRole('button',{name:'Bloquer ce créneau',exact:true}).click();await confirmOwner(page);await expect(page.getByRole('button',{name:'Libérer',exact:true})).toBeVisible();await page.getByRole('button',{name:'Libérer',exact:true}).click();await confirmOwner(page);await expect(page.getByRole('button',{name:'Libérer',exact:true})).toHaveCount(0);
   await page.getByLabel('Nom du véhicule',{exact:true}).fill('Modification locale préservée');target.store.db.vehicles.find(v=>v.id==='v1').version++;const edits=writes(page,'/owner/vehicles/v1/edit');await page.getByRole('button',{name:'Enregistrer les modifications',exact:true}).click();await expect(page.locator('#owner-context')).toContainText('réexaminez');await expect(page.getByLabel('Nom du véhicule',{exact:true})).toHaveValue('Modification locale préservée');expect(edits).toHaveLength(0);
 });
-for(const width of [320,375,390,430,768,1024,1440])test(`Propriétaire: parc, assistant et gestion sans débordement à ${width}px`,async({page})=>{
+const confirmOwner = page => page.getByRole('dialog').getByRole('button',{name:'Confirmer',exact:true}).click();
+
+for(const width of [320,375,390,430,768,1024,1280,1440])test(`Propriétaire: parc, assistant et gestion sans débordement à ${width}px`,async({page})=>{
   target.store.db.drafts.owner=complete(5);await page.setViewportSize({width,height:844});await persona(page);
   for(const path of ['/owner','/owner/vehicles','/owner/vehicles/v1','/owner/vehicles/new?step=5','/owner/revenue','/owner/reputation']){await page.goto(client+path);await expect(page.locator('#main h1')).toBeVisible();await page.evaluate(()=>document.fonts.ready);expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBeLessThanOrEqual(1);}
 });
@@ -99,4 +101,173 @@ test('Propriétaire: modification pendant une sauvegarde reste locale et exige u
   await page.getByRole('button',{name:'Sauvegarder et quitter',exact:true}).click();await incoming;await page.getByLabel('Nom / modèle',{exact:true}).fill('Saisie plus récente à conserver');release();
   await expect(page.locator('#draft-status')).toContainText('saisie plus récente');await expect(page.getByLabel('Nom / modèle',{exact:true})).toHaveValue('Saisie plus récente à conserver');expect(target.store.db.drafts.owner.name).toBe('Premier nom figé');await page.unroute('**/api/v1/owner/draft');
   await page.getByRole('button',{name:'Sauvegarder et quitter',exact:true}).click();await page.waitForURL(u=>u.pathname==='/owner/vehicles');expect(target.store.db.drafts.owner.name).toBe('Saisie plus récente à conserver');
+});
+
+test('Espace propriétaire: visiteur, activation relue et accès depuis un compte déjà actif',async({page})=>{
+  await page.goto(client+'/owner/start');
+  await expect(page.getByRole('img',{name:/Grande Anse/})).toBeVisible();
+  await page.getByLabel('Prix fictif par jour (€)',{exact:true}).fill('40');
+  await page.getByLabel('Jours loués par mois',{exact:true}).fill('9');
+  await page.getByRole('button',{name:'Calculer',exact:true}).click();
+  await expect(page.locator('#estimate-result')).toContainText(/360\s*€ bruts illustratifs/);
+  await page.getByRole('link',{name:'Commencer mon parcours',exact:true}).click();
+  await page.waitForURL(url=>url.pathname==='/login');
+  expect(new URL(page.url()).searchParams.get('next')).toBe('/owner/start');
+  await page.getByLabel('Compte de démonstration').selectOption('newcomer');
+  await page.getByRole('button',{name:'Entrer dans la démo',exact:true}).click();
+  await page.waitForURL(client+'/owner/start');
+  const activation = page.getByRole('button',{name:'Activer mon espace propriétaire',exact:true});
+  const posts = writes(page,'/owner/onboarding');
+  await activation.click();
+  expect(posts).toHaveLength(0);
+  await page.route('**/api/v1/owner/onboarding',async route=>{await route.fetch();await route.abort();});
+  await page.getByLabel(/J’utilise uniquement des données fictives/).check();
+  await activation.click();
+  await page.waitForURL(client+'/owner/vehicles/new');
+  expect(posts).toHaveLength(1);
+  await page.goto(client+'/owner/start');
+  await expect(page.getByText('Votre espace propriétaire est déjà actif.')).toBeVisible();
+  await expect(activation).toHaveCount(0);
+});
+
+test('Espace propriétaire: brouillon indisponible distinct du vide et données privées après changement de compte',async({page})=>{
+  await persona(page);
+  await page.route('**/api/v1/owner/draft',route=>route.abort());
+  await page.goto(client+'/owner');
+  await expect(page.getByText(/Le brouillon enregistré est indisponible/)).toBeVisible();
+  await expect(page.getByText('Aucun brouillon à reprendre.',{exact:true})).toHaveCount(0);
+  await page.unroute('**/api/v1/owner/draft');
+  await page.reload();
+  await expect(page.getByText('Aucun brouillon à reprendre.',{exact:true})).toBeVisible();
+  await page.goto(client+'/owner/vehicles/v1');
+  const button = page.getByRole('button',{name:'Mettre en pause',exact:true});
+  await button.click();
+  await persona(page,'other');
+  const posts = writes(page,'/owner/vehicles/v1/pause');
+  await confirmOwner(page);
+  await expect(page.getByRole('heading',{name:'Compte propriétaire changé',exact:true})).toBeFocused();
+  expect(posts).toHaveLength(0);
+});
+
+test('Espace propriétaire: filtre du parc, identité de la photo et retour à la même vue',async({page})=>{
+  const db = target.store.db;
+  db.vehicles.find(v=>v.id==='v1').status='paused';
+  await open(page,'/owner/vehicles?status=paused');
+  await expect(page.locator('.owner-vehicle-row')).toHaveCount(1);
+  const picture = page.locator('.owner-vehicle-row img');
+  await expect(picture).toHaveAttribute('src','/assets/vehicles/citadine-verte-avant-420.webp');
+  await expect(picture).toHaveAttribute('data-vehicle-name','Peugeot 208');
+  await page.getByRole('link',{name:'Gérer le véhicule',exact:true}).click();
+  await expect(page.locator('#main').getByRole('link',{name:'Mon parc',exact:true})).toHaveAttribute('href','/owner/vehicles?status=paused');
+  await page.locator('#main').getByRole('link',{name:'Mon parc',exact:true}).click();
+  const selected = page.getByRole('link',{name:'En pause',exact:true});
+  await expect(selected).toHaveAttribute('aria-current','page');
+  await page.setViewportSize({width:320,height:844});
+  await expect(selected).toBeHidden();
+  await page.locator('#fleet-filters summary').press('Enter');
+  await expect(selected).toBeVisible();
+  await expect(selected).toHaveAttribute('aria-current','page');
+});
+
+test('Espace propriétaire: pause, remise en ligne, retrait refusé puis autorisé',async({page})=>{
+  const db = target.store.db;
+  const r = request(db,db.users.find(u=>u.id==='renter'),{vehicleId:'v1',start:'2027-09-10T13:00Z',end:'2027-09-12T13:00Z'});
+  transition(db,db.users.find(u=>u.id==='owner'),r,'accept',{});
+  await open(page,'/owner/vehicles/v1');
+  for (const action of ['Mettre en pause','Remettre en ligne','Retirer le véhicule']) {
+    await page.getByRole('button',{name:action,exact:true}).click();
+    await confirmOwner(page);
+  }
+  await expect(page.getByRole('dialog').locator('.form-error')).toContainText('Une location active empêche le retrait.');
+  expect(target.store.db.vehicles.find(v=>v.id==='v1').status).toBe('published');
+  await page.getByRole('button',{name:'Annuler',exact:true}).click();
+  await expect(page.getByRole('button',{name:'Retirer le véhicule',exact:true})).toBeFocused();
+  target.store.db.rentals.find(item=>item.id===r.id).status='withdrawn';
+  await page.getByRole('button',{name:'Retirer le véhicule',exact:true}).click();
+  await confirmOwner(page);
+  await expect(page.getByText('Retirée',{exact:true}).first()).toBeVisible();
+  await expect(page.getByRole('button',{name:'Enregistrer les modifications',exact:true})).toBeDisabled();
+});
+
+test('Espace propriétaire: demande relue dans le suivi et retour au filtre',async({page})=>{
+  const db = target.store.db;
+  const r = request(db,db.users.find(u=>u.id==='renter'),{vehicleId:'v1',start:'2027-09-10T13:00Z',end:'2027-09-12T13:00Z'});
+  await open(page,'/owner/requests?tab=requested');
+  const item = page.getByRole('link',{name:'Examiner la demande',exact:true});
+  await expect(item).toBeVisible();
+  transition(db,db.users.find(u=>u.id==='owner'),r,'accept',{});
+  await item.click();
+  await expect(page.getByRole('link',{name:'Mes demandes',exact:true})).toHaveAttribute('href','/owner/requests?tab=requested');
+  await expect(page.getByRole('button',{name:'Refuser',exact:true})).toHaveCount(0);
+  await page.getByRole('link',{name:'Mes demandes',exact:true}).click();
+  await expect(page.getByRole('heading',{name:'Aucune demande dans cette vue'})).toBeVisible();
+});
+
+test('Espace propriétaire: un calendrier conserve les bornes locales entre deux mois',async({page})=>{
+  const db = target.store.db;
+  const r = request(db,db.users.find(u=>u.id==='renter'),{vehicleId:'v1',start:'2027-09-30T22:00Z',end:'2027-10-02T04:00Z'});
+  const v = db.vehicles.find(item=>item.id==='v1');
+  v.availability.blocked.push({id:'qa-block',start:'2027-10-03T12:00Z',end:'2027-10-03T14:00Z'});
+  await open(page,'/owner/vehicles/v1#owner-calendar');
+  const cell = day => page.locator('#owner-month-grid').getByRole('listitem').filter({has:page.locator('small')}).and(page.locator('[aria-label^="'+day+'"]'));
+  await expect(cell('2027-09-30')).toHaveAttribute('aria-label',/Demande · créneau non réservé/);
+  await page.getByRole('button',{name:'Mois suivant',exact:true}).click();
+  await expect(cell('2027-10-01')).toHaveAttribute('aria-label',/Demande · créneau non réservé/);
+  await expect(cell('2027-10-02')).toHaveAttribute('aria-label','2027-10-02');
+  await expect(cell('2027-10-03')).toHaveAttribute('aria-label',/blocage manuel/);
+  transition(db,db.users.find(u=>u.id==='owner'),r,'accept',{});
+  await page.reload();
+  await expect(page.getByLabel('Mois à consulter',{exact:true})).toHaveValue('2027-10');
+  await expect(cell('2027-10-01')).toHaveAttribute('aria-label',/Créneau occupé/);
+});
+
+for (const afterWrite of [false,true]) test(`Espace propriétaire: blocage interrompu ${afterWrite?'après':'avant'} écriture et une seule période`,async({page})=>{
+  await open(page,'/owner/vehicles/v1#owner-calendar');
+  const calls = writes(page,'/owner/vehicles/v1/block');
+  await page.route('**/api/v1/owner/vehicles/v1/block',async route=>{if(afterWrite)await route.fetch();await route.abort();});
+  await page.getByLabel('Indisponible à partir du',{exact:true}).fill('2027-09-20T09:00');
+  await page.getByLabel('Jusqu’au',{exact:true}).fill('2027-09-21T09:00');
+  await page.getByRole('button',{name:'Bloquer ce créneau',exact:true}).click();
+  await confirmOwner(page);
+  if (!afterWrite) {
+    await expect(page.getByRole('dialog').locator('.form-error')).toContainText('Le résultat reste à vérifier');
+    await page.unroute('**/api/v1/owner/vehicles/v1/block');
+    await page.reload();
+    await expect(page.getByLabel('Indisponible à partir du',{exact:true})).toHaveValue('2027-09-20T09:00');
+    await page.getByRole('button',{name:'Bloquer ce créneau',exact:true}).click();
+    await confirmOwner(page);
+  }
+  await expect(page.getByRole('button',{name:'Libérer',exact:true})).toHaveCount(1);
+  await expect(page.locator('#calendar-title')).toBeFocused();
+  expect(new URL(page.url()).hash).toBe('#owner-calendar');
+  expect(calls).toHaveLength(afterWrite?1:2);
+  if (!afterWrite) expect(calls[1]).toEqual(calls[0]);
+  expect(target.store.db.vehicles.find(v=>v.id==='v1').availability.blocked).toHaveLength(1);
+});
+
+test('Espace propriétaire: brut simulé, montant absent et réponse à un avis du compte',async({page})=>{
+  const db = target.store.db;
+  await open(page,'/owner/revenue');
+  await expect(page.getByRole('heading',{name:'Aucun paiement simulé'})).toBeVisible();
+  const rental = request(db,db.users.find(u=>u.id==='renter'),{vehicleId:'v1',start:'2027-09-10T13:00Z',end:'2027-09-12T13:00Z'});
+  rental.payment='simulated_paid';
+  const id = rental.id;
+  await page.reload();
+  await expect(page.locator('.owner-counts')).toContainText(new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(rental.quote.total));
+  target.store.db.rentals.find(r=>r.id===id).quote.total=null;
+  await page.reload();
+  await expect(page.locator('.owner-counts')).toContainText('Montant non disponible');
+  await page.goto(client+'/owner/reputation');
+  await page.getByRole('button',{name:'Répondre à cet avis',exact:true}).click();
+  const field = page.getByLabel('Votre réponse publique',{exact:true});
+  await field.fill('    ');
+  await confirmOwner(page);
+  await expect(page.getByRole('dialog').locator('.form-error')).toContainText('au moins trois caractères');
+  await field.fill('Merci pour cet échange fictif.');
+  await confirmOwner(page);
+  await expect(page.locator('.owner-review-reply')).toContainText('Merci pour cet échange fictif.');
+  await open(page,'/owner/reputation','other');
+  await expect(page.getByRole('heading',{name:'Votre réputation se construit'})).toBeVisible();
+  const forbidden = await page.request.post(client+'/api/v1/reviews/review-demo',{data:{reply:'Réponse tierce fictive'}});
+  expect(forbidden.status()).toBe(403);
 });
