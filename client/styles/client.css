@@ -2197,3 +2197,119 @@ a.notification-row:hover { background: var(--lp-color-ivory); }
   .owner-surface .owner-counts { grid-template-columns: repeat(auto-fit,minmax(min(100%,7rem),1fr)); }
   .owner-surface .card { padding: var(--lp-space-16); }
 }
+
+/* Assistant propriétaire. */
+.owner-wizard { min-inline-size: 0; overflow-wrap: anywhere; }
+.owner-wizard .owner-heading { margin-block: 0 var(--lp-space-16); }
+.wizard-draft-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--lp-space-12);
+  margin-block-end: var(--lp-space-16);
+}
+.wizard-draft-banner .icon { flex: 0 0 auto; margin-block-start: var(--lp-space-4); }
+.wizard-draft-banner p { margin: 0; }
+.wizard-draft-banner #draft-last-saved { font-weight: var(--lp-weight-strong); }
+.wizard-draft-banner[data-kind="warning"] { background: var(--lp-color-warning-bg); color: var(--lp-color-warning-text); }
+.owner-wizard .owner-sections {
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: var(--lp-space-8);
+  background: var(--lp-color-surface);
+  border: 1px solid var(--line);
+  border-radius: var(--lp-radius-card);
+  padding: var(--lp-space-8);
+}
+.owner-wizard .owner-sections > a[aria-current="step"] {
+  background: var(--lp-color-deep);
+  color: var(--lp-color-surface);
+}
+.owner-wizard .owner-sections > a[aria-current="step"] > span { border-color: currentColor; }
+.owner-wizard .owner-sections summary {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--lp-space-4) var(--lp-space-12);
+  text-decoration: none;
+}
+#wizard-current-group { font-weight: var(--lp-weight-strong); }
+.owner-wizard .owner-sections details a { margin-block-start: var(--lp-space-4); }
+.owner-wizard .wizard-form-card { min-width: 0; }
+.owner-wizard .owner-draft-group :is(input,select,textarea) { min-inline-size: 0; max-inline-size: 100%; }
+.owner-wizard .owner-draft-group .check { min-height: 44px; align-items: center; }
+.owner-wizard :is(.button, button) { min-height: 48px; max-inline-size: 100%; white-space: normal; }
+.owner-wizard .owner-draft-group:last-of-type { margin-block-end: var(--lp-space-16); }
+.owner-wizard .owner-photo-grid { grid-template-columns: minmax(0,1fr); }
+.owner-wizard .owner-photo-slot {
+  display: grid;
+  grid-template-columns: auto auto minmax(0,1fr);
+  min-block-size: 48px;
+  align-items: center;
+  gap: var(--lp-space-8);
+  background: var(--lp-color-ivory);
+  cursor: pointer;
+}
+.owner-wizard .owner-photo-slot:has(:checked) { background: var(--lp-color-info-bg); }
+.owner-wizard .owner-photo-slot:focus-within { outline: 3px solid var(--lp-color-action); outline-offset: 2px; }
+.owner-wizard .owner-photo-slot input { inline-size: 1rem; block-size: 1rem; margin: 0; }
+.wizard-photo-icon { color: var(--lp-color-deep); }
+.wizard-photo-state { display: block; font-size: var(--lp-text-meta); color: var(--muted); }
+.wizard-photo-state span:last-child,
+.owner-photo-slot:has(:checked) .wizard-photo-state span:first-child { display: none; }
+.owner-photo-slot:has(:checked) .wizard-photo-state span:last-child { display: inline; }
+.wizard-photo-count { font-weight: var(--lp-weight-strong); }
+.wizard-review {
+  margin-block-end: var(--lp-space-24);
+  padding: var(--lp-space-12);
+  border: 1px solid var(--line);
+  border-radius: var(--lp-radius-card);
+  background: var(--lp-color-ivory);
+}
+.wizard-review-grid { display: grid; gap: var(--lp-space-12); margin-block-start: var(--lp-space-12); }
+.wizard-review-grid section { min-width: 0; padding: var(--lp-space-12); background: var(--lp-color-surface); border-radius: var(--lp-radius-control); }
+.wizard-review-grid dl, .wizard-review-grid dd { margin: 0; }
+.wizard-review-grid dl div { margin-block-start: var(--lp-space-8); }
+.wizard-review-grid dt { font-size: var(--lp-text-meta); font-weight: var(--lp-weight-strong); }
+.wizard-conflict-values { display: grid; gap: var(--lp-space-12); margin-block: var(--lp-space-16); }
+.wizard-conflict-values section {
+  min-width: 0;
+  background: var(--lp-color-surface);
+  padding: var(--lp-space-12);
+  border-radius: var(--lp-radius-control);
+}
+.wizard-conflict-values :is(dl,dd) { margin: 0; }
+.owner-wizard .wizard-conflict-values dl > div { padding: var(--lp-space-8) 0; }
+.owner-wizard .wizard-conflict-values dl > div:last-child { border: 0; }
+.owner-wizard #draft-conflict, .owner-wizard #owner-submission { scroll-margin-block-start: var(--lp-space-16); }
+.owner-wizard #owner-submission .button { margin-inline-start: 0; }
+#shell:has(.owner-wizard) > .header,
+#shell:has(.owner-wizard) > .header .tools { flex-wrap: wrap; }
+#shell:has(.owner-wizard) > .header .logo { min-inline-size: 0; white-space: normal; }
+@media (min-width: 768px) {
+  .wizard-review-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .wizard-conflict-values dl { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--lp-space-12); }
+  .owner-wizard .wizard-conflict-values dl > div { border: 0; }
+  .owner-wizard .owner-photo-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (min-width: 1024px) {
+  .owner-wizard .owner-sections { grid-template-columns: minmax(0,1fr); }
+}
+@media (min-width: 1280px) {
+  .owner-wizard .owner-photo-grid { grid-template-columns: repeat(5,minmax(0,1fr)); }
+  .owner-wizard .owner-photo-slot { grid-template-columns: auto auto; text-align: center; justify-content: center; }
+  .owner-wizard .owner-photo-slot > span:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 1023px) {
+  .owner-wizard .owner-sections > a { justify-content: center; padding: var(--lp-space-4); }
+  .owner-wizard .wizard-step-label {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+}
+@media (max-width: 600px) {
+  .owner-wizard .wizard-form-card, .owner-wizard #draft-conflict, .owner-wizard #owner-submission:not(:empty) { padding: var(--lp-space-12); }
+  .owner-wizard .owner-wizard-actions { flex-direction: column; align-items: stretch; }
+  .owner-wizard .owner-wizard-actions > * { width: 100%; }
+  .owner-wizard #owner-submission :is(button,.button) { display: flex; width: 100%; margin: var(--lp-space-8) 0; }
+}
