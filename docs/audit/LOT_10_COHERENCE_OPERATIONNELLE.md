@@ -13,7 +13,7 @@
 | `client/app.js`, `client/pages/navigation.js` | Donner un titre d’onglet distinct aux routes opérationnelles, y compris pendant la lecture de session. La page 404 a un titre de niveau 1 et deux destinations sûres. Les refus et erreurs de chargement des routes opérationnelles restent lisibles à 200 %. |
 | `client/pages/demo.js` | Regrouper le changement de profil et rapprocher le réglage du réseau. La sortie vers le visiteur utilise le formulaire et le retour d’erreur existants. L’attente est annoncée. Les deux commandes de profil partagent une garde contre un second changement simultané. |
 | `client/pages/audit.js` | Distinguer l’absence de fixture et un filtre sans aucun profil. Offrir une sortie directe vers les profils historiques ou la liste non filtrée selon l’état. |
-| `client/styles/client.css` | Limiter les cibles et le reflow aux conteneurs des outils, de l’erreur opérationnelle et de la 404. Garder les contrôles natifs, le verre de l’échantillon et les règles d’impression du reçu. |
+| `client/styles/client.css` | Limiter les cibles et le reflow aux conteneurs des outils, de l’erreur opérationnelle et de la 404. Empiler les actions secondaires sur mobile pour garder les libellés entiers. Garder les contrôles natifs, le verre de l’échantillon et les règles d’impression du reçu. |
 | `tests/browser/navigation.spec.js` | Exercer envoi refusé, attente, reprise, concurrence entre commandes de session, titres, reflow et sortie de l’atelier au clavier. |
 | Rapport, suivi du kit et manifeste | Consigner la base, la recette et le statut de revue. Aligner l’empreinte sur le fichier de suivi. |
 

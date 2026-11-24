@@ -2448,5 +2448,6 @@ a.notification-row:hover { background: var(--lp-color-ivory); }
     max-inline-size: 100%;
   }
   #main .tool-card :is(button,a.button) { inline-size: 100%; }
+  #main .tool-surface .form-actions { display: grid; grid-template-columns: minmax(0,1fr); }
   .tool-system :is(.component-samples,.palette) { grid-template-columns: minmax(0,1fr); }
 }

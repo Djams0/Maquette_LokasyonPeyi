@@ -241,6 +241,16 @@ test('Cohérence opérationnelle : titres, reflow à 200 % et retour d’atelier
     await expect(page).toHaveTitle(title+' · Lokasyon Péyi');
   }
 
+  await page.setViewportSize({width:390,height:844});
+  const privateCase=target.store.db.cases.find(item=>!item.participants.includes('renter'));
+  await page.goto(client+'/cases/'+privateCase.id);
+  await expect(page.getByRole('heading',{name:'Accès non autorisé',exact:true})).toBeVisible();
+  const retry=await page.getByRole('button',{name:'Réessayer',exact:true}).boundingBox();
+  const audit=await page.locator('#main').getByRole('link',{name:'Atelier d’audit',exact:true}).boundingBox();
+  expect(audit.x).toBeCloseTo(retry.x);
+  expect(audit.width).toBeCloseTo(retry.width);
+  expect(audit.y).toBeGreaterThanOrEqual(retry.y+retry.height);
+
   await page.request.delete(client+'/api/v1/session');
   await page.setViewportSize({width:320,height:720});
   await page.goto(client+'/demo/audit?category=inconnue');
