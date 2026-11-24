@@ -1,7 +1,7 @@
 import {api} from './http.js';
 import {shell} from './shell.js';
-import {safeNext} from './pages/navigation.js';
-import {escape,link,notice,empty,shellLoading} from '/ui/components.js';
+import {safeNext,operationalPageTitle} from './pages/navigation.js';
+import {escape,link,notice,shellLoading} from '/ui/components.js';
 import {home,search,vehicle} from './pages/catalog.js';
 import {login,profile,documents,notifications,messages,myReviews} from './pages/account.js';
 import {requestPage,rentals,rental,payment} from './pages/rentals.js';
@@ -12,6 +12,8 @@ import {cases,review,receipt,faq} from './pages/support.js';
 import {demo,designSystem} from './pages/demo.js';
 import {auditWorkshop} from './pages/audit.js';
 const path=location.pathname.replace(/\/$/,'')||'/';
+const pageTitle=operationalPageTitle(path);
+if(pageTitle)document.title=pageTitle+' · Lokasyon Péyi';
 const loginReturn=()=>encodeURIComponent(safeNext(path+location.search+location.hash));
 // Recovery must work even while the intentionally simulated network is down.
 if(path==='/demo'||path==='/demo/audit')sessionStorage.removeItem('network-demo');
@@ -59,7 +61,7 @@ try{if(path==='/'){await home(readIdentity);}else{const me=await readIdentity().
  const publicPath=['/','/search','/login','/register','/faq','/owner/start','/demo','/demo/audit','/design-system'].includes(path)||path.startsWith('/vehicle/');
  if(!publicPath&&!me&&/^\/(rentals|rental|request|payment|inspection|messages|profile|notifications|owner|cases|assistance|review|receipt)(\/|$)/.test(path)){location.replace('/login?next='+loginReturn());}else{
  const parts=path.split('/').filter(Boolean),[a,b,c]=parts;
- document.title=({search:'Nos véhicules',rentals:'Mes locations',owner:'Espace propriétaire',profile:'Mon profil',faq:'Questions fréquentes',assistance:'Assistance',cases:'Mes dossiers',review:'Avis',receipt:'Reçu fictif'}[a]||'Bienvenue')+' · Lokasyon Péyi';
+ if(!pageTitle)document.title=({search:'Nos véhicules'}[a]||'Bienvenue')+' · Lokasyon Péyi';
  if(path==='/search')await search();
  else if(a==='vehicle'&&b)await vehicle(b,me);
  else if(path==='/login'||path==='/register')await login(path==='/register');
@@ -85,6 +87,13 @@ try{if(path==='/'){await home(readIdentity);}else{const me=await readIdentity().
  else if(path==='/demo')await demo(me);
  else if(path==='/demo/audit')await auditWorkshop();
  else if(path==='/design-system')designSystem();
- else document.getElementById('main').innerHTML=empty('404 · Ce chemin n’existe pas','Revenez à l’accueil ou explorez le catalogue.',link('/','Accueil')+' '+link('/search','Catalogue','secondary'));
+ else {
+  document.title='Page introuvable · Lokasyon Péyi';
+  main.innerHTML=`<section class="narrow empty card tool-surface" aria-labelledby="not-found-title">
+    <h1 id="not-found-title">404 · Ce chemin n’existe pas</h1>
+    <p>Revenez à l’accueil ou explorez le catalogue.</p>
+    <div class="form-actions">${link('/','Accueil')}${link('/search','Catalogue','secondary')}</div>
+  </section>`;
  }
-}}catch(e){document.getElementById('main').innerHTML=`<div class="narrow section"><h1>${e.status===403?'Accès non autorisé':e.status===404?'Élément introuvable':'Impossible de charger cette page'}</h1><div role="alert">${notice(escape(e.message),'error')}</div><div class="form-actions"><button id="retry">Réessayer</button>${link('/demo','Réparer le scénario / changer de profil','secondary')}${link('/demo/audit','Atelier d’audit','secondary')}${e.status===401?link('/login?next='+loginReturn(),'Se reconnecter','secondary'):''}${link('/','Accueil','secondary')}</div></div>`;document.getElementById('retry').onclick=()=>location.reload();}
+ }
+}}catch(e){document.getElementById('main').innerHTML=`<div class="narrow section${pageTitle ? ' tool-surface' : ''}"><h1>${e.status===403?'Accès non autorisé':e.status===404?'Élément introuvable':'Impossible de charger cette page'}</h1><div role="alert">${notice(escape(e.message),'error')}</div><div class="form-actions"><button id="retry">Réessayer</button>${link('/demo','Réparer le scénario / changer de profil','secondary')}${link('/demo/audit','Atelier d’audit','secondary')}${e.status===401?link('/login?next='+loginReturn(),'Se reconnecter','secondary'):''}${link('/','Accueil','secondary')}</div></div>`;document.getElementById('retry').onclick=()=>location.reload();}
