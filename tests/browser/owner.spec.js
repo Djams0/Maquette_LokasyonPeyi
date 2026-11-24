@@ -47,12 +47,17 @@ test('Propriétaire: changement de contenu comparé, reprise guidée et réappli
   target.store.db.drafts.owner=complete(7);await open(page);await page.getByLabel('Présentation et règles du véhicule',{exact:true}).fill('Nouvelle description fictive locale uniquement.');const calls=writes(page,'/owner/draft');
   const second=await browser.newContext();try{await second.request.post(client+'/api/v1/session',{data:{persona:'owner'}});const changed=await second.request.post(client+'/api/v1/owner/draft',{data:{...complete(5),price:99}});expect(changed.ok()).toBe(true);}finally{await second.close();}
   await page.getByRole('button',{name:'Sauvegarder et quitter',exact:true}).click();await expect(page.locator('#draft-conflict')).toContainText('modifié depuis votre lecture');expect(calls).toHaveLength(0);expect(target.store.db.drafts.owner.price).toBe(99);
+  await expect(page.locator('#draft-conflict h2')).toBeFocused();
+  await expect(page.locator('#draft-conflict').getByRole('heading',{name:'Prix journalier fictif',exact:true})).toBeVisible();
+  await expect(page.locator('#draft-conflict')).toContainText(/99\s*€/);
   await page.getByRole('button',{name:'Réappliquer mes champs locaux après comparaison',exact:true}).click();await page.waitForURL(u=>u.searchParams.get('step')==='5');await expect(page.locator('#main h1')).toHaveText('État et photos');
+  expect(calls).toHaveLength(0);
   await page.goto(client+'/owner/vehicles/new?step=7');await expect(page.getByLabel('Prix journalier fictif (€)',{exact:true})).toHaveValue('99');await expect(page.getByLabel('Présentation et règles du véhicule',{exact:true})).toHaveValue('Nouvelle description fictive locale uniquement.');await page.getByRole('button',{name:'Sauvegarder et quitter',exact:true}).click();await page.waitForURL(u=>u.pathname==='/owner/vehicles');expect(target.store.db.drafts.owner.price).toBe(99);expect(target.store.db.drafts.owner.description).toContain('locale uniquement');
 });
 test('Propriétaire: la version globale n’est pas une version de brouillon, choix explicite du serveur',async({page})=>{
   target.store.db.drafts.owner=complete(1);await open(page);target.store.db.version+=50;await page.getByLabel('Nom / modèle',{exact:true}).fill('Nom local');await page.getByRole('button',{name:'Sauvegarder et quitter',exact:true}).click();await page.waitForURL(u=>u.pathname==='/owner/vehicles');expect(target.store.db.drafts.owner.name).toBe('Nom local');
   await page.getByRole('link',{name:'Reprendre le brouillon',exact:true}).click();await page.getByLabel('Nom / modèle',{exact:true}).fill('À abandonner explicitement');target.store.db.drafts.owner.name='Nom serveur plus récent';await page.getByRole('button',{name:'Sauvegarder et quitter',exact:true}).click();await expect(page.locator('#draft-conflict')).toBeVisible();await page.getByRole('button',{name:'Utiliser le brouillon relu sans ma saisie locale',exact:true}).click();await expect(page.getByLabel('Nom / modèle',{exact:true})).toHaveValue('Nom serveur plus récent');
+  expect(target.store.db.drafts.owner.name).toBe('Nom serveur plus récent');
 });
 test('Propriétaire: brouillon incomplet sauvegardable, soumission bloquée et dates invalides explicites',async({page})=>{
   await open(page,'/owner/vehicles/new?step=9');const submissions=writes(page,'/owner/vehicles');await page.getByLabel('Ajouter les trois documents fictifs',{exact:true}).check();await page.getByLabel('J’ai compris que les conditions de sécurité',{exact:false}).check();await page.getByLabel('Soumettre cette annonce fictive à la revue.',{exact:true}).check();await page.getByRole('button',{name:'Envoyer pour validation',exact:true}).click();await expect(page.locator('.form-error')).toContainText('Complétez les groupes');expect(submissions).toHaveLength(0);
@@ -62,7 +67,18 @@ test('Propriétaire: brouillon incomplet sauvegardable, soumission bloquée et d
 for(const afterWrite of [false,true])test(`Propriétaire: soumission incertaine ${afterWrite?'après':'avant'} écriture, même clé sans double annonce`,async({page})=>{
   target.store.db.drafts.owner=complete(9);await open(page);const submissions=writes(page,'/owner/vehicles'),before=target.store.db.vehicles.length;
   await page.route('**/api/v1/owner/vehicles',async route=>{if(afterWrite)await route.fetch();await route.abort('failed');});await page.getByLabel('Soumettre cette annonce fictive à la revue.',{exact:true}).check();await page.getByRole('button',{name:'Envoyer pour validation',exact:true}).click();await expect(page.locator('#owner-submission')).toContainText('Envoi à vérifier');await page.reload();await expect(page.locator('#owner-submission')).toContainText('Envoi à vérifier');expect(submissions).toHaveLength(1);
+  await expect(page.locator('#owner-submission h2')).toBeFocused();
+  await expect(page.getByLabel('Soumettre cette annonce fictive à la revue.',{exact:true})).toBeDisabled();
+  await page.getByRole('link',{name:'Vérifier mon parc',exact:true}).click();
+  const resume = page.getByRole('link',{name:'Vérifier mon envoi',exact:true});
+  await expect(resume).toHaveAttribute('href','/owner/vehicles/new?step=9');
+  await resume.click();
+  await expect(page.locator('#owner-submission h2')).toBeFocused();
+  expect(submissions).toHaveLength(1);
   await page.unroute('**/api/v1/owner/vehicles');await page.getByRole('button',{name:'Réessayer le même envoi',exact:true}).click();await page.waitForURL(u=>/^\/owner\/vehicles\/v-/.test(u.pathname));expect(submissions).toHaveLength(2);expect(submissions[1]).toEqual(submissions[0]);expect(target.store.db.vehicles).toHaveLength(before+1);
+  const id = new URL(page.url()).pathname.split('/').at(-1);
+  expect(target.store.db.vehicles.find(vehicle=>vehicle.id===id).status).toBe('pending');
+  expect(target.store.db.documents.filter(doc=>doc.vehicleId===id)).toHaveLength(3);
 });
 test('Propriétaire: publication contrôlée, pause, remplacement documentaire et refus de remise en ligne',async({page})=>{
   target.store.db.drafts.owner=complete(9);await open(page);await page.getByLabel('Soumettre cette annonce fictive à la revue.',{exact:true}).check();await page.getByRole('button',{name:'Envoyer pour validation',exact:true}).click();await page.waitForURL(u=>/^\/owner\/vehicles\/v-/.test(u.pathname));const id=new URL(page.url()).pathname.split('/').at(-1);
@@ -270,4 +286,81 @@ test('Espace propriétaire: brut simulé, montant absent et réponse à un avis 
   await expect(page.getByRole('heading',{name:'Votre réputation se construit'})).toBeVisible();
   const forbidden = await page.request.post(client+'/api/v1/reviews/review-demo',{data:{reply:'Réponse tierce fictive'}});
   expect(forbidden.status()).toBe(403);
+});
+
+test('Assistant: cinq angles et compteur annoncés au clavier à 320 px',async({page})=>{
+  await page.setViewportSize({width:320,height:844});
+  await open(page,'/owner/vehicles/new?step=5');
+  const count = page.getByRole('status').filter({hasText:'vues sélectionnées'});
+  await expect(count).toHaveText('0 sur 5 vues sélectionnées');
+  const views = page.getByRole('checkbox',{name:/Ajouter cette vue fictive/});
+  await expect(views).toHaveCount(5);
+  const right = page.getByRole('checkbox',{name:'Ajouter cette vue fictive · Profil droit',exact:true});
+  await right.focus();
+  await page.keyboard.press('Space');
+  await expect(count).toHaveText('1 sur 5 vues sélectionnées');
+  await expect(right).toBeChecked();
+  await expect(page.locator('#draft-last-saved')).toHaveText('Aucune sauvegarde serveur confirmée');
+  await expect(page.locator('#draft-status')).toContainText('Saisie locale');
+  expect(await right.locator('..').evaluate(el=>el.getBoundingClientRect().height)).toBeGreaterThanOrEqual(44);
+  await page.reload();
+  await expect(right).toBeChecked();
+  await expect(count).toHaveText('1 sur 5 vues sélectionnées');
+});
+
+test('Assistant: aperçu par section et lien incomplet focalisé sans sauvegarde',async({page})=>{
+  target.store.db.drafts.owner = {...complete(9),photos:2,documents:false};
+  await open(page,'/owner/vehicles/new?step=9');
+  const draftPosts = writes(page,'/owner/draft');
+  const submissions = writes(page,'/owner/vehicles');
+  const recap = page.getByRole('complementary',{name:'Aperçu du dossier',exact:true});
+  await expect(recap.getByRole('heading',{level:3})).toHaveText(['Véhicule','État et photos','Disponibilité et prix','Revue']);
+  await expect(recap).toContainText('2 sur 5');
+  await expect(recap).toContainText('Carte grise, assurance et contrôle technique');
+  await page.getByRole('link',{name:'Trois documents synthétiques',exact:true}).click();
+  await expect(page.locator('#owner-group-title-2')).toBeFocused();
+  expect(new URL(page.url()).searchParams.get('step')).toBe('2');
+  expect(draftPosts).toHaveLength(0);
+  expect(submissions).toHaveLength(0);
+});
+
+test('Assistant: stockage indisponible sans envoi d’annonce ni perte lors de la comparaison',async({page})=>{
+  target.store.db.drafts.owner = complete(9);
+  await page.addInitScript(()=>{
+    const original = Storage.prototype.setItem;
+    Storage.prototype.setItem = function(key,value){
+      if (key==='peyi-owner-draft-v1:owner' && JSON.parse(value).attempt) throw new DOMException('Stockage fictif indisponible','QuotaExceededError');
+      return original.call(this,key,value);
+    };
+  });
+  await open(page);
+  const submissions = writes(page,'/owner/vehicles'), before = target.store.db.vehicles.length;
+  const consent = page.getByLabel('Soumettre cette annonce fictive à la revue.',{exact:true});
+  await consent.check();
+  await page.getByRole('button',{name:'Envoyer pour validation',exact:true}).click();
+  await expect(page.locator('#draft-status')).toContainText('Envoi suspendu');
+  await expect(page.locator('#draft-status')).toBeFocused();
+  await expect(consent).toBeChecked();
+  expect(submissions).toHaveLength(0);
+  expect(target.store.db.vehicles).toHaveLength(before);
+  expect(target.store.db.drafts.owner).toEqual(complete(9));
+
+  await page.goto(client+'/owner/vehicles/new?step=7');
+  const description = page.getByLabel('Présentation et règles du véhicule',{exact:true});
+  await description.fill('Description fictive à conserver pendant la comparaison.');
+  target.store.db.drafts.owner.price = 55;
+  await page.evaluate(()=>{
+    const previous = Storage.prototype.setItem;
+    Storage.prototype.setItem = function(key,value){
+      if (key==='peyi-owner-draft-v1:owner' && JSON.parse(value).base?.price === 55) throw new DOMException('Stockage fictif indisponible','QuotaExceededError');
+      return previous.call(this,key,value);
+    };
+  });
+  const drafts = writes(page,'/owner/draft');
+  await page.getByRole('button',{name:'Sauvegarder et quitter',exact:true}).click();
+  await page.getByRole('button',{name:'Réappliquer mes champs locaux après comparaison',exact:true}).click();
+  await expect(page.locator('#draft-status')).toContainText('La comparaison reste ouverte');
+  await expect(description).toHaveValue('Description fictive à conserver pendant la comparaison.');
+  expect(new URL(page.url()).searchParams.get('step')).toBe('7');
+  expect(drafts).toHaveLength(0);
 });

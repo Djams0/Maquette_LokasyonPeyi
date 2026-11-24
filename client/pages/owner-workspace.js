@@ -129,8 +129,8 @@ export async function ownerPage(section,me,id) {
   const owned = b.owned.filter(vehicle=>vehicle.ownerId===me.id);
   const rs = b.rentals.filter(r=>r.ownerId===me.id);
   const params = new URLSearchParams(location.search);
-  const local=Object.values(buffer?.groups||{}).some(g=>Object.keys(g).length)>0,hasDraft=Boolean(local||buffer?.attempt||Object.keys(draft||{}).length),savedStep=(local?buffer.step:validOwnerStep(draft?.step))||1;
-  const draftCard=hasDraft?`<article class="card owner-draft-card"><p class="owner-role">${buffer?.attempt?'Envoi à vérifier':local?'Saisie locale à reprendre':'Brouillon enregistré dans l’API'}</p><h2>${escape((local?Object.assign({},...Object.values(buffer.groups)).name:null)||draft?.name||'Votre annonce à préparer')}</h2><p>${ownerSections[sectionForStep(savedStep)].title} · ${ownerGroups[savedStep-1]}</p>${link('/owner/vehicles/new?step='+savedStep,buffer?.attempt?'Vérifier mon envoi':'Reprendre le brouillon','secondary')}</article>`:'';
+  const local=Object.values(buffer?.groups||{}).some(g=>Object.keys(g).length)>0,hasDraft=Boolean(local||buffer?.attempt||Object.keys(draft||{}).length),savedStep=(local||buffer?.attempt?buffer.step:validOwnerStep(draft?.step))||1;
+  const draftCard=hasDraft?`<article class="card owner-draft-card"><p class="owner-role">${buffer?.attempt?'Envoi à vérifier':local?'Saisie locale à reprendre':'Brouillon enregistré dans l’API'}</p><h2>${escape(buffer?.attempt?.body.name||(local?Object.assign({},...Object.values(buffer.groups)).name:null)||draft?.name||'Votre annonce à préparer')}</h2><p>${ownerSections[sectionForStep(savedStep)].title} · ${ownerGroups[savedStep-1]}</p>${link('/owner/vehicles/new?step='+savedStep,buffer?.attempt?'Vérifier mon envoi':'Reprendre le brouillon','secondary')}</article>`:'';
   const draftWarning=draftError?notice('Le brouillon enregistré est indisponible. La saisie locale éventuelle reste séparée ; ouvrez l’assistant pour vérifier et reprendre.','warning'):'';
   let body='';
   if(section==='dashboard') {
