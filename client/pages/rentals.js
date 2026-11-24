@@ -1,4 +1,5 @@
 import {api} from '../http.js';
+import {ownerRequestReturn} from './owner-state.js';
 import {escape,icon,link,notice,empty,badge,statuses,money,date,field,select,kv,bindForm,flash,modal,errorSlot,shellLoading} from '/ui/components.js';
 import {parseSearch} from './search-state.js';
 import {bookingDraft,localRentalDate,requestVehicleURL,rentalNext,rentalProgress,rentalTitles,departureReady,returnReady} from './booking-state.js';
@@ -363,7 +364,8 @@ export async function rental(id,me) {
  const owner = r.ownerId===me.id, known = Object.hasOwn(rentalTitles,r.status);
  const next = rentalNext(known?r:{...r,status:''},me.id);
  const vehicleBack = requestVehicleURL(r.vehicleId,r,null);
- const fromTab = new URLSearchParams(location.search).get('tab');
+ const params = new URLSearchParams(location.search);
+ const fromTab = params.get('tab');
  const listBack = Object.hasOwn(rentalTabs,fromTab) ? '/rentals?tab='+fromTab : '/rentals';
  const paid = r.payment==='simulated_paid';
  let decision = '', secondary = '';
@@ -383,7 +385,7 @@ export async function rental(id,me) {
    r.status==='in_progress'?kv('Constat de retour',returnReady(r)?'Finalisé':'À finaliser'):'';
  const reason = r.status==='declined'?refusalReasons.find(([value])=>value===r.reason)?.[1]:'';
  main.innerHTML = `<div class="client-operational rental-surface follow-surface">
-   <a class="booking-back" href="${owner?'/owner/requests':listBack}">${icon('back')} ${owner?'Mes demandes':'Mes locations'}</a>
+   <a class="booking-back" href="${owner?ownerRequestReturn(params.get('ownerTab')):listBack}">${icon('back')} ${owner?'Mes demandes':'Mes locations'}</a>
    <header class="booking-heading"><h1>${escape(next.title)}</h1>
      <p>${escape(r.vehicleName)} · ${escape(r.id)} · Espace ${owner?'propriétaire':'locataire'}</p>${statuses[r.status]!==next.title?statusLabel(r.status):''}</header>
    <div class="follow-layout">

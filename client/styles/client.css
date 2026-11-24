@@ -2080,3 +2080,120 @@ a.notification-row:hover { background: var(--lp-color-ivory); }
   .inspection-view { grid-template-columns: auto minmax(0,1fr); }
   .inspection-view > button { grid-column: 2; }
 }
+
+/* Introduction, parc et calendrier de l’espace propriétaire. */
+.owner-start-surface, .owner-surface {
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+.owner-start-surface :is(button,.button), .owner-surface :is(button,.button) {
+  min-block-size: var(--lp-layout-touch-min);
+  max-inline-size: 100%;
+  white-space: normal;
+}
+.owner-intro { position: relative; display: grid; align-items: center; margin: 0; }
+.owner-intro img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 310px;
+  object-fit: cover;
+  border-radius: var(--lp-radius-gallery);
+}
+.owner-intro-copy {
+  background: var(--lp-color-deep);
+  color: var(--lp-color-surface);
+  padding: clamp(1rem,4vw,2rem);
+  margin: var(--lp-space-24);
+  max-width: 32rem;
+  border-radius: var(--lp-radius-card);
+}
+.owner-intro img, .owner-intro-copy { grid-area: 1 / 1; }
+.owner-intro h1 { color: inherit; font-family: var(--lp-font-ui); }
+.owner-intro figcaption { font-size: var(--lp-text-meta); }
+.owner-intro figcaption a { display: inline-flex; align-items: center; min-block-size: 44px; }
+.owner-start-layout {
+  display: grid;
+  grid-template-columns: minmax(0,1fr);
+  gap: var(--lp-space-20);
+  align-items: start;
+  margin-block: var(--lp-space-20);
+}
+.owner-start-layout .price { margin-block: var(--lp-space-16) var(--lp-space-8); }
+.owner-activation { scroll-margin-block-start: var(--lp-space-24); }
+.owner-activation form { max-width: 38rem; }
+.owner-activation .check { min-height: 44px; }
+.owner-dashboard-layout { display: grid; gap: var(--lp-space-20); }
+.owner-dashboard-layout > * { min-width: 0; }
+.owner-dashboard-layout aside { display: grid; gap: var(--lp-space-16); align-content: start; }
+.owner-dashboard-layout .owner-shortcuts a { flex: 1 1 10rem; }
+.owner-surface .owner-vehicle-row { display: grid; gap: var(--lp-space-12); padding: var(--lp-space-16); }
+.owner-surface .owner-vehicle-row > div { min-width: 0; }
+.owner-surface .owner-vehicle-row .owner-hero-media { aspect-ratio: auto; }
+.owner-surface .owner-vehicle-row .owner-hero-media img { display: block; height: auto; aspect-ratio: 1.65; }
+.owner-surface .owner-vehicle-row .media-label {
+  position: static;
+  display: block;
+  max-width: none;
+  padding: var(--lp-space-4) 0;
+}
+.owner-surface .owner-draft-card { margin-block-start: var(--lp-space-16); }
+.owner-fleet-filters { margin-block: var(--lp-space-16); }
+.owner-fleet-filters summary { min-height: 48px; align-content: center; cursor: pointer; text-decoration: underline; }
+.owner-fleet-filters .owner-filters { margin-block: var(--lp-space-8); }
+.owner-surface .owner-vehicle-row h2 { margin-block: var(--lp-space-8); }
+.owner-surface .owner-vehicle-row .owner-text-link { display: flex; align-items: center; min-height: 44px; }
+.owner-surface .owner-vehicle-row .owner-text-link,
+.owner-surface .owner-vehicle-row .owner-card-actions { margin-block: var(--lp-space-4) 0; }
+.owner-surface .owner-request .owner-role { margin-block: var(--lp-space-12) var(--lp-space-4); }
+.owner-surface .owner-request .button { width: fit-content; }
+.owner-review-reply {
+  background: var(--lp-color-info-bg);
+  border-radius: var(--lp-radius-control);
+  padding: var(--lp-space-12);
+  margin-block: var(--lp-space-12);
+}
+.owner-surface .owner-calendar { margin-block-start: var(--lp-space-24); }
+.owner-calendar-layout { display: grid; gap: var(--lp-space-24); align-items: start; }
+.owner-calendar-layout > * { min-width: 0; }
+.owner-calendar-layout form {
+  border-radius: var(--lp-radius-card);
+  border: 1px solid var(--line);
+  padding: var(--lp-space-16);
+}
+.owner-month-controls { display: flex; gap: var(--lp-space-8); flex-wrap: wrap; align-items: center; }
+.owner-month-controls input { flex: 1 1 9rem; max-inline-size: 18rem; }
+.owner-month-controls button { min-inline-size: 44px; }
+.owner-surface #owner-month-status { margin-block: var(--lp-space-8); }
+.owner-surface #owner-month-status:empty, .owner-surface #owner-context:empty { display: none; }
+.owner-surface .owner-calendar-list { margin-block-end: 0; }
+.owner-surface .owner-day { min-height: 48px; }
+.owner-surface input, .owner-surface textarea, .owner-start-surface input { max-inline-size: 100%; min-inline-size: 0; }
+#shell:has(.owner-review-main,.owner-start-surface) > .header,
+#shell:has(.owner-review-main,.owner-start-surface) > .header .tools { flex-wrap: wrap; }
+#shell:has(.owner-review-main,.owner-start-surface) > .header .logo,
+#shell:has(.owner-review-main) > .bottom-nav a { min-inline-size: 0; white-space: normal; overflow-wrap: anywhere; }
+@media (min-width: 768px) {
+  .owner-start-layout { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .owner-fleet-filters summary { display: none; }
+}
+@media (min-width: 1024px) {
+  .owner-dashboard-layout { grid-template-columns: minmax(0,1.7fr) minmax(260px,1fr); }
+  .owner-surface .owner-vehicle-list { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .owner-calendar-layout { grid-template-columns: minmax(0,1fr) minmax(265px,300px); }
+}
+@media (max-width: 767px) {
+  .owner-intro img { grid-area: auto; min-height: 0; height: clamp(110px,35vw,230px); }
+  .owner-intro-copy { grid-area: auto; margin: 0; border-top-left-radius: 0; border-top-right-radius: 0; }
+  .owner-intro img { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+  .owner-intro h1 { font-size: clamp(1.55rem,5vw,2.4rem); }
+  .owner-surface .owner-vehicle-row { grid-template-columns: minmax(0,30%) minmax(0,1fr); align-items: start; }
+  .owner-surface .owner-vehicle-row .owner-hero-media img { aspect-ratio: 1; }
+  .owner-surface .owner-request .button { width: 100%; }
+}
+@media (max-width: 600px) {
+  .owner-review-main > .subnav { flex-wrap: wrap; overflow: visible; }
+  .owner-review-main > .subnav a { min-height: 44px; align-content: center; white-space: normal; }
+  .owner-surface .owner-counts { grid-template-columns: repeat(auto-fit,minmax(min(100%,7rem),1fr)); }
+  .owner-surface .card { padding: var(--lp-space-16); }
+}
