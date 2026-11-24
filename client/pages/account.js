@@ -1,6 +1,6 @@
 import {safeNext} from './navigation.js';
 import {api} from '../http.js';
-import {escape,icon,link,field,select,notice,empty,badge,bindForm,bindActions,flash,modal,errorSlot,date} from '/ui/components.js';
+import {escape,icon,link,field,select,notice,empty,badge,bindForm,bindActions,flash,modal,errorSlot,date,kv} from '/ui/components.js';
 
 function confirmSession(register, target) {
   flash(register ? 'Compte fictif créé. Bienvenue !' : 'Vous êtes connecté à la démonstration.');
@@ -296,4 +296,29 @@ export async function notifications(me) {
 }
 export {messages} from './messaging.js';
 
-export async function myReviews(){const b=await api('/bootstrap');const reviews=b.reviews.filter(r=>r.authorId===b.me.id);document.getElementById('main').innerHTML=`<div class="narrow"><a href="/profile">${icon('back')} Mon profil</a><h1 class="section">Mes avis</h1>${reviews.length?reviews.map(r=>`<article class="card section"><h2>${r.vehicleRating??r.rating} / 5</h2>${badge(r.status)}<p>${escape(r.comment)}</p>${r.reply?notice('Réponse du propriétaire : '+escape(r.reply)):''}${link('/vehicle/'+r.vehicleId,'Voir le véhicule','secondary')}</article>`).join(''):empty('Aucun avis envoyé','Vous pourrez laisser un avis après la clôture d’une location.',link('/rentals?tab=history','Mes locations terminées','secondary'))}</div>`;}
+export async function myReviews() {
+  const b = await api('/bootstrap');
+  const reviews = b.reviews.filter(r => r.authorId === b.me.id);
+  const vehicles = new Map([...b.vehicles,...b.owned].map(v => [v.id,v.name]));
+  const rating = value => Number.isInteger(value) && value >= 1 && value <= 5 ? value+' sur 5' : 'Non renseignée';
+  const statusLabels = {pending:'En modération',published:'Publié',rejected:'Refusé'};
+  const cards = reviews.map(r => `<article class="card support-card">
+    <div class="support-meta"><span class="badge ${r.status === 'published' ? 'success' : r.status === 'rejected' ? 'danger' : 'neutral'}">${escape(statusLabels[r.status] || 'Statut non renseigné')}</span>
+      ${r.at && !Number.isNaN(Date.parse(r.at)) ? '<p>Envoyé le '+date(r.at)+'</p>' : ''}</div>
+    <h2>${escape(vehicles.get(r.vehicleId) || 'Avis sur une location')}</h2>
+    <dl class="support-receipt-details">
+      ${kv('Note du véhicule',rating(r.vehicleRating ?? r.rating))}
+      ${kv('Note du propriétaire',rating(r.ownerRating))}
+    </dl>
+    <p class="support-text">${escape(r.comment)}</p>
+    ${r.reply ? '<h3>Réponse du propriétaire</h3><p class="support-text">'+escape(r.reply)+'</p>' : ''}
+    ${r.vehicleId ? link('/vehicle/'+encodeURIComponent(r.vehicleId),'Voir le véhicule','secondary') : ''}
+  </article>`).join('');
+  document.getElementById('main').innerHTML = `<div class="support-surface">
+    ${link('/profile',icon('back')+' Mon profil','secondary support-back')}
+    <header class="support-heading"><h1>Mes avis</h1><p>Suivez la modération des avis que vous avez envoyés.</p></header>
+    <div class="support-layout">
+      <div class="support-flow">${cards || empty('Aucun avis envoyé','Vous pourrez laisser un avis après la clôture d’une location.',link('/rentals?tab=history','Mes locations terminées','secondary'))}</div>
+    </div>
+  </div>`;
+}
