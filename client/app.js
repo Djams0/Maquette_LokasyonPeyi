@@ -59,7 +59,7 @@ try{if(path==='/'){await home(readIdentity);}else{const me=await readIdentity().
  const publicPath=['/','/search','/login','/register','/faq','/owner/start','/demo','/demo/audit','/design-system'].includes(path)||path.startsWith('/vehicle/');
  if(!publicPath&&!me&&/^\/(rentals|rental|request|payment|inspection|messages|profile|notifications|owner|cases|assistance|review|receipt)(\/|$)/.test(path)){location.replace('/login?next='+loginReturn());}else{
  const parts=path.split('/').filter(Boolean),[a,b,c]=parts;
- document.title=({search:'Nos véhicules',rentals:'Mes locations',owner:'Espace propriétaire',profile:'Mon profil',faq:'Questions fréquentes'}[a]||'Bienvenue')+' · Lokasyon Péyi';
+ document.title=({search:'Nos véhicules',rentals:'Mes locations',owner:'Espace propriétaire',profile:'Mon profil',faq:'Questions fréquentes',assistance:'Assistance',cases:'Mes dossiers',review:'Avis',receipt:'Reçu fictif'}[a]||'Bienvenue')+' · Lokasyon Péyi';
  if(path==='/search')await search();
  else if(a==='vehicle'&&b)await vehicle(b,me);
  else if(path==='/login'||path==='/register')await login(path==='/register');
@@ -77,10 +77,10 @@ try{if(path==='/'){await home(readIdentity);}else{const me=await readIdentity().
  else if(path==='/owner/vehicles/new')await wizard(me);
  else if(path==='/owner')await ownerPage('dashboard',me);
  else if(a==='owner'&&['vehicles','requests','revenue','reputation'].includes(b))await ownerPage(c?'vehicle':b,me,c);
- else if(a==='cases')await cases(b);
- else if(path==='/assistance')await cases('new');
- else if(a==='review'&&b)await review(b);
- else if(a==='receipt'&&b)await receipt(b);
+ else if(a==='cases')await cases(b,me);
+ else if(path==='/assistance')await cases('new',me);
+ else if(a==='review'&&b)await review(b,me);
+ else if(a==='receipt'&&b)await receipt(b,me);
  else if(path==='/faq')faq();
  else if(path==='/demo')await demo(me);
  else if(path==='/demo/audit')await auditWorkshop();

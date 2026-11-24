@@ -2313,3 +2313,115 @@ a.notification-row:hover { background: var(--lp-color-ivory); }
   .owner-wizard .owner-wizard-actions > * { width: 100%; }
   .owner-wizard #owner-submission :is(button,.button) { display: flex; width: 100%; margin: var(--lp-space-8) 0; }
 }
+
+/* Client assistance and records */
+#main .support-surface {
+  max-inline-size: 72rem;
+  margin-inline: auto;
+  padding-block: var(--lp-space-12) var(--lp-space-32);
+  overflow-wrap: anywhere;
+}
+.support-heading { margin-block: var(--lp-space-16) var(--lp-space-24); }
+.support-heading h1 { margin-block-end: var(--lp-space-8); }
+.support-heading p, .support-note { color: var(--lp-color-muted); }
+.support-layout {
+  display: grid;
+  align-items: start;
+  gap: var(--lp-space-16);
+}
+.support-flow, .support-faq, .support-messages {
+  display: grid;
+  gap: var(--lp-space-12);
+  min-inline-size: 0;
+}
+#main .support-card, #main .support-rail {
+  display: grid;
+  gap: var(--lp-space-12);
+  padding: clamp(0.875rem, 3vw, 1.5rem);
+  min-inline-size: 0;
+}
+.support-rail :is(h2,p), .support-card :is(h2,h3,p), .support-heading p { margin: 0; }
+.support-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--lp-space-8) var(--lp-space-12);
+}
+.support-meta p, .support-message time { font-size: var(--lp-text-small, 0.875rem); }
+.support-surface .badge { white-space: normal; }
+#main .support-surface :is(a.button,button,input,select) { min-block-size: 44px; max-inline-size: 100%; }
+#main .support-surface :is(a.button,button) { white-space: normal; text-align: center; }
+#main .support-surface a.button { justify-self: start; }
+#main .support-surface a.support-back { gap: var(--lp-space-8); }
+.support-surface form { display: grid; gap: var(--lp-space-12); }
+.support-surface fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-inline-size: 0;
+}
+.support-surface legend { font-weight: 700; margin-block-end: var(--lp-space-8); }
+.support-surface form .field, .support-surface form .form-actions { margin: 0; }
+.support-surface fieldset { display: grid; gap: var(--lp-space-12); }
+.support-surface textarea { min-block-size: 6rem; resize: vertical; }
+.support-surface .form-actions { align-items: start; }
+.support-surface .form-error:empty { display: none; }
+.support-surface .support-status:empty { position: absolute; }
+.support-surface .support-status { color: var(--lp-color-info-text); }
+.support-surface [hidden] { display: none !important; }
+.support-surface .notice { margin: 0; }
+.support-text { white-space: pre-wrap; }
+.support-messages { list-style: none; padding: 0; margin: 0; }
+.support-messages:empty { display: none; }
+.support-message { padding-block: var(--lp-space-8); border-block-end: 1px solid var(--lp-color-outline); }
+.support-message > div {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--lp-space-8);
+  margin-block-end: var(--lp-space-8);
+}
+.support-message p { white-space: pre-wrap; }
+.support-rating { display: grid; gap: var(--lp-space-12); min-inline-size: 0; }
+.support-faq details { padding: 0; margin: 0; min-inline-size: 0; background: var(--lp-color-surface); }
+.support-faq summary { padding: var(--lp-space-12) var(--lp-space-16); min-block-size: 44px; cursor: pointer; }
+.support-faq details p { padding: 0 var(--lp-space-16) var(--lp-space-16); margin: 0; }
+.support-receipt { max-inline-size: 44rem; margin-inline: auto; }
+#main .support-receipt .receipt { margin-block: var(--lp-space-16); padding: clamp(1rem, 5vw, 2.25rem); }
+.support-receipt-details { margin-block: var(--lp-space-8); }
+.support-receipt-details > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--lp-space-8);
+  justify-content: space-between;
+  border-block-end: 1px solid var(--lp-color-outline);
+  padding-block: var(--lp-space-8);
+}
+.support-receipt-details dd { margin: 0; }
+.support-surface :is(summary,select,textarea,input,button,a):focus-visible {
+  outline: 3px solid var(--lp-color-action);
+  outline-offset: 2px;
+}
+.support-surface #case-exchanges:focus { outline-offset: 3px; }
+@media (min-width: 50rem) {
+  .support-layout { grid-template-columns: minmax(0, 2fr) minmax(16rem, 1fr); }
+  .support-rating { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 32rem) {
+  #shell:has(> #main > .support-surface) > .header {
+    flex-wrap: wrap;
+    height: auto;
+    min-block-size: 70px;
+    gap: var(--lp-space-8);
+    padding-block: var(--lp-space-8);
+  }
+  #main .support-surface .form-actions :is(a.button,button) { inline-size: 100%; }
+}
+@media print {
+  #shell:has(.support-receipt) > :not(#main), #shell:has(.support-receipt) .no-print { display: none !important; }
+  #shell:has(.support-receipt) { display: block; background: white; color: black; }
+  #shell:has(.support-receipt) #main, #main .support-receipt .receipt { padding: 0; margin: 0; }
+  #main .support-receipt .receipt { border: 0; box-shadow: none; background: white; color: black; }
+  .support-receipt :is(.badge,.eyebrow) { background: white; color: black; }
+  .support-receipt-details > div { break-inside: avoid; }
+}
