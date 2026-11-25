@@ -1,7 +1,87 @@
 import {api} from '../http.js';
 import {escape,link,notice,select,errorSlot,bindForm,flash,badge,icon,field,textarea,modal,toast,empty,shellLoading,statuses} from '/ui/components.js';
 import {operationalSamples,bindOperationalSamples} from './operational-samples.js';
-export async function demo(me){const personas=await api('/personas?app=client');document.getElementById('main').innerHTML=`<div class="narrow"><p class="eyebrow">Atelier de démonstration</p><h1>Explorez chaque point de vue.</h1>${notice('Toutes les personnes, demandes et opérations sont fictives. Le client et l’administration échangent uniquement avec une API commune.')}<article class="card section"><h2>Changer de profil client</h2>${link('/demo/audit','Atelier des profils audit','secondary')}<form id="persona-form">${select('Profil de démonstration','persona',personas.map(p=>[p.id,p.name+(p.status==='suspended'?' · suspendu':'')]),me?.id||'renter')}${errorSlot}<button type="submit">Ouvrir ce profil</button><button id="visitor" type="button" class="secondary">Passer en visiteur</button></form></article><article class="card section"><h2>Scénario complet</h2><ol><li>Camille : rechercher, puis envoyer une demande.</li><li>Noa : ouvrir « Demandes », puis accepter.</li><li>Camille : simuler le paiement, puis le contrôle de caution.</li><li>Remplir les huit vues du constat de départ.</li><li>Noa : confirmer la remise des clés.</li><li>Camille : constat de retour, puis retour déclaré.</li><li>Noa : confirmer la récupération et clôturer.</li><li>Camille : laisser un avis et imprimer le reçu fictif.</li></ol><div class="form-actions">${link('/search','Rechercher un véhicule')}${link('/owner/requests','Demandes propriétaire','secondary')}</div></article><article class="card section"><h2>Ouvrir le back-office indépendant</h2><p>Sur le port 8081 : Élie contrôle les documents affectés ; Ana gère les dossiers ; Sam participe à la double validation financière ; Jade et Malo administrent les habilitations.</p><a class="button secondary" href="http://localhost:8081/" target="_blank" rel="noopener">Administration · localhost:8081</a></article><article class="card section"><h2>Tester les états de l’interface</h2><form id="network-form">${select('État réseau simulé','network',[['','Normal'],['slow','Chargement lent'],['error','API indisponible']],sessionStorage.getItem('network-demo')||'')}${errorSlot}<button type="submit">Appliquer et ouvrir le catalogue</button></form><div class="form-actions">${link('/search?state=empty','Résultat vide','secondary')}${link('/route-inconnue','Écran 404','secondary')}${link('/design-system','Composants visuels','secondary')}</div></article></div>`;bindForm('persona-form',async b=>{sessionStorage.removeItem('network-demo');await api('/session',b);flash('Profil de démonstration modifié.');location.href=b.persona==='owner'?'/owner':'/';});document.getElementById('visitor').onclick=async()=>{await api('/session',undefined,'DELETE');location.href='/';};bindForm('network-form',b=>{sessionStorage.setItem('network-demo',b.network);location.href='/search';});}
+export async function demo(me) {
+  const personas = await api('/personas?app=client');
+  const options = personas.map(p => [p.id,p.name+(p.status==='suspended' ? ' · suspendu' : '')]);
+  document.getElementById('main').innerHTML = `<div class="narrow tool-surface">
+    <h1>Démo et comptes fictifs</h1>
+    ${notice('Toutes les personnes, demandes et opérations sont fictives. Le client et l’administration échangent via la même API de démonstration.')}
+    <section class="card section tool-card" aria-labelledby="demo-session-title">
+      <h2 id="demo-session-title">Changer de profil client</h2>
+      <form id="persona-form">
+        ${select('Profil de démonstration','persona',options,me?.id || 'renter')}
+        ${errorSlot}<button type="submit">Ouvrir ce profil</button>
+      </form>
+      <form id="visitor-form">
+        ${errorSlot}<button id="visitor" type="submit" class="secondary">Passer en visiteur</button>
+      </form>
+      <p id="demo-session-status" class="tool-feedback" role="status"></p>
+      ${link('/demo/audit','Atelier des profils audit','secondary')}
+    </section>
+    <section class="card section tool-card" aria-labelledby="demo-network-title">
+      <h2 id="demo-network-title">Tester les états de l’interface</h2>
+      <form id="network-form">
+        ${select('État réseau simulé','network',[['','Normal'],['slow','Chargement lent'],['error','API indisponible']],sessionStorage.getItem('network-demo') || '')}
+        ${errorSlot}<button type="submit">Appliquer et ouvrir le catalogue</button>
+      </form>
+      <div class="form-actions">
+        ${link('/search?state=empty','Résultat vide','secondary')}
+        ${link('/route-inconnue','Écran 404','secondary')}
+        ${link('/design-system','Composants visuels','secondary')}
+      </div>
+    </section>
+    <section class="card section tool-card" aria-labelledby="demo-flow-title">
+      <h2 id="demo-flow-title">Scénario complet</h2>
+      <ol>
+        <li>Camille recherche un véhicule et envoie une demande.</li>
+        <li>Noa ouvre ses demandes et accepte.</li>
+        <li>Camille simule le paiement puis le contrôle de caution.</li>
+        <li>L’un des participants complète les huit vues du constat de départ.</li>
+        <li>Noa confirme la remise des clés.</li>
+        <li>Camille complète le constat de retour puis déclare le retour.</li>
+        <li>Noa confirme la récupération et clôture la location.</li>
+        <li>Camille peut laisser un avis et imprimer le reçu fictif.</li>
+      </ol>
+      <div class="form-actions">
+        ${link('/search','Rechercher un véhicule')}
+        ${link('/owner/requests','Demandes propriétaire','secondary')}
+      </div>
+    </section>
+    <section class="card section tool-card" aria-labelledby="demo-admin-title">
+      <h2 id="demo-admin-title">Administration de démonstration</h2>
+      <p>Sur le port 8081, Élie contrôle les documents affectés, Ana traite les dossiers et Sam participe à la double validation financière. Jade et Malo administrent les habilitations.</p>
+      <a class="button secondary" href="http://localhost:8081/" target="_blank" rel="noopener">Administration · localhost:8081</a>
+    </section>
+  </div>`;
+
+  const status = document.getElementById('demo-session-status');
+  let switching = false;
+  async function changeSession(action, destination, successMessage) {
+    if (switching) return;
+    switching = true;
+    status.textContent = 'Changement de profil en cours…';
+    try {
+      await action();
+      if (successMessage) flash(successMessage);
+      location.href = destination;
+    } finally {
+      status.textContent = '';
+      switching = false;
+    }
+  }
+
+  bindForm('persona-form', values => changeSession(async () => {
+    sessionStorage.removeItem('network-demo');
+    await api('/session',values);
+  },values.persona === 'owner' ? '/owner' : '/','Profil de démonstration modifié.'));
+  bindForm('visitor-form', () => changeSession(() => api('/session',undefined,'DELETE'),'/'));
+  bindForm('network-form', values => {
+    sessionStorage.setItem('network-demo',values.network);
+    location.href = '/search';
+  });
+}
+
 function glassExample(tone, title) {
   return `
     <article class="v32-glass-scene v32-glass-scene--${tone}" aria-labelledby="glass-${tone}">
@@ -63,6 +143,7 @@ function bindGlassDemo() {
 export function designSystem() {
   const palette = [['Action','action'],['Ivoire','ivory'],['Encre','ink'],['Ocre','ochre'],['Information','info-bg'],['Succès','success-bg'],['Attention','warning-bg'],['Erreur','error-bg']];
   document.getElementById('main').innerHTML = `
+    <div class="tool-surface tool-system">
     <p class="eyebrow">Fondations visuelles</p>
     <h1>Les fondations de Péyi contemporain.</h1>
     <p>Nunito accompagne les actions et les informations. Lora donne le ton des pages de découverte. Lobster reste réservé à la marque.</p>
@@ -101,7 +182,8 @@ export function designSystem() {
       <article class="card"><h2>État vide</h2>${empty('Aucun élément ici','Changez les critères pour poursuivre.',link('/search','Explorer les véhicules','secondary'))}</article>
       <article class="card"><h2>Chargement</h2><p>Une place réservée garde la page stable pendant le chargement.</p>${shellLoading}</article>
     </div>
-    <section class="card section"><h2>Une typographie lisible</h2><p class="editorial-type">Une voiture, à votre rythme.</p><p>Le corps reste à 16 px, avec un interligne de 24 px. Les informations secondaires utilisent au moins 14 px.</p><small>Une information secondaire reste lisible et conserve son contexte.</small></section>`;
+    <section class="card section"><h2>Une typographie lisible</h2><p class="editorial-type">Une voiture, à votre rythme.</p><p>Le corps reste à 16 px, avec un interligne de 24 px. Les informations secondaires utilisent au moins 14 px.</p><small>Une information secondaire reste lisible et conserve son contexte.</small></section>
+    </div>`;
   bindGlassDemo();
   bindOperationalSamples(document.getElementById('surfaces-operationnelles'));
   document.getElementById('sample-toast').onclick = () => toast('Notification de démonstration.');

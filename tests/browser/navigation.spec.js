@@ -192,3 +192,83 @@ test('navigation : l’ancre publique ferme le menu et place le focus sur la des
   await expect(page.locator('#fonctionnement')).toBeFocused();
   await expect(page.locator('#explorer-steps-title')).toBeInViewport();
 });
+
+test('Démo : sortie refusée annoncée, attente distincte et un seul changement de session',async({page})=>{
+  await login(page,'renter');
+  await page.goto(client+'/demo');
+  await ready(page);
+  const exit=page.getByRole('button',{name:'Passer en visiteur',exact:true});
+  const error=page.locator('#visitor-form [role="alert"]');
+  const status=page.locator('#demo-session-status');
+  let writes=0;
+  let release;
+  const wait=new Promise(resolve=>{release=resolve;});
+  await page.route('**/api/v1/session',async route=>{
+    if(route.request().method()==='GET') return route.continue();
+    writes++;
+    if(writes===1) return route.abort();
+    await wait;
+    return route.continue();
+  });
+  await exit.click();
+  await expect(error).toContainText('API injoignable');
+  await expect(error).toBeFocused();
+  await expect(status).toBeEmpty();
+  await expect(page).toHaveURL(client+'/demo');
+  expect((await (await page.request.get(client+'/api/v1/me')).json()).id).toBe('renter');
+
+  await exit.press('Enter');
+  await expect(status).toHaveText('Changement de profil en cours…');
+  await expect(exit).toBeDisabled();
+  await page.locator('#persona-form').evaluate(form=>form.requestSubmit());
+  await expect.poll(()=>writes).toBe(2);
+  release();
+  await page.waitForURL(client+'/');
+  expect(writes).toBe(2);
+  expect(await (await page.request.get(client+'/api/v1/me')).json()).toBeNull();
+});
+
+test('Cohérence opérationnelle : titres, reflow à 200 % et retour d’atelier utilisable au clavier',async({page})=>{
+  await login(page,'renter');
+  for(const [path,title] of [
+    ['/profile','Mon profil'],
+    ['/profile/documents','Mes documents'],
+    ['/profile/reviews','Mes avis'],
+    ['/notifications','Notifications'],
+  ]){
+    await page.goto(client+path);
+    await ready(page);
+    await expect(page).toHaveTitle(title+' · Lokasyon Péyi');
+  }
+
+  await page.setViewportSize({width:390,height:844});
+  const privateCase=target.store.db.cases.find(item=>!item.participants.includes('renter'));
+  await page.goto(client+'/cases/'+privateCase.id);
+  await expect(page.getByRole('heading',{name:'Accès non autorisé',exact:true})).toBeVisible();
+  const retry=await page.getByRole('button',{name:'Réessayer',exact:true}).boundingBox();
+  const audit=await page.locator('#main').getByRole('link',{name:'Atelier d’audit',exact:true}).boundingBox();
+  expect(audit.x).toBeCloseTo(retry.x);
+  expect(audit.width).toBeCloseTo(retry.width);
+  expect(audit.y).toBeGreaterThanOrEqual(retry.y+retry.height);
+
+  await page.request.delete(client+'/api/v1/session');
+  await page.setViewportSize({width:320,height:720});
+  await page.goto(client+'/demo/audit?category=inconnue');
+  await ready(page);
+  await expect(page).toHaveTitle('Atelier d’audit · Lokasyon Péyi');
+  await page.evaluate(()=>document.documentElement.style.fontSize='200%');
+  await fits(page);
+  await expect(page.getByRole('heading',{name:'Aucun profil dans cette catégorie'})).toBeVisible();
+  const reset=page.getByRole('link',{name:'Afficher tous les profils',exact:true});
+  await reset.press('Tab');
+  await page.keyboard.press('Shift+Tab');
+  await expect(reset).toBeFocused();
+  expect(await reset.evaluate(el=>el.matches(':focus-visible'))).toBe(true);
+  expect((await reset.boundingBox()).height).toBeGreaterThanOrEqual(44);
+  await page.keyboard.press('Enter');
+  await page.waitForURL(client+'/demo/audit');
+  await expect(page.getByRole('button',{name:'Choisir audit-r01',exact:true})).toBeVisible();
+  await page.goto(client+'/route-inconnue');
+  await expect(page.getByRole('heading',{name:/404/,level:1})).toBeVisible();
+  await expect(page).toHaveTitle('Page introuvable · Lokasyon Péyi');
+});

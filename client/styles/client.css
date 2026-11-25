@@ -2425,3 +2425,29 @@ a.notification-row:hover { background: var(--lp-color-ivory); }
   .support-receipt :is(.badge,.eyebrow) { background: white; color: black; }
   .support-receipt-details > div { break-inside: avoid; }
 }
+
+/* Demonstration tools keep the shared components in a route-local workspace. */
+.tool-surface > h1 { margin-block-end: var(--lp-space-16); }
+#main .tool-surface { min-inline-size: 0; overflow-wrap: anywhere; }
+#main .tool-surface .tool-card { padding: clamp(0.875rem, 3vw, 1.5rem); }
+.tool-card > h2 { margin-block: 0 var(--lp-space-12); }
+.tool-card form + form, .tool-card .tool-feedback + .button { margin-block-start: var(--lp-space-12); }
+.tool-feedback { color: var(--lp-color-info-text); }
+.tool-feedback:empty { position: absolute; }
+#main .tool-surface :is(button,a.button,input,select,summary) { min-block-size: 44px; max-inline-size: 100%; }
+#main .tool-surface :is(button,a.button) { white-space: normal; }
+.tool-surface summary { padding-block: var(--lp-space-8); cursor: pointer; }
+@media (max-width: 32rem) {
+  #shell:has(> #main > .tool-surface) > .header {
+    flex-wrap: wrap;
+    height: auto;
+    gap: var(--lp-space-8);
+  }
+  #shell:has(> #main > .tool-surface) > .header .tools {
+    flex-wrap: wrap;
+    max-inline-size: 100%;
+  }
+  #main .tool-card :is(button,a.button) { inline-size: 100%; }
+  #main .tool-surface .form-actions { display: grid; grid-template-columns: minmax(0,1fr); }
+  .tool-system :is(.component-samples,.palette) { grid-template-columns: minmax(0,1fr); }
+}

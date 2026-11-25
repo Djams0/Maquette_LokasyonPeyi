@@ -68,3 +68,45 @@ export function navigationState(path, search = '') {
   else if (['/demo', '/design-system', '/faq', '/owner/start', '/login', '/register'].includes(path)) back = ['/', 'Retour à Explorer'];
   return {root, back};
 }
+
+// A page title describes the route independently of the current account and primary menu.
+const pageTitles = {
+  '/login':'Connexion',
+  '/register':'Inscription',
+  '/profile':'Mon profil',
+  '/profile/documents':'Mes documents',
+  '/profile/reviews':'Mes avis',
+  '/notifications':'Notifications',
+  '/rentals':'Mes locations',
+  '/messages':'Messages',
+  '/faq':'Questions fréquentes',
+  '/assistance':'Assistance',
+  '/cases':'Mes dossiers',
+  '/cases/new':'Ouvrir un dossier',
+  '/owner/start':'Devenir propriétaire',
+  '/owner':'Espace propriétaire',
+  '/owner/vehicles':'Mon parc',
+  '/owner/vehicles/new':'Publier un véhicule',
+  '/owner/requests':'Demandes de location',
+  '/owner/revenue':'Revenus simulés',
+  '/owner/reputation':'Réputation',
+  '/demo':'Démo et comptes fictifs',
+  '/demo/audit':'Atelier d’audit',
+  '/design-system':'Composants visuels',
+};
+const detailTitles = {
+  request:'Demande de location',
+  rental:'Suivi de location',
+  payment:'Paiement simulé',
+  inspection:'État des lieux',
+  cases:'Détail du dossier',
+  review:'Avis sur la location',
+  receipt:'Reçu fictif',
+};
+
+export function operationalPageTitle(path) {
+  if (Object.hasOwn(pageTitles,path)) return pageTitles[path];
+  if (/^\/owner\/vehicles\/[^/]+$/.test(path)) return 'Gestion du véhicule';
+  const [,area,id] = path.split('/');
+  return id && Object.hasOwn(detailTitles,area) ? detailTitles[area] : '';
+}
