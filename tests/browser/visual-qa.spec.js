@@ -44,3 +44,59 @@ test('Recette V3.2 à 1280 px: recherche et fiche utilisables au clavier', async
   expect((await request.boundingBox()).height).toBeGreaterThanOrEqual(44);
   expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
 });
+
+test('Recette finale : action avant les photos, retour daté et accès par participant',async ({page}) => {
+  await page.setViewportSize({width:390,height:844});
+  const query = '?q=Gosier&from=2027-06-10&until=2027-06-14&max=80&sort=price&view=map';
+  let imageRequests = 0;
+  let release;
+  const images = new Promise(resolve => {release = resolve;});
+  const writes = [];
+  page.on('request',request => {
+    if(request.method() === 'POST' && /^\/api\/v1\/(rentals|cases)(\/|$)/.test(new URL(request.url()).pathname)) {
+      writes.push(request.method());
+    }
+  });
+  await page.route('**/*',async route => {
+    if(route.request().resourceType() === 'image') {
+      imageRequests++;
+      await images;
+    }
+    return route.continue();
+  });
+  const request = page.getByRole('button',{name:'Demander la location',exact:true});
+  try {
+    await page.goto(client+'/vehicle/v3'+query,{waitUntil:'domcontentloaded'});
+    await expect.poll(() => imageRequests).toBeGreaterThan(0);
+    await expect(request).toBeEnabled();
+    await request.click({trial:true});
+    await request.press('Tab');
+    await page.keyboard.press('Shift+Tab');
+    await expect(request).toBeFocused();
+    expect((await request.boundingBox()).height).toBeGreaterThanOrEqual(44);
+    expect(await request.evaluate(button => button.matches(':focus-visible'))).toBe(true);
+  } finally {
+    release();
+    await page.unrouteAll({behavior:'wait'});
+  }
+
+  await request.press('Enter');
+  await expect(page).toHaveURL(client+'/login?next=%2Frequest%2Fv3');
+  await page.getByLabel('Compte de démonstration',{exact:true}).selectOption('audit-r02');
+  await page.getByRole('button',{name:'Entrer dans la démo',exact:true}).click();
+  await expect(page.getByRole('heading',{name:'Votre demande de location',exact:true})).toBeVisible();
+  await expect(page.locator('.booking-period')).toContainText('10 juin 2027');
+  await expect(page.locator('.booking-period')).toContainText('14 juin 2027');
+  await page.getByRole('link',{name:'Retour à la fiche',exact:true}).click();
+  await expect(page.getByRole('link',{name:'Retour aux résultats',exact:true})).toHaveAttribute('href','/search'+query);
+
+  const record = target.store.db.cases.find(item => item.participants.includes('audit-r02') && !item.participants.includes('audit-r01'));
+  await page.goto(client+'/cases/'+record.id);
+  await expect(page.locator('#main')).toContainText(record.summary);
+  expect((await page.request.post(client+'/api/v1/session',{data:{persona:'audit-r01'}})).ok()).toBe(true);
+  await page.reload();
+  await expect(page.getByRole('heading',{name:'Accès non autorisé',exact:true})).toBeVisible();
+  await expect(page.locator('#main')).not.toContainText(record.summary);
+  await expect(page.locator('form#case-message')).toHaveCount(0);
+  expect(writes).toEqual([]);
+});
