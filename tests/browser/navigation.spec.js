@@ -203,7 +203,8 @@ for (const [width,height] of [[390,844],[1440,960]]) {
     const box=(locator)=>locator.boundingBox();
     const scenarios=[
       ['/login',null,null,null],
-      ['/profile','audit-r02','/profile/documents','location'],
+      ['/profile','audit-r02',null,null],
+      ['/notifications','audit-r02',null,null],
       ['/rentals','audit-r02','/rentals','page'],
       ['/messages','audit-r09','/messages','page'],
       ['/messages?conversation=audit-chat-001&q=V%C3%A9hicule','audit-r09','/messages','location'],
@@ -249,6 +250,11 @@ for (const [width,height] of [[390,844],[1440,960]]) {
       else await expect(mobile(page)).toHaveCount(0);
       if(active&&(desktop||root))await expect((desktop?primary:mobile(page)).locator('[aria-current]')).toHaveAttribute('aria-current',current);
       if(route==='/login')await expect(header.getByRole('link',{name:'Connexion'})).toHaveAttribute('aria-current','page');
+      if(route==='/profile') {
+        await expect((desktop?primary:mobile(page)).locator('[aria-current]')).toHaveCount(0);
+        if(desktop)await expect(header.getByRole('link',{name:'Compte'})).toHaveAttribute('aria-current','page');
+      }
+      if(route==='/notifications')await expect(header.getByRole('link',{name:'Notifications'})).toHaveAttribute('aria-current','page');
       if(desktop&&route==='/owner')await expect(page.getByRole('navigation',{name:'Espace propriétaire',exact:true}).getByRole('link',{name:'Aujourd’hui'})).toHaveAttribute('aria-current','page');
       if(route.includes('conversation=')) {
         const back=page.getByRole('link',{name:'Retour aux messages',exact:true});

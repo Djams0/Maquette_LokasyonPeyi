@@ -653,6 +653,23 @@ html:has(.navigation-panel[open]) { overflow: hidden; }
   .is-internal > .client-main { padding-inline: var(--internal-edge); }
   .is-internal > .internal-header { grid-template-columns: minmax(0,1fr) auto; }
   .internal-header #header-nav, .internal-header .tools .internal-account { display: none; }
+  .is-internal.has-bottom-nav > .bottom-nav {
+    padding-block: var(--lp-space-4) max(var(--lp-space-4),env(safe-area-inset-bottom));
+  }
+  .is-internal .bottom-nav .active {
+    position: relative;
+    background: none;
+    color: var(--lp-color-v32-action);
+  }
+  .is-internal .bottom-nav .active::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 25%;
+    height: 2px;
+    border-radius: var(--lp-radius-pill);
+    background: currentColor;
+  }
 }
 @media (max-width:767px) {
   .is-internal {

@@ -36,12 +36,12 @@ export function currentDestination(path, role) {
   if (role === 'owner') {
     if (under('/owner/requests')) return requests[0];
     if (under('/owner') && path !== '/owner/start') return park[0];
-    if (under('/profile') || under('/notifications')) return profile[0];
+    if (under('/profile')) return profile[0];
     return null;
   }
   if (/^\/(rentals|rental|request|payment|inspection|review|receipt)(\/|$)/.test(path)) return rentals[0];
   if (under('/messages')) return messages[0];
-  if (under('/profile') || under('/notifications')) return documents[0];
+  if (under('/profile/documents')) return documents[0];
   return null;
 }
 export function safeNext(value) {

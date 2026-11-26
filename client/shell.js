@@ -46,7 +46,9 @@ const menuLink = (href, symbol, label, internalState) => {
   const path = location.pathname.replace(/\/$/,'') || '/';
   const threadParent = href === '/messages' && internalState?.thread;
   const current = !threadParent && path === (internalState ? href.split('?')[0] : href);
-  const parent = threadParent || (['/owner','/cases'].includes(href) || (internalState && href === '/owner/vehicles')) && path.startsWith(href + '/');
+  const parentLinks = internalState ? ['/owner/vehicles','/profile/documents','/cases'] : ['/owner','/cases'];
+  const rentalParent = internalState && href === '/rentals' && currentDestination(path,'renter') === href;
+  const parent = threadParent || rentalParent || (parentLinks.includes(href) && path.startsWith(href + '/'));
   return `<a class="menu-link ${current || parent ? 'active' : ''}" ${current || parent ? `aria-current="${current ? 'page' : 'location'}"` : ''} href="${href}">${navigationIcon(symbol)}<span>${label}</span>${icon('arrow')}</a>`;
 };
 
