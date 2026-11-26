@@ -17,3 +17,10 @@
 | Sources graphiques | Aucun fichier natif de B retrouvé. Utiliser planches PDF et rendus documentaires. Les références natives d’A restent disponibles dans le kit initial. |
 
 Le [backlog](../06_FONCTIONNEL/EVOLUTIONS_A_VALIDER.md) regroupe les arbitrages fonctionnels. Pour un nouveau conflit, noter la route, la page, le contrat, l’option retenue et son test dans la PR.
+
+## Correction de fidélité après la PR #35
+
+- Le [main vérifié pour l’audit](https://github.com/Djams0/Maquette_LokasyonPeyi/tree/8a6974e23aab14acbabcd82f21f2bfcd9c0498ce) est la référence d’exécution pour l’accueil, le catalogue et la fiche protégée. `4338f5f` documente l’origine des PNG et la recette historique.
+- B fixe la composition visuelle de l’extension, notamment capsule et marque, ordre des zones, gestes et variantes par rôle. A fixe la direction générale. Le code fournit les droits, états et données de simulation. Une reproduction d’un état illustré passe par les préconditions du mock.
+- Les planches suffisent pour décider structure et hiérarchie. Consigner en revue les dimensions déduites, l’extrapolation d’un écran montré à une seule largeur et les différences de données. Réutiliser le [logo, les polices et les médias crédités](../03_ASSETS/ASSET_MAPPING_EXTENSION.md).
+- Les choix du [backlog produit](../06_FONCTIONNEL/EVOLUTIONS_A_VALIDER.md) restent soumis à décision. La [correction](../07_CODEX_PROMPTS/correction-v32/README.md) suit les arbitrages du tableau ci-dessus.

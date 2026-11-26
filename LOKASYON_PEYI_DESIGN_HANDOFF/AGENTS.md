@@ -7,3 +7,5 @@ Protéger /, /search et /vehicle/:id ainsi que leur shell, données, interaction
 Les PDF fixent la direction graphique, le mock fixe les états, rôles, validations et données. Les fonctionnalités nécessitant un arbitrage produit restent au backlog. Les opérations de démonstration restent fictives. Conserver focus, droits, idempotence, formulaires, identité de session et reprise. Utiliser uniquement des données fictives et expurger les preuves.
 
 Chaque lot part d’une base vérifiée et s’arrête après une branche dédiée, une revue, les preuves, le rapport et un GO/NO-GO. Aucune fusion automatique, push forcé ou lancement implicite du lot suivant. Les artefacts de test restent ignorés ou joints à une revue expurgée. Garder les tests qui caractérisent un défaut. Lire le résultat de chaque étape de CI.
+
+Pour la correction après la PR #35, suivre la série R01–R09 indiquée dans CODEX_START_HERE.md. Le lot R01 traite le shell commun hors de #main et doit isoler sa variante interne des routes publiques protégées. La recette sépare fidélité, fonctionnement et protection.

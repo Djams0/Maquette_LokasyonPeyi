@@ -17,3 +17,5 @@ Les rendus JPEG B 11–49 sont des pages du PDF à 90 dpi. Les maquettes de B so
 | Assistant | [p. 39](planches/B-39.jpg) | [Avant / référence](comparatifs/assistant.jpg) |
 
 Ces paires facilitent la lecture des hiérarchies. Pour une superposition pixel aligner d’abord viewport, densité, profil, données et état. Les planches de B n’ont pas la géométrie brute d’une capture navigateur. Utiliser [la baseline protégée](../protected_baseline/README.md) et [le protocole](../../08_VALIDATION/VISUAL_TEST_MATRIX.md). Pour les autres écrans, consulter [l’index des planches](../../00_SOURCE_OF_TRUTH/INDEX_PDF.md).
+
+Les captures historiques de ce dossier documentent l’état avant la première campagne interne. Pour la correction après la PR #35, utiliser les [preuves d’exécution actualisées](../../01_AUDIT/ECARTS_CORRECTION_V32.md) et les planches B comme cible.

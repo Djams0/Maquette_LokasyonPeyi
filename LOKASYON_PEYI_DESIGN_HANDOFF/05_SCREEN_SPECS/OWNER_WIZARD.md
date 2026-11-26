@@ -18,3 +18,27 @@ Ordre visuel exact des sections et groupes: Véhicule [1 identification,3 caract
 | Nature de la modification | B |
 
 Voir [les fondations et gabarits](../02_DESIGN_SYSTEM/DESIGN_SYSTEM_V3.2.md) et [la recette](../08_VALIDATION/ACCEPTANCE_CRITERIA.md).
+
+## Critères actifs · correction V3.2
+
+### WIZ-01 · `/owner/vehicles/new`
+
+[B-39](../04_VISUAL_REFERENCES/extension/planches/B-39.jpg), [B-41](../04_VISUAL_REFERENCES/extension/planches/B-41.jpg) · Quatre sections et neuf étapes, vues de photos. [Lot R08](../07_CODEX_PROMPTS/correction-v32/R08_PUBLICATION_BROUILLONS.md).
+
+- **Scénario** · owner depuis le parc et audit-o02 reprenant step=5.
+- **Ordinateur** · Navigation des étapes en rail, formulaire état/photos et actions sauvegarde/continuer, référence sous vrai état enregistré.
+- **Mobile** · Retour, progression, statut du brouillon, vues en liste, commande persistante seulement si elle ne masque aucun champ.
+- **Écart de départ** · [Observation et preuve WIZ-01](../01_AUDIT/ECARTS_CORRECTION_V32.md#wiz-01).
+- **Comportements** · Validations des groupes, 5 vues fictives, 3 justificatifs, même step, aucune pièce réelle ni saisie de défaut nouvelle.
+- **Vérification** · Comparer step=5 aux deux largeurs et rejouer liens step=1 à 9 avec saisie et reprise. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).
+
+### WIZ-02 · `/owner/vehicles/new`
+
+[B-23](../04_VISUAL_REFERENCES/extension/planches/B-23.jpg), [B-40](../04_VISUAL_REFERENCES/extension/planches/B-40.jpg), [B-41](../04_VISUAL_REFERENCES/extension/planches/B-41.jpg) · Récapitulatif, conflit et envoi. [Lot R08](../07_CODEX_PROMPTS/correction-v32/R08_PUBLICATION_BROUILLONS.md).
+
+- **Scénario** · owner step=9 complet puis divergence locale/serveur et résultat inconnu.
+- **Ordinateur** · Progression, récap par groupe puis conditions et actions. Alerte conflit avec valeurs et résolution explicite.
+- **Mobile** · Récap condensé en sections; reprise d’envoi et autosaisie clairement identifiées, sans masquer CTA.
+- **Écart de départ** · [Observation et preuve WIZ-02](../01_AUDIT/ECARTS_CORRECTION_V32.md#wiz-02).
+- **Comportements** · Conserver valeurs locales, résolution par comparaison existante, une annonce pending malgré résultat perdu.
+- **Vérification** · Comparer récap et divergence séparément, vérifier un seul POST effectif et tracer état après envoi. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).

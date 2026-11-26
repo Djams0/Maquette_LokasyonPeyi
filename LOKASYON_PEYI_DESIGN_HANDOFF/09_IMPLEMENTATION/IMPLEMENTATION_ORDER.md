@@ -8,3 +8,7 @@ Suivre [l’index des prompts](../07_CODEX_PROMPTS/README.md), les [dépendances
 - 09 termine l’assistance, les avis et reçus. 10 harmonise uniquement les nouvelles surfaces. 11 décide de la conformité, parcours et preuves à l’appui.
 
 Aucun GO n’autorise un lot C. Voir [backlog produit](../06_FONCTIONNEL/EVOLUTIONS_A_VALIDER.md).
+
+## Campagne active après la PR #35
+
+Suivre [R01 à R09](../07_CODEX_PROMPTS/correction-v32/README.md). L’ordre 00–11 ci-dessus documente la campagne intégrée. Le [suivi](PROGRESS_TRACKER.md) enregistre séparément les PR et décisions de la correction.

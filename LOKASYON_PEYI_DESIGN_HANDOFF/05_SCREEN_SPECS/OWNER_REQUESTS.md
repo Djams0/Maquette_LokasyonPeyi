@@ -18,3 +18,16 @@ Les filtres sont les valeurs réellement gérées dans owner-workspace. Conserve
 | Nature de la modification | A |
 
 Voir [les fondations et gabarits](../02_DESIGN_SYSTEM/DESIGN_SYSTEM_V3.2.md) et [la recette](../08_VALIDATION/ACCEPTANCE_CRITERIA.md).
+
+## Critères actifs · correction V3.2
+
+### OWN-06 · `/owner/requests`
+
+[B-37](../04_VISUAL_REFERENCES/extension/planches/B-37.jpg) · Filtres et carte examinable. [Lot R07](../07_CODEX_PROMPTS/correction-v32/R07_ESPACE_PROPRIETAIRE.md).
+
+- **Scénario** · audit-o02 sur requested puis filtre vide.
+- **Ordinateur** · État et contexte de chaque dossier, CTA à droite, choix de réponse dans le suivi.
+- **Mobile** · Carte verticale claire avec statut et CTA, filtres et actualisation, aucun choix direct.
+- **Écart de départ** · [Observation et preuve OWN-06](../01_AUDIT/ECARTS_CORRECTION_V32.md#own-06).
+- **Comportements** · Acteur et transitions au suivi, onglet et actualisation, permissions de participant.
+- **Vérification** · Captures état actif/vide et retour exact après décision. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).

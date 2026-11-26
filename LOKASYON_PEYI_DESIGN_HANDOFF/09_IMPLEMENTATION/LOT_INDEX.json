@@ -493,5 +493,261 @@
       "index": 11,
       "prompt": "07_CODEX_PROMPTS/LOT_11_FINAL_QA.md"
     }
-  ]
+  ],
+  "correction_v32": {
+    "audit_sha": "8a6974e23aab14acbabcd82f21f2bfcd9c0498ce",
+    "entry": "07_CODEX_PROMPTS/correction-v32/R01_HEADER_NAVIGATION.md",
+    "matrix": "08_VALIDATION/CORRECTION_V32.csv",
+    "lots": [
+      {
+        "id": "R01",
+        "slug": "HEADER_NAVIGATION",
+        "title": "Header interne et navigation",
+        "prompt": "07_CODEX_PROMPTS/correction-v32/R01_HEADER_NAVIGATION.md",
+        "deps": [],
+        "branch": "correction-v32/r01-header-navigation",
+        "checks": [
+          "HDR-01",
+          "HDR-02"
+        ],
+        "files": [
+          "client/shell.js",
+          "client/pages/navigation.js",
+          "client/app.js",
+          "client/styles/client.css",
+          "ui/tokens.css",
+          "ui/components.js"
+        ],
+        "tests": [
+          "tests/browser/navigation.spec.js",
+          "tests/browser/account.spec.js",
+          "tests/browser/messaging.spec.js",
+          "tests/browser/owner.spec.js",
+          "tests/browser/visual-qa.spec.js"
+        ]
+      },
+      {
+        "id": "R02",
+        "slug": "COMPTE",
+        "title": "Connexion, profil et documents",
+        "prompt": "07_CODEX_PROMPTS/correction-v32/R02_COMPTE.md",
+        "deps": [
+          "R01"
+        ],
+        "branch": "correction-v32/r02-compte",
+        "checks": [
+          "ACC-01",
+          "ACC-02",
+          "ACC-03",
+          "ACC-04"
+        ],
+        "files": [
+          "client/pages/account.js",
+          "client/pages/navigation.js",
+          "client/app.js",
+          "client/styles/client.css"
+        ],
+        "tests": [
+          "tests/browser/account.spec.js",
+          "tests/browser/navigation.spec.js",
+          "tests/browser/booking.spec.js"
+        ]
+      },
+      {
+        "id": "R03",
+        "slug": "LOCATIONS_SUIVI_PAIEMENT",
+        "title": "Locations, demande, suivi et paiement",
+        "prompt": "07_CODEX_PROMPTS/correction-v32/R03_LOCATIONS_SUIVI_PAIEMENT.md",
+        "deps": [
+          "R02"
+        ],
+        "branch": "correction-v32/r03-locations-suivi-paiement",
+        "checks": [
+          "LOC-01",
+          "LOC-02",
+          "LOC-03",
+          "LOC-04"
+        ],
+        "files": [
+          "client/pages/rentals.js",
+          "client/pages/booking-state.js",
+          "client/pages/search-state.js",
+          "client/styles/client.css"
+        ],
+        "tests": [
+          "tests/browser/booking.spec.js",
+          "tests/browser/maquette.spec.js",
+          "tests/browser/visual-qa.spec.js"
+        ]
+      },
+      {
+        "id": "R04",
+        "slug": "CONSTATS",
+        "title": "Constats de départ, retour et reprise",
+        "prompt": "07_CODEX_PROMPTS/correction-v32/R04_CONSTATS.md",
+        "deps": [
+          "R03"
+        ],
+        "branch": "correction-v32/r04-constats",
+        "checks": [
+          "CON-01",
+          "CON-02"
+        ],
+        "files": [
+          "client/pages/inspection.js",
+          "client/pages/booking-state.js",
+          "client/styles/client.css",
+          "ui/components.js"
+        ],
+        "tests": [
+          "tests/browser/booking.spec.js",
+          "tests/browser/maquette.spec.js"
+        ]
+      },
+      {
+        "id": "R05",
+        "slug": "MESSAGERIE_NOTIFICATIONS",
+        "title": "Messagerie et notifications",
+        "prompt": "07_CODEX_PROMPTS/correction-v32/R05_MESSAGERIE_NOTIFICATIONS.md",
+        "deps": [
+          "R04"
+        ],
+        "branch": "correction-v32/r05-messagerie-notifications",
+        "checks": [
+          "MSG-01",
+          "MSG-02",
+          "MSG-03"
+        ],
+        "files": [
+          "client/pages/messaging.js",
+          "client/pages/message-state.js",
+          "client/pages/account.js",
+          "client/pages/navigation.js",
+          "client/styles/client.css"
+        ],
+        "tests": [
+          "tests/browser/messaging.spec.js",
+          "tests/browser/account.spec.js",
+          "tests/browser/navigation.spec.js"
+        ]
+      },
+      {
+        "id": "R06",
+        "slug": "ASSISTANCE_CLOTURE",
+        "title": "Assistance, dossiers, avis et reçu",
+        "prompt": "07_CODEX_PROMPTS/correction-v32/R06_ASSISTANCE_CLOTURE.md",
+        "deps": [
+          "R05"
+        ],
+        "branch": "correction-v32/r06-assistance-cloture",
+        "checks": [
+          "SUP-01",
+          "SUP-02",
+          "SUP-03",
+          "SUP-04",
+          "SUP-05",
+          "SUP-06",
+          "SUP-07",
+          "SUP-08"
+        ],
+        "files": [
+          "client/pages/support.js",
+          "client/pages/account.js",
+          "client/styles/client.css"
+        ],
+        "tests": [
+          "tests/browser/support.spec.js",
+          "tests/browser/account.spec.js",
+          "tests/browser/booking.spec.js"
+        ]
+      },
+      {
+        "id": "R07",
+        "slug": "ESPACE_PROPRIETAIRE",
+        "title": "Espace propriétaire et calendrier",
+        "prompt": "07_CODEX_PROMPTS/correction-v32/R07_ESPACE_PROPRIETAIRE.md",
+        "deps": [
+          "R06"
+        ],
+        "branch": "correction-v32/r07-espace-proprietaire",
+        "checks": [
+          "OWN-01",
+          "OWN-02",
+          "OWN-03",
+          "OWN-04",
+          "OWN-05",
+          "OWN-06",
+          "OWN-07",
+          "OWN-08"
+        ],
+        "files": [
+          "client/pages/owner.js",
+          "client/pages/owner-workspace.js",
+          "client/pages/owner-state.js",
+          "client/pages/vehicle-presentation.js",
+          "client/styles/client.css"
+        ],
+        "tests": [
+          "tests/browser/owner.spec.js",
+          "tests/browser/booking.spec.js",
+          "tests/browser/navigation.spec.js"
+        ]
+      },
+      {
+        "id": "R08",
+        "slug": "PUBLICATION_BROUILLONS",
+        "title": "Publication, brouillons et états de revue",
+        "prompt": "07_CODEX_PROMPTS/correction-v32/R08_PUBLICATION_BROUILLONS.md",
+        "deps": [
+          "R07"
+        ],
+        "branch": "correction-v32/r08-publication-brouillons",
+        "checks": [
+          "WIZ-01",
+          "WIZ-02"
+        ],
+        "files": [
+          "client/pages/wizard.js",
+          "client/pages/owner-state.js",
+          "client/pages/owner-workspace.js",
+          "client/styles/client.css"
+        ],
+        "tests": [
+          "tests/browser/owner.spec.js",
+          "tests/browser/maquette.spec.js"
+        ]
+      },
+      {
+        "id": "R09",
+        "slug": "RECETTE_FINALE",
+        "title": "Recette visuelle et fonctionnelle finale",
+        "prompt": "07_CODEX_PROMPTS/correction-v32/R09_RECETTE_FINALE.md",
+        "deps": [
+          "R08"
+        ],
+        "branch": "correction-v32/r09-recette-finale",
+        "checks": [
+          "OUT-01",
+          "OUT-02",
+          "OUT-03",
+          "TRV-01",
+          "PRG-01",
+          "PRG-02",
+          "PRG-03"
+        ],
+        "files": [
+          "client/app.js",
+          "client/pages/demo.js",
+          "client/pages/audit.js",
+          "client/pages/operational-samples.js",
+          "playwright.config.js",
+          "playwright.audit.config.js",
+          "scripts/sanitize-evidence.py"
+        ],
+        "tests": [
+          "tests/browser/visual-qa.spec.js"
+        ]
+      }
+    ]
+  }
 }

@@ -18,3 +18,16 @@ Distinguer les trois informations: demande acceptée, paiement fictif confirmé 
 | Nature de la modification | A |
 
 Voir [les fondations et gabarits](../02_DESIGN_SYSTEM/DESIGN_SYSTEM_V3.2.md) et [la recette](../08_VALIDATION/ACCEPTANCE_CRITERIA.md).
+
+## Critères actifs · correction V3.2
+
+### LOC-04 · `/payment/:id`
+
+[B-20](../04_VISUAL_REFERENCES/extension/planches/B-20.jpg) · Contexte, avis, sélection du résultat, estimation. [Lot R03](../07_CODEX_PROMPTS/correction-v32/R03_LOCATIONS_SUIVI_PAIEMENT.md).
+
+- **Scénario** · audit-r02 avec audit-LP-007 accepté puis paiement simulé refusé.
+- **Ordinateur** · Formulaire à gauche, estimation et caution distinctes dans un rail droit.
+- **Mobile** · Retour et résultat d’abord, geste explicite puis estimation. Garder la demande acceptée.
+- **Écart de départ** · [Observation et preuve LOC-04](../01_AUDIT/ECARTS_CORRECTION_V32.md#loc-04).
+- **Comportements** · Simuler uniquement comme locataire, refus récupérable, aucun déplacement d’état ou de caution par erreur.
+- **Vérification** · Comparatif B-20 accepté et refusé. Échec laisse awaiting_payment puis succès fait avancer une seule fois. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).

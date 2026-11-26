@@ -123,3 +123,93 @@ Réutiliser support.js et le garde des participants. Présenter l’aide fictive
 | Nature de la modification | A |
 
 Voir [les fondations et gabarits](../02_DESIGN_SYSTEM/DESIGN_SYSTEM_V3.2.md) et [la recette](../08_VALIDATION/ACCEPTANCE_CRITERIA.md).
+
+## Critères actifs · correction V3.2
+
+### SUP-06 · `/profile/reviews`
+
+[B-30](../04_VISUAL_REFERENCES/extension/planches/B-30.jpg) · Mes avis, statut de modération. [Lot R06](../07_CODEX_PROMPTS/correction-v32/R06_ASSISTANCE_CLOTURE.md).
+
+- **Scénario** · renter sur avis seed puis cas sans avis.
+- **Ordinateur** · Trace des avis et véhicule avec détenteur du compte, liste sobre.
+- **Mobile** · Retour, titres et statut avant commentaire.
+- **Écart de départ** · [Observation et preuve SUP-06](../01_AUDIT/ECARTS_CORRECTION_V32.md#sup-06).
+- **Comportements** · Contenu et état du mock, aucune édition ou permission supplémentaire.
+- **Vérification** · Capture, écran vide et projection des seuls avis applicables. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).
+
+### SUP-01 · `/faq`
+
+[B-29](../04_VISUAL_REFERENCES/extension/planches/B-29.jpg) · Champ recherche, accordéons et aide visiteur puis connecté. [Lot R06](../07_CODEX_PROMPTS/correction-v32/R06_ASSISTANCE_CLOTURE.md).
+
+- **Scénario** · Visiteur avec question caution puis terme sans résultat, locataire pour sortie assistance.
+- **Ordinateur** · Retour, titre, recherche puis accordéons et aide contexte.
+- **Mobile** · Recherche et résultat sans scroll horizontal, contrôle accordéon atteignable au clavier.
+- **Écart de départ** · [Observation et preuve SUP-01](../01_AUDIT/ECARTS_CORRECTION_V32.md#sup-01).
+- **Comportements** · Recherche filtre, accordéons, sortie adaptée à la session.
+- **Vérification** · Comparer ordre B-29 et états résultat/vide. Vérifier Tab et destination de contact. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).
+
+### SUP-02 · `/assistance`
+
+[B-28](../04_VISUAL_REFERENCES/extension/planches/B-28.jpg), [B-44](../04_VISUAL_REFERENCES/extension/planches/B-44.jpg) · Formulaire de motif et contexte clientèle. [Lot R06](../07_CODEX_PROMPTS/correction-v32/R06_ASSISTANCE_CLOTURE.md).
+
+- **Scénario** · renter connecté, location optionnelle, visiteur avec redirection next.
+- **Ordinateur** · Titre et carte formulaire avant aide, si rail nécessaire utiliser B-28 gauche comme principe.
+- **Mobile** · B-28 droite, motif puis réservation applicable puis description, bouton ouvrir visible et défauts annoncés.
+- **Écart de départ** · [Observation et preuve SUP-02](../01_AUDIT/ECARTS_CORRECTION_V32.md#sup-02).
+- **Comportements** · Aide et dossier fictifs, cas/lien filtrés, anti-doublon, validation serveur.
+- **Vérification** · Comparer formulaire à 390 et vérifier la même saisie à 1440. Soumettre une fois et retrouver le dossier. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).
+
+### SUP-04 · `/cases`
+
+[B-30](../04_VISUAL_REFERENCES/extension/planches/B-30.jpg), [B-27](../04_VISUAL_REFERENCES/extension/planches/B-27.jpg) · Carte dossier et CTA ouvrir. [Lot R06](../07_CODEX_PROMPTS/correction-v32/R06_ASSISTANCE_CLOTURE.md).
+
+- **Scénario** · renter avec case-demo puis compte sans dossier.
+- **Ordinateur** · Cartes par dossier, état en texte et action consulter. CTA ouvrir au niveau de la liste.
+- **Mobile** · Retour profil, titre, dossier puis ouvrir. Vide avec sortie utile.
+- **Écart de départ** · [Observation et preuve SUP-04](../01_AUDIT/ECARTS_CORRECTION_V32.md#sup-04).
+- **Comportements** · Conserver le contrôle de visibilité et la continuité du retour.
+- **Vérification** · Capturer liste et vide par largeur. Aucun dossier tiers rendu. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).
+
+### SUP-03 · `/cases/new`
+
+[B-28](../04_VISUAL_REFERENCES/extension/planches/B-28.jpg) · Formulaire et action ouvrir un dossier. [Lot R06](../07_CODEX_PROMPTS/correction-v32/R06_ASSISTANCE_CLOTURE.md).
+
+- **Scénario** · Renter depuis Mes dossiers puis suivi d’une location.
+- **Ordinateur** · Réutiliser le même gabarit que /assistance avec retour du parcours valide.
+- **Mobile** · Formulaire avant l’aide, retour lisible et bouton découvert sans éléments dupliqués.
+- **Écart de départ** · [Observation et preuve SUP-03](../01_AUDIT/ECARTS_CORRECTION_V32.md#sup-03).
+- **Comportements** · Rattachement uniquement si participant, sortie vers dossier créé.
+- **Vérification** · Mêmes critères SUP-02, essai entrée avec location et 403 tiers. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).
+
+### SUP-05 · `/cases/:id`
+
+[B-28](../04_VISUAL_REFERENCES/extension/planches/B-28.jpg), [B-30](../04_VISUAL_REFERENCES/extension/planches/B-30.jpg) · Statut, échanges et aide rapide. [Lot R06](../07_CODEX_PROMPTS/correction-v32/R06_ASSISTANCE_CLOTURE.md).
+
+- **Scénario** · case-demo avec renter, participant puis audit-r02 tiers.
+- **Ordinateur** · Statut et étapes/consigne avant les échanges, rail aide à droite. Réponse près du fil.
+- **Mobile** · Retour à la liste, état, prochaine action et échanges avant aide secondaire. Composer sans recouvrement.
+- **Écart de départ** · [Observation et preuve SUP-05](../01_AUDIT/ECARTS_CORRECTION_V32.md#sup-05).
+- **Comportements** · Permissions, messages partagés éligibles, notes internes invisibles, résultat d’envoi inconnu récupérable.
+- **Vérification** · Capture état équivalent avec échange, 403 sans données, une écriture confirmée. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).
+
+### SUP-07 · `/review/:id`
+
+[B-31](../04_VISUAL_REFERENCES/extension/planches/B-31.jpg) · Deux notes, commentaire et validation. [Lot R06](../07_CODEX_PROMPTS/correction-v32/R06_ASSISTANCE_CLOTURE.md).
+
+- **Scénario** · Location completed sans avis côté locataire, puis après soumission.
+- **Ordinateur** · Saisie de deux notes nommées, commentaire et action dans la carte, extrapolation bureau selon B-43.
+- **Mobile** · Retour suivi, carte notes et commentaire avec CTA « Envoyer pour modération ».
+- **Écart de départ** · [Observation et preuve SUP-07](../01_AUDIT/ECARTS_CORRECTION_V32.md#sup-07).
+- **Comportements** · Un avis, location clôturée et auteur admissible, confirmation serveur.
+- **Vérification** · Capturer le formulaire éligible et la confirmation. Aucun doublon ni notation propriétaire imitée. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).
+
+### SUP-08 · `/receipt/:id`
+
+[B-31](../04_VISUAL_REFERENCES/extension/planches/B-31.jpg) · En-tête fictif, détails et impression. [Lot R06](../07_CODEX_PROMPTS/correction-v32/R06_ASSISTANCE_CLOTURE.md).
+
+- **Scénario** · audit-LP-002 completed côté participant.
+- **Ordinateur** · Reçu avec identité fictive, dates, total, action impression, version bureau dérivée de B-31.
+- **Mobile** · Retour suivi, pièce compacte, action impression sans recouvrement.
+- **Écart de départ** · [Observation et preuve SUP-08](../01_AUDIT/ECARTS_CORRECTION_V32.md#sup-08).
+- **Comportements** · Clôture requise, profils participants seuls, montants mock et impression fictive.
+- **Vérification** · Capture des détails et PDF d’impression simulée. Tester 403, résultat imprimable sans chrome. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).

@@ -48,3 +48,38 @@ Prendre comme base le rendu réel de main. L’objectif de cette campagne est z�
 | Nature de la modification | A |
 
 Voir [les fondations et gabarits](../02_DESIGN_SYSTEM/DESIGN_SYSTEM_V3.2.md) et [la recette](../08_VALIDATION/ACCEPTANCE_CRITERIA.md).
+
+## Critères actifs · correction V3.2
+
+### PRG-01 · `/`
+
+[B p. 3](../00_SOURCE_OF_TRUTH/Lokasyon_Peyi_Direction_UXUI_V3.2_Extension_Espaces_Client.pdf#page=3), [B-43](../04_VISUAL_REFERENCES/extension/planches/B-43.jpg), [B-44](../04_VISUAL_REFERENCES/extension/planches/B-44.jpg) · Capsule, recherche et parcours existants. [Lot R09](../07_CODEX_PROMPTS/correction-v32/R09_RECETTE_FINALE.md).
+
+- **Scénario** · Seed historique, visiteurs puis locataire/propriétaire à 390 et 1440.
+- **Ordinateur** · Identité d’interface avec main de départ et parcours actuels.
+- **Mobile** · Identité d’interface et barre basse publique selon le protocole.
+- **Écart de départ** · [Observation et preuve PRG-01](../01_AUDIT/ECARTS_CORRECTION_V32.md#prg-01).
+- **Comportements** · Critères, médias, menu/rôles et états de session publique.
+- **Vérification** · PNG et diff aux 8 largeurs, contrôles connectés et contexte préservés à chaque lot. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).
+
+### PRG-02 · `/search`
+
+[B p. 3](../00_SOURCE_OF_TRUTH/Lokasyon_Peyi_Direction_UXUI_V3.2_Extension_Espaces_Client.pdf#page=3), [B-43](../04_VISUAL_REFERENCES/extension/planches/B-43.jpg), [B-44](../04_VISUAL_REFERENCES/extension/planches/B-44.jpg) · Catalogue et tiroir. [Lot R09](../07_CODEX_PROMPTS/correction-v32/R09_RECETTE_FINALE.md).
+
+- **Scénario** · Seed historique, filtres et budget, 390 → 880 → 390.
+- **Ordinateur** · Identité composition, filtres, carte et tri.
+- **Mobile** · Identité tiroir, reflow et focus. Rejouer la réserve historique PUB-01 et préciser sa signature.
+- **Écart de départ** · [Observation et preuve PRG-02](../01_AUDIT/ECARTS_CORRECTION_V32.md#prg-02).
+- **Comportements** · Conserver critères, valeur, URL et retour. Toute nouvelle divergence attend une résolution.
+- **Vérification** · 8 paires, et résultat du test partagé avec répétitions identiques. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).
+
+### PRG-03 · `/vehicle/:id`
+
+[B p. 3](../00_SOURCE_OF_TRUTH/Lokasyon_Peyi_Direction_UXUI_V3.2_Extension_Espaces_Client.pdf#page=3), [B-43](../04_VISUAL_REFERENCES/extension/planches/B-43.jpg), [B-44](../04_VISUAL_REFERENCES/extension/planches/B-44.jpg) · Fiche v3, média et retour. [Lot R09](../07_CODEX_PROMPTS/correction-v32/R09_RECETTE_FINALE.md).
+
+- **Scénario** · Seed historique, /vehicle/v3, galerie et retour exact depuis catalogue, demande suivie d’authentification.
+- **Ordinateur** · Identité du rendu, galerie et CTA sur les scénarios protégés.
+- **Mobile** · Identité, action au premier écran, retour et barre de pied selon fiche.
+- **Écart de départ** · [Observation et preuve PRG-03](../01_AUDIT/ECARTS_CORRECTION_V32.md#prg-03).
+- **Comportements** · Préserver média, estimation, prix et contexte de retour v1/v3.
+- **Vérification** · 8 paires et parcours connexion/retour à 390 et 1440 sur les mêmes données. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).

@@ -16,3 +16,19 @@ L’audit Work précède les lots Codex. Remplir la ligne du lot après sa recet
 | 09 | Assistance, dossiers, avis et reçus | Fusionné | `client-v32/lot-09` | `6241952` | `82d5ac5` | [#33](https://github.com/Djams0/Maquette_LokasyonPeyi/pull/33) | [Rapport](../../docs/audit/LOT_09_ASSISTANCE_DOSSIERS_AVIS_RECUS.md) | 74 ciblés, 10 nouveaux, 72 protégés | 24 protégées et 27 assistance | Voir le rapport | PUB-01 | Lecteur d’écran et clavier virtuel à compléter | Passage au lot 10 demandé | Fusion confirmée |
 | 10 | Cohérence opérationnelle | Fusionné | `client-v32/lot-10` | `91960ab` | `dff1ea4` | [#34](https://github.com/Djams0/Maquette_LokasyonPeyi/pull/34) | [Rapport](../../docs/audit/LOT_10_COHERENCE_OPERATIONNELLE.md) | 236 navigateur, 4 profils essentiels | 24 protégées et 46 scènes | Voir le dossier de preuves | PUB-01 | Lecteur d’écran et clavier virtuel à compléter | Passage au lot 11 demandé | Fusion confirmée |
 | 11 | Recette, preuves et arrêt | En revue | `client-v32/lot-11` | `7b8f305` | HEAD de revue | Branche de revue | [Rapport](../../docs/audit/LOT_11_RECETTE_PREUVES_ARRET.md) | Suite complète et profils | Captures protégées et par écran | Barème B-47, voir dossier | PUB-01 relevé séparément | Limites et écarts dans le relevé | Verdict dans les preuves | À valider |
+
+## Correction V3.2 · R01–R09
+
+Audit de départ `8a6974e23aab14acbabcd82f21f2bfcd9c0498ce`. Toutes les lignes attendent la mise en œuvre après intégration du handoff.
+
+| Lot | Statut | Base/SHA candidat | PR | Fidélité | Fonctionnement | Protection | Décision |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| [R01 · Header interne et navigation](../07_CODEX_PROMPTS/correction-v32/R01_HEADER_NAVIGATION.md) | À faire | — | — | — | — | — | — |
+| [R02 · Connexion, profil et documents](../07_CODEX_PROMPTS/correction-v32/R02_COMPTE.md) | À faire | — | — | — | — | — | — |
+| [R03 · Locations, demande, suivi et paiement](../07_CODEX_PROMPTS/correction-v32/R03_LOCATIONS_SUIVI_PAIEMENT.md) | À faire | — | — | — | — | — | — |
+| [R04 · Constats de départ, retour et reprise](../07_CODEX_PROMPTS/correction-v32/R04_CONSTATS.md) | À faire | — | — | — | — | — | — |
+| [R05 · Messagerie et notifications](../07_CODEX_PROMPTS/correction-v32/R05_MESSAGERIE_NOTIFICATIONS.md) | À faire | — | — | — | — | — | — |
+| [R06 · Assistance, dossiers, avis et reçu](../07_CODEX_PROMPTS/correction-v32/R06_ASSISTANCE_CLOTURE.md) | À faire | — | — | — | — | — | — |
+| [R07 · Espace propriétaire et calendrier](../07_CODEX_PROMPTS/correction-v32/R07_ESPACE_PROPRIETAIRE.md) | À faire | — | — | — | — | — | — |
+| [R08 · Publication, brouillons et états de revue](../07_CODEX_PROMPTS/correction-v32/R08_PUBLICATION_BROUILLONS.md) | À faire | — | — | — | — | — | — |
+| [R09 · Recette visuelle et fonctionnelle finale](../07_CODEX_PROMPTS/correction-v32/R09_RECETTE_FINALE.md) | À faire | — | — | — | — | — | — |
