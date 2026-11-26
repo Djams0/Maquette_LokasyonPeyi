@@ -1,0 +1,54 @@
+
+Running 37 tests using 1 worker
+
+node : (node:15288) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+Au caractère Ligne:4 : 1
++ node ../../node_modules/@playwright/test/cli.js test tests/browser/bo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:15288) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:15288) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\browser\booking.spec.js:115:66 › Réservation: récapitulatif, action et reflow à 320px (28.3s)
+  ok  2 tests\browser\booking.spec.js:115:66 › Réservation: récapitulatif, action et reflow à 375px (20.1s)
+  ok  3 tests\browser\booking.spec.js:115:66 › Réservation: récapitulatif, action et reflow à 390px (17.0s)
+  ok  4 tests\browser\booking.spec.js:115:66 › Réservation: récapitulatif, action et reflow à 430px (13.1s)
+  ok  5 tests\browser\booking.spec.js:115:66 › Réservation: récapitulatif, action et reflow à 768px (17.2s)
+  ok  6 tests\browser\booking.spec.js:115:66 › Réservation: récapitulatif, action et reflow à 1024px (12.4s)
+  ok  7 tests\browser\booking.spec.js:115:66 › Réservation: récapitulatif, action et reflow à 1280px (12.0s)
+  ok  8 tests\browser\booking.spec.js:115:66 › Réservation: récapitulatif, action et reflow à 1440px (11.5s)
+  ok  9 tests\browser\booking.spec.js:156:1 › Réservation: modifier, annuler, revenir à la fiche et envoyer conservent le véhicule, la période et les critères (24.2s)
+  ok 10 tests\browser\booking.spec.js:226:1 › Réservation: brouillon absent, corrompu, autre véhicule ou dates invalides ne produisent aucune demande implicite (16.6s)
+  ok 11 tests\browser\booking.spec.js:276:1 › Réservation: réponse perdue, double validation et reload réutilisent la même clé sans seconde demande (19.7s)
+  ok 12 tests\browser\booking.spec.js:332:1 › Réservation: conflit serveur conserve le brouillon et permet une période corrigée (11.6s)
+  ok 13 tests\browser\booking.spec.js:383:1 › Réservation: refus et retrait gardent une progression sans paiement (17.2s)
+  ok 14 tests\browser\booking.spec.js:422:1 › Réservation: paiement réservé au locataire, refus simulé puis récupération sans caution confondue (15.8s)
+  ok 15 tests\browser\booking.spec.js:462:1 › Réservation: prérequis, retour déclaré, récupération et clôture restent séparés par rôle (33.6s)
+  ok 16 tests\browser\booking.spec.js:549:1 › Réservation: session expirée reprend le même brouillon après connexion, sans envoi automatique (13.5s)
+  ok 17 tests\browser\booking.spec.js:572:1 › Réservation: tiers refusé et conflit d’état ne donnent aucun droit ni confirmation optimiste (10.7s)
+  ok 18 tests\browser\booking.spec.js:613:1 › Réservation: conversation du bon véhicule et des bonnes parties, aide indépendante si lecture indisponible (10.2s)
+  ok 19 tests\browser\booking.spec.js:641:1 › Locations: onglets et retours gardent la période, la prochaine action et le bon participant (12.7s)
+  ok 20 tests\browser\booking.spec.js:694:1 › Locations: chargement, échec et reprise se distinguent de la liste vide (6.9s)
+  ok 21 tests\browser\booking.spec.js:728:1 › Demande: compte incomplet, véhicule propre et période passée empêchent l’envoi (21.4s)
+  ok 22 tests\browser\booking.spec.js:777:1 › Demande: une coupure avant écriture conserve la clé et la période même après un retour fiche (18.3s)
+  ok 23 tests\browser\booking.spec.js:828:1 › Demande: un formulaire ouvert sous un autre compte ne peut pas envoyer (12.9s)
+  ok 24 tests\browser\booking.spec.js:848:1 › Demande: le calcul conserve les centimes et un tarif absent bloque la confirmation (13.2s)
+  ok 25 tests\browser\booking.spec.js:893:1 › Paiement: réponse perdue après écriture, statut relu sans double simulation (12.5s)
+  ok 26 tests\browser\booking.spec.js:950:1 › Paiement: après une coupure avant écriture, la relecture conserve la saisie et la clé (11.5s)
+  ok 27 tests\browser\booking.spec.js:992:1 › Suivi: une acceptation à réponse perdue impose une relecture et garde le rendez-vous masqué (8.9s)
+  ok 28 tests\browser\booking.spec.js:1033:1 › Suivi: à 320 px, sept jalons, étapes précédentes accessibles et statut inconnu sans action (10.8s)
+  ok 29 tests\browser\booking.spec.js:1095:1 › Paiement: session expirée rend la connexion puis le devis sans envoi automatique (9.4s)
+  ok 30 tests\browser\booking.spec.js:1120:1 › Paiement: un 409 concurrent affiche le résultat relu et retire la commande (7.1s)
+  ok 31 tests\browser\booking.spec.js:1152:1 › Suivi: un prérequis refusé par l’API garde la confirmation et le focus dans le dialogue (6.7s)
+  ok 32 tests\browser\booking.spec.js:1198:1 › Constat: à 320 px, capture refusée et remplacement flou conservent la saisie et les versions (8.8s)
+  ok 33 tests\browser\booking.spec.js:1306:1 › Constat: réponse de capture perdue après écriture, relecture et focus sans seconde version (11.6s)
+  ok 34 tests\browser\booking.spec.js:1367:1 › Constat: capture interrompue avant écriture, relecture puis reprise avec la même clé et la même vue (9.6s)
+  ok 35 tests\browser\booking.spec.js:1407:1 › Constat: retour borné, sauvegarde, finalisation relue et original verrouillé (24.5s)
+  ok 36 tests\browser\booking.spec.js:1524:1 › Constat: phase inconnue et accès tiers donnent une sortie générique (11.9s)
+  ok 37 tests\browser\booking.spec.js:1548:1 › Constat: une autre vue enregistrée pendant la coupure conserve la clé de la capture en attente (11.2s)
+
+  Slow test file: tests\browser\booking.spec.js (8.9m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  37 passed (9.6m)

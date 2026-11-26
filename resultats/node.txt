@@ -1,0 +1,62 @@
+
+> maquette-lokasyon-peyi@1.0.0 test
+> node --test tests/*.test.mjs
+
+✔ visiteur : catalogue public, filtres, refus des opérations privées (198.679ms)
+✔ demande ≠ paiement : contrôle identité, idempotence, acceptation propriétaire (78.3176ms)
+✔ constats guidés, remplacement, caution distincte, remise et retour jusqu’à clôture (152.3211ms)
+✔ permissions : Super Admin sans documents/finances, employé affecté, notes privées (59.934ms)
+✔ document : critères individuels, version et décision motivée (24.4757ms)
+✔ actions financières : autre personne, invalidation version, exécution fictive (37.321ms)
+✔ propriétaire : neuf étapes soumises, documents contrôlés, publication et calendrier (57.9838ms)
+✔ habilitation sensible : autre Super Admin, pas d’auto-approbation (19.009ms)
+✔ erreurs : date invalide, accès croisé, route inexistante, origine étrangère (18.0113ms)
+✔ AUD-01 population, deterministic snapshot, references and reachable rental states (1897.2737ms)
+✔ AUD-02 every active persona connects only to its own application; suspended denied (1081.43ms)
+✔ AUD-03 owner, documents, cases, conversations and notifications remain isolated (674.9113ms)
+✔ AUD-04 rental conflict, payment separation and idempotency with new accounts (692.7178ms)
+✔ AUD-05 financial permissions, other person, invalidated version, revoked approver, idempotency (688.4089ms)
+✔ AUD-06 permission approval, self-beneficiary refusal, live suspension (815.6403ms)
+✔ AUD-07 disposable target validation and clean campaign restoration without deleting existing data (1956.5174ms)
+✔ AUD-08 suspended session cannot replay a cached idempotent mutation (1107.1882ms)
+✔ AUD-09 catalog is complete and automated references exist (68.3241ms)
+✔ booking: dates and vehicle are validated without implicit defaults or extra API keys (11.0213ms)
+✔ booking: edit return restores local search criteria with the actual draft period (2.28ms)
+✔ booking: every server status names its actor, outsiders and unknown states gain no action (1.7961ms)
+✔ booking: handover and return declarations follow their existing prerequisites (0.8812ms)
+✔ booking: refused and withdrawn timelines never claim acceptance or payment (0.7725ms)
+✔ Explorer: optional dates are paired, real calendar dates and increasing (18.1905ms)
+✔ Explorer: legacy recent-search keeps valid dates, filters and map/sort but rejects unsafe targets (12.2144ms)
+✔ Explorer: refused local storage cannot interrupt search or fabricate a recent link (1.493ms)
+✔ Explorer: photographs belong only to fixture v1 and match the shipped manifest bytes (135.1377ms)
+✔ message recovery: account and thread isolate drafts; invalid storage cannot replay (4.7142ms)
+✔ message recovery: reload preserves the frozen body and key, never assumes a pending write failed (2.7468ms)
+✔ message recovery: server IDs deduplicate without guessing from text (0.8355ms)
+✔ message return: preserve only the local inbox query (0.9704ms)
+✔ navigation: each session has its own stable primary destinations (9.3814ms)
+✔ navigation: current section follows nested routes without granting access (2.888ms)
+✔ navigation: bottom bar only on root surfaces and dedicated returns stay named (1.0676ms)
+✔ navigation: next preserves internal context and refuses external or malformed targets (0.9461ms)
+✔ owner: nine legacy groups map once to four ordered sections (5.0737ms)
+✔ owner: buffer is account-bound, field-limited, and reapplication preserves untouched server fields (2.1257ms)
+✔ owner: content comparison ignores global versions and detects a changed field or step (0.7552ms)
+✔ owner: full submission retains document, photo, safety, price and date guards (5.2192ms)
+✔ owner: calendar distinguishes requests, held periods and manual blocks without claiming availability (1.2237ms)
+✔ owner: an interrupted submission keeps the exact body/key; unreliable records permit checking only (0.9012ms)
+✔ search: canonical order, legacy UI flags, local-only return and API whitelist (11.9788ms)
+✔ search: malformed and ambiguous URLs cannot reach the catalogue API (2.4096ms)
+✔ search: Guadeloupe hours and explicitly empty periods survive a round trip (0.9261ms)
+✔ search: filter reset preserves destination, period, ordering and map (0.774ms)
+✔ vehicle: gallery, condition and optional rendering are associated only with fixture v1 (3.989ms)
+✔ vehicle: estimate follows existing day rounding without inventing a quote (6.5345ms)
+✔ vehicle: all six additional media exactly match their handoff provenance (499.6167ms)
+✔ V3.2: model photography respects exact fixture identity and does not replace condition media (1.6437ms)
+✔ V3.2: every approved runtime variant and its attribution match the handoff (1107.5738ms)
+ℹ tests 50
+ℹ suites 0
+ℹ pass 50
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9443.2419

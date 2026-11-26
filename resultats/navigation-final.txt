@@ -1,0 +1,29 @@
+
+Running 14 tests using 1 worker
+
+node : (node:14048) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+Au caractère Ligne:3 : 1
++ node ../../node_modules/@playwright/test/cli.js test tests/browser/na ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:14048) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:14048) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\browser\navigation.spec.js:92:1 › navigation visiteur : trois destinations publiques et next conservé après connexion (12.9s)
+  ok  2 tests\browser\navigation.spec.js:160:1 › navigation responsive : panneau nommé, clavier, focus et changements de largeur (24.6s)
+  ok  3 tests\browser\navigation.spec.js:245:1 › navigation propriétaire : profil, parc, sous-navigation et retours dédiés (7.8s)
+  ok  4 tests\browser\navigation.spec.js:357:1 › navigation de secours : Démo et atelier restaurent la panne simulée (4.7s)
+  ok  5 tests\browser\navigation.spec.js:409:1 › navigation Admin : périmètre, Échap, suspendu et cookies séparés (5.0s)
+  ok  6 tests\browser\navigation.spec.js:480:1 › navigation : next externe refusé et accès visiteur aux liens directs protégé (6.3s)
+  ok  7 tests\browser\navigation.spec.js:500:1 › navigation : identité tardive ou inconnue préserve le menu public et le catalogue (4.4s)
+  ok  8 tests\browser\navigation.spec.js:560:1 › navigation : bascule Démo, récupération des documents et nouvelle vérification au retour (5.4s)
+  ok  9 tests\browser\navigation.spec.js:615:1 › navigation : l’ancre publique ferme le menu et place le focus sur la destination (2.6s)
+  ok 10 tests\browser\navigation.spec.js:635:3 › R01 à 390 px : marque, commandes par rôle, racines et retours (13.4s)
+  ok 11 tests\browser\navigation.spec.js:635:3 › R01 à 1440 px : marque, commandes par rôle, racines et retours (16.7s)
+  ok 12 tests\browser\navigation.spec.js:738:1 › R01 : capsule stable pendant /me et navigation basse en retrait pendant la saisie (1.9s)
+  ok 13 tests\browser\navigation.spec.js:806:1 › Démo : sortie refusée annoncée, attente distincte et un seul changement de session (3.6s)
+  ok 14 tests\browser\navigation.spec.js:846:1 › Cohérence opérationnelle : titres, reflow à 200 % et retour d’atelier utilisable au clavier (4.7s)
+
+  14 passed (2.0m)

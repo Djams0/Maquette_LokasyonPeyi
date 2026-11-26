@@ -1,0 +1,141 @@
+
+Running 8 tests using 1 worker
+
+node : (node:7892) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+Au caractère Ligne:8 : 1
++ node ../../node_modules/@playwright/test/cli.js test tests/browser/se ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:7892) War... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7892) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\browser\search.spec.js:113:1 › Catalogue V3.2: tiroir unique, boucle de focus et brouillon au changement de largeur (2.5s)
+(node:45964) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:45964) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 2 tests\browser\search.spec.js:113:1 › Catalogue V3.2: tiroir unique, boucle de focus et brouillon au changement de largeur (2.4s)
+(node:26352) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:26352) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 3 tests\browser\search.spec.js:113:1 › Catalogue V3.2: tiroir unique, boucle de focus et brouillon au changement de largeur (2.5s)
+(node:5320) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:5320) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 4 tests\browser\search.spec.js:113:1 › Catalogue V3.2: tiroir unique, boucle de focus et brouillon au changement de largeur (2.7s)
+(node:11532) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:11532) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 5 tests\browser\search.spec.js:113:1 › Catalogue V3.2: tiroir unique, boucle de focus et brouillon au changement de largeur (3.5s)
+(node:4912) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4912) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  6 tests\browser\search.spec.js:113:1 › Catalogue V3.2: tiroir unique, boucle de focus et brouillon au changement de largeur (16.1s)
+(node:6632) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:6632) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 7 tests\browser\search.spec.js:113:1 › Catalogue V3.2: tiroir unique, boucle de focus et brouillon au changement de largeur (2.3s)
+(node:45852) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:45852) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  8 tests\browser\search.spec.js:113:1 › Catalogue V3.2: tiroir unique, boucle de focus et brouillon au changement de largeur (15.5s)
+
+
+  1) tests\browser\search.spec.js:113:1 › Catalogue V3.2: tiroir unique, boucle de focus et brouillon au changement de largeur 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('dialog', { name: 'Filtres', exact: true }).locator('#search-filters')
+    Expected: 1
+    Received: 0
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveCount" with timeout 10000ms
+      - waiting for getByRole('dialog', { name: 'Filtres', exact: true }).locator('#search-filters')
+        13 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      61 |   await expect(budget).toBeFocused();
+      62 |   await page.setViewportSize({width:390,height:844});
+    > 63 |   await expect(dialog.locator('#search-filters')).toHaveCount(1);
+         |                                                   ^
+      64 |   await expect(budget).toBeFocused();
+      65 |   await expect(budget).toHaveValue('40');
+      66 |   await close.click();
+        at [profil-local]/Downloads\Maquette_LokasyonPeyi-main\audit-results\r01-worktree\tests\browser\search.spec.js:63:51
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\r01-evidence\pub01-controle-apres\search-Catalogue-V3-2-tiro-c8d8c-on-au-changement-de-largeur-repeat5\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\r01-evidence\pub01-controle-apres\search-Catalogue-V3-2-tiro-c8d8c-on-au-changement-de-largeur-repeat5\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\r01-evidence\pub01-controle-apres\search-Catalogue-V3-2-tiro-c8d8c-on-au-changement-de-largeur-repeat5\error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\r01-evidence\pub01-controle-apres\search-Catalogue-V3-2-tiro-c8d8c-on-au-changement-de-largeur-repeat5\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\r01-evidence\pub01-controle-apres\search-Catalogue-V3-2-tiro-c8d8c-on-au-changement-de-largeur-repeat5\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\browser\search.spec.js:113:1 › Catalogue V3.2: tiroir unique, boucle de focus et brouillon au changement de largeur 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('dialog', { name: 'Filtres', exact: true }).locator('#search-filters')
+    Expected: 1
+    Received: 0
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveCount" with timeout 10000ms
+      - waiting for getByRole('dialog', { name: 'Filtres', exact: true }).locator('#search-filters')
+        13 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      61 |   await expect(budget).toBeFocused();
+      62 |   await page.setViewportSize({width:390,height:844});
+    > 63 |   await expect(dialog.locator('#search-filters')).toHaveCount(1);
+         |                                                   ^
+      64 |   await expect(budget).toBeFocused();
+      65 |   await expect(budget).toHaveValue('40');
+      66 |   await close.click();
+        at [profil-local]/Downloads\Maquette_LokasyonPeyi-main\audit-results\r01-worktree\tests\browser\search.spec.js:63:51
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\r01-evidence\pub01-controle-apres\search-Catalogue-V3-2-tiro-c8d8c-on-au-changement-de-largeur-repeat7\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\r01-evidence\pub01-controle-apres\search-Catalogue-V3-2-tiro-c8d8c-on-au-changement-de-largeur-repeat7\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\r01-evidence\pub01-controle-apres\search-Catalogue-V3-2-tiro-c8d8c-on-au-changement-de-largeur-repeat7\error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\r01-evidence\pub01-controle-apres\search-Catalogue-V3-2-tiro-c8d8c-on-au-changement-de-largeur-repeat7\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\r01-evidence\pub01-controle-apres\search-Catalogue-V3-2-tiro-c8d8c-on-au-changement-de-largeur-repeat7\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\browser\search.spec.js:113:1 › Catalogue V3.2: tiroir unique, boucle de focus et brouillon au changement de largeur 
+    tests\browser\search.spec.js:113:1 › Catalogue V3.2: tiroir unique, boucle de focus et brouillon au changement de largeur 
+  6 passed (1.2m)

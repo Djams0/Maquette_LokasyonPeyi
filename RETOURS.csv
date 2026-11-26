@@ -1,0 +1,57 @@
+scene,route,libelle,href,x,y,largeur,hauteur,premier_ecran,recouvrement
+connexion-390,/login,Retour à Explorer,/,16,72,158.875,48,True,False
+fil-390,/messages?conversation=audit-chat-001&q=V%C3%A9hicule,Retour aux messages,/messages?q=V%C3%A9hicule,16,72,186.875,48,True,False
+demande-390,/request/v1,Retour à la fiche,/vehicle/v1?from=2027-06-10&until=2027-06-14,16,94,144.1875,48,True,False
+suivi-390,/rental/audit-LP-004,Mes locations,/rentals,16,94,126.484375,48,True,False
+suivi-390,/rental/audit-LP-004,Retour non confirmé ? Contacter le support,/cases/new?rental=audit-LP-004&kind=Retour%20non%20confirm%C3%A9,33,1288.484375,324,72,False,False
+paiement-390,/payment/audit-LP-003,Retour au suivi,/rental/audit-LP-003,16,94,134.203125,48,True,False
+constat-390,/inspection/audit-LP-005/return,Retour à la location,/rental/audit-LP-005,16,94,167,48,True,False
+documents-390,/profile/documents,Retour au profil,/profile,16,94,144.671875,44,True,False
+gestion-390,/owner/vehicles/audit-v02-1,Mon parc,/owner/vehicles,16,228,94.640625,48,True,False
+assistant-390,/owner/vehicles/new?step=5,Mon parc,/owner/vehicles,16,94,94.640625,48,True,False
+outils-390,/demo,Retour à Explorer,/,16,72,158.875,48,True,False
+atelier-390,/demo/audit,Retour à Démo & comptes,/demo,16,72,222.765625,48,True,False
+composants-390,/design-system,Retour à Explorer,/,16,72,158.875,48,True,False
+inscription-390,/register,Retour à Explorer,/,16,72,158.875,48,True,False
+faq-390,/faq,Retour à Explorer,/,16,72,158.875,48,True,False
+introduction-390,/owner/start,Retour à Explorer,/,16,72,158.875,48,True,False
+notifications-390,/notifications,Retour au profil,/profile,16,72,144.671875,48,True,False
+dossiers-390,/cases,Retour au profil,/profile,16,72,144.671875,48,True,False
+parc-390,/owner/vehicles,Espace propriétaire,/owner,16,72,171.390625,48,True,False
+demandes-390,/owner/requests,Espace propriétaire,/owner,16,72,171.390625,48,True,False
+demandes-390,/owner/requests,Retours,/owner/requests?tab=return_reported,16,447.875,85.890625,48,True,False
+revenus-390,/owner/revenue,Espace propriétaire,/owner,16,72,171.390625,48,True,False
+reputation-390,/owner/reputation,Espace propriétaire,/owner,16,72,171.390625,48,True,False
+calendrier-390,/owner/vehicles/audit-v02-1#calendar,Mon parc,/owner/vehicles,16,228,94.640625,48,True,False
+connexion-1440,/login,Retour à Explorer,/,112,84,158.875,48,True,False
+fil-1440,/messages?conversation=audit-chat-001&q=V%C3%A9hicule,Retour aux messages,/messages?q=V%C3%A9hicule,112,84,186.875,48,True,False
+demande-1440,/request/v1,Retour à la fiche,/vehicle/v1?from=2027-06-10&until=2027-06-14,120,116,144.1875,48,True,False
+suivi-1440,/rental/audit-LP-004,Mes locations,/rentals,120,116,126.484375,48,True,False
+suivi-1440,/rental/audit-LP-004,Retour non confirmé ? Contacter le support,/cases/new?rental=audit-LP-004&kind=Retour%20non%20confirm%C3%A9,1005,731.828125,290,72,True,False
+paiement-1440,/payment/audit-LP-003,Retour au suivi,/rental/audit-LP-003,120,116,134.203125,48,True,False
+constat-1440,/inspection/audit-LP-005/return,Retour à la location,/rental/audit-LP-005,120,116,167,48,True,False
+documents-1440,/profile/documents,Retour au profil,/profile,280,116,144.671875,44,True,False
+gestion-1440,/owner/vehicles/audit-v02-1,Mon parc,/owner/vehicles,120,196,94.640625,48,True,False
+assistant-1440,/owner/vehicles/new?step=5,Mon parc,/owner/vehicles,120,116,94.640625,48,True,False
+outils-1440,/demo,Retour à Explorer,/,112,84,158.875,48,True,False
+atelier-1440,/demo/audit,Retour à Démo & comptes,/demo,112,84,222.765625,48,True,False
+composants-1440,/design-system,Retour à Explorer,/,112,84,158.875,48,True,False
+inscription-1440,/register,Retour à Explorer,/,112,84,158.875,48,True,False
+faq-1440,/faq,Retour à Explorer,/,112,84,158.875,48,True,False
+introduction-1440,/owner/start,Retour à Explorer,/,112,84,158.875,48,True,False
+notifications-1440,/notifications,Retour au profil,/profile,112,84,144.671875,48,True,False
+dossiers-1440,/cases,Retour au profil,/profile,112,84,144.671875,48,True,False
+parc-1440,/owner/vehicles,Espace propriétaire,/owner,112,84,171.390625,48,True,False
+demandes-1440,/owner/requests,Espace propriétaire,/owner,112,84,171.390625,48,True,False
+demandes-1440,/owner/requests,Retours,/owner/requests?tab=return_reported,426.1875,325.875,85.890625,48,True,False
+revenus-1440,/owner/revenue,Espace propriétaire,/owner,112,84,171.390625,48,True,False
+reputation-1440,/owner/reputation,Espace propriétaire,/owner,112,84,171.390625,48,True,False
+calendrier-1440,/owner/vehicles/audit-v02-1#calendar,Mon parc,/owner/vehicles,120,196,94.640625,48,True,False
+confirme-390,/rental/audit-LP-006,Mes locations,/rentals,16,94,126.484375,48,True,False
+retour-owner-390,/rental/audit-LP-004,Mes demandes,/owner/requests,16,94,136.65625,48,True,False
+paiement-a-faire-390,/payment/audit-LP-007,Retour au suivi,/rental/audit-LP-007,16,94,134.203125,48,True,False
+constat-depart-390,/inspection/audit-LP-006/departure,Retour à la location,/rental/audit-LP-006,16,94,167,48,True,False
+confirme-1440,/rental/audit-LP-006,Mes locations,/rentals,120,116,126.484375,48,True,False
+retour-owner-1440,/rental/audit-LP-004,Mes demandes,/owner/requests,120,116,136.65625,48,True,False
+paiement-a-faire-1440,/payment/audit-LP-007,Retour au suivi,/rental/audit-LP-007,120,116,134.203125,48,True,False
+constat-depart-1440,/inspection/audit-LP-006/departure,Retour à la location,/rental/audit-LP-006,120,116,167,48,True,False

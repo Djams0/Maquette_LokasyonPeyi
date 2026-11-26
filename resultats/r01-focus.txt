@@ -1,0 +1,104 @@
+
+Running 3 tests using 1 worker
+
+node : (node:29688) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+Au caractère Ligne:4 : 1
++ node ../../node_modules/@playwright/test/cli.js test tests/browser/na ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:29688) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:29688) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\browser\navigation.spec.js:635:3 › R01 à 390 px : marque, commandes par rôle, racines et retours (1.7m)
+(node:45276) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:45276) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 tests\browser\navigation.spec.js:635:3 › R01 à 1440 px : marque, commandes par rôle, racines et retours (1.2m)
+(node:35260) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:35260) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 3 tests\browser\navigation.spec.js:728:1 › R01 : capsule stable pendant /me et navigation basse en retrait pendant la saisie (26.9s)
+
+
+  1) tests\browser\navigation.spec.js:635:3 › R01 à 390 px : marque, commandes par rôle, racines et retours 
+
+    Error: Test timeout of 60000ms exceeded
+
+      226 |       const logo=header.getByRole('img',{name:'Lokasyon Péyi'});
+      227 |       await expect(logo).toBeVisible();
+    > 228 |       await expect.poll(()=>logo.evaluate(el=>[new URL(el.currentSrc).pathname,el.naturalWidth]))
+          |       ^
+      229 |         .toEqual(['/assets/v32/marque/logo-horizontal-charte.webp',683]);
+      230 |       const controls=header.locator('.tools');
+      231 |       const buttons=await controls.locator('a:visible,button:visible').all();
+        at [profil-local]/Downloads\Maquette_LokasyonPeyi-main\audit-results\r01-worktree\tests\browser\navigation.spec.js:228:7
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\r01-evidence\r01-focus-failures\navigation-R01-à-390-px-ma-a045a-par-rôle-racines-et-retours\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\r01-evidence\r01-focus-failures\navigation-R01-à-390-px-ma-a045a-par-rôle-racines-et-retours\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\r01-evidence\r01-focus-failures\navigation-R01-à-390-px-ma-a045a-par-rôle-racines-et-retours\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\r01-evidence\r01-focus-failures\navigation-R01-à-390-px-ma-a045a-par-rôle-racines-et-retours\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\r01-evidence\r01-focus-failures\navigation-R01-à-390-px-ma-a045a-par-rôle-racines-et-retours\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\browser\navigation.spec.js:635:3 › R01 à 1440 px : marque, commandes par rôle, racines et retours 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('#main h1')
+    Expected: visible
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 10000ms
+      - waiting for locator('#main h1')
+
+
+      10 | });
+      11 | test.afterEach(async()=>{children.forEach(c=>c.kill());children=[];if(target)await new Promise(r=>target.server.close(r));});
+    > 12 | async function ready(page){await expect(page.locator('#main h1')).toBeVisible();await page.evaluate(()=>document.fonts.ready);}
+         |                                                                   ^
+      13 | async function login(page,id,internal=false){await page.goto((internal?admin:client)+'/login');await page.getByLabel(internal?'Profil et périmètre':'Compte de démonstration').selectOption(id);await page.getByRole('button',{name:internal?'Ouvrir cet espace':'Entrer dans la démo',exact:true}).click();await page.waitForURL(u=>u.pathname==='/');await ready(page);}
+      14 | async function fits(page){expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBeLessThanOrEqual(1);}
+      15 | const visitor=['/search','/faq','/login?next=%2Fprofile'];
+        at ready ([profil-local]/Downloads\Maquette_LokasyonPeyi-main\audit-results\r01-worktree\tests\browser\navigation.spec.js:12:67)
+        at [profil-local]/Downloads\Maquette_LokasyonPeyi-main\audit-results\r01-worktree\tests\browser\navigation.spec.js:220:13
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\r01-evidence\r01-focus-failures\navigation-R01-à-1440-px-m-9e01b-par-rôle-racines-et-retours\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\r01-evidence\r01-focus-failures\navigation-R01-à-1440-px-m-9e01b-par-rôle-racines-et-retours\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\r01-evidence\r01-focus-failures\navigation-R01-à-1440-px-m-9e01b-par-rôle-racines-et-retours\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\r01-evidence\r01-focus-failures\navigation-R01-à-1440-px-m-9e01b-par-rôle-racines-et-retours\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\r01-evidence\r01-focus-failures\navigation-R01-à-1440-px-m-9e01b-par-rôle-racines-et-retours\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\browser\navigation.spec.js:635:3 › R01 à 390 px : marque, commandes par rôle, racines et retours 
+    tests\browser\navigation.spec.js:635:3 › R01 à 1440 px : marque, commandes par rôle, racines et retours 
+  1 passed (5.1m)

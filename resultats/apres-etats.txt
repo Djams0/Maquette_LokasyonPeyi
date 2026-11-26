@@ -1,0 +1,14 @@
+390 confirme Votre réservation est confirmée header internal-header 683 390 0
+390 retour-owner Retour déclaré header internal-header 683 390 0
+390 paiement-a-faire Paiement de démonstration header internal-header 683 390 0
+390 recu-emis Reçu fictif de clôture header internal-header 683 390 0
+390 constat-depart État des lieux de départ header internal-header 683 390 0
+390 suivi-vide Mes locations header internal-header 683 390 0
+390 messages-vides Messagerie header internal-header 683 390 0
+1440 confirme Votre réservation est confirmée header internal-header 683 1440 0
+1440 retour-owner Retour déclaré header internal-header 683 1440 0
+1440 paiement-a-faire Paiement de démonstration header internal-header 683 1440 0
+1440 recu-emis Reçu fictif de clôture header internal-header 683 1440 0
+1440 constat-depart État des lieux de départ header internal-header 683 1440 0
+1440 suivi-vide Mes locations header internal-header 683 1440 0
+1440 messages-vides Messagerie header internal-header 683 1440 0

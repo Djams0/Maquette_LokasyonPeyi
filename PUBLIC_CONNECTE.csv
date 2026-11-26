@@ -1,0 +1,13 @@
+capture,largeur,hauteur,pixels_diff,canal_max,boite_diff
+public-0-owner-1440.png,1440,960,0,0,
+public-0-owner-390.png,390,844,0,0,
+public-0-renter-1440.png,1440,960,0,0,
+public-0-renter-390.png,390,844,0,0,
+public-1-owner-1440.png,1440,960,106,2,"(383, 457, 1319, 830)"
+public-1-owner-390.png,390,844,0,0,
+public-1-renter-1440.png,1440,960,106,2,"(383, 457, 1319, 830)"
+public-1-renter-390.png,390,844,0,0,
+public-2-owner-1440.png,1440,960,0,0,
+public-2-owner-390.png,390,844,0,0,
+public-2-renter-1440.png,1440,960,0,0,
+public-2-renter-390.png,390,844,0,0,

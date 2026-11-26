@@ -1,0 +1,6 @@
+
+> maquette-lokasyon-peyi@1.0.0 check
+> node scripts/check.mjs && node scripts/audit-docs.mjs --check
+
+81 modules : syntaxe et indépendance des imports vérifiées.
+108 scénarios documentés ; 31 reliés à une assertion automatisée.

@@ -1,0 +1,87 @@
+
+> maquette-lokasyon-peyi@1.0.0 test
+> node --test tests/*.test.mjs
+
+✔ visiteur : catalogue public, filtres, refus des opérations privées (164.0408ms)
+✔ demande ≠ paiement : contrôle identité, idempotence, acceptation propriétaire (73.0697ms)
+✔ constats guidés, remplacement, caution distincte, remise et retour jusqu’à clôture (139.3765ms)
+✔ permissions : Super Admin sans documents/finances, employé affecté, notes privées (24.6046ms)
+✔ document : critères individuels, version et décision motivée (16.8871ms)
+✔ actions financières : autre personne, invalidation version, exécution fictive (34.0947ms)
+✔ propriétaire : neuf étapes soumises, documents contrôlés, publication et calendrier (56.2116ms)
+✔ habilitation sensible : autre Super Admin, pas d’auto-approbation (19.3931ms)
+✔ erreurs : date invalide, accès croisé, route inexistante, origine étrangère (15.9612ms)
+✔ AUD-01 population, deterministic snapshot, references and reachable rental states (1674.9179ms)
+✔ AUD-02 every active persona connects only to its own application; suspended denied (843.5018ms)
+✔ AUD-03 owner, documents, cases, conversations and notifications remain isolated (705.7158ms)
+✔ AUD-04 rental conflict, payment separation and idempotency with new accounts (667.3872ms)
+✔ AUD-05 financial permissions, other person, invalidated version, revoked approver, idempotency (908.7289ms)
+✔ AUD-06 permission approval, self-beneficiary refusal, live suspension (645.8885ms)
+✔ AUD-07 disposable target validation and clean campaign restoration without deleting existing data (1287.5749ms)
+✔ AUD-08 suspended session cannot replay a cached idempotent mutation (640.8377ms)
+✔ AUD-09 catalog is complete and automated references exist (5.9418ms)
+✔ booking: dates and vehicle are validated without implicit defaults or extra API keys (41.8992ms)
+✔ booking: edit return restores local search criteria with the actual draft period (2.1938ms)
+✔ booking: every server status names its actor, outsiders and unknown states gain no action (1.4551ms)
+✔ booking: handover and return declarations follow their existing prerequisites (0.6944ms)
+✔ booking: refused and withdrawn timelines never claim acceptance or payment (0.6713ms)
+✔ Explorer: optional dates are paired, real calendar dates and increasing (20.2504ms)
+✔ Explorer: legacy recent-search keeps valid dates, filters and map/sort but rejects unsafe targets (1.5656ms)
+✔ Explorer: refused local storage cannot interrupt search or fabricate a recent link (1.4408ms)
+✔ Explorer: photographs belong only to fixture v1 and match the shipped manifest bytes (41.9475ms)
+✔ message recovery: account and thread isolate drafts; invalid storage cannot replay (5.0727ms)
+✔ message recovery: reload preserves the frozen body and key, never assumes a pending write failed (2.4486ms)
+✔ message recovery: server IDs deduplicate without guessing from text (0.7226ms)
+✔ message return: preserve only the local inbox query (0.6865ms)
+✔ navigation: each session has its own stable primary destinations (4.0462ms)
+✖ navigation: current section follows nested routes without granting access (5.4084ms)
+✔ navigation: bottom bar only on root surfaces and dedicated returns stay named (1.1684ms)
+✔ navigation: next preserves internal context and refuses external or malformed targets (1.0503ms)
+✔ owner: nine legacy groups map once to four ordered sections (4.2954ms)
+✔ owner: buffer is account-bound, field-limited, and reapplication preserves untouched server fields (2.0598ms)
+✔ owner: content comparison ignores global versions and detects a changed field or step (0.6969ms)
+✔ owner: full submission retains document, photo, safety, price and date guards (5.1678ms)
+✔ owner: calendar distinguishes requests, held periods and manual blocks without claiming availability (1.2014ms)
+✔ owner: an interrupted submission keeps the exact body/key; unreliable records permit checking only (2.6493ms)
+✔ search: canonical order, legacy UI flags, local-only return and API whitelist (19.3961ms)
+✔ search: malformed and ambiguous URLs cannot reach the catalogue API (2.4356ms)
+✔ search: Guadeloupe hours and explicitly empty periods survive a round trip (0.7664ms)
+✔ search: filter reset preserves destination, period, ordering and map (0.5819ms)
+✔ vehicle: gallery, condition and optional rendering are associated only with fixture v1 (4.2076ms)
+✔ vehicle: estimate follows existing day rounding without inventing a quote (5.3109ms)
+✔ vehicle: all six additional media exactly match their handoff provenance (43.0634ms)
+✔ V3.2: model photography respects exact fixture identity and does not replace condition media (1.3392ms)
+✔ V3.2: every approved runtime variant and its attribution match the handoff (83.0798ms)
+ℹ tests 50
+ℹ suites 0
+ℹ pass 49
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7853.61
+
+✖ failing tests:
+
+test at tests\navigation.test.mjs:16:1
+✖ navigation: current section follows nested routes without granting access (5.4084ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + null
+  - '/profile/documents'
+  
+      at TestContext.<anonymous> (file:///[profil-local]/Downloads/Maquette_LokasyonPeyi-main/audit-results/r01-worktree/tests/navigation.test.mjs:26:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: '/profile/documents',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

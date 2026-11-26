@@ -1,0 +1,633 @@
+diff --git a/client/pages/navigation.js b/client/pages/navigation.js
+index 3439355..aa1b24c 100644
+--- a/client/pages/navigation.js
++++ b/client/pages/navigation.js
+@@ -18,9 +18,10 @@ export function navigationRole(me) {
+     : 'visitor';
+ }
+ 
+-export function primaryDestinations(role) {
++export function primaryDestinations(role, {internal = false} = {}) {
+   if (role === 'owner') return ownerDestinations;
+   if (role === 'renter') return renterDestinations;
++  if (internal) return [catalogue, help];
+   return visitorDestinations;
+ }
+ 
+@@ -35,12 +36,12 @@ export function currentDestination(path, role) {
+   if (role === 'owner') {
+     if (under('/owner/requests')) return requests[0];
+     if (under('/owner') && path !== '/owner/start') return park[0];
+-    if (under('/profile') || under('/notifications')) return profile[0];
++    if (under('/profile')) return profile[0];
+     return null;
+   }
+   if (/^\/(rentals|rental|request|payment|inspection|review|receipt)(\/|$)/.test(path)) return rentals[0];
+   if (under('/messages')) return messages[0];
+-  if (under('/profile') || under('/notifications')) return documents[0];
++  if (under('/profile/documents')) return documents[0];
+   return null;
+ }
+ export function safeNext(value) {
+@@ -54,19 +55,20 @@ export function safeNext(value) {
+ }
+ export function navigationState(path, search = '') {
+   path = path.replace(/\/$/, '') || '/';
+-  const thread = path === '/messages' && !!new URLSearchParams(search).get('conversation');
++  const params = new URLSearchParams(search);
++  const thread = path === '/messages' && !!params.get('conversation');
+   const root = ['/', '/search', '/rentals', '/messages', '/profile', '/owner'].includes(path) && !thread;
+   let back = null;
+   // Other detail pages already render a named, domain-specific return link.
+   if (thread) {
+-    const query = (new URLSearchParams(search).get('q') || '').slice(0, 100);
++    const query = (params.get('q') || '').slice(0, 100);
+     back = ['/messages' + (query ? '?' + new URLSearchParams({q: query}) : ''), 'Retour aux messages'];
+   }
+   else if (path === '/notifications' || path === '/cases') back = ['/profile', 'Retour au profil'];
+   else if (['/owner/vehicles', '/owner/requests', '/owner/revenue', '/owner/reputation'].includes(path)) back = ['/owner', 'Espace propriétaire'];
+   else if (path === '/demo/audit') back = ['/demo', 'Retour à Démo & comptes'];
+   else if (['/demo', '/design-system', '/faq', '/owner/start', '/login', '/register'].includes(path)) back = ['/', 'Retour à Explorer'];
+-  return {root, back};
++  return {root, back, thread};
+ }
+ 
+ // A page title describes the route independently of the current account and primary menu.
+diff --git a/client/shell.js b/client/shell.js
+index b627cce..e9220e4 100644
+--- a/client/shell.js
++++ b/client/shell.js
+@@ -1,8 +1,9 @@
+ import {icon,escape,showFlash} from '/ui/components.js';
+ import {currentDestination,navigationRole,navigationState,primaryDestinations} from './pages/navigation.js';
+-const primaryLinks = (role,path,mobile=false) => {
++const primaryLinks = (role,path,mobile=false,{internal=false,thread=false}={}) => {
+   const active=currentDestination(path,role);
+-  return primaryDestinations(role).map(([href,symbol,label])=>`<a href="${href}"${active===href?` class="active" aria-current="${path===href?'page':'location'}"`:''}>${mobile?navigationIcon(symbol):''}<span>${label}</span></a>`).join('');
++  const current=path===active&&!thread?'page':'location';
++  return primaryDestinations(role,{internal}).map(([href,symbol,label])=>`<a href="${href}"${active===href?` class="active" aria-current="${current}"`:''}>${mobile?navigationIcon(symbol):''}<span>${label}</span></a>`).join('');
+ };
+ const discoveryLinks = path => `<a href="/search"${path==='/'?'':` aria-current="${path==='/search'?'page':'location'}"`}>Explorer les voitures</a><a href="${path==='/'?'':'/'}#fonctionnement">Comment ça marche</a><a href="/faq">Aide</a>`;
+ const homeHelpIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></svg>';
+@@ -10,6 +11,13 @@ const navigationIcon = symbol => symbol==='info' ? homeHelpIcon : icon(symbol);
+ const accountControls = me => me
+   ? `<a class="link-button button" href="/notifications" aria-label="Notifications">${icon('bell')}</a><a class="avatar" href="/profile" aria-label="Mon profil">${escape(me.name[0])}</a>`
+   : '<a class="button secondary" href="/login">Connexion</a>';
++const brandImage = '<img src="/assets/v32/marque/logo-horizontal-charte.webp" width="683" height="122" alt="Lokasyon Péyi">';
++const internalAccountControls = (me,path) => {
++  const current = href => path === href ? ' aria-current="page"' : '';
++  return me
++    ? `<a class="link-button button" href="/notifications" aria-label="Notifications"${current('/notifications')}>${icon('bell')}</a><a class="internal-account button link-button" href="/profile"${current('/profile')}>${icon('user')}Compte</a>`
++    : `<a class="button secondary" href="/login"${current('/login')}>Connexion</a>`;
++};
+ 
+ const discoveryFooter = catalogue => `<footer class="explorer-footer v32">
+   <div class="explorer-wrap">
+@@ -34,16 +42,23 @@ const discoveryFooter = catalogue => `<footer class="explorer-footer v32">
+     <div class="explorer-footer-note"><p>Maquette de validation V3.2 · tarifs et annonces fictifs.</p><a href="/demo">Démo & comptes</a></div>
+   </div>
+ </footer>`;
+-const menuLink = (href, symbol, label) => {
++const menuLink = (href, symbol, label, internalState) => {
+   const path = location.pathname.replace(/\/$/,'') || '/';
+-  const current = path === href;
+-  const parent = ['/owner','/cases'].includes(href) && path.startsWith(href + '/');
++  const threadParent = href === '/messages' && internalState?.thread;
++  const current = !threadParent && path === (internalState ? href.split('?')[0] : href);
++  const parentLinks = internalState ? ['/owner/vehicles','/profile/documents','/cases'] : ['/owner','/cases'];
++  const rentalParent = internalState && href === '/rentals' && currentDestination(path,'renter') === href;
++  const parent = threadParent || rentalParent || (parentLinks.includes(href) && path.startsWith(href + '/'));
+   return `<a class="menu-link ${current || parent ? 'active' : ''}" ${current || parent ? `aria-current="${current ? 'page' : 'location'}"` : ''} href="${href}">${navigationIcon(symbol)}<span>${label}</span>${icon('arrow')}</a>`;
+ };
+ 
+-function menuContent(me) {
++function menuContent(me, internalState) {
+   const role=navigationRole(me);
+-  const group=(id,title,links)=>`<section aria-labelledby="${id}"><h3 id="${id}">${title}</h3>${links.map(([href,symbol,label])=>menuLink(href,symbol,label)).join('')}</section>`;
++  const group=(id,title,links)=>`<section aria-labelledby="${id}"><h3 id="${id}">${title}</h3>${links.map(([href,symbol,label])=>menuLink(href,symbol,label,internalState)).join('')}</section>`;
++  const ownerLinks=[
++    ['/owner','home','Tableau de bord'],['/owner/vehicles','car','Mon parc'],['/owner/requests','file','Demandes'],
++  ];
++  if(internalState)ownerLinks.push(['/owner/revenue','file','Revenus'],['/owner/reputation','star','Réputation']);
+   const travel=[['/search','car','Catalogue des véhicules'],['/#fonctionnement','info','Comment ça marche']];
+   if(me)travel.push(['/rentals','calendar','Locations'],['/messages','message','Messages']);
+   const account=me ? [
+@@ -55,9 +70,7 @@ function menuContent(me) {
+   if(me)help.push(['/assistance','message','Contacter l’assistance'],['/cases','file','Mes dossiers']);
+   return `<p class="muted" id="menu-identity">${me?escape(me.name)+' · compte de démonstration':'Explorez librement, connectez-vous pour poursuivre une location.'}</p>
+     <nav aria-label="Accès complémentaires" class="menu-groups">
+-      ${role==='owner'?group('menu-owner','Espace propriétaire',[
+-        ['/owner','home','Tableau de bord'],['/owner/vehicles','car','Mon parc'],['/owner/requests','file','Demandes'],
+-      ]):''}
++      ${role==='owner'?group('menu-owner','Espace propriétaire',ownerLinks):''}
+       ${group('menu-destinations','Se déplacer',travel)}
+       ${group('menu-account','Mon compte',account)}
+       ${group('menu-help','Aide',help)}
+@@ -81,31 +94,32 @@ export function shell() {
+   const catalogue = path === '/search';
+   const vehicle = /^\/vehicle\/[^/]+$/.test(path);
+   const discovery = explorer || catalogue || vehicle;
++  const internalState = discovery ? undefined : {internal: true, thread: state.thread};
++  const accountMarkup = discovery ? accountControls : me => internalAccountControls(me,path);
+   const returnHref=state.back?.[0];
+   const privateReturn=returnHref && returnHref!=='/' && returnHref!=='/demo';
+-  const returnLink=state.back ? `<a href="${returnHref}">${icon('back')}${state.back[1]}</a>` : '';
++  const returnLink=state.back ? `<a href="${escape(returnHref)}">${icon('back')}${state.back[1]}</a>` : '';
+   const host = document.getElementById('shell');
+-  const discoveryClass = explorer ? ' is-explorer' : catalogue ? ' is-catalogue' : vehicle ? ' is-vehicle-detail' : '';
+-  host.className = 'client-shell' + (state.root ? ' has-bottom-nav' : vehicle ? ' has-footer-nav' : '') + discoveryClass;
++  const variant = explorer ? 'is-explorer' : catalogue ? 'is-catalogue' : vehicle ? 'is-vehicle-detail' : 'is-internal';
++  host.className = 'client-shell' + (state.root ? ' has-bottom-nav' : vehicle ? ' has-footer-nav' : '') + ' ' + variant;
+   host.dataset.role='visitor';
+   host.innerHTML = `
+-    ${discovery ? '' : '<div class="demo-banner">Maquette interactive · données fictives · aucun paiement réel <a href="/demo">Démo & comptes</a></div>'}
+-    <header class="header${discovery ? ' v32' : ''}">
+-      <a class="logo" href="/">${discovery ? '<img src="/assets/v32/marque/logo-horizontal-charte.webp" width="683" height="122" alt="Lokasyon Péyi">' : 'Lokasyon <span>Péyi</span>'}</a>
+-      <nav aria-label="Navigation principale" id="header-nav">${discovery ? discoveryLinks(path) : primaryLinks('visitor',path)}</nav>
++    <header class="header${discovery ? ' v32' : ' internal-header'}">
++      <a class="logo" href="/">${brandImage}</a>
++      <nav aria-label="Navigation principale" id="header-nav">${discovery ? discoveryLinks(path) : primaryLinks('visitor',path,false,internalState)}</nav>
+       <div class="tools">
+-        <span id="shell-account">${accountControls(null)}</span>
++        <span id="shell-account">${accountMarkup(null)}</span>
+         <button type="button" class="secondary navigation-toggle" id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-haspopup="dialog" aria-controls="navigation-panel">${icon('menu')}<span class="menu-label">Menu</span></button>
+       </div>
+     </header>
+     <dialog id="navigation-panel" class="navigation-panel" aria-labelledby="navigation-title">
+       <div class="navigation-panel-heading"><h2 id="navigation-title">Menu</h2><button type="button" class="link-button" id="menu-close" aria-label="Fermer le menu">${icon('close')}</button></div>
+-      <div id="menu-content">${menuContent(null)}</div>
++      <div id="menu-content">${menuContent(null,internalState)}</div>
+     </dialog>
+     ${state.back ? `<nav class="context-nav" aria-label="Retour"${privateReturn?' hidden':''}>${privateReturn?'':returnLink}</nav>` : ''}
+     <main class="client-main" id="main" tabindex="-1"></main>
+-    ${discovery ? discoveryFooter(!explorer) : `<footer class="footer"><div><a class="logo" href="/">Lokasyon <span>Péyi</span></a><p>Un autre chemin pour découvrir le Péyi.</p><small>Prototype indépendant · Guadeloupe</small></div><nav aria-label="Aide et démonstration" class="row"><a href="/faq">FAQ</a><a href="/faq" id="shell-footer-help">Nous contacter</a><a href="/design-system">Design system</a><a href="/demo">Guide de démonstration</a><a href="/demo/audit">Atelier d’audit</a><a class="photo-credit-link" href="/assets/v32/credits.html">Crédits des photos</a></nav></footer>`}
+-    ${state.root || vehicle ? `<nav class="bottom-nav" aria-label="Navigation mobile">${primaryLinks('visitor',path,true)}</nav>` : ''}`;
++    ${discovery ? discoveryFooter(!explorer) : `<footer class="footer"><div><a class="logo" href="/">Lokasyon <span>Péyi</span></a><p>Un autre chemin pour découvrir le Péyi.</p><small>Maquette interactive · données fictives · aucun paiement réel</small></div><nav aria-label="Aide et démonstration" class="row"><a href="/faq">FAQ</a><a href="/faq" id="shell-footer-help">Nous contacter</a><a href="/design-system">Design system</a><a href="/demo">Guide de démonstration</a><a href="/demo/audit">Atelier d’audit</a><a class="photo-credit-link" href="/assets/v32/credits.html">Crédits des photos</a></nav></footer>`}
++    ${state.root || vehicle ? `<nav class="bottom-nav" aria-label="Navigation mobile">${discovery?primaryLinks('visitor',path,true):''}</nav>` : ''}`;
+   const trigger = document.getElementById('menu-toggle'), panel = document.getElementById('navigation-panel');
+   const close = document.getElementById('menu-close'), content = document.getElementById('menu-content');
+   const header = document.getElementById('header-nav'), account = document.getElementById('shell-account');
+@@ -114,7 +128,7 @@ export function shell() {
+   let identity=null, menuIdentity=null, anchor;
+   function syncMenu() {
+     if (identity===menuIdentity) return;
+-    replaceLinks(content,menuContent(identity),close);
++    replaceLinks(content,menuContent(identity,internalState),close);
+     menuIdentity=identity;
+   }
+   trigger.onclick = () => { panel.showModal(); trigger.setAttribute('aria-expanded','true'); };
+@@ -155,10 +169,10 @@ export function shell() {
+     identity=role==='visitor' ? null : me;
+     if(role!==previous) {
+       host.dataset.role=role;
+-      replaceLinks(header,role==='visitor'&&discovery?discoveryLinks(path):primaryLinks(role,path),trigger);
+-      if(bottom)replaceLinks(bottom,primaryLinks(role,path,true),trigger);
++      replaceLinks(header,role==='visitor'&&discovery?discoveryLinks(path):primaryLinks(role,path,false,internalState),trigger);
++      if(bottom)replaceLinks(bottom,!discovery&&role==='visitor'?'':primaryLinks(role,path,true,internalState),trigger);
+     }
+-    replaceLinks(account,accountControls(identity),trigger);
++    replaceLinks(account,accountMarkup(identity),trigger);
+     if(footerAccount) {
+       footerAccount.href=identity?'/profile':'/login';
+       footerAccount.textContent=identity?'Mon compte':'Connexion';
+@@ -171,14 +185,14 @@ export function shell() {
+         replaceLinks(contextNav,allowed?returnLink:'',trigger);
+       }
+     }
+-    // An open public menu keeps its destinations and focus until it closes.
+-    if(!panel.open || (menuIdentity && (menuIdentity.id!==identity?.id || navigationRole(menuIdentity)!==role)))syncMenu();
++    // Keep the discovery menu stable when its visitor links were already in use.
++    if(!discovery || !panel.open || (menuIdentity && (menuIdentity.id!==identity?.id || navigationRole(menuIdentity)!==role)))syncMenu();
+   };
+ }
+ export function ownerNav() {
+   const path = location.pathname.replace(/\/$/,'');
+-  return `<nav class="subnav" aria-label="Espace propriétaire">${[['/owner','Vue d’ensemble'],['/owner/vehicles','Véhicules'],['/owner/requests','Demandes'],['/owner/revenue','Revenus'],['/owner/reputation','Réputation']].map(([href,label]) => {
++  return `<nav class="subnav${path==='/owner'?' owner-dashboard-nav':''}" aria-label="Espace propriétaire">${[['/owner','Aujourd’hui'],['/owner/vehicles','Véhicules'],['/owner/requests','Demandes'],['/owner/revenue','Revenus'],['/owner/reputation','Réputation']].map(([href,label]) => {
+     const active = href === '/owner' ? path === href : path === href || path.startsWith(href + '/');
+-    return `<a class="${active ? 'active' : ''}" href="${href}" ${active ? 'aria-current="page"' : ''}>${label}</a>`;
++    return `<a class="${active ? 'active' : ''}" href="${href}" ${active ? `aria-current="${path===href?'page':'location'}"` : ''}>${label}</a>`;
+   }).join('')}</nav>`;
+ }
+diff --git a/client/styles/client.css b/client/styles/client.css
+index 579ee63..56d8d9f 100644
+--- a/client/styles/client.css
++++ b/client/styles/client.css
+@@ -1,5 +1,3 @@
+-.demo-banner{background:var(--lp-color-info-bg);color:var(--lp-color-info-text);font-size:var(--lp-text-meta);padding:7px 24px;text-align:center}
+-.demo-banner a{font-weight:900;margin-left:10px}
+ .header{height:88px;background:var(--lp-color-surface);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100vw - 1240px)/2));gap:24px}
+ .header nav{display:flex;gap:22px;align-items:center}
+ .header nav>a:not(.button){font-size:var(--lp-text-meta);font-weight:800;text-decoration:none;color:var(--muted);min-height:44px;display:flex;align-items:center}
+@@ -176,7 +174,6 @@
+ .section-heading h2{font-size:var(--lp-text-section)}
+ .section-heading a{font-size:var(--lp-text-meta)}
+ .receipt{padding:24px}
+-.demo-banner{padding:7px 12px;font-size:var(--lp-text-meta)}
+ .tunnel .photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+ @media(max-width:350px){.client-main{padding-inline:14px}
+ .header{padding-inline:14px}
+@@ -346,7 +343,7 @@
+   .header nav>a:not(.button) { min-height: var(--lp-layout-touch-min); }
+   .client-main { padding-inline: var(--lp-layout-edge-phone); }
+   .hero h1 { font-size: var(--lp-text-title); line-height: var(--lp-leading-title); }
+-  .hero .eyebrow, .demo-banner { font-size: var(--lp-text-meta); }
++  .hero .eyebrow { font-size: var(--lp-text-meta); }
+   .bottom-nav { z-index: var(--lp-layer-nav); }
+   .bottom-nav a { font-size: var(--lp-text-meta); min-height: var(--lp-layout-nav-min); min-width: 0; overflow-wrap: anywhere; text-align: center; }
+   .bottom-nav .icon { width: 20px; height: 20px; }
+@@ -597,6 +594,107 @@ html:has(.navigation-panel[open]) { overflow: hidden; }
+   .has-bottom-nav .footer { padding-bottom: var(--lp-space-24); }
+ }
+ 
++/* The application shell chooses this variant before rendering the page. */
++.is-internal {
++  --internal-edge: var(--lp-layout-edge-desktop);
++  background: var(--lp-color-ivory);
++  padding-block-start: max(var(--lp-space-16),env(safe-area-inset-top));
++}
++.is-internal > .internal-header {
++  display: grid;
++  grid-template-columns: minmax(0,1fr) auto minmax(max-content,1fr);
++  width: calc(100% - max(var(--internal-edge),env(safe-area-inset-left)) - max(var(--internal-edge),env(safe-area-inset-right)));
++  max-width: calc(var(--lp-layout-max-content) - 2 * var(--internal-edge));
++  margin-inline: auto;
++  height: auto;
++  min-height: 64px;
++  padding: 5px var(--lp-space-12) 5px var(--lp-space-16);
++  gap: var(--lp-space-16);
++  border: 1px solid var(--lp-color-v32-line);
++  border-radius: var(--lp-radius-pill);
++  background: var(--lp-color-surface);
++}
++.internal-header .logo {
++  display: inline-flex;
++  align-items: center;
++  min-height: 44px;
++  width: min(100%,154px);
++}
++.internal-header .logo img { display: block; width: 100%; height: auto; }
++.internal-header #header-nav { justify-content: center; gap: clamp(12px,2vw,28px); }
++.internal-header #header-nav a { color: var(--lp-color-v32-ink); border: 0; }
++.internal-header #header-nav [aria-current],
++.internal-header .tools [aria-current] {
++  color: var(--lp-color-v32-action);
++  text-decoration: underline;
++  text-underline-offset: 5px;
++}
++.internal-header .tools { justify-self: end; gap: var(--lp-space-4); }
++.internal-header .tools :is(.button,.navigation-toggle) {
++  min-width: 44px;
++  min-height: 44px;
++  padding: var(--lp-space-4) var(--lp-space-8);
++  border-radius: var(--lp-radius-pill);
++  color: var(--lp-color-v32-action);
++  font-size: var(--lp-text-meta);
++  line-height: 1.25;
++}
++.internal-header .tools .navigation-toggle {
++  background: var(--lp-color-info-bg);
++  border-color: transparent;
++}
++.internal-header .tools .navigation-toggle:hover { background: var(--lp-color-disabled-bg); }
++.internal-header .menu-label { display: none; }
++.is-internal > .context-nav { padding: var(--lp-space-4) var(--internal-edge) 0; }
++.is-internal > .bottom-nav:empty { display: none; }
++
++@media (max-width:1023px) {
++  .is-internal { --internal-edge: var(--lp-layout-edge-tablet); }
++  .is-internal > .client-main { padding-inline: var(--internal-edge); }
++  .is-internal > .internal-header { grid-template-columns: minmax(0,1fr) auto; }
++  .internal-header #header-nav, .internal-header .tools .internal-account { display: none; }
++  .is-internal.has-bottom-nav > .bottom-nav {
++    padding-block: var(--lp-space-4) max(var(--lp-space-4),env(safe-area-inset-bottom));
++  }
++  .is-internal .bottom-nav .active {
++    position: relative;
++    background: none;
++    color: var(--lp-color-v32-action);
++  }
++  .is-internal .bottom-nav .active::before {
++    content: '';
++    position: absolute;
++    inset-block-start: 0;
++    inset-inline: 25%;
++    height: 2px;
++    border-radius: var(--lp-radius-pill);
++    background: currentColor;
++  }
++}
++@media (max-width:767px) {
++  .is-internal {
++    --internal-edge: var(--lp-layout-edge-phone);
++    padding-block-start: max(var(--lp-space-12),env(safe-area-inset-top));
++  }
++  .is-internal > .internal-header {
++    min-height: 56px;
++    padding-inline: var(--lp-space-12) var(--lp-space-8);
++    gap: var(--lp-space-8);
++  }
++  .internal-header .logo { width: min(100%,124px); }
++  .is-internal .owner-dashboard-nav { display: none; }
++}
++@media (max-width:359px) {
++  .is-internal { --internal-edge: var(--lp-layout-edge-narrow); }
++}
++@media (max-width:1023px) and (min-height:481px) {
++  .is-internal.has-bottom-nav {
++    --internal-bottom-space: calc(max(88px,5rem) + env(safe-area-inset-bottom));
++  }
++  .is-internal.has-bottom-nav > :is(.client-main,.footer) { padding-bottom: var(--internal-bottom-space); }
++  .is-internal:has(> #main :is(input,textarea,[contenteditable="true"]):focus) > .bottom-nav { visibility: hidden; }
++}
++
+ /* Accueil V3.2. */
+ .is-explorer { position: relative; }
+ :is(.is-explorer,.is-catalogue,.is-vehicle-detail) .header {
+@@ -1481,10 +1579,6 @@ a.notification-row:hover { background: var(--lp-color-ivory); }
+   .message-thread-placeholder:not([hidden]) { display: grid; place-items: center; min-height: 200px; }
+ }
+ @media (max-width:600px) {
+-  #shell:has(> #main.messaging-main, > #main > .notifications-surface) > .header,
+-  #shell:has(> #main.messaging-main, > #main > .notifications-surface) > .header .tools { flex-wrap: wrap; }
+-  #shell:has(> #main.messaging-main, > #main > .notifications-surface) > .header .logo,
+-  #shell:has(> #main.messaging-main) > .bottom-nav a { min-inline-size: 0; white-space: normal; overflow-wrap: anywhere; }
+   .notification-row { grid-template-columns: auto minmax(0,1fr) auto; gap: var(--lp-space-4) var(--lp-space-8); }
+   .notification-row > .icon { grid-column: 3; grid-row: 1 / span 2; }
+   .notification-icon { grid-row: 1 / span 2; }
+@@ -1550,9 +1644,6 @@ a.notification-row:hover { background: var(--lp-color-ivory); }
+   .booking-main.booking-action-in-flow { padding-bottom: var(--lp-space-32); }
+   .booking-action-in-flow .next-action .booking-action :focus-visible { outline-color: var(--lp-color-focus-inverse); }
+ }
+-@media (max-width:767px) {
+-  .client-shell:has(.booking-main) .header { flex-wrap: wrap; height: auto; gap: var(--lp-space-8); padding-block: var(--lp-space-8); }
+-}
+ @media (max-width:359px) {
+   .booking-vehicle.catalogue-media { gap: var(--lp-space-12); padding: var(--lp-space-16); }
+   .booking-vehicle .vehicle-image { width: 64px; height: 64px; }
+@@ -1747,13 +1838,6 @@ a.notification-row:hover { background: var(--lp-color-ivory); }
+ #main .account-document p { margin: var(--lp-space-12) 0 0; }
+ #main .account-document button { justify-self: stretch; }
+ 
+-@media (max-width:767px) {
+-  #shell:has(> #main > .account-surface) > .header { flex-wrap: wrap; }
+-  #shell:has(> #main > .account-surface) > .header .logo { white-space: normal; min-inline-size: 0; }
+-  #shell:has(> #main > .account-surface) > .header .tools { flex-wrap: wrap; max-inline-size: 100%; }
+-  #shell:has(> #main > .account-surface) > .bottom-nav a { min-inline-size: 0; white-space: normal; overflow-wrap: anywhere; }
+-}
+-
+ @media (min-width:600px) {
+   #main .account-identity { grid-template-columns: auto minmax(0,1fr) auto; }
+   #main .account-identity #logout { grid-column: auto; }
+@@ -1868,10 +1952,6 @@ a.notification-row:hover { background: var(--lp-color-ivory); }
+   .request-confirmation, .request-rules { grid-column: 1; }
+ }
+ @media (max-width:767px) {
+-  #shell:has(> #main > .rental-surface) > .header,
+-  #shell:has(> #main > .rental-surface) > .header .tools { flex-wrap: wrap; }
+-  #shell:has(> #main > .rental-surface) > .header .logo,
+-  #shell:has(> #main > .rental-surface) > .bottom-nav a { min-inline-size: 0; white-space: normal; overflow-wrap: anywhere; }
+   .rental-card-action > .button, .request-confirmation [type="submit"] { inline-size: 100%; }
+ }
+ 
+@@ -2062,9 +2142,6 @@ a.notification-row:hover { background: var(--lp-color-ivory); }
+   .inspection-view-list { grid-template-columns: repeat(2,minmax(0,1fr)); column-gap: var(--lp-space-16); }
+ }
+ @media (max-width:767px) {
+-  #shell:has(> #main > .inspection-surface) > .header,
+-  #shell:has(> #main > .inspection-surface) > .header .tools { flex-wrap: wrap; }
+-  #shell:has(> #main > .inspection-surface) > .header .logo { min-inline-size: 0; white-space: normal; }
+   .inspection-next button, .inspection-form-panel .form-actions > * { inline-size: 100%; }
+   .inspection-view { grid-template-columns: auto minmax(0,1fr) auto; align-items: start; }
+   .inspection-view > button { grid-column: 3; }
+@@ -2169,10 +2246,6 @@ a.notification-row:hover { background: var(--lp-color-ivory); }
+ .owner-surface .owner-calendar-list { margin-block-end: 0; }
+ .owner-surface .owner-day { min-height: 48px; }
+ .owner-surface input, .owner-surface textarea, .owner-start-surface input { max-inline-size: 100%; min-inline-size: 0; }
+-#shell:has(.owner-review-main,.owner-start-surface) > .header,
+-#shell:has(.owner-review-main,.owner-start-surface) > .header .tools { flex-wrap: wrap; }
+-#shell:has(.owner-review-main,.owner-start-surface) > .header .logo,
+-#shell:has(.owner-review-main) > .bottom-nav a { min-inline-size: 0; white-space: normal; overflow-wrap: anywhere; }
+ @media (min-width: 768px) {
+   .owner-start-layout { grid-template-columns: repeat(3,minmax(0,1fr)); }
+   .owner-fleet-filters summary { display: none; }
+@@ -2280,9 +2353,6 @@ a.notification-row:hover { background: var(--lp-color-ivory); }
+ .owner-wizard .wizard-conflict-values dl > div:last-child { border: 0; }
+ .owner-wizard #draft-conflict, .owner-wizard #owner-submission { scroll-margin-block-start: var(--lp-space-16); }
+ .owner-wizard #owner-submission .button { margin-inline-start: 0; }
+-#shell:has(.owner-wizard) > .header,
+-#shell:has(.owner-wizard) > .header .tools { flex-wrap: wrap; }
+-#shell:has(.owner-wizard) > .header .logo { min-inline-size: 0; white-space: normal; }
+ @media (min-width: 768px) {
+   .wizard-review-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+   .wizard-conflict-values dl { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--lp-space-12); }
+@@ -2408,13 +2478,6 @@ a.notification-row:hover { background: var(--lp-color-ivory); }
+   .support-rating { grid-template-columns: repeat(2,minmax(0,1fr)); }
+ }
+ @media (max-width: 32rem) {
+-  #shell:has(> #main > .support-surface) > .header {
+-    flex-wrap: wrap;
+-    height: auto;
+-    min-block-size: 70px;
+-    gap: var(--lp-space-8);
+-    padding-block: var(--lp-space-8);
+-  }
+   #main .support-surface .form-actions :is(a.button,button) { inline-size: 100%; }
+ }
+ @media print {
+@@ -2438,15 +2501,6 @@ a.notification-row:hover { background: var(--lp-color-ivory); }
+ #main .tool-surface :is(button,a.button) { white-space: normal; }
+ .tool-surface summary { padding-block: var(--lp-space-8); cursor: pointer; }
+ @media (max-width: 32rem) {
+-  #shell:has(> #main > .tool-surface) > .header {
+-    flex-wrap: wrap;
+-    height: auto;
+-    gap: var(--lp-space-8);
+-  }
+-  #shell:has(> #main > .tool-surface) > .header .tools {
+-    flex-wrap: wrap;
+-    max-inline-size: 100%;
+-  }
+   #main .tool-card :is(button,a.button) { inline-size: 100%; }
+   #main .tool-surface .form-actions { display: grid; grid-template-columns: minmax(0,1fr); }
+   .tool-system :is(.component-samples,.palette) { grid-template-columns: minmax(0,1fr); }
+diff --git a/tests/browser/navigation.spec.js b/tests/browser/navigation.spec.js
+index 5d673d2..428a3aa 100644
+--- a/tests/browser/navigation.spec.js
++++ b/tests/browser/navigation.spec.js
+@@ -81,7 +81,7 @@ test('navigation propriétaire : profil, parc, sous-navigation et retours dédi
+   await expect(bar).toHaveCount(0);
+   await page.getByRole('navigation',{name:'Retour',exact:true}).getByRole('link',{name:'Espace propriétaire',exact:true}).click();await ready(page);
+   await bar.getByRole('link',{name:'Mon parc',exact:true}).click();await ready(page);await expect(bar).toHaveCount(0);await expect(page.getByRole('navigation',{name:'Retour',exact:true}).getByRole('link',{name:'Espace propriétaire',exact:true})).toHaveAttribute('href','/owner');
+-  await page.getByRole('link',{name:'Gérer le véhicule',exact:true}).first().click();await ready(page);await expect(page.getByRole('navigation',{name:'Espace propriétaire',exact:true}).getByRole('link',{name:'Véhicules',exact:true})).toHaveAttribute('aria-current','page');await expect(page.locator('#main').getByRole('link',{name:'Mon parc',exact:false})).toHaveAttribute('href','/owner/vehicles');
++  await page.getByRole('link',{name:'Gérer le véhicule',exact:true}).first().click();await ready(page);await expect(page.getByRole('navigation',{name:'Espace propriétaire',exact:true}).getByRole('link',{name:'Véhicules',exact:true})).toHaveAttribute('aria-current','location');await expect(page.locator('#main').getByRole('link',{name:'Mon parc',exact:false})).toHaveAttribute('href','/owner/vehicles');
+   const denied=await page.request.post(client+'/api/v1/owner/vehicles/audit-v02-1/edit',{data:{name:'Autre véhicule fictif',price:20,description:'Modification croisée fictive.'}});expect(denied.status()).toBe(403);
+   await page.goto(client+'/notifications');await ready(page);await expect(bar).toHaveCount(0);await page.getByRole('link',{name:'Retour au profil',exact:true}).click();await ready(page);await expect(page.getByRole('heading',{name:'Mon profil',exact:true})).toBeVisible();
+   await page.setViewportSize({width:1440,height:900});
+@@ -175,7 +175,7 @@ test('navigation : bascule Démo, récupération des documents et nouvelle véri
+   try {
+     await page.evaluate(()=>dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true})));
+     await expect(page.locator('#main')).toBeHidden();
+-    await links(mobile(page),visitor);
++    await expect(mobile(page)).toHaveCount(0);
+     release();
+     await page.waitForURL(/\/login\?next=/);
+     expect(new URL(page.url()).searchParams.get('next')).toBe('/profile');
+@@ -193,6 +193,136 @@ test('navigation : l’ancre publique ferme le menu et place le focus sur la des
+   await expect(page.locator('#explorer-steps-title')).toBeInViewport();
+ });
+ 
++for (const [width,height] of [[390,844],[1440,960]]) {
++  test(`R01 à ${width} px : marque, commandes par rôle, racines et retours`,async({page})=>{
++    test.setTimeout(120000);
++    await page.setViewportSize({width,height});
++    const desktop=width===1440;
++    const header=page.locator('#shell > header');
++    const primary=header.getByRole('navigation',{name:'Navigation principale',exact:true});
++    const box=(locator)=>locator.boundingBox();
++    const scenarios=[
++      ['/login',null,null,null],
++      ['/profile','audit-r02',null,null],
++      ['/notifications','audit-r02',null,null],
++      ['/rentals','audit-r02','/rentals','page'],
++      ['/messages','audit-r09','/messages','page'],
++      ['/messages?conversation=audit-chat-001&q=V%C3%A9hicule','audit-r09','/messages','location'],
++      ['/owner','audit-o02','/owner/vehicles','location'],
++      ['/rental/audit-LP-006','audit-r02','/rentals','location'],
++      ['/demo',null,null,null],
++      ['/demo/audit',null,null,null],
++      ['/design-system',null,null,null],
++      ['/route-inconnue',null,null,null],
++    ];
++    for(const [route,persona,active,current] of scenarios) {
++      if(persona)expect((await page.request.post(client+'/api/v1/session',{data:{persona}})).ok()).toBe(true);
++      else await page.request.delete(client+'/api/v1/session');
++      await page.goto(client+route);
++      await ready(page);
++      await expect(header).toHaveCount(1);
++      await expect(header).toHaveClass('header internal-header');
++      await expect(header).toHaveCSS('border-radius','999px');
++      await expect(header).toHaveCSS('background-color','rgb(255, 255, 255)');
++      await expect(page.locator('#shell > .demo-banner')).toHaveCount(0);
++      const logo=header.getByRole('img',{name:'Lokasyon Péyi'});
++      await expect(logo).toBeVisible();
++      await expect.poll(()=>logo.evaluate(el=>[new URL(el.currentSrc).pathname,el.naturalWidth]))
++        .toEqual(['/assets/v32/marque/logo-horizontal-charte.webp',683]);
++      const controls=header.locator('.tools');
++      const buttons=await controls.locator('a:visible,button:visible').all();
++      const names=await Promise.all(buttons.map(control=>control.evaluate(el=>el.getAttribute('aria-label')||el.innerText.trim())));
++      expect(names).toEqual(persona?['Notifications',...(desktop?['Compte']:[]),'Ouvrir le menu']:['Connexion','Ouvrir le menu']);
++      const [capsule,mark,tools]=await Promise.all([box(header),box(logo),box(controls)]);
++      expect(mark.x+mark.width).toBeLessThanOrEqual(tools.x);
++      expect(tools.x+tools.width).toBeLessThan(capsule.x+capsule.width);
++      for(const button of buttons) {
++        const target=await box(button);
++        expect(target.width).toBeGreaterThanOrEqual(44);
++        expect(target.height).toBeGreaterThanOrEqual(44);
++        expect(target.y+target.height).toBeLessThan(capsule.y+capsule.height);
++      }
++      const destinations=persona==='audit-o02'?owner:persona?renter:visitor.slice(0,2);
++      if(desktop)await links(primary,destinations,active);
++      else await expect(primary).toHaveCount(0);
++      const root=['/profile','/rentals','/messages','/owner'].includes(route);
++      if(!desktop&&root)await links(mobile(page),destinations,active,56);
++      else await expect(mobile(page)).toHaveCount(0);
++      if(active&&(desktop||root))await expect((desktop?primary:mobile(page)).locator('[aria-current]')).toHaveAttribute('aria-current',current);
++      if(route==='/login')await expect(header.getByRole('link',{name:'Connexion'})).toHaveAttribute('aria-current','page');
++      if(route==='/profile') {
++        await expect((desktop?primary:mobile(page)).locator('[aria-current]')).toHaveCount(0);
++        if(desktop)await expect(header.getByRole('link',{name:'Compte'})).toHaveAttribute('aria-current','page');
++      }
++      if(route==='/notifications')await expect(header.getByRole('link',{name:'Notifications'})).toHaveAttribute('aria-current','page');
++      if(desktop&&route==='/owner')await expect(page.getByRole('navigation',{name:'Espace propriétaire',exact:true}).getByRole('link',{name:'Aujourd’hui'})).toHaveAttribute('aria-current','page');
++      if(route.includes('conversation=')) {
++        const back=page.getByRole('link',{name:'Retour aux messages',exact:true});
++        await expect(back).toHaveAttribute('href','/messages?q=V%C3%A9hicule');
++        expect((await box(back)).y).toBeGreaterThanOrEqual(capsule.y+capsule.height);
++        expect((await box(back)).y+(await box(back)).height).toBeLessThanOrEqual((await box(page.locator('#main h1'))).y);
++      }
++      await fits(page);
++    }
++
++    const toggle=trigger(page), panel=menu(page);
++    for(const key of ['Enter','Space']) {
++      await toggle.focus();
++      await page.keyboard.press(key);
++      await expect(toggle).toHaveAttribute('aria-expanded','true');
++      const close=panel.getByRole('button',{name:'Fermer le menu',exact:true});
++      await expect(close).toBeFocused();
++      await page.keyboard.press('Shift+Tab');
++      await expect(panel.getByRole('link').last()).toBeFocused();
++      await page.keyboard.press('Tab');
++      await expect(close).toBeFocused();
++      if(key==='Space')await close.click();
++      else await page.keyboard.press('Escape');
++      await expect(panel).toBeHidden();
++      await expect(toggle).toBeFocused();
++      await expect(toggle).toHaveAttribute('aria-expanded','false');
++    }
++  });
++}
++
++test('R01 : capsule stable pendant /me et navigation basse en retrait pendant la saisie',async({page})=>{
++  await page.setViewportSize({width:390,height:844});
++  expect((await page.request.post(client+'/api/v1/session',{data:{persona:'audit-r09'}})).ok()).toBe(true);
++  let release;
++  const gate=new Promise(resolve=>{release=resolve;});
++  await page.route('**/api/v1/me',async route=>{await gate;await route.continue();},{times:1});
++  const header=page.locator('#shell > .internal-header');
++  const toggle=trigger(page);
++  try {
++    await page.goto(client+'/messages');
++    await expect(header).toBeVisible();
++    const pendingBox=await header.boundingBox();
++    await expect(header.getByRole('link',{name:'Notifications'})).toHaveCount(0);
++    await expect(mobile(page)).toHaveCount(0);
++    await toggle.press('Space');
++    await expect(menu(page).getByRole('link',{name:'Mon profil',exact:true})).toHaveCount(0);
++    release();
++    await ready(page);
++    await expect(menu(page).getByRole('link',{name:'Mon profil',exact:true})).toBeVisible();
++    await page.keyboard.press('Escape');
++    await expect(toggle).toBeFocused();
++    expect(await header.boundingBox()).toEqual(pendingBox);
++    await expect(header.getByRole('link',{name:'Notifications'})).toBeVisible();
++    const search=page.locator('#main input[type=search]');
++    await expect(mobile(page)).toBeVisible();
++    await search.fill('Véhicule');
++    await expect(search).toBeFocused();
++    await expect(mobile(page)).toBeHidden();
++    await fits(page);
++    await search.blur();
++    await expect(mobile(page)).toBeVisible();
++    await page.setViewportSize({width:320,height:844});
++    await page.evaluate(()=>document.documentElement.style.fontSize='200%');
++    await fits(page);
++    await expect(toggle).toBeVisible();
++  } finally {release();}
++});
++
+ test('Démo : sortie refusée annoncée, attente distincte et un seul changement de session',async({page})=>{
+   await login(page,'renter');
+   await page.goto(client+'/demo');
+diff --git a/tests/navigation.test.mjs b/tests/navigation.test.mjs
+index 503fa0e..f800268 100644
+--- a/tests/navigation.test.mjs
++++ b/tests/navigation.test.mjs
+@@ -22,10 +22,14 @@ test('navigation: current section follows nested routes without granting access'
+     assert.equal(currentDestination(path,'renter'),'/rentals');
+     assert.equal(currentDestination(path,'visitor'),null);
+   }
+-  for(const path of ['/profile','/profile/documents','/notifications']) {
+-    assert.equal(currentDestination(path,'renter'),'/profile/documents');
++  assert.equal(currentDestination('/profile/documents','renter'),'/profile/documents');
++  for(const path of ['/profile','/profile/reviews','/notifications']) {
++    assert.equal(currentDestination(path,'renter'),null);
++  }
++  for(const path of ['/profile','/profile/documents','/profile/reviews']) {
+     assert.equal(currentDestination(path,'owner'),'/profile');
+   }
++  assert.equal(currentDestination('/notifications','owner'),null);
+   assert.equal(currentDestination('/messages','renter'),'/messages');
+   assert.equal(currentDestination('/owner/vehicles/a','owner'),'/owner/vehicles');
+   assert.equal(currentDestination('/owner/requests','owner'),'/owner/requests');

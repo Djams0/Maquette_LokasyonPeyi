@@ -1,0 +1,29 @@
+
+> maquette-lokasyon-peyi@1.0.0 check
+> node scripts/check.mjs && node scripts/audit-docs.mjs --check
+
+81 modules : syntaxe et indépendance des imports vérifiées.
+npm.cmd : 
+file:///[profil-local]/Downloads/Maquette_LokasyonPeyi-main/audit-results/r01-worktree/scripts/audit-docs.mjs:5
+Au caractère Ligne:4 : 1
++ npm.cmd run check
++ ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (file:///C:/User...udit-docs.mjs:5:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+const write=(name,text)=>{const file=`${dir}/${name}`,content=text.trimEnd()+'\n';if(process.argv.includes('--check')){
+if(readFileSync(file,'utf8')!==content)throw Error('Documentation périmée : '+file);}else 
+writeFileSync(file,content);};
+                                                                                                                       
+                                             ^
+
+Error: Documentation périmée : docs/audit/SCENARIOS.md
+    at write 
+(file:///[profil-local]/Downloads/Maquette_LokasyonPeyi-main/audit-results/r01-worktree/scripts/audit-docs.mjs:5:165)
+    at 
+file:///[profil-local]/Downloads/Maquette_LokasyonPeyi-main/audit-results/r01-worktree/scripts/audit-docs.mjs:6:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.22.3

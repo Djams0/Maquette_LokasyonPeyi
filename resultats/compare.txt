@@ -1,0 +1,48 @@
+protected-accueil-1024.png
+Pixels diff�rents � 0/921600. Revoir les r�gions et les donn�es.
+protected-accueil-1280.png
+Pixels diff�rents � 0/972800. Revoir les r�gions et les donn�es.
+protected-accueil-1440.png
+Pixels diff�rents � 0/1382400. Revoir les r�gions et les donn�es.
+protected-accueil-320.png
+Pixels diff�rents � 0/270080. Revoir les r�gions et les donn�es.
+protected-accueil-375.png
+Pixels diff�rents � 0/316500. Revoir les r�gions et les donn�es.
+protected-accueil-390.png
+Pixels diff�rents � 0/329160. Revoir les r�gions et les donn�es.
+protected-accueil-430.png
+Pixels diff�rents � 0/400760. Revoir les r�gions et les donn�es.
+protected-accueil-768.png
+Pixels diff�rents � 0/729600. Revoir les r�gions et les donn�es.
+protected-catalogue-1024.png
+Pixels diff�rents � 0/921600. Revoir les r�gions et les donn�es.
+protected-catalogue-1280.png
+Pixels diff�rents � 0/972800. Revoir les r�gions et les donn�es.
+protected-catalogue-1440.png
+Pixels diff�rents � 0/1382400. Revoir les r�gions et les donn�es.
+protected-catalogue-320.png
+Pixels diff�rents � 0/270080. Revoir les r�gions et les donn�es.
+protected-catalogue-375.png
+Pixels diff�rents � 0/316500. Revoir les r�gions et les donn�es.
+protected-catalogue-390.png
+Pixels diff�rents � 0/329160. Revoir les r�gions et les donn�es.
+protected-catalogue-430.png
+Pixels diff�rents � 0/400760. Revoir les r�gions et les donn�es.
+protected-catalogue-768.png
+Pixels diff�rents � 0/729600. Revoir les r�gions et les donn�es.
+protected-fiche-1024.png
+Pixels diff�rents � 0/921600. Revoir les r�gions et les donn�es.
+protected-fiche-1280.png
+Pixels diff�rents � 0/972800. Revoir les r�gions et les donn�es.
+protected-fiche-1440.png
+Pixels diff�rents � 0/1382400. Revoir les r�gions et les donn�es.
+protected-fiche-320.png
+Pixels diff�rents � 0/270080. Revoir les r�gions et les donn�es.
+protected-fiche-375.png
+Pixels diff�rents � 0/316500. Revoir les r�gions et les donn�es.
+protected-fiche-390.png
+Pixels diff�rents � 0/329160. Revoir les r�gions et les donn�es.
+protected-fiche-430.png
+Pixels diff�rents � 0/400760. Revoir les r�gions et les donn�es.
+protected-fiche-768.png
+Pixels diff�rents � 0/729600. Revoir les r�gions et les donn�es.

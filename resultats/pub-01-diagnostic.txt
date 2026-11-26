@@ -1,0 +1,16 @@
+1 base dialogue rétabli max budget 40
+1 candidat dialogue absent BODY budget 40
+2 candidat dialogue rétabli max budget 40
+2 base dialogue absent BODY budget 40
+3 base dialogue rétabli max budget 40
+3 candidat dialogue rétabli max budget 40
+4 candidat dialogue rétabli max budget 40
+4 base dialogue rétabli max budget 40
+5 base dialogue rétabli max budget 40
+5 candidat dialogue rétabli max budget 40
+6 candidat dialogue rétabli max budget 40
+6 base dialogue rétabli max budget 40
+7 base dialogue rétabli max budget 40
+7 candidat dialogue rétabli max budget 40
+8 candidat dialogue rétabli max budget 40
+8 base dialogue rétabli max budget 40

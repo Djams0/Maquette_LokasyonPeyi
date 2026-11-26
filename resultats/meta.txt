@@ -1,0 +1,22 @@
+git : warning: unable to access '[profil-local]/.config/git/ignore': Permission denied
+Au caractère Ligne:4 : 19
++ git diff --check; git status --short; rg -n 'const client|127.0.0.1:8 ...
++                   ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: unable...rmission denied:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+warning: unable to access '[profil-local]/.config/git/ignore': Permission denied
+ M client/pages/navigation.js
+ M client/shell.js
+ M client/styles/client.css
+ M tests/browser/navigation.spec.js
+tests/browser/vehicle.spec.js:3:import {createApi} from '../../api/server.mjs';
+tests/browser/vehicle.spec.js:7:  const allowedOrigins=new Set();target=createApi({initialize:auditFixture,allowedOrigins});await new Promise(r=>target.server.listen(0,'127.0.0.1',r));const api=`http://127.0.0.1:${target.server.address().port}`;
+tests/browser/search.spec.js:3:import {createApi} from '../../api/server.mjs';
+tests/browser/search.spec.js:7:  const allowedOrigins=new Set();target=createApi({initialize:auditFixture,allowedOrigins});await new Promise(r=>target.server.listen(0,'127.0.0.1',r));const api=`http://127.0.0.1:${target.server.address().port}`;
+tests/browser/explorer.spec.js:3:import {createApi} from '../../api/server.mjs';
+tests/browser/explorer.spec.js:7:  const allowedOrigins=new Set();target=createApi({initialize:auditFixture,allowedOrigins});await new Promise(r=>target.server.listen(0,'127.0.0.1',r));const api=`http://127.0.0.1:${target.server.address().port}`;
+tests/browser/owner.spec.js:2:import {createApi} from '../../api/server.mjs';import {seed} from '../../api/seed.mjs';
+tests/browser/owner.spec.js:7:  const allowedOrigins=new Set();target=createApi({initialize:seed,allowedOrigins});await new Promise(r=>target.server.listen(0,'127.0.0.1',r));
+tests/browser/visual-qa.spec.js:2:import {createApi} from '../../api/server.mjs';import {auditFixture} from '../../api/audit-fixture.mjs';
+tests/browser/visual-qa.spec.js:4:test.beforeEach(async()=>{const allowedOrigins=new Set();target=createApi({initialize:auditFixture,allowedOrigins});await new Promise(r=>target.server.listen(0,'127.0.0.1',r));

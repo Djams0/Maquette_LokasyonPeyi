@@ -1,0 +1,81 @@
+scene,route,role,largeur,hauteur,header_count,capsule_x,capsule_y,capsule_l,capsule_h,logo_l,logo_h,logo_url,naturalWidth,commandes,navigation_haute,barre_basse,actifs,barre_y,barre_h,scroll_y,erreurs_js
+connexion-390,/login,visitor,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Connexion | Ouvrir le menu,,,,,,0,0
+profil-390,/profile,audit-r02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,Explorer | Locations | Messages | Documents,,779,65,0,0
+locations-390,/rentals,audit-r02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,Explorer | Locations | Messages | Documents,/rentals (page),779,65,0,0
+messages-390,/messages,audit-r09,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,Explorer | Locations | Messages | Documents,/messages (page),779,65,0,0
+fil-390,/messages?conversation=audit-chat-001&q=V%C3%A9hicule,audit-r09,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+aujourdhui-390,/owner,audit-o02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,Explorer | Mon parc | Demandes | Profil,/owner/vehicles (location),779,65,0,0
+demande-390,/request/v1,audit-r02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+suivi-390,/rental/audit-LP-004,audit-r02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+paiement-390,/payment/audit-LP-003,audit-r02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+constat-390,/inspection/audit-LP-005/return,audit-r02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+documents-390,/profile/documents,audit-r02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+gestion-390,/owner/vehicles/audit-v02-1,audit-o02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+assistant-390,/owner/vehicles/new?step=5,audit-o02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+outils-390,/demo,visitor,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Connexion | Ouvrir le menu,,,,,,0,0
+atelier-390,/demo/audit,visitor,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Connexion | Ouvrir le menu,,,,,,0,0
+composants-390,/design-system,visitor,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Connexion | Ouvrir le menu,,,,,,0,0
+404-390,/route-inconnue,visitor,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Connexion | Ouvrir le menu,,,,,,0,0
+403-390,/rental/audit-LP-004,audit-r09,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+inscription-390,/register,visitor,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Connexion | Ouvrir le menu,,,,,,0,0
+faq-390,/faq,visitor,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Connexion | Ouvrir le menu,,,,,,0,0
+introduction-390,/owner/start,visitor,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Connexion | Ouvrir le menu,,,,,,0,0
+notifications-390,/notifications,audit-r02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+mes-avis-390,/profile/reviews,audit-r02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+assistance-390,/assistance,audit-r02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+dossiers-390,/cases,audit-r02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+dossier-390,/cases/case-demo,renter,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+avis-390,/review/audit-LP-008,audit-r02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+recu-390,/receipt/audit-LP-008,audit-r02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+parc-390,/owner/vehicles,audit-o02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+demandes-390,/owner/requests,audit-o02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+revenus-390,/owner/revenue,audit-o02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+reputation-390,/owner/reputation,audit-o02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+calendrier-390,/owner/vehicles/audit-v02-1#calendar,audit-o02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+connexion-1440,/login,visitor,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Connexion | Ouvrir le menu,Explorer | Aide,,,,,0,0
+profil-1440,/profile,audit-r02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,,,,0,0
+locations-1440,/rentals,audit-r02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,/rentals (page),,,0,0
+messages-1440,/messages,audit-r09,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,/messages (page),,,0,0
+fil-1440,/messages?conversation=audit-chat-001&q=V%C3%A9hicule,audit-r09,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,/messages (location),,,0,0
+aujourdhui-1440,/owner,audit-o02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Mon parc | Demandes | Profil,,/owner/vehicles (location),,,0,0
+demande-1440,/request/v1,audit-r02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,/rentals (location),,,0,0
+suivi-1440,/rental/audit-LP-004,audit-r02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,/rentals (location),,,0,0
+paiement-1440,/payment/audit-LP-003,audit-r02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,/rentals (location),,,0,0
+constat-1440,/inspection/audit-LP-005/return,audit-r02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,/rentals (location),,,0,0
+documents-1440,/profile/documents,audit-r02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,/profile/documents (page),,,0,0
+gestion-1440,/owner/vehicles/audit-v02-1,audit-o02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Mon parc | Demandes | Profil,,/owner/vehicles (location),,,0,0
+assistant-1440,/owner/vehicles/new?step=5,audit-o02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Mon parc | Demandes | Profil,,/owner/vehicles (location),,,0,0
+outils-1440,/demo,visitor,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Connexion | Ouvrir le menu,Explorer | Aide,,,,,0,0
+atelier-1440,/demo/audit,visitor,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Connexion | Ouvrir le menu,Explorer | Aide,,,,,0,0
+composants-1440,/design-system,visitor,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Connexion | Ouvrir le menu,Explorer | Aide,,,,,0,0
+404-1440,/route-inconnue,visitor,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Connexion | Ouvrir le menu,Explorer | Aide,,,,,0,0
+403-1440,/rental/audit-LP-004,audit-r09,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,/rentals (location),,,0,0
+inscription-1440,/register,visitor,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Connexion | Ouvrir le menu,Explorer | Aide,,,,,0,0
+faq-1440,/faq,visitor,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Connexion | Ouvrir le menu,Explorer | Aide,,/faq (page),,,0,0
+introduction-1440,/owner/start,visitor,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Connexion | Ouvrir le menu,Explorer | Aide,,,,,0,0
+notifications-1440,/notifications,audit-r02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,,,,0,0
+mes-avis-1440,/profile/reviews,audit-r02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,,,,0,0
+assistance-1440,/assistance,audit-r02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,,,,0,0
+dossiers-1440,/cases,audit-r02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,,,,0,0
+dossier-1440,/cases/case-demo,renter,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,,,,0,0
+avis-1440,/review/audit-LP-008,audit-r02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,/rentals (location),,,0,0
+recu-1440,/receipt/audit-LP-008,audit-r02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,/rentals (location),,,0,0
+parc-1440,/owner/vehicles,audit-o02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Mon parc | Demandes | Profil,,/owner/vehicles (page),,,0,0
+demandes-1440,/owner/requests,audit-o02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Mon parc | Demandes | Profil,,/owner/requests (page),,,0,0
+revenus-1440,/owner/revenue,audit-o02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Mon parc | Demandes | Profil,,/owner/vehicles (location),,,0,0
+reputation-1440,/owner/reputation,audit-o02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Mon parc | Demandes | Profil,,/owner/vehicles (location),,,0,0
+calendrier-1440,/owner/vehicles/audit-v02-1#calendar,audit-o02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Mon parc | Demandes | Profil,,/owner/vehicles (location),,,0,0
+confirme-390,/rental/audit-LP-006,audit-r02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+retour-owner-390,/rental/audit-LP-004,audit-o02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+paiement-a-faire-390,/payment/audit-LP-007,audit-r02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+recu-emis-390,/receipt/audit-LP-002,audit-r02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+constat-depart-390,/inspection/audit-LP-006/departure,audit-r02,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,,,,,0,0
+suivi-vide-390,/rentals,audit-r01,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,Explorer | Locations | Messages | Documents,/rentals (page),779,65,0,0
+messages-vides-390,/messages,audit-r01,390,844,1,16,12,358,56,124,22.14,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Ouvrir le menu,,Explorer | Locations | Messages | Documents,/messages (page),779,65,0,0
+confirme-1440,/rental/audit-LP-006,audit-r02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,/rentals (location),,,0,0
+retour-owner-1440,/rental/audit-LP-004,audit-o02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Mon parc | Demandes | Profil,,,,,0,0
+paiement-a-faire-1440,/payment/audit-LP-007,audit-r02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,/rentals (location),,,0,0
+recu-emis-1440,/receipt/audit-LP-002,audit-r02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,/rentals (location),,,0,0
+constat-depart-1440,/inspection/audit-LP-006/departure,audit-r02,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,/rentals (location),,,0,0
+suivi-vide-1440,/rentals,audit-r01,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,/rentals (page),,,0,0
+messages-vides-1440,/messages,audit-r01,1440,960,1,112,16,1216,64,154,27.5,/assets/v32/marque/logo-horizontal-charte.webp,683,Notifications | Compte | Ouvrir le menu,Explorer | Locations | Messages | Documents,,/messages (page),,,0,0

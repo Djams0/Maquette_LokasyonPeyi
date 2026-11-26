@@ -1,0 +1,67 @@
+
+Running 52 tests using 1 worker
+
+node : (node:43460) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+Au caractère Ligne:3 : 1
++ node ../../node_modules/@playwright/test/cli.js test tests/browser/ex ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:43460) Wa... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:43460) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\browser\explorer.spec.js:52:39 › Explorer: visiteur, photo locale et géométrie à 320px (11.4s)
+  ok  2 tests\browser\explorer.spec.js:52:39 › Explorer: visiteur, photo locale et géométrie à 390px (9.1s)
+  ok  3 tests\browser\explorer.spec.js:52:39 › Explorer: visiteur, photo locale et géométrie à 1440px (10.2s)
+  ok  4 tests\browser\explorer.spec.js:147:1 › Explorer: clavier, dates conservées et reprise du format historique (15.1s)
+  ok  5 tests\browser\explorer.spec.js:204:1 › Explorer: session et catalogue lents ne remplacent ni saisie ni menu (8.0s)
+  ok  6 tests\browser\explorer.spec.js:266:1 › Explorer: recherche utilisable avant la fin du chargement du catalogue (16.9s)
+  ok  7 tests\browser\explorer.spec.js:292:1 › Explorer: vide et erreur gardent recherche, liens et reprise sans perte de saisie (18.2s)
+  ok  8 tests\browser\explorer.spec.js:342:1 › Explorer: stockage refusé et photo en erreur utilisent un repli local (20.0s)
+  ok  9 tests\browser\explorer.spec.js:380:1 › V3.2: heure locale, validation mobile et recherche avec décalage Guadeloupe (16.6s)
+  ok 10 tests\browser\explorer.spec.js:430:1 › V3.2: photo cassée et Clio absente gardent les destinations publiques (20.8s)
+  ok 11 tests\browser\explorer.spec.js:471:1 › V3.2: les sections gardent leur ordre, les cartes du seed et les destinations réelles (27.2s)
+  ok 12 tests\browser\explorer.spec.js:556:1 › V3.2: aéroport par commune, résultat vide et reprise sur le catalogue réel (22.3s)
+  ok 13 tests\browser\explorer.spec.js:599:1 › V3.2: la capacité propriétaire oriente l’action et une session en panne reste neutre (14.8s)
+  ok 14 tests\browser\explorer.spec.js:624:1 › V3.2: catalogue responsive avec médias locaux et crédits accessibles (28.0s)
+  ok 15 tests\browser\explorer.spec.js:698:1 › V3.2: les trois tailles du hero sont servies localement dans un montage isolé (17.4s)
+  ok 16 tests\browser\search.spec.js:55:92 › Recherche: résultats et filtres sans débordement à 320px (14.0s)
+  ok 17 tests\browser\search.spec.js:55:92 › Recherche: résultats et filtres sans débordement à 375px (14.3s)
+  ok 18 tests\browser\search.spec.js:55:92 › Recherche: résultats et filtres sans débordement à 390px (10.2s)
+  ok 19 tests\browser\search.spec.js:55:92 › Recherche: résultats et filtres sans débordement à 430px (10.4s)
+  ok 20 tests\browser\search.spec.js:55:92 › Recherche: résultats et filtres sans débordement à 599px (15.1s)
+  ok 21 tests\browser\search.spec.js:55:92 › Recherche: résultats et filtres sans débordement à 600px (16.1s)
+  ok 22 tests\browser\search.spec.js:55:92 › Recherche: résultats et filtres sans débordement à 768px (12.1s)
+  ok 23 tests\browser\search.spec.js:55:92 › Recherche: résultats et filtres sans débordement à 879px (17.5s)
+  ok 24 tests\browser\search.spec.js:55:92 › Recherche: résultats et filtres sans débordement à 880px (6.9s)
+  ok 25 tests\browser\search.spec.js:55:92 › Recherche: résultats et filtres sans débordement à 1024px (10.4s)
+  ok 26 tests\browser\search.spec.js:55:92 › Recherche: résultats et filtres sans débordement à 1119px (9.4s)
+  ok 27 tests\browser\search.spec.js:55:92 › Recherche: résultats et filtres sans débordement à 1120px (10.3s)
+  ok 28 tests\browser\search.spec.js:55:92 › Recherche: résultats et filtres sans débordement à 1440px (7.4s)
+  ok 29 tests\browser\search.spec.js:171:1 › Catalogue V3.2: retirer un badge garde exactement les autres critères (8.4s)
+  ok 30 tests\browser\search.spec.js:192:1 › Recherche: A → retour local → B, historique navigateur, reload et dates sur fiche (28.4s)
+  ok 31 tests\browser\search.spec.js:237:1 › Recherche: filtre appliqué, annulation, reset, tri et carte préservent la période et les clés API (17.4s)
+  ok 32 tests\browser\search.spec.js:310:1 › Recherche: paramètres inconnus, période invalide et doublons restent explicites, sans requête métier (19.6s)
+  ok 33 tests\browser\search.spec.js:338:1 › Recherche: résumé éditable, dates corrigées explicitement et dates effacées sur fiche (17.3s)
+  ok 34 tests\browser\search.spec.js:369:1 › Recherche: chargement lent, erreur API et état vide gardent les critères et les accès de reprise (13.3s)
+  ok 35 tests\browser\search.spec.js:458:1 › Recherche: compte fictif, tous les filtres et dates transmis à la demande existante (15.6s)
+  ok 36 tests\browser\vehicle.spec.js:53:60 › Fiche: reflow, galerie 1+2 et action dans le flux à 320px (9.3s)
+  ok 37 tests\browser\vehicle.spec.js:53:60 › Fiche: reflow, galerie 1+2 et action dans le flux à 375px (7.3s)
+  ok 38 tests\browser\vehicle.spec.js:53:60 › Fiche: reflow, galerie 1+2 et action dans le flux à 390px (6.9s)
+  ok 39 tests\browser\vehicle.spec.js:53:60 › Fiche: reflow, galerie 1+2 et action dans le flux à 430px (8.8s)
+  ok 40 tests\browser\vehicle.spec.js:53:60 › Fiche: reflow, galerie 1+2 et action dans le flux à 768px (10.1s)
+  ok 41 tests\browser\vehicle.spec.js:53:60 › Fiche: reflow, galerie 1+2 et action dans le flux à 1024px (10.0s)
+  ok 42 tests\browser\vehicle.spec.js:53:60 › Fiche: reflow, galerie 1+2 et action dans le flux à 1440px (10.4s)
+  ok 43 tests\browser\vehicle.spec.js:99:1 › Fiche: galerie clavier nommée, compteur réel, cinq vues, Échap et retour du focus (12.2s)
+  ok 44 tests\browser\vehicle.spec.js:140:1 › Fiche: défaut entier et provenance, rendu optionnel hors galerie chargé sur demande (10.8s)
+  ok 45 tests\browser\vehicle.spec.js:187:1 › Fiche: galerie à une illustration et état non renseigné ne deviennent pas une déclaration v1 (9.0s)
+  ok 46 tests\browser\vehicle.spec.js:220:1 › Fiche: absence de photo, SVG et photo de défaut se dégradent sans preuve substituée (13.6s)
+  ok 47 tests\browser\vehicle.spec.js:247:1 › V3.2: galeries Clio et Duster séparées, formats à la demande et retour clavier (20.2s)
+  ok 48 tests\browser\vehicle.spec.js:349:1 › Fiche: prix non calculable, période invalide et dates proposées sont explicites (4.4s)
+  ok 49 tests\browser\vehicle.spec.js:374:1 › Fiche: propriétaire garde la gestion, visiteur garde la demande et son brouillon daté (3.4s)
+  ok 50 tests\browser\vehicle.spec.js:405:1 › Fiche: texte à 200 %, hauteur courte et focus en saisie gardent les contrôles atteignables (3.1s)
+  ok 51 tests\browser\vehicle.spec.js:435:1 › Fiche: une période vide ouvre les champs et garde la demande au même endroit en paysage (6.2s)
+  ok 52 tests\browser\vehicle.spec.js:466:1 › Fiche: erreur API récupérable conserve le contexte et les dates au rechargement (7.5s)
+
+  52 passed (11.8m)

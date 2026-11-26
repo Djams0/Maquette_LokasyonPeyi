@@ -1,0 +1,8 @@
+
+> maquette-lokasyon-peyi@1.0.0 smoke
+> node scripts/smoke.mjs
+
+Service 8080 : OK
+Service 8081 : OK
+Service 3001 : OK
+Routes, assets et source API commune : OK
