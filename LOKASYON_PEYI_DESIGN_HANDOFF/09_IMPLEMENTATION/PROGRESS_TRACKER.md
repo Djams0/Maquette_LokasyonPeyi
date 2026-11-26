@@ -23,7 +23,7 @@ Audit de départ `8a6974e23aab14acbabcd82f21f2bfcd9c0498ce`. Toutes les lignes a
 
 | Lot | Statut | Base/SHA candidat | PR | Fidélité | Fonctionnement | Protection | Décision |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [R01 · Header interne et navigation](../07_CODEX_PROMPTS/correction-v32/R01_HEADER_NAVIGATION.md) | À faire | — | — | — | — | — | — |
+| [R01 · Header interne et navigation](../07_CODEX_PROMPTS/correction-v32/R01_HEADER_NAVIGATION.md) | En revue | `f74a4ff` / `1caa46d` (code) | [#37](https://github.com/Djams0/Maquette_LokasyonPeyi/pull/37) | Capsule et logo aux deux largeurs | Barre, retours, clavier et session | 24/24 paires visiteur identiques, essais connectés et PUB-01 documentés | [Verdict et décisions](https://github.com/Djams0/Maquette_LokasyonPeyi/pull/37) |
 | [R02 · Connexion, profil et documents](../07_CODEX_PROMPTS/correction-v32/R02_COMPTE.md) | À faire | — | — | — | — | — | — |
 | [R03 · Locations, demande, suivi et paiement](../07_CODEX_PROMPTS/correction-v32/R03_LOCATIONS_SUIVI_PAIEMENT.md) | À faire | — | — | — | — | — | — |
 | [R04 · Constats de départ, retour et reprise](../07_CODEX_PROMPTS/correction-v32/R04_CONSTATS.md) | À faire | — | — | — | — | — | — |

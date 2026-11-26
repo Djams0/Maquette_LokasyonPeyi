@@ -22,10 +22,14 @@ test('navigation: current section follows nested routes without granting access'
     assert.equal(currentDestination(path,'renter'),'/rentals');
     assert.equal(currentDestination(path,'visitor'),null);
   }
-  for(const path of ['/profile','/profile/documents','/notifications']) {
-    assert.equal(currentDestination(path,'renter'),'/profile/documents');
+  assert.equal(currentDestination('/profile/documents','renter'),'/profile/documents');
+  for(const path of ['/profile','/profile/reviews','/notifications']) {
+    assert.equal(currentDestination(path,'renter'),null);
+  }
+  for(const path of ['/profile','/profile/documents','/profile/reviews']) {
     assert.equal(currentDestination(path,'owner'),'/profile');
   }
+  assert.equal(currentDestination('/notifications','owner'),null);
   assert.equal(currentDestination('/messages','renter'),'/messages');
   assert.equal(currentDestination('/owner/vehicles/a','owner'),'/owner/vehicles');
   assert.equal(currentDestination('/owner/requests','owner'),'/owner/requests');

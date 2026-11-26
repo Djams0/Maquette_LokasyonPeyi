@@ -18,9 +18,10 @@ export function navigationRole(me) {
     : 'visitor';
 }
 
-export function primaryDestinations(role) {
+export function primaryDestinations(role, {internal = false} = {}) {
   if (role === 'owner') return ownerDestinations;
   if (role === 'renter') return renterDestinations;
+  if (internal) return [catalogue, help];
   return visitorDestinations;
 }
 
@@ -35,12 +36,12 @@ export function currentDestination(path, role) {
   if (role === 'owner') {
     if (under('/owner/requests')) return requests[0];
     if (under('/owner') && path !== '/owner/start') return park[0];
-    if (under('/profile') || under('/notifications')) return profile[0];
+    if (under('/profile')) return profile[0];
     return null;
   }
   if (/^\/(rentals|rental|request|payment|inspection|review|receipt)(\/|$)/.test(path)) return rentals[0];
   if (under('/messages')) return messages[0];
-  if (under('/profile') || under('/notifications')) return documents[0];
+  if (under('/profile/documents')) return documents[0];
   return null;
 }
 export function safeNext(value) {
@@ -54,19 +55,20 @@ export function safeNext(value) {
 }
 export function navigationState(path, search = '') {
   path = path.replace(/\/$/, '') || '/';
-  const thread = path === '/messages' && !!new URLSearchParams(search).get('conversation');
+  const params = new URLSearchParams(search);
+  const thread = path === '/messages' && !!params.get('conversation');
   const root = ['/', '/search', '/rentals', '/messages', '/profile', '/owner'].includes(path) && !thread;
   let back = null;
   // Other detail pages already render a named, domain-specific return link.
   if (thread) {
-    const query = (new URLSearchParams(search).get('q') || '').slice(0, 100);
+    const query = (params.get('q') || '').slice(0, 100);
     back = ['/messages' + (query ? '?' + new URLSearchParams({q: query}) : ''), 'Retour aux messages'];
   }
   else if (path === '/notifications' || path === '/cases') back = ['/profile', 'Retour au profil'];
   else if (['/owner/vehicles', '/owner/requests', '/owner/revenue', '/owner/reputation'].includes(path)) back = ['/owner', 'Espace propriétaire'];
   else if (path === '/demo/audit') back = ['/demo', 'Retour à Démo & comptes'];
   else if (['/demo', '/design-system', '/faq', '/owner/start', '/login', '/register'].includes(path)) back = ['/', 'Retour à Explorer'];
-  return {root, back};
+  return {root, back, thread};
 }
 
 // A page title describes the route independently of the current account and primary menu.

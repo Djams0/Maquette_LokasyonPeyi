@@ -1,8 +1,9 @@
 import {icon,escape,showFlash} from '/ui/components.js';
 import {currentDestination,navigationRole,navigationState,primaryDestinations} from './pages/navigation.js';
-const primaryLinks = (role,path,mobile=false) => {
+const primaryLinks = (role,path,mobile=false,{internal=false,thread=false}={}) => {
   const active=currentDestination(path,role);
-  return primaryDestinations(role).map(([href,symbol,label])=>`<a href="${href}"${active===href?` class="active" aria-current="${path===href?'page':'location'}"`:''}>${mobile?navigationIcon(symbol):''}<span>${label}</span></a>`).join('');
+  const current=path===active&&!thread?'page':'location';
+  return primaryDestinations(role,{internal}).map(([href,symbol,label])=>`<a href="${href}"${active===href?` class="active" aria-current="${current}"`:''}>${mobile?navigationIcon(symbol):''}<span>${label}</span></a>`).join('');
 };
 const discoveryLinks = path => `<a href="/search"${path==='/'?'':` aria-current="${path==='/search'?'page':'location'}"`}>Explorer les voitures</a><a href="${path==='/'?'':'/'}#fonctionnement">Comment ça marche</a><a href="/faq">Aide</a>`;
 const homeHelpIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></svg>';
@@ -10,6 +11,13 @@ const navigationIcon = symbol => symbol==='info' ? homeHelpIcon : icon(symbol);
 const accountControls = me => me
   ? `<a class="link-button button" href="/notifications" aria-label="Notifications">${icon('bell')}</a><a class="avatar" href="/profile" aria-label="Mon profil">${escape(me.name[0])}</a>`
   : '<a class="button secondary" href="/login">Connexion</a>';
+const brandImage = '<img src="/assets/v32/marque/logo-horizontal-charte.webp" width="683" height="122" alt="Lokasyon Péyi">';
+const internalAccountControls = (me,path) => {
+  const current = href => path === href ? ' aria-current="page"' : '';
+  return me
+    ? `<a class="link-button button" href="/notifications" aria-label="Notifications"${current('/notifications')}>${icon('bell')}</a><a class="internal-account button link-button" href="/profile"${current('/profile')}>${icon('user')}Compte</a>`
+    : `<a class="button secondary" href="/login"${current('/login')}>Connexion</a>`;
+};
 
 const discoveryFooter = catalogue => `<footer class="explorer-footer v32">
   <div class="explorer-wrap">
@@ -34,16 +42,23 @@ const discoveryFooter = catalogue => `<footer class="explorer-footer v32">
     <div class="explorer-footer-note"><p>Maquette de validation V3.2 · tarifs et annonces fictifs.</p><a href="/demo">Démo & comptes</a></div>
   </div>
 </footer>`;
-const menuLink = (href, symbol, label) => {
+const menuLink = (href, symbol, label, internalState) => {
   const path = location.pathname.replace(/\/$/,'') || '/';
-  const current = path === href;
-  const parent = ['/owner','/cases'].includes(href) && path.startsWith(href + '/');
+  const threadParent = href === '/messages' && internalState?.thread;
+  const current = !threadParent && path === (internalState ? href.split('?')[0] : href);
+  const parentLinks = internalState ? ['/owner/vehicles','/profile/documents','/cases'] : ['/owner','/cases'];
+  const rentalParent = internalState && href === '/rentals' && currentDestination(path,'renter') === href;
+  const parent = threadParent || rentalParent || (parentLinks.includes(href) && path.startsWith(href + '/'));
   return `<a class="menu-link ${current || parent ? 'active' : ''}" ${current || parent ? `aria-current="${current ? 'page' : 'location'}"` : ''} href="${href}">${navigationIcon(symbol)}<span>${label}</span>${icon('arrow')}</a>`;
 };
 
-function menuContent(me) {
+function menuContent(me, internalState) {
   const role=navigationRole(me);
-  const group=(id,title,links)=>`<section aria-labelledby="${id}"><h3 id="${id}">${title}</h3>${links.map(([href,symbol,label])=>menuLink(href,symbol,label)).join('')}</section>`;
+  const group=(id,title,links)=>`<section aria-labelledby="${id}"><h3 id="${id}">${title}</h3>${links.map(([href,symbol,label])=>menuLink(href,symbol,label,internalState)).join('')}</section>`;
+  const ownerLinks=[
+    ['/owner','home','Tableau de bord'],['/owner/vehicles','car','Mon parc'],['/owner/requests','file','Demandes'],
+  ];
+  if(internalState)ownerLinks.push(['/owner/revenue','file','Revenus'],['/owner/reputation','star','Réputation']);
   const travel=[['/search','car','Catalogue des véhicules'],['/#fonctionnement','info','Comment ça marche']];
   if(me)travel.push(['/rentals','calendar','Locations'],['/messages','message','Messages']);
   const account=me ? [
@@ -55,9 +70,7 @@ function menuContent(me) {
   if(me)help.push(['/assistance','message','Contacter l’assistance'],['/cases','file','Mes dossiers']);
   return `<p class="muted" id="menu-identity">${me?escape(me.name)+' · compte de démonstration':'Explorez librement, connectez-vous pour poursuivre une location.'}</p>
     <nav aria-label="Accès complémentaires" class="menu-groups">
-      ${role==='owner'?group('menu-owner','Espace propriétaire',[
-        ['/owner','home','Tableau de bord'],['/owner/vehicles','car','Mon parc'],['/owner/requests','file','Demandes'],
-      ]):''}
+      ${role==='owner'?group('menu-owner','Espace propriétaire',ownerLinks):''}
       ${group('menu-destinations','Se déplacer',travel)}
       ${group('menu-account','Mon compte',account)}
       ${group('menu-help','Aide',help)}
@@ -81,31 +94,32 @@ export function shell() {
   const catalogue = path === '/search';
   const vehicle = /^\/vehicle\/[^/]+$/.test(path);
   const discovery = explorer || catalogue || vehicle;
+  const internalState = discovery ? undefined : {internal: true, thread: state.thread};
+  const accountMarkup = discovery ? accountControls : me => internalAccountControls(me,path);
   const returnHref=state.back?.[0];
   const privateReturn=returnHref && returnHref!=='/' && returnHref!=='/demo';
-  const returnLink=state.back ? `<a href="${returnHref}">${icon('back')}${state.back[1]}</a>` : '';
+  const returnLink=state.back ? `<a href="${escape(returnHref)}">${icon('back')}${state.back[1]}</a>` : '';
   const host = document.getElementById('shell');
-  const discoveryClass = explorer ? ' is-explorer' : catalogue ? ' is-catalogue' : vehicle ? ' is-vehicle-detail' : '';
-  host.className = 'client-shell' + (state.root ? ' has-bottom-nav' : vehicle ? ' has-footer-nav' : '') + discoveryClass;
+  const variant = explorer ? 'is-explorer' : catalogue ? 'is-catalogue' : vehicle ? 'is-vehicle-detail' : 'is-internal';
+  host.className = 'client-shell' + (state.root ? ' has-bottom-nav' : vehicle ? ' has-footer-nav' : '') + ' ' + variant;
   host.dataset.role='visitor';
   host.innerHTML = `
-    ${discovery ? '' : '<div class="demo-banner">Maquette interactive · données fictives · aucun paiement réel <a href="/demo">Démo & comptes</a></div>'}
-    <header class="header${discovery ? ' v32' : ''}">
-      <a class="logo" href="/">${discovery ? '<img src="/assets/v32/marque/logo-horizontal-charte.webp" width="683" height="122" alt="Lokasyon Péyi">' : 'Lokasyon <span>Péyi</span>'}</a>
-      <nav aria-label="Navigation principale" id="header-nav">${discovery ? discoveryLinks(path) : primaryLinks('visitor',path)}</nav>
+    <header class="header${discovery ? ' v32' : ' internal-header'}">
+      <a class="logo" href="/">${brandImage}</a>
+      <nav aria-label="Navigation principale" id="header-nav">${discovery ? discoveryLinks(path) : primaryLinks('visitor',path,false,internalState)}</nav>
       <div class="tools">
-        <span id="shell-account">${accountControls(null)}</span>
+        <span id="shell-account">${accountMarkup(null)}</span>
         <button type="button" class="secondary navigation-toggle" id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-haspopup="dialog" aria-controls="navigation-panel">${icon('menu')}<span class="menu-label">Menu</span></button>
       </div>
     </header>
     <dialog id="navigation-panel" class="navigation-panel" aria-labelledby="navigation-title">
       <div class="navigation-panel-heading"><h2 id="navigation-title">Menu</h2><button type="button" class="link-button" id="menu-close" aria-label="Fermer le menu">${icon('close')}</button></div>
-      <div id="menu-content">${menuContent(null)}</div>
+      <div id="menu-content">${menuContent(null,internalState)}</div>
     </dialog>
     ${state.back ? `<nav class="context-nav" aria-label="Retour"${privateReturn?' hidden':''}>${privateReturn?'':returnLink}</nav>` : ''}
     <main class="client-main" id="main" tabindex="-1"></main>
-    ${discovery ? discoveryFooter(!explorer) : `<footer class="footer"><div><a class="logo" href="/">Lokasyon <span>Péyi</span></a><p>Un autre chemin pour découvrir le Péyi.</p><small>Prototype indépendant · Guadeloupe</small></div><nav aria-label="Aide et démonstration" class="row"><a href="/faq">FAQ</a><a href="/faq" id="shell-footer-help">Nous contacter</a><a href="/design-system">Design system</a><a href="/demo">Guide de démonstration</a><a href="/demo/audit">Atelier d’audit</a><a class="photo-credit-link" href="/assets/v32/credits.html">Crédits des photos</a></nav></footer>`}
-    ${state.root || vehicle ? `<nav class="bottom-nav" aria-label="Navigation mobile">${primaryLinks('visitor',path,true)}</nav>` : ''}`;
+    ${discovery ? discoveryFooter(!explorer) : `<footer class="footer"><div><a class="logo" href="/">Lokasyon <span>Péyi</span></a><p>Un autre chemin pour découvrir le Péyi.</p><small>Maquette interactive · données fictives · aucun paiement réel</small></div><nav aria-label="Aide et démonstration" class="row"><a href="/faq">FAQ</a><a href="/faq" id="shell-footer-help">Nous contacter</a><a href="/design-system">Design system</a><a href="/demo">Guide de démonstration</a><a href="/demo/audit">Atelier d’audit</a><a class="photo-credit-link" href="/assets/v32/credits.html">Crédits des photos</a></nav></footer>`}
+    ${state.root || vehicle ? `<nav class="bottom-nav" aria-label="Navigation mobile">${discovery?primaryLinks('visitor',path,true):''}</nav>` : ''}`;
   const trigger = document.getElementById('menu-toggle'), panel = document.getElementById('navigation-panel');
   const close = document.getElementById('menu-close'), content = document.getElementById('menu-content');
   const header = document.getElementById('header-nav'), account = document.getElementById('shell-account');
@@ -114,7 +128,7 @@ export function shell() {
   let identity=null, menuIdentity=null, anchor;
   function syncMenu() {
     if (identity===menuIdentity) return;
-    replaceLinks(content,menuContent(identity),close);
+    replaceLinks(content,menuContent(identity,internalState),close);
     menuIdentity=identity;
   }
   trigger.onclick = () => { panel.showModal(); trigger.setAttribute('aria-expanded','true'); };
@@ -155,10 +169,10 @@ export function shell() {
     identity=role==='visitor' ? null : me;
     if(role!==previous) {
       host.dataset.role=role;
-      replaceLinks(header,role==='visitor'&&discovery?discoveryLinks(path):primaryLinks(role,path),trigger);
-      if(bottom)replaceLinks(bottom,primaryLinks(role,path,true),trigger);
+      replaceLinks(header,role==='visitor'&&discovery?discoveryLinks(path):primaryLinks(role,path,false,internalState),trigger);
+      if(bottom)replaceLinks(bottom,!discovery&&role==='visitor'?'':primaryLinks(role,path,true,internalState),trigger);
     }
-    replaceLinks(account,accountControls(identity),trigger);
+    replaceLinks(account,accountMarkup(identity),trigger);
     if(footerAccount) {
       footerAccount.href=identity?'/profile':'/login';
       footerAccount.textContent=identity?'Mon compte':'Connexion';
@@ -171,14 +185,14 @@ export function shell() {
         replaceLinks(contextNav,allowed?returnLink:'',trigger);
       }
     }
-    // An open public menu keeps its destinations and focus until it closes.
-    if(!panel.open || (menuIdentity && (menuIdentity.id!==identity?.id || navigationRole(menuIdentity)!==role)))syncMenu();
+    // Keep the discovery menu stable when its visitor links were already in use.
+    if(!discovery || !panel.open || (menuIdentity && (menuIdentity.id!==identity?.id || navigationRole(menuIdentity)!==role)))syncMenu();
   };
 }
 export function ownerNav() {
   const path = location.pathname.replace(/\/$/,'');
-  return `<nav class="subnav" aria-label="Espace propriétaire">${[['/owner','Vue d’ensemble'],['/owner/vehicles','Véhicules'],['/owner/requests','Demandes'],['/owner/revenue','Revenus'],['/owner/reputation','Réputation']].map(([href,label]) => {
+  return `<nav class="subnav${path==='/owner'?' owner-dashboard-nav':''}" aria-label="Espace propriétaire">${[['/owner','Aujourd’hui'],['/owner/vehicles','Véhicules'],['/owner/requests','Demandes'],['/owner/revenue','Revenus'],['/owner/reputation','Réputation']].map(([href,label]) => {
     const active = href === '/owner' ? path === href : path === href || path.startsWith(href + '/');
-    return `<a class="${active ? 'active' : ''}" href="${href}" ${active ? 'aria-current="page"' : ''}>${label}</a>`;
+    return `<a class="${active ? 'active' : ''}" href="${href}" ${active ? `aria-current="${path===href?'page':'location'}"` : ''}>${label}</a>`;
   }).join('')}</nav>`;
 }
