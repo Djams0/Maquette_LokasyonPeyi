@@ -81,7 +81,7 @@ test('navigation propriétaire : profil, parc, sous-navigation et retours dédi�
   await expect(bar).toHaveCount(0);
   await page.getByRole('navigation',{name:'Retour',exact:true}).getByRole('link',{name:'Espace propriétaire',exact:true}).click();await ready(page);
   await bar.getByRole('link',{name:'Mon parc',exact:true}).click();await ready(page);await expect(bar).toHaveCount(0);await expect(page.getByRole('navigation',{name:'Retour',exact:true}).getByRole('link',{name:'Espace propriétaire',exact:true})).toHaveAttribute('href','/owner');
-  await page.getByRole('link',{name:'Gérer le véhicule',exact:true}).first().click();await ready(page);await expect(page.getByRole('navigation',{name:'Espace propriétaire',exact:true}).getByRole('link',{name:'Véhicules',exact:true})).toHaveAttribute('aria-current','page');await expect(page.locator('#main').getByRole('link',{name:'Mon parc',exact:false})).toHaveAttribute('href','/owner/vehicles');
+  await page.getByRole('link',{name:'Gérer le véhicule',exact:true}).first().click();await ready(page);await expect(page.getByRole('navigation',{name:'Espace propriétaire',exact:true}).getByRole('link',{name:'Véhicules',exact:true})).toHaveAttribute('aria-current','location');await expect(page.locator('#main').getByRole('link',{name:'Mon parc',exact:false})).toHaveAttribute('href','/owner/vehicles');
   const denied=await page.request.post(client+'/api/v1/owner/vehicles/audit-v02-1/edit',{data:{name:'Autre véhicule fictif',price:20,description:'Modification croisée fictive.'}});expect(denied.status()).toBe(403);
   await page.goto(client+'/notifications');await ready(page);await expect(bar).toHaveCount(0);await page.getByRole('link',{name:'Retour au profil',exact:true}).click();await ready(page);await expect(page.getByRole('heading',{name:'Mon profil',exact:true})).toBeVisible();
   await page.setViewportSize({width:1440,height:900});
@@ -175,7 +175,7 @@ test('navigation : bascule Démo, récupération des documents et nouvelle véri
   try {
     await page.evaluate(()=>dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true})));
     await expect(page.locator('#main')).toBeHidden();
-    await links(mobile(page),visitor);
+    await expect(mobile(page)).toHaveCount(0);
     release();
     await page.waitForURL(/\/login\?next=/);
     expect(new URL(page.url()).searchParams.get('next')).toBe('/profile');
@@ -191,6 +191,130 @@ test('navigation : l’ancre publique ferme le menu et place le focus sur la des
   await expect(page).toHaveURL(/#fonctionnement$/);
   await expect(page.locator('#fonctionnement')).toBeFocused();
   await expect(page.locator('#explorer-steps-title')).toBeInViewport();
+});
+
+for (const [width,height] of [[390,844],[1440,960]]) {
+  test(`R01 à ${width} px : marque, commandes par rôle, racines et retours`,async({page})=>{
+    test.setTimeout(120000);
+    await page.setViewportSize({width,height});
+    const desktop=width===1440;
+    const header=page.locator('#shell > header');
+    const primary=header.getByRole('navigation',{name:'Navigation principale',exact:true});
+    const box=(locator)=>locator.boundingBox();
+    const scenarios=[
+      ['/login',null,null,null],
+      ['/profile','audit-r02','/profile/documents','location'],
+      ['/rentals','audit-r02','/rentals','page'],
+      ['/messages','audit-r09','/messages','page'],
+      ['/messages?conversation=audit-chat-001&q=V%C3%A9hicule','audit-r09','/messages','location'],
+      ['/owner','audit-o02','/owner/vehicles','location'],
+      ['/rental/audit-LP-006','audit-r02','/rentals','location'],
+      ['/demo',null,null,null],
+      ['/demo/audit',null,null,null],
+      ['/design-system',null,null,null],
+      ['/route-inconnue',null,null,null],
+    ];
+    for(const [route,persona,active,current] of scenarios) {
+      if(persona)expect((await page.request.post(client+'/api/v1/session',{data:{persona}})).ok()).toBe(true);
+      else await page.request.delete(client+'/api/v1/session');
+      await page.goto(client+route);
+      await ready(page);
+      await expect(header).toHaveCount(1);
+      await expect(header).toHaveClass('header internal-header');
+      await expect(header).toHaveCSS('border-radius','999px');
+      await expect(header).toHaveCSS('background-color','rgb(255, 255, 255)');
+      await expect(page.locator('#shell > .demo-banner')).toHaveCount(0);
+      const logo=header.getByRole('img',{name:'Lokasyon Péyi'});
+      await expect(logo).toBeVisible();
+      await expect.poll(()=>logo.evaluate(el=>[new URL(el.currentSrc).pathname,el.naturalWidth]))
+        .toEqual(['/assets/v32/marque/logo-horizontal-charte.webp',683]);
+      const controls=header.locator('.tools');
+      const buttons=await controls.locator('a:visible,button:visible').all();
+      const names=await Promise.all(buttons.map(control=>control.evaluate(el=>el.getAttribute('aria-label')||el.innerText.trim())));
+      expect(names).toEqual(persona?['Notifications',...(desktop?['Compte']:[]),'Ouvrir le menu']:['Connexion','Ouvrir le menu']);
+      const [capsule,mark,tools]=await Promise.all([box(header),box(logo),box(controls)]);
+      expect(mark.x+mark.width).toBeLessThanOrEqual(tools.x);
+      expect(tools.x+tools.width).toBeLessThan(capsule.x+capsule.width);
+      for(const button of buttons) {
+        const target=await box(button);
+        expect(target.width).toBeGreaterThanOrEqual(44);
+        expect(target.height).toBeGreaterThanOrEqual(44);
+        expect(target.y+target.height).toBeLessThan(capsule.y+capsule.height);
+      }
+      const destinations=persona==='audit-o02'?owner:persona?renter:visitor.slice(0,2);
+      if(desktop)await links(primary,destinations,active);
+      else await expect(primary).toHaveCount(0);
+      const root=['/profile','/rentals','/messages','/owner'].includes(route);
+      if(!desktop&&root)await links(mobile(page),destinations,active,56);
+      else await expect(mobile(page)).toHaveCount(0);
+      if(active&&(desktop||root))await expect((desktop?primary:mobile(page)).locator('[aria-current]')).toHaveAttribute('aria-current',current);
+      if(route==='/login')await expect(header.getByRole('link',{name:'Connexion'})).toHaveAttribute('aria-current','page');
+      if(desktop&&route==='/owner')await expect(page.getByRole('navigation',{name:'Espace propriétaire',exact:true}).getByRole('link',{name:'Aujourd’hui'})).toHaveAttribute('aria-current','page');
+      if(route.includes('conversation=')) {
+        const back=page.getByRole('link',{name:'Retour aux messages',exact:true});
+        await expect(back).toHaveAttribute('href','/messages?q=V%C3%A9hicule');
+        expect((await box(back)).y).toBeGreaterThanOrEqual(capsule.y+capsule.height);
+        expect((await box(back)).y+(await box(back)).height).toBeLessThanOrEqual((await box(page.locator('#main h1'))).y);
+      }
+      await fits(page);
+    }
+
+    const toggle=trigger(page), panel=menu(page);
+    for(const key of ['Enter','Space']) {
+      await toggle.focus();
+      await page.keyboard.press(key);
+      await expect(toggle).toHaveAttribute('aria-expanded','true');
+      const close=panel.getByRole('button',{name:'Fermer le menu',exact:true});
+      await expect(close).toBeFocused();
+      await page.keyboard.press('Shift+Tab');
+      await expect(panel.getByRole('link').last()).toBeFocused();
+      await page.keyboard.press('Tab');
+      await expect(close).toBeFocused();
+      if(key==='Space')await close.click();
+      else await page.keyboard.press('Escape');
+      await expect(panel).toBeHidden();
+      await expect(toggle).toBeFocused();
+      await expect(toggle).toHaveAttribute('aria-expanded','false');
+    }
+  });
+}
+
+test('R01 : capsule stable pendant /me et navigation basse en retrait pendant la saisie',async({page})=>{
+  await page.setViewportSize({width:390,height:844});
+  expect((await page.request.post(client+'/api/v1/session',{data:{persona:'audit-r09'}})).ok()).toBe(true);
+  let release;
+  const gate=new Promise(resolve=>{release=resolve;});
+  await page.route('**/api/v1/me',async route=>{await gate;await route.continue();},{times:1});
+  const header=page.locator('#shell > .internal-header');
+  const toggle=trigger(page);
+  try {
+    await page.goto(client+'/messages');
+    await expect(header).toBeVisible();
+    const pendingBox=await header.boundingBox();
+    await expect(header.getByRole('link',{name:'Notifications'})).toHaveCount(0);
+    await expect(mobile(page)).toHaveCount(0);
+    await toggle.press('Space');
+    await expect(menu(page).getByRole('link',{name:'Mon profil',exact:true})).toHaveCount(0);
+    release();
+    await ready(page);
+    await expect(menu(page).getByRole('link',{name:'Mon profil',exact:true})).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(toggle).toBeFocused();
+    expect(await header.boundingBox()).toEqual(pendingBox);
+    await expect(header.getByRole('link',{name:'Notifications'})).toBeVisible();
+    const search=page.locator('#main input[type=search]');
+    await expect(mobile(page)).toBeVisible();
+    await search.fill('Véhicule');
+    await expect(search).toBeFocused();
+    await expect(mobile(page)).toBeHidden();
+    await fits(page);
+    await search.blur();
+    await expect(mobile(page)).toBeVisible();
+    await page.setViewportSize({width:320,height:844});
+    await page.evaluate(()=>document.documentElement.style.fontSize='200%');
+    await fits(page);
+    await expect(toggle).toBeVisible();
+  } finally {release();}
 });
 
 test('Démo : sortie refusée annoncée, attente distincte et un seul changement de session',async({page})=>{
