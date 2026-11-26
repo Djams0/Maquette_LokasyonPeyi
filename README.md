@@ -4,6 +4,8 @@ Maquette **fonctionnelle**, entièrement fictive, du parcours client (visiteur, 
 
 Ce dépôt est indépendant de [Djams0/LokasyonPeyi](https://github.com/Djams0/LokasyonPeyi), consulté uniquement en lecture. Il ne constitue pas l’application de production ni une validation des règles encore proposées ou bloquées.
 
+Pour la correction UX/UI V3.2, suivre le [point d’entrée Codex](LOKASYON_PEYI_DESIGN_HANDOFF/CODEX_START_HERE.md) ou ouvrir directement [R01 · Header interne et navigation](LOKASYON_PEYI_DESIGN_HANDOFF/07_CODEX_PROMPTS/correction-v32/R01_HEADER_NAVIGATION.md).
+
 ## Lancer en une commande
 
 Pré-requis : Docker avec Docker Compose v2.

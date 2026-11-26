@@ -12,3 +12,7 @@
 | Visiteur → connexion → fiche | next sûr, contexte modèle/dates conservé, accès visibles conformes; compte précédent masqué après pageshow. |
 
 Capturer avant/après à 320, 375, 390, 430, 768, 1024, 1280 et 1440, même état, profil, navigateur, DPR et horloge. Les PNG fournis prennent le premier écran visiteur. Ajouter aux preuves du lot les états connectés et interactions à 390 et 1440, et les états affectés au même viewport. Comparer largeur, hauteur, typographie, photos, structure, éléments et action. Un diff pixel dans un environnement stable demande explication. Reprendre l’outil et les tests existants si l’affichage de capture diffère entre OS; utiliser alors un avant/après sur le même OS.
+
+## Référence de la correction V3.2
+
+Le jalon Work est le `main` `8a6974e23aab14acbabcd82f21f2bfcd9c0498ce`. Pour chaque PR R01–R09, vérifier la tête de `origin/main` et reproduire sur cette base la référence d’exécution publique avec `node scripts/historical-run.mjs`. Le dossier `protected_baseline` et le SHA historique `4338f5f` établissent la provenance. Comparer la base du lot et le candidat avec le même navigateur, la même graine historique et les mêmes huit viewports. Les essais sur une instance d’audit servent aux écrans internes. L’écart éventuel sur les trois routes publiques et les comportements partagés se traite avant transmission. Voir [commandes et comparaison par lot](../tools/README.md).

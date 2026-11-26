@@ -63,3 +63,49 @@ Les compteurs doivent refléter bootstrap et les filtres réellement disponibles
 | Nature de la modification | A |
 
 Voir [les fondations et gabarits](../02_DESIGN_SYSTEM/DESIGN_SYSTEM_V3.2.md) et [la recette](../08_VALIDATION/ACCEPTANCE_CRITERIA.md).
+
+## Critères actifs · correction V3.2
+
+### OWN-01 · `/owner/start`
+
+[B-32](../04_VISUAL_REFERENCES/extension/planches/B-32.jpg) · Bandeau littoral et estimation. [Lot R07](../07_CODEX_PROMPTS/correction-v32/R07_ESPACE_PROPRIETAIRE.md).
+
+- **Scénario** · Visiteur puis locataire éligible et propriétaire déjà activé.
+- **Ordinateur** · Panorama Grande Anse et cartouche avant estimation/étapes. Crédit associé.
+- **Mobile** · Retour, introduction compacte puis estimation brute et prérequis.
+- **Écart de départ** · [Observation et preuve OWN-01](../01_AUDIT/ECARTS_CORRECTION_V32.md#own-01).
+- **Comportements** · Reprise après login, onboarding confirmé, chiffres fictifs, pas de nouveau droit implicite.
+- **Vérification** · CTA et hiérarchie au premier écran. Rendu synthétique et crédit aux deux largeurs. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).
+
+### OWN-02 · `/owner`
+
+[B-33](../04_VISUAL_REFERENCES/extension/planches/B-33.jpg), [B-42](../04_VISUAL_REFERENCES/extension/planches/B-42.jpg) · Trois compteurs, demande, brouillon et aperçu du parc. [Lot R07](../07_CODEX_PROMPTS/correction-v32/R07_ESPACE_PROPRIETAIRE.md).
+
+- **Scénario** · audit-o02, demande audit-LP-009 et brouillon sauvegardé step=5, un véhicule.
+- **Ordinateur** · Navigation propriétaire, trois compteurs dans une ligne, action demande à gauche, brouillon dans un rail, parc secondaire.
+- **Mobile** · À 390 × 844, trois compteurs compacts sur la même ligne, carte demande suivie du brouillon et des deux CTA entièrement visibles. Barre basse.
+- **Écart de départ** · [Observation et preuve OWN-02](../01_AUDIT/ECARTS_CORRECTION_V32.md#own-02).
+- **Comportements** · Compteurs avec périmètre du compte et destinations, actions via la demande et étape effective du brouillon.
+- **Vérification** · Prendre les boîtes des trois compteurs et des deux boutons au chargement. Même y pour compteurs, boutons entiers au-dessus de barre et sans défilement. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).
+
+### OWN-07 · `/owner/revenue`
+
+[B-38](../04_VISUAL_REFERENCES/extension/planches/B-38.jpg) · Indicateurs et paiements simulés. [Lot R07](../07_CODEX_PROMPTS/correction-v32/R07_ESPACE_PROPRIETAIRE.md).
+
+- **Scénario** · audit-o02 avec payé simulé puis audit-o01 sans données.
+- **Ordinateur** · Signalement démo, brut puis profil et net indéfini, liste des paiements secondaires.
+- **Mobile** · Garder montants et simulations proches des libellés, ordre de lecture naturel, vide utile.
+- **Écart de départ** · [Observation et preuve OWN-07](../01_AUDIT/ECARTS_CORRECTION_V32.md#own-07).
+- **Comportements** · Montant du mock, aucune commission ou versement créé, confidentialité du compte.
+- **Vérification** · Capture payé et vide aux deux largeurs, total recalculé sur données du compte. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).
+
+### OWN-08 · `/owner/reputation`
+
+[B-38](../04_VISUAL_REFERENCES/extension/planches/B-38.jpg) · Avis, statut et réponse du propriétaire. [Lot R07](../07_CODEX_PROMPTS/correction-v32/R07_ESPACE_PROPRIETAIRE.md).
+
+- **Scénario** · owner avec review-demo, audit-o01 vide.
+- **Ordinateur** · Une liste hiérarchisée véhicule, note, statut puis réponse. Extrapolation depuis la vue mobile B-38.
+- **Mobile** · Retour, véhicule et note, état et action répondre proche de l’avis.
+- **Écart de départ** · [Observation et preuve OWN-08](../01_AUDIT/ECARTS_CORRECTION_V32.md#own-08).
+- **Comportements** · Seulement avis applicables et réponse du propriétaire autorisé, validation et erreurs.
+- **Vérification** · Comparer vue mobile B-38 puis tester réponse personnelle/tiers et cas vide. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).

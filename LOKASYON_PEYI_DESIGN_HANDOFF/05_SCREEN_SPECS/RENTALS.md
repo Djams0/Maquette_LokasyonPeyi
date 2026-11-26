@@ -33,3 +33,27 @@ Réutiliser rentalNext et bookingDraft. En liste, upcoming = requested/awaiting_
 | Nature de la modification | A |
 
 Voir [les fondations et gabarits](../02_DESIGN_SYSTEM/DESIGN_SYSTEM_V3.2.md) et [la recette](../08_VALIDATION/ACCEPTANCE_CRITERIA.md).
+
+## Critères actifs · correction V3.2
+
+### LOC-01 · `/rentals`
+
+[B-16](../04_VISUAL_REFERENCES/extension/planches/B-16.jpg), [B-27](../04_VISUAL_REFERENCES/extension/planches/B-27.jpg) · Onglets et ordre des cartes, première action. [Lot R03](../07_CODEX_PROMPTS/correction-v32/R03_LOCATIONS_SUIVI_PAIEMENT.md).
+
+- **Scénario** · audit-r02 en upcoming avec requested, confirmed et awaiting_payment, newcomer en vide.
+- **Ordinateur** · Lignes image/modèle/période/prix puis situation et CTA. Paiement à reprendre en premier.
+- **Mobile** · Carte compacte, photo et dates au-dessus du statut et du prix, CTA principal pleine largeur visible au premier écran.
+- **Écart de départ** · [Observation et preuve LOC-01](../01_AUDIT/ECARTS_CORRECTION_V32.md#loc-01).
+- **Comportements** · Conserver onglet, date Guadeloupe, prix, statut, participant et retours. En cas d’égalité garder une règle stable documentée.
+- **Vérification** · Payment en tête devant une demande en attente et la réservation confirmée du scénario B-16. CTA entièrement visible à 390 × 844, après fonts/images, sans défilement. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).
+
+### LOC-02 · `/request/:id`
+
+[B-17](../04_VISUAL_REFERENCES/extension/planches/B-17.jpg) · Carte trajet, dates, estimation et formulaire. [Lot R03](../07_CODEX_PROMPTS/correction-v32/R03_LOCATIONS_SUIVI_PAIEMENT.md).
+
+- **Scénario** · renter, v1, 10–14 juin 2027 09 h Guadeloupe, brouillon issu de la fiche.
+- **Ordinateur** · Récap et dates puis consentement/action à gauche, estimation dans rail droit, retour fiche au-dessus.
+- **Mobile** · Retour, véhicule, période modifiable, estimation, consentement et CTA dans cet ordre.
+- **Écart de départ** · [Observation et preuve LOC-02](../01_AUDIT/ECARTS_CORRECTION_V32.md#loc-02).
+- **Comportements** · Prix à partir du mock, pas de paiement à l’envoi, idempotence, sortie 409 et retour exact.
+- **Vérification** · Comparer premier écran plus défilement utile si nécessaire. Vérifier un seul enregistrement malgré double clic ou résultat perdu. [Statut initial et résultats](../08_VALIDATION/CORRECTION_V32.csv).

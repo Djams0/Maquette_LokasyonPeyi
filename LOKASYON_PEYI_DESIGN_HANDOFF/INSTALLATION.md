@@ -30,3 +30,5 @@ python3 "$kit/tools/install_extension.py" . --mode replace --apply
 5. Retour arrière avant le commit. Déplacer le nouveau dossier hors du dépôt et remettre le dossier de sauvegarde à sa place. Vérifier git status. Après un commit dédié, créer un revert de ce commit sous contrôle Git. Les chemins et conséquences sont dans [migration](01_AUDIT/PLAN_MIGRATION.md).
 
 6. Après vérification, remettre à Codex [lot 00](07_CODEX_PROMPTS/LOT_00_BASELINE.md) et le SHA d’installation. Chaque lot ultérieur attend une validation humaine.
+
+Le kit de correction est intégré au dépôt sur sa propre PR. Après son intégration dans `main`, commencer par [CODEX_START_HERE.md](CODEX_START_HERE.md) depuis le checkout du projet. Les commandes d’installation historique ci-dessus documentent les premières bases et campagnes.

@@ -19,7 +19,19 @@
       "state": "Protégée",
       "desktop": "Capsule, hero, moteur, cadran et sections tels que rendus à 4338f5f.",
       "mobile": "Même composition, champs et retours; vérifier aussi session lente.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "PRG-01",
+          "lot": "R09",
+          "pages": [
+            3,
+            43,
+            44
+          ],
+          "zone": "Capsule, recherche et parcours existants"
+        }
+      ]
     },
     {
       "route": "/search",
@@ -40,7 +52,19 @@
       "state": "Protégée",
       "desktop": "Garder résumé, sidebar, grille, carte et critères appliqués.",
       "mobile": "Tiroir et focus existants, état de resize historique à mesurer.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "PRG-02",
+          "lot": "R09",
+          "pages": [
+            3,
+            43,
+            44
+          ],
+          "zone": "Catalogue et tiroir"
+        }
+      ]
     },
     {
       "route": "/vehicle/:id",
@@ -61,7 +85,19 @@
       "state": "Protégée",
       "desktop": "Conserver galerie, conditions, médias de modèle et défaut fictif distinct.",
       "mobile": "Conserver focus et contexte, y compris action privée après connexion.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "PRG-03",
+          "lot": "R09",
+          "pages": [
+            3,
+            43,
+            44
+          ],
+          "zone": "Fiche v3, média et retour"
+        }
+      ]
     },
     {
       "route": "/login",
@@ -81,7 +117,17 @@
       "state": "À modifier",
       "desktop": "Carte connexion deux zones, formulaire 55–60%, bourg Deshaies en panneau droit. Label mode démo avant le formulaire.",
       "mobile": "Une zone, panneau image masqué par présentation; retour et formulaire restent visibles.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "ACC-01",
+          "lot": "R02",
+          "pages": [
+            13
+          ],
+          "zone": "Carte formulaire, panneau photo et bandeau de contexte"
+        }
+      ]
     },
     {
       "route": "/register",
@@ -101,7 +147,18 @@
       "state": "À modifier",
       "desktop": "Même enveloppe d’authentification. Lien vers connexion conserve next. Carte courte et information de vérification.",
       "mobile": "Empiler les choix; clavier natif et focus sur premier champ en erreur.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "ACC-02",
+          "lot": "R02",
+          "pages": [
+            13,
+            14
+          ],
+          "zone": "Modes et carte de création"
+        }
+      ]
     },
     {
       "route": "/profile",
@@ -120,7 +177,17 @@
       "state": "Partiel",
       "desktop": "Bandeau menthe identité puis colonne compte et rail rôles/aide; Démo et audit dans un détail.",
       "mobile": "Identité compacte puis sections verticales; pas de bouton propriétaire redondant pour un propriétaire.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "ACC-03",
+          "lot": "R02",
+          "pages": [
+            15
+          ],
+          "zone": "Bandeau menthe, liste « Votre compte », rail propriétaire/aide"
+        }
+      ]
     },
     {
       "route": "/profile/documents",
@@ -139,7 +206,17 @@
       "state": "À modifier",
       "desktop": "Liste de cartes par type, statut texte, raison et action au bord de la carte.",
       "mobile": "Statut près du nom, action pleine largeur si nécessaire. Confirmation unique et état annoncé.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "ACC-04",
+          "lot": "R02",
+          "pages": [
+            14
+          ],
+          "zone": "Pile de pièces et motif d’état"
+        }
+      ]
     },
     {
       "route": "/profile/reviews",
@@ -158,7 +235,17 @@
       "state": "À modifier",
       "desktop": "Entrée depuis profil, cartes repliables si longues, lien de retour clair; exposer statut effectivement fourni.",
       "mobile": "Une carte par avis; note accessible et statut en texte.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "SUP-06",
+          "lot": "R06",
+          "pages": [
+            30
+          ],
+          "zone": "Mes avis, statut de modération"
+        }
+      ]
     },
     {
       "route": "/notifications",
@@ -177,7 +264,18 @@
       "state": "À modifier",
       "desktop": "Liste blanche avec information, date, état et destination, action globale dans entête.",
       "mobile": "Regrouper cible et date, distinguer vide et lues; garder retour profil.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "MSG-03",
+          "lot": "R05",
+          "pages": [
+            26,
+            27
+          ],
+          "zone": "Liste lue/non lue et état vide"
+        }
+      ]
     },
     {
       "route": "/rentals",
@@ -198,7 +296,18 @@
       "state": "Partiel",
       "desktop": "Liste de cartes en lignes: image identifiante, dates/commune, badge et une action. Filtre dans URL.",
       "mobile": "Empiler dates/état/CTA, onglets nommés, état vide adapté à l’onglet.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "LOC-01",
+          "lot": "R03",
+          "pages": [
+            16,
+            27
+          ],
+          "zone": "Onglets et ordre des cartes, première action"
+        }
+      ]
     },
     {
       "route": "/request/:id",
@@ -219,7 +328,17 @@
       "state": "Partiel",
       "desktop": "Récap véhicule et période avant confirmation, prix dans un rail de 300–325 px; dire qu’une demande ne paie rien.",
       "mobile": "Récap en ligne, dates empilables, prix et effet avant CTA; préserver le retour exact à la fiche.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "LOC-02",
+          "lot": "R03",
+          "pages": [
+            17
+          ],
+          "zone": "Carte trajet, dates, estimation et formulaire"
+        }
+      ]
     },
     {
       "route": "/rental/:id",
@@ -240,7 +359,18 @@
       "state": "Partiel",
       "desktop": "Carte action #103731 avant progression, rail véhicule/conditions. Garder refus et retrait accessibles selon contrat.",
       "mobile": "Action et acteur avant historique, étapes terminées repliables, retour par rôle, pas de barre couvrant le focus.",
-      "category": "B"
+      "category": "B",
+      "correction_v32": [
+        {
+          "id": "LOC-03",
+          "lot": "R03",
+          "pages": [
+            18,
+            19
+          ],
+          "zone": "Carte d’action, étapes et panneau de contexte"
+        }
+      ]
     },
     {
       "route": "/payment/:id",
@@ -260,7 +390,17 @@
       "state": "Partiel",
       "desktop": "Formulaire de simulation opaque et détail du prix à droite; aucun champ bancaire.",
       "mobile": "Expliquer refus/absence de débit près du CTA; total et mention fictive visibles.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "LOC-04",
+          "lot": "R03",
+          "pages": [
+            20
+          ],
+          "zone": "Contexte, avis, sélection du résultat, estimation"
+        }
+      ]
     },
     {
       "route": "/inspection/:id/:phase",
@@ -282,7 +422,26 @@
       "state": "À modifier",
       "desktop": "Vues en grille à gauche, compteur/charge/observations à droite et état verrouillé lisible.",
       "mobile": "Première vue manquante et groupe de vues accessible; formulaire atteignable sans traverser huit grandes cartes.",
-      "category": "B"
+      "category": "B",
+      "correction_v32": [
+        {
+          "id": "CON-01",
+          "lot": "R04",
+          "pages": [
+            21,
+            22
+          ],
+          "zone": "Progression, vues, prochaine capture et observations"
+        },
+        {
+          "id": "CON-02",
+          "lot": "R04",
+          "pages": [
+            23
+          ],
+          "zone": "Caméra simulée et refus de capture"
+        }
+      ]
     },
     {
       "route": "/messages",
@@ -305,7 +464,28 @@
       "state": "Partiel",
       "desktop": "Liste 300–340 px, fil fluide, en-tête contexte véhicule + retour fiche si autorisé.",
       "mobile": "Liste puis fil; préserver q au retour, envoyer sans couvrir la saisie ou masquer les erreurs.",
-      "category": "B"
+      "category": "B",
+      "correction_v32": [
+        {
+          "id": "MSG-01",
+          "lot": "R05",
+          "pages": [
+            24,
+            25,
+            27
+          ],
+          "zone": "Boîte de réception, filtre, sélection et vide"
+        },
+        {
+          "id": "MSG-02",
+          "lot": "R05",
+          "pages": [
+            24,
+            25
+          ],
+          "zone": "Carte contexte, historique et zone de réponse"
+        }
+      ]
     },
     {
       "route": "/faq",
@@ -325,7 +505,17 @@
       "state": "À modifier",
       "desktop": "Recherche dans bloc opaque, accordéons natifs et lien d’aide contextualisé; préserver homeFaqItems.",
       "mobile": "Marge 12–16 px, synopsis courts, focus visible sur summary et sortie si aucun résultat.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "SUP-01",
+          "lot": "R06",
+          "pages": [
+            29
+          ],
+          "zone": "Champ recherche, accordéons et aide visiteur puis connecté"
+        }
+      ]
     },
     {
       "route": "/assistance",
@@ -344,7 +534,18 @@
       "state": "À modifier",
       "desktop": "Formulaire avec choix du motif, location accessible et texte; expliquer le canal fictif.",
       "mobile": "Choix accessibles, texte non perdu lors d’erreur; état d’envoi annoncé.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "SUP-02",
+          "lot": "R06",
+          "pages": [
+            28,
+            44
+          ],
+          "zone": "Formulaire de motif et contexte clientèle"
+        }
+      ]
     },
     {
       "route": "/cases",
@@ -363,7 +564,18 @@
       "state": "À modifier",
       "desktop": "Liste de dossiers et CTA d’ouverture; lignes actionnables semantic link.",
       "mobile": "Cartes compactes en colonne, statut et horodatage restent proches.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "SUP-04",
+          "lot": "R06",
+          "pages": [
+            30,
+            27
+          ],
+          "zone": "Carte dossier et CTA ouvrir"
+        }
+      ]
     },
     {
       "route": "/cases/new",
@@ -382,7 +594,17 @@
       "state": "À modifier",
       "desktop": "Même gabarit qu’assistance. Un CTA effectue la création; destination après réponse confirmée.",
       "mobile": "Afficher erreur au champ et conserver le texte. Motifs annulation/prolongation = dossier seulement.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "SUP-03",
+          "lot": "R06",
+          "pages": [
+            28
+          ],
+          "zone": "Formulaire et action ouvrir un dossier"
+        }
+      ]
     },
     {
       "route": "/cases/:id",
@@ -402,7 +624,18 @@
       "state": "À modifier",
       "desktop": "Chronologie et échange dans colonne principale, aide rapide à droite; notes internes absentes.",
       "mobile": "État puis échanges et formulaire; erreur générique sans détail d’un tiers.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "SUP-05",
+          "lot": "R06",
+          "pages": [
+            28,
+            30
+          ],
+          "zone": "Statut, échanges et aide rapide"
+        }
+      ]
     },
     {
       "route": "/review/:id",
@@ -421,7 +654,17 @@
       "state": "À modifier",
       "desktop": "Deux groupes indépendants et commentaire. Mesurer l’autorisation déjà calculée au suivi, ajouter une présentation cohérente en accès direct sans changer le serveur.",
       "mobile": "Groupes nommés, focus et nombre annoncé. Éviter interaction étoile seule sans équivalent clavier.",
-      "category": "B"
+      "category": "B",
+      "correction_v32": [
+        {
+          "id": "SUP-07",
+          "lot": "R06",
+          "pages": [
+            31
+          ],
+          "zone": "Deux notes, commentaire et validation"
+        }
+      ]
     },
     {
       "route": "/receipt/:id",
@@ -440,7 +683,17 @@
       "state": "Partiel",
       "desktop": "Document centré, total et statut séparés, impression navigateur avec mention sans valeur comptable.",
       "mobile": "Lisible sans défilement horizontal; commande imprimer au-dessous du document.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "SUP-08",
+          "lot": "R06",
+          "pages": [
+            31
+          ],
+          "zone": "En-tête fictif, détails et impression"
+        }
+      ]
     },
     {
       "route": "/owner/start",
@@ -460,7 +713,17 @@
       "state": "À modifier",
       "desktop": "Panorama Grande Anse, panneau éditorial profond, estimation brute et CTA adapté.",
       "mobile": "Panorama court avec texte lisible, estimation opaque, libellé démo et pas de promesse de revenu.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "OWN-01",
+          "lot": "R07",
+          "pages": [
+            32
+          ],
+          "zone": "Bandeau littoral et estimation"
+        }
+      ]
     },
     {
       "route": "/owner",
@@ -481,7 +744,18 @@
       "state": "Partiel",
       "desktop": "Compteurs, demande prioritaire et zone reprise; « aujourd’hui » sans générer une fausse alerte.",
       "mobile": "Compte, demande et reprise avant les liens secondaires; seuil 1024 pour deux zones.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "OWN-02",
+          "lot": "R07",
+          "pages": [
+            33,
+            42
+          ],
+          "zone": "Trois compteurs, demande, brouillon et aperçu du parc"
+        }
+      ]
     },
     {
       "route": "/owner/vehicles",
@@ -501,7 +775,17 @@
       "state": "Partiel",
       "desktop": "Cartes et filtre d’état, photo issue du mapping explicite ou repli; trois cartes si lisibles.",
       "mobile": "Une colonne, filtres repliables sans supprimer l’accès, statut avant action.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "OWN-03",
+          "lot": "R07",
+          "pages": [
+            34
+          ],
+          "zone": "Filtres, ajout et cartes du parc"
+        }
+      ]
     },
     {
       "route": "/owner/vehicles/:id",
@@ -523,7 +807,25 @@
       "state": "Partiel",
       "desktop": "Visuel de modèle + carte gestion; sections réelles, calendrier à l’ancre #owner-calendar, mois et formulaire de blocage.",
       "mobile": "Ancres compactes; agenda ordonné et formulaire dessous. Mettre l’état explicitement non renseigné quand absent.",
-      "category": "B"
+      "category": "B",
+      "correction_v32": [
+        {
+          "id": "OWN-04",
+          "lot": "R07",
+          "pages": [
+            35
+          ],
+          "zone": "Photo, statut et opérations"
+        },
+        {
+          "id": "OWN-05",
+          "lot": "R07",
+          "pages": [
+            36
+          ],
+          "zone": "Calendrier et formulaire de blocage"
+        }
+      ]
     },
     {
       "route": "/owner/requests",
@@ -543,7 +845,17 @@
       "state": "Partiel",
       "desktop": "Liste par statut, période et prochaine étape. Lien de suivi dominant au lieu d’une action concurrente dans la liste.",
       "mobile": "Une action lisible par ligne; contexte de retour depuis dossier; filtre non perdu.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "OWN-06",
+          "lot": "R07",
+          "pages": [
+            37
+          ],
+          "zone": "Filtres et carte examinable"
+        }
+      ]
     },
     {
       "route": "/owner/revenue",
@@ -562,7 +874,17 @@
       "state": "À modifier",
       "desktop": "Synthèse brut, statut fictif et lignes datées. Frais et montant net sont indéfinis.",
       "mobile": "Montant puis statut; pas de graphique inventé ni d’estimation présentée comme revenu net.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "OWN-07",
+          "lot": "R07",
+          "pages": [
+            38
+          ],
+          "zone": "Indicateurs et paiements simulés"
+        }
+      ]
     },
     {
       "route": "/owner/reputation",
@@ -581,7 +903,17 @@
       "state": "À modifier",
       "desktop": "Cartes notes et texte, action de réponse avec dialogue stable.",
       "mobile": "Une colonne; actions et focus visibles, statut lisible sans couleur.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "OWN-08",
+          "lot": "R07",
+          "pages": [
+            38
+          ],
+          "zone": "Avis, statut et réponse du propriétaire"
+        }
+      ]
     },
     {
       "route": "/owner/vehicles/new",
@@ -604,7 +936,28 @@
       "state": "Partiel",
       "desktop": "Stepper 4 sections à gauche, formulaire à droite, statut de sauvegarde avant champs, résumé avant revue.",
       "mobile": "Étape et reprise en tête, formulaire vertical, CTA hors clavier, retour groupe ciblé.",
-      "category": "B"
+      "category": "B",
+      "correction_v32": [
+        {
+          "id": "WIZ-01",
+          "lot": "R08",
+          "pages": [
+            39,
+            41
+          ],
+          "zone": "Quatre sections et neuf étapes, vues de photos"
+        },
+        {
+          "id": "WIZ-02",
+          "lot": "R08",
+          "pages": [
+            23,
+            40,
+            41
+          ],
+          "zone": "Récapitulatif, conflit et envoi"
+        }
+      ]
     },
     {
       "route": "/demo",
@@ -624,7 +977,18 @@
       "state": "Hors écran cible",
       "desktop": "Garder les points d’entrée de démonstration. Éventuelle harmonisation de surface seule au lot 10.",
       "mobile": "Menu et champs accessibles, éviter d’enfouir la sortie de l’état réseau.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "OUT-01",
+          "lot": "R09",
+          "pages": [
+            10,
+            44
+          ],
+          "zone": "Entrée outils et identité fictive"
+        }
+      ]
     },
     {
       "route": "/demo/audit",
@@ -644,7 +1008,18 @@
       "state": "Hors écran cible",
       "desktop": "Respecter l’atelier et les profils de démonstration; ne jamais transformer ces comptes en accès réels.",
       "mobile": "État vide utile et accès à /demo.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "OUT-02",
+          "lot": "R09",
+          "pages": [
+            10,
+            44
+          ],
+          "zone": "Atelier d’audit et retour outils"
+        }
+      ]
     },
     {
       "route": "/design-system",
@@ -665,7 +1040,20 @@
       "state": "Hors écran cible",
       "desktop": "Échantillon de nouveaux composants métier séparé si nécessaire. Préserver démo du verre.",
       "mobile": "Contrôles lisibles et focus à 320 px.",
-      "category": "A"
+      "category": "A",
+      "correction_v32": [
+        {
+          "id": "OUT-03",
+          "lot": "R09",
+          "pages": [
+            10,
+            11,
+            12
+          ],
+          "zone": "Échantillons visuels opérationnels et interactions"
+        }
+      ]
     }
-  ]
+  ],
+  "correction_audit_sha": "8a6974e23aab14acbabcd82f21f2bfcd9c0498ce"
 }

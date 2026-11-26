@@ -41,3 +41,7 @@ Le SHA courant vérifié de origin/main était **4338f5f7ca252f4d4f02021ec47a226
 Le Chromium système a échoué à s’initialiser dans ce conteneur (socket non autorisée). L’exécution utile s’est faite ensuite avec le Chromium headless épinglé par Playwright. Les données utilisées sont exclusivement les fixtures fictives du projet. Les deux documents comptent 12 et 49 pages; leurs références, limites et arbitrages sont détaillés dans [le registre PDF](../00_SOURCE_OF_TRUTH/INDEX_PDF.md).
 
 [Run GitHub Actions](https://github.com/Djams0/Maquette_LokasyonPeyi/actions/runs/44790599088) · [PR #22](https://github.com/Djams0/Maquette_LokasyonPeyi/pull/22)
+
+## Audit de correction après la PR #35
+
+Voir [relevé au SHA 8a6974e et preuves](ECARTS_CORRECTION_V32.md). Ce relevé actualise les constats de ce document pour la campagne R01–R09.

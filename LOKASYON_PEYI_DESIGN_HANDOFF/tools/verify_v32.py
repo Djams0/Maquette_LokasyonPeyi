@@ -1,6 +1,8 @@
 """Verify the V3.2 kit's paths, hashes, credits, references and code pointers."""
 import json
 import re
+import subprocess
+import sys
 from hashlib import sha256
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -76,4 +78,5 @@ for p in root.rglob('*.md'):
 
 if errors:
     raise SystemExit('\n'.join(errors))
+subprocess.run([sys.executable, str(root / 'tools/verify_correction.py')], check=True)
 print(f'OK · {len(expected)} fichiers, {link_total} liens, {len(photos)} photos, {len(photo_paths)} fichiers photo, {len(prompts)} prompts.')

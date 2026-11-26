@@ -17,3 +17,5 @@ Les fichiers décrivent les données et comportements existants et les compositi
 - [Démonstration et composants](OUTILS.md)
 - [Références protégées](PROTECTION.md)
 - [Calendrier de gestion](OWNER_CALENDAR.md)
+
+Pour la campagne active, lire les blocs **Critères actifs · correction V3.2** à la fin des fiches. [Index des routes et identifiants](SCREEN_INDEX.json) · [Matrice par largeur](../08_VALIDATION/CORRECTION_V32.csv) · [Capsule et routes internes](../02_DESIGN_SYSTEM/NAVIGATION.md).

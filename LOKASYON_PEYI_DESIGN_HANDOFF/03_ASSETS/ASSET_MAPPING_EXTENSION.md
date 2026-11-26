@@ -10,3 +10,5 @@
 | Toutes | Logo pictos et police | assets/v32/marque/logo-horizontal-charte.webp, ui/components.js et assets/fonts. |
 
 La [source publique](../04_VISUAL_REFERENCES/asset-manifest.json) reste identique et liée aux tests de provenance. Le [manifeste extension](asset-manifest.json) indique les octets, dimensions, usages et crédits. Les ressources d’exécution existent au dépôt. Le logo raster est extrait de la charte. Aucun master vectoriel ou planche native du PDF B n’a été retrouvé. Aucun nouvel asset tiers requis.
+
+Pour la correction R01, `assets/v32/marque/logo-horizontal-charte.webp` (683 × 122) est la ressource d’exécution et le PNG du kit est documentaire. Vérifier dans le navigateur que l’image est décodée et visible. Lora et Nunito sont servies depuis `assets/fonts`, avec licences OFL aux mêmes chemins. Vérifier l’attribution proche du média pour [le bourg de Deshaies et Grande Anse](../../assets/v32/credits.html). Garder les ratios et le crédit lors d’un recadrage. Pour v1, préserver la présentation spécifique du mock et les crédits applicables à chaque usage.

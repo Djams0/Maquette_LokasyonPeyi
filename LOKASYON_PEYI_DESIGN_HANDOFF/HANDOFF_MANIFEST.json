@@ -30,8 +30,8 @@
     },
     {
       "path": "00_SOURCE_OF_TRUTH/SOURCES_ET_ARBITRAGES.md",
-      "bytes": 2364,
-      "sha256": "a3686d5ad5946b2adbe926b1e8ef91e798d4eb2f27b877efe0548ed7e4ea1745"
+      "bytes": 3514,
+      "sha256": "01ac34f33773db9f22c3fc76a49d6d6ef26f907de9ddc25fdaf36778957f9f11"
     },
     {
       "path": "01_AUDIT/AUDIT_HANDOFF_EXISTANT.md",
@@ -39,9 +39,14 @@
       "sha256": "fd45b469c4d4529fc485495b7ba6cec4fae3399358820769c8a2756d517e7b2e"
     },
     {
+      "path": "01_AUDIT/ECARTS_CORRECTION_V32.md",
+      "bytes": 26093,
+      "sha256": "773ce097ec4a478e3e42cd55c5868e4af01169657948801c141b8e2e2df7d325"
+    },
+    {
       "path": "01_AUDIT/ETAT_REEL_DU_DEPOT.md",
-      "bytes": 5068,
-      "sha256": "174289d6069cbd3ebf4ed4f1aeedfc7452f5d9267c8d1fda6fb00dfa3d323230"
+      "bytes": 5255,
+      "sha256": "3061a0b6d511666bd293b7b3767b62c9282df45645a509a19873427c638ebb20"
     },
     {
       "path": "01_AUDIT/HISTORIQUE_ECARTS_PUBLICS.md",
@@ -60,13 +65,13 @@
     },
     {
       "path": "01_AUDIT/MATRICE_ECARTS_UXUI.csv",
-      "bytes": 10769,
-      "sha256": "0f1fb1b0c0ba59b4e0bf71c54a4c20fe16325c68bcb3185c6a06844da32e3299"
+      "bytes": 11211,
+      "sha256": "9b6e52b6df872de713bcc3575d2009c2388e2bce5ba82ca94ccf6c2d5fcd4e0b"
     },
     {
       "path": "01_AUDIT/MATRICE_ROUTES_COMPOSANTS_API.csv",
-      "bytes": 10129,
-      "sha256": "c928ee314ed4969d780cf4b54e19e624a8476788d77c4c7a781dc86fc34fdf5f"
+      "bytes": 10571,
+      "sha256": "ef265dc2be833f288f4d14a1288de4875c38d914a965c4dc1abef1d4b0abaeec"
     },
     {
       "path": "01_AUDIT/PLAN_MIGRATION.md",
@@ -120,8 +125,8 @@
     },
     {
       "path": "02_DESIGN_SYSTEM/NAVIGATION.md",
-      "bytes": 1072,
-      "sha256": "1fafb1bc5416d2e50276718f20616e4bd621933e0159a3e6a9c14f5371b09eb3"
+      "bytes": 5018,
+      "sha256": "557b6a7c9c3df2733c2ed9df689ace93bed044edbc313994fd69787493aadb50"
     },
     {
       "path": "02_DESIGN_SYSTEM/RESPONSIVE.md",
@@ -150,8 +155,8 @@
     },
     {
       "path": "03_ASSETS/ASSET_MAPPING_EXTENSION.md",
-      "bytes": 1482,
-      "sha256": "6d11baf675253f135ce5a5dc366c20cf752dde8c241ce21d3ae38de3713d6cf7"
+      "bytes": 2068,
+      "sha256": "fd8ec2e33acd13abbfa7fdd9519003b082f921d48cf4e7cf736c648f3a853499"
     },
     {
       "path": "03_ASSETS/LICENSES_AND_CREDITS.md",
@@ -235,8 +240,8 @@
     },
     {
       "path": "04_VISUAL_REFERENCES/extension/README.md",
-      "bytes": 2135,
-      "sha256": "c508ca2e3659ba9d4d884c6ef0c6dcaecc1b42533d5cc2b384a0d58e5eac16fc"
+      "bytes": 2394,
+      "sha256": "dcf6dab26268f744085afd3185bc852a8d9091cb30f7608f9aa9551dbe7282a7"
     },
     {
       "path": "04_VISUAL_REFERENCES/extension/actuel/client-assistance-1440.jpg",
@@ -487,6 +492,46 @@
       "path": "04_VISUAL_REFERENCES/extension/actuel/parcours-proprietaire-recapitulatif.jpg",
       "bytes": 161506,
       "sha256": "40adcc0c90e0359c87ecd5c92a402f285673f5d5ca50c6fde88ced5805c9d18d"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/audit-8a6974e/MESURES.csv",
+      "bytes": 23719,
+      "sha256": "b911c85f2f221aa935b714ddf154bc6a8b14ea5af64748a51c11e9934c8d6d37"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/audit-8a6974e/PUBLIC.csv",
+      "bytes": 967,
+      "sha256": "28f2c7ab0f4a754c1c5893b060daf82ef3526f12a7ee5bf9e06ad4a0dcf38218"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/audit-8a6974e/assistance.webp",
+      "bytes": 86732,
+      "sha256": "adea9d99900d931d21dffe98ec9bc170668fc36e7475f606001ef53a3ee0d175"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/audit-8a6974e/header.webp",
+      "bytes": 60810,
+      "sha256": "ac6aa392835610792d9bc05eeb4655dd3ee5333a24dd07b83e45b05d2a13dfa2"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/audit-8a6974e/locations.webp",
+      "bytes": 125538,
+      "sha256": "fdada1e0ed377ba23ab11f2d7a2712354e0d463a6b234bce75dd2a3363a3b927"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/audit-8a6974e/messagerie.webp",
+      "bytes": 69684,
+      "sha256": "9591718861379c48e2fb435efed6fd7ca66e61977dd0ebea47765cf54a86a49a"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/audit-8a6974e/proprietaire.webp",
+      "bytes": 150254,
+      "sha256": "4e2bc41f4425a029e9f4ece33270ceba31915ebafc82d8017b0557793762f551"
+    },
+    {
+      "path": "04_VISUAL_REFERENCES/extension/audit-8a6974e/publication.webp",
+      "bytes": 67342,
+      "sha256": "00027abc6b38d8c5d3bb3ecd553a03714b94816d45b8d3f23f185e1db3a2c800"
     },
     {
       "path": "04_VISUAL_REFERENCES/extension/comparatifs/assistant.jpg",
@@ -1155,88 +1200,88 @@
     },
     {
       "path": "05_SCREEN_SPECS/ACCOUNT.md",
-      "bytes": 4296,
-      "sha256": "af9236e5f7f577045ee5e7f1b23b356f00f72511b3a1a9cb7c598e4e067a7932"
+      "bytes": 8196,
+      "sha256": "6a0b2eebd4d7bda9449cd9d4bbdb74b196f49fe6adc98fb9c3ce17afed7e1c94"
     },
     {
       "path": "05_SCREEN_SPECS/INSPECTION.md",
-      "bytes": 2029,
-      "sha256": "96149f3a5e88c1d071710905424b937bf40b19933f69c93e6dd42b92abcc78de"
+      "bytes": 4166,
+      "sha256": "1f39c5ff90dbe0eb17067f83229e2b7718997488f28a79e4510a4a297f18b5db"
     },
     {
       "path": "05_SCREEN_SPECS/MESSAGING.md",
-      "bytes": 1851,
-      "sha256": "7bf4211d7d98316e3f79ad4a8841c4870bcb393327cef2eca3a390b349463bd3"
+      "bytes": 4213,
+      "sha256": "6f9a0c4cf31ee81a5acbb7cb199558649cc2f0e103017f1648bc404af912dc4f"
     },
     {
       "path": "05_SCREEN_SPECS/NOTIFICATIONS.md",
-      "bytes": 1368,
-      "sha256": "cf9bd5e5a2203959266172d264ebbb7a2b2b838cfc1027a3cb4665364693dcc0"
+      "bytes": 2318,
+      "sha256": "75707b0dca60aa41e6447446b50ddd4aa7ec98f7b8a95aa36bf2e7776fc18bf4"
     },
     {
       "path": "05_SCREEN_SPECS/OUTILS.md",
-      "bytes": 3273,
-      "sha256": "5a25f40803ba97c566075f179c6f194aa6945836787dcbfb3841d3b5ece9e635"
+      "bytes": 6126,
+      "sha256": "dc4b9a39b44138f02ffc1a58bbee4215fe689145c56f5b936b9db82d67c388f2"
     },
     {
       "path": "05_SCREEN_SPECS/OWNER_CALENDAR.md",
-      "bytes": 1215,
-      "sha256": "d78ab9f2ec7c0a898b1f7a4ca24c86188e451009bb2e99fb9bd3a05b398c4dbb"
+      "bytes": 2218,
+      "sha256": "d92127d348d315e0a0eb492451370d3ed3fb5b664a1e5a3e61cc0ddd7459e1c6"
     },
     {
       "path": "05_SCREEN_SPECS/OWNER_DASHBOARD.md",
-      "bytes": 4241,
-      "sha256": "0e40226d8cc3bb478ddeaba322087c5edc28e52c9fae65bc32c99d5ca243bea7"
+      "bytes": 8079,
+      "sha256": "b57ae68345ee64d26246839252f865af048d88e02ce989bb9774bebd739076ea"
     },
     {
       "path": "05_SCREEN_SPECS/OWNER_REQUESTS.md",
-      "bytes": 1466,
-      "sha256": "a957007caa16fe7837dcb3c3725d3b1f8c346a28ce7b6d70c99565c95afd60fc"
+      "bytes": 2342,
+      "sha256": "0a2cf347a083150826882bd6cef1681ddaad178b33d7157feff452b166a7da5e"
     },
     {
       "path": "05_SCREEN_SPECS/OWNER_VEHICLES.md",
-      "bytes": 2750,
-      "sha256": "200a6daa5252b7828a1d49e1e9691730751fc1cdeacf248a6ac64a70e6491c3a"
+      "bytes": 5578,
+      "sha256": "bb78446826f378df100446a52c1e91fef537858bd15adcd4368dfc1c7643aa67"
     },
     {
       "path": "05_SCREEN_SPECS/OWNER_WIZARD.md",
-      "bytes": 2148,
-      "sha256": "a685d62571a0bc248cfc6f8e1d065aa02c9da432381838f2456dbd5b455c5198"
+      "bytes": 4381,
+      "sha256": "247e69e4f3cfe012519d3a287f6cab75e84376156721b03b40ce2dcf1f2b7c11"
     },
     {
       "path": "05_SCREEN_SPECS/PAYMENT.md",
-      "bytes": 1631,
-      "sha256": "5832847811a1ab7e61a6512786e8c1f92ea678a07a216f93f70a372e563007e9"
+      "bytes": 2630,
+      "sha256": "ce7d2ab734b4d5ec763517165d6b405f84cb334dccb8dfde4b638886590c05b9"
     },
     {
       "path": "05_SCREEN_SPECS/PROTECTION.md",
-      "bytes": 2969,
-      "sha256": "58ac0a3d725ea33df4110ab30f0191a4267c3e9ba138541cf872555db44fbb80"
+      "bytes": 6008,
+      "sha256": "93d5b86cee92e78e1715564c042dd712378beb8be25d6662779469c0cad16139"
     },
     {
       "path": "05_SCREEN_SPECS/README.md",
-      "bytes": 871,
-      "sha256": "a1af28926f5ff706080285c06b29d827e8043e407d9eb701585b870496d7c502"
+      "bytes": 1158,
+      "sha256": "88accd010fddd615881e7dc4a4ae67ebe5ecf7579cbdf8c45c18198bbce5b153"
     },
     {
       "path": "05_SCREEN_SPECS/RENTALS.md",
-      "bytes": 2854,
-      "sha256": "13f2cc9ea0674dad3a40f0e6d1f4a50e051b930d21d638ef55af4f98dd262832"
+      "bytes": 5044,
+      "sha256": "f2227ce9ca230ae4da26aeeccc31c34b6cf7631ca9733416750b6552cfeeb72f"
     },
     {
       "path": "05_SCREEN_SPECS/RENTAL_DETAIL.md",
-      "bytes": 1942,
-      "sha256": "0d6b9827c4d2c604337b934dcc0fbfb2a6c7c40fc802402747d25935fe48cec9"
+      "bytes": 3112,
+      "sha256": "539f8cd8f6ba6f57ff5baa7653d00d335b111bdcd4b29e7c8301f26546ab6fd2"
     },
     {
       "path": "05_SCREEN_SPECS/SCREEN_INDEX.json",
-      "bytes": 25672,
-      "sha256": "a4a084c8a89e6b607884b38ed7fd4ae51fe05b6830e2bd628ecfe146e55485af"
+      "bytes": 33931,
+      "sha256": "69ba258a7a7713ac06d6ddacbb842583e27879cfea35d9591bb62005cafb9695"
     },
     {
       "path": "05_SCREEN_SPECS/SUPPORT.md",
-      "bytes": 7435,
-      "sha256": "c5211375d69eb7fa08192f5c7ff43005db0b9b7c04edce4faf593ae2483d61fe"
+      "bytes": 14617,
+      "sha256": "e681a1e922b0f4ad9f321694ae4afdf033f2e4edb78a15fafe2f7f8deafb877c"
     },
     {
       "path": "05_SCREEN_SPECS_V3.2/ACCUEIL.md",
@@ -1420,8 +1465,58 @@
     },
     {
       "path": "07_CODEX_PROMPTS/README.md",
-      "bytes": 3042,
-      "sha256": "62cda36a7064ba51bbc053e53b52838320be1d39364fcef1ea58482f75d10c62"
+      "bytes": 3046,
+      "sha256": "3a2be310f1407697c6f793bb2ee6e587c6d32bd009e2d0212176f79a10fa379e"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/correction-v32/R01_HEADER_NAVIGATION.md",
+      "bytes": 10107,
+      "sha256": "c67ff5f3bed14b29f77dbc80bb6820cce78e4687ce784755a075ce1eaa7aab7f"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/correction-v32/R02_COMPTE.md",
+      "bytes": 7220,
+      "sha256": "2318d72ec204742236122b18206622a5fc3e0d5062e0ba42f01bc2a38ca79167"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/correction-v32/R03_LOCATIONS_SUIVI_PAIEMENT.md",
+      "bytes": 7930,
+      "sha256": "41412b129d29e8e04a20b8384746a6646c793b5200010d54f242946fb32da37b"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/correction-v32/R04_CONSTATS.md",
+      "bytes": 6587,
+      "sha256": "b6665156929a0a6637fb80ebc560c776bdb365c6b808bb334c7b68d60be77fbc"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/correction-v32/R05_MESSAGERIE_NOTIFICATIONS.md",
+      "bytes": 7218,
+      "sha256": "8aba5e6c62103278e4c12ec197ad77793ee09a196da8f494b6758292395aa86e"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/correction-v32/R06_ASSISTANCE_CLOTURE.md",
+      "bytes": 8234,
+      "sha256": "022392b804ad80f314f84cb92ec30022b9f84c680e5c6607465cb14768bfc464"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/correction-v32/R07_ESPACE_PROPRIETAIRE.md",
+      "bytes": 9083,
+      "sha256": "17f38d579bce4515e1caf6056664a35727f56f96600586e94c51a6ab381f4b8f"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/correction-v32/R08_PUBLICATION_BROUILLONS.md",
+      "bytes": 6591,
+      "sha256": "63ad76408c586c25adc3967a1fdb27abd451b0d0ce0637d25647f356787238ce"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/correction-v32/R09_RECETTE_FINALE.md",
+      "bytes": 9060,
+      "sha256": "8377a0d783acd93ae498cd059000ed0fcf999e6b466536236261b4dcfb4e3edf"
+    },
+    {
+      "path": "07_CODEX_PROMPTS/correction-v32/README.md",
+      "bytes": 1846,
+      "sha256": "f4cfdf8ef8a266f25906cf2faaf70993dcd190c864ed71d1f824bb2592892798"
     },
     {
       "path": "07_VALIDATION/MATRICE_VISUELLE.csv",
@@ -1590,13 +1685,18 @@
     },
     {
       "path": "08_VALIDATION/ACCEPTANCE_CRITERIA.md",
-      "bytes": 1022,
-      "sha256": "59d166a5f43f57532bf2f133b76bd3cfe42b542d1503d897183b8f449777bd44"
+      "bytes": 2459,
+      "sha256": "fd6d08aa42d812cc1e8a88219498392da4a7bfb6fe991c78a887afd656627a84"
     },
     {
       "path": "08_VALIDATION/ACCESSIBILITY_CHECKLIST.md",
       "bytes": 796,
       "sha256": "3361b9164ca8907b344855dfd8cfb7eb55891a49ab37132e3fb581cf37dd72b7"
+    },
+    {
+      "path": "08_VALIDATION/CORRECTION_V32.csv",
+      "bytes": 34833,
+      "sha256": "697e68836dccb771360996018e5fc940f749f3aff415ed893b9f7348acdd2a66"
     },
     {
       "path": "08_VALIDATION/FUNCTIONAL_TEST_MATRIX.md",
@@ -1605,8 +1705,8 @@
     },
     {
       "path": "08_VALIDATION/PROTECTED_PAGES_TESTS.md",
-      "bytes": 1770,
-      "sha256": "b9f6b8d88cb0853918990f875dc82dbae58fe1bd5135f4857c537effbe91fd82"
+      "bytes": 2506,
+      "sha256": "e0bc3b2947355d951b9eaa088bdc719acba4cd075d426aab37643095d816744d"
     },
     {
       "path": "08_VALIDATION/REGRESSION_STRATEGY.md",
@@ -1615,13 +1715,13 @@
     },
     {
       "path": "08_VALIDATION/RELEASE_GATES.md",
-      "bytes": 880,
-      "sha256": "fdfedd71f55426cfb86dae7e6e307ae782a15281263cfe0ea854c33ecef4384a"
+      "bytes": 1239,
+      "sha256": "bb2cd3bbf919e819355d95affd63a3d17fff5e297a8b795cfc526c25fc9b0680"
     },
     {
       "path": "08_VALIDATION/VISUAL_TEST_MATRIX.md",
-      "bytes": 2526,
-      "sha256": "e038ce15216339f60ee8771f1f0b7d3ec4c9fc14b943a8910610ba070fa1a83d"
+      "bytes": 3965,
+      "sha256": "0c3382ee4770f01aa9c421755ba32cdb4715ae61a0e053a0f9252a08333e6e64"
     },
     {
       "path": "09_IMPLEMENTATION/DEPENDENCY_GRAPH.md",
@@ -1635,18 +1735,18 @@
     },
     {
       "path": "09_IMPLEMENTATION/IMPLEMENTATION_ORDER.md",
-      "bytes": 992,
-      "sha256": "edacd8605274ceb421f61756e9ae545c00c87ea36271622189ddd9e8ab266b24"
+      "bytes": 1254,
+      "sha256": "79d1ffee3219d4129972c0888e6f1b482c675f4d54c0e8ef43c8607837c43338"
     },
     {
       "path": "09_IMPLEMENTATION/LOT_INDEX.json",
-      "bytes": 20298,
-      "sha256": "89c4e2f03693dab512b9bf3982b791ad6413eb3d5511e8f2d7cb8a14598e2555"
+      "bytes": 27564,
+      "sha256": "ed12ff4fd0234be56769d6b6b08b2b180d0113454b175020973262e9f65f47b3"
     },
     {
       "path": "09_IMPLEMENTATION/PROGRESS_TRACKER.md",
-      "bytes": 5530,
-      "sha256": "ccbfebdb9330351745688f5afee61f23d62c028326ddf30c20be98a5611b64cf"
+      "bytes": 7259,
+      "sha256": "7a378e24ed2efef871ef0b0113dc4e8c5357466430599d12cc5e97aa2198c492"
     },
     {
       "path": "09_IMPLEMENTATION/PR_STRATEGY.md",
@@ -1660,33 +1760,33 @@
     },
     {
       "path": "09_IMPLEMENTATION/REVIEW_TEMPLATE.md",
-      "bytes": 655,
-      "sha256": "4a87ae2f978f51a367572df88506242a8b04886f2d4550ba01e8262f9dac56b9"
+      "bytes": 2117,
+      "sha256": "312e3f06a36facbf955f797787715e79d289c05f307cf96059866bcc89dbd68e"
     },
     {
       "path": "AGENTS.md",
-      "bytes": 1507,
-      "sha256": "c22c17d5741d4281db282fc56e19bdc5a83fe4e2ba1ef5f55af82c6620ed3015"
+      "bytes": 1786,
+      "sha256": "fa102608fc6fbbb9d3a4fc6d6cc4868a2b2a4246e654f8ee88279a7264479989"
     },
     {
       "path": "CODEX_START_HERE.md",
-      "bytes": 1682,
-      "sha256": "774de491c0e86097704a4a26887c3183c670d60300f1271321ac4217bf8001f4"
+      "bytes": 1716,
+      "sha256": "13a94524e83a823a6c4d2fe3a46a1419c6e58a1ebb1b6032e53dfeffdcb3a232"
     },
     {
       "path": "INSTALLATION.md",
-      "bytes": 2809,
-      "sha256": "39308ab481e3d32626e8327c90cfb236fc9b9c06020dc3bc84a2a3885684afe7"
+      "bytes": 3097,
+      "sha256": "804bb127e9c75e194f7e64d70baddab48e176d10908bc78c22ea3ba48bc124b1"
     },
     {
       "path": "README.md",
-      "bytes": 2079,
-      "sha256": "ae6178b6501dad4329b5536cc1b6fa8a0786bcd2d7568396e8fa99a7794c3361"
+      "bytes": 2377,
+      "sha256": "723a87c07d5c72a753770c623175e5a17d1e85a816ac1f1cdbf1c1a963e91115"
     },
     {
       "path": "tools/README.md",
-      "bytes": 916,
-      "sha256": "7ebcbd3713bc35cac1f7f15269e075b6d422dee3720df2bc6554b5353d6f32c2"
+      "bytes": 3377,
+      "sha256": "b01ea9c256d21ff5df7c6786379124ced89414904032b72908f6001d891c424b"
     },
     {
       "path": "tools/capture-v32.mjs",
@@ -1709,14 +1809,24 @@
       "sha256": "be4890b2eea12fffb912c8a81c7c59e407902061b0dd9f5dd7ee9b6385d22f39"
     },
     {
+      "path": "tools/verify_correction.py",
+      "bytes": 6059,
+      "sha256": "f32c0555bdb02b521a1653f06edda517894354207f85d9000e655051f5853dee"
+    },
+    {
       "path": "tools/verify_extension.py",
       "bytes": 4327,
       "sha256": "5cabb06c0f1a0d6ab31f76e70b5888bb5c97919f34015eb0333c217856fa451e"
     },
     {
       "path": "tools/verify_v32.py",
-      "bytes": 3641,
-      "sha256": "3a4989fcb3c82fe185a5abe98a9fd9eb0ae225408234d66be34f9af506b51c27"
+      "bytes": 3757,
+      "sha256": "6994d11541ee10c10d5cdc064400310fecfb83c514b84100a7f71a5794f8f53e"
     }
-  ]
+  ],
+  "correction_v32": {
+    "audit_sha": "8a6974e23aab14acbabcd82f21f2bfcd9c0498ce",
+    "lot_index": "09_IMPLEMENTATION/LOT_INDEX.json",
+    "matrix": "08_VALIDATION/CORRECTION_V32.csv"
+  }
 }

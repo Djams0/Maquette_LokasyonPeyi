@@ -17,3 +17,11 @@
 | Accessibilité et performance | 43–48 | Zoom, focus/défilement, contraste, poids images, erreurs et lenteur | Huit largeurs sur campagne finale |
 
 Comparer performance au même scénario (poids transféré, requêtes, métriques de chargement si disponibles, et stabilité de mise en page). Signaler les écarts environnementaux et vérifier qu’aucune photo n’est requise pour rendre l’action interactive.
+
+## Matrice active · correction V3.2
+
+Utiliser [CORRECTION_V32.csv](CORRECTION_V32.csv) pendant R01–R09. Elle contient une ligne par critère et viewport, le lot, le scénario, la zone exacte et les trois résultats à compléter en revue. Les écarts et les comportements détaillés figurent dans les [fiches](../05_SCREEN_SPECS/README.md) et l’[audit](../01_AUDIT/ECARTS_CORRECTION_V32.md). Les vues des planches sont des composites documentaires. Utiliser l’identité pixel pour les références d’exécution publiques uniquement, suivant le protocole dédié.
+
+Pour chaque ligne, capturer avant modification et après stabilisation, à scroll nul pour « premier écran ». Le geste doit tenir dans l’intersection du viewport et de la zone au-dessus du chrome fixe, sans chevauchement. Pour une ancre ou une interaction, préciser le déclencheur et le scroll. Séparer les états ou les rôles sur les planches composites. Les mesures accompagnent l’image et doivent être également vérifiables au clavier.
+
+Les états/wrappers existants couvrent les huit largeurs de l’ancien protocole. R01 vérifie 320 et le reflow en complément des deux largeurs de preuve, et R09 étend les vérifications aux huit largeurs où le risque s’applique. Pour un état jamais essayé, joindre la cause et l’impact, puis demander la décision dès qu’il pourrait empêcher une action, masquer des contenus ou exposer un droit.

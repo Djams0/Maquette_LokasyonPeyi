@@ -1,6 +1,6 @@
-# Prompts Codex de l’extension client
+# Historique · prompts Codex 00–11 de l’extension client
 
-Commencer par [lot 00](LOT_00_BASELINE.md). Les anciennes instructions de la campagne publique restent dans le kit à titre historique. L’ordre de revue est 00 à 11. Chaque lot attend la validation et l’intégration des prérequis, ainsi que le feu vert du lot précédent.
+Pour les prochaines corrections, commencer par [R01 · Header interne et navigation](correction-v32/R01_HEADER_NAVIGATION.md) et suivre la [série active](correction-v32/README.md). Le tableau ci-dessous conserve la séquence 00–11 intégrée avec la PR #35.
 
 | Lot | Dépendances | Priorité / effort | Porte de sortie |
 | --- | --- | --- | --- |
